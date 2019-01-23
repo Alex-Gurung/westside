@@ -1,3 +1,6 @@
+# don't want to add .DS_Store
+.DS_Store
+
 # Built application files
 *.apk
 *.ap_

@@ -4,8 +4,6 @@ defaultTasks 'jar'
 
 apply plugin: 'java'
 
-apply plugin: 'base'
-
 /* 
  * Define where our main class is (package.mainClassName)
  * Import resources.jar (which we get from our dependencies)
@@ -14,7 +12,7 @@ apply plugin: 'base'
 jar  {
   manifest {
      attributes  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
-                 "Class-Path": "../../lib/resources.jar"
+                 "Class-Path": "../../lib/resources.jar"x
     }
 }
 
