@@ -12,7 +12,7 @@ apply plugin: 'java'
 jar  {
   manifest {
      attributes  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
-                 "Class-Path": "../../lib/resources.jar"x
+                 "Class-Path": "../../lib/resources.jar"
     }
 }
 
