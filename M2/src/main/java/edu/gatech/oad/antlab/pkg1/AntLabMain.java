@@ -75,7 +75,6 @@ import edu.gatech.oad.antlab.pkg2.*;
                   //and gburdell5 with your gt id
                   Person5 p5 = new Person5("Jon");
                   toPrint += p5.toString("jwomack30");
-
         System.out.println(toPrint);
 
 
@@ -90,4 +89,4 @@ import edu.gatech.oad.antlab.pkg2.*;
         new AntLabMain().printOutMessage();
 
      }
- }
+}

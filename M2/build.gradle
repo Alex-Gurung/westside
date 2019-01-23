@@ -4,6 +4,8 @@ defaultTasks 'jar'
 
 apply plugin: 'java'
 
+apply plugin: 'base'
+
 /* 
  * Define where our main class is (package.mainClassName)
  * Import resources.jar (which we get from our dependencies)
@@ -15,7 +17,6 @@ jar  {
                  "Class-Path": "../../lib/resources.jar"
     }
 }
-
 
 /*
  * Need to include resources.jar as a dependency (contains AntLab31)
