@@ -76,10 +76,6 @@ import edu.gatech.oad.antlab.pkg2.*;
                   Person5 p5 = new Person5("Jon");
                   toPrint += p5.toString("jwomack30");
 
-<<<<<<< HEAD
->>>>>>> 5f4b2a9f01d3ff101c3aa91c89226ca25bae9d3c
-=======
->>>>>>> 1ec71be9c4a00fb8f4c44323d2f5a21d5f7db2f7
         System.out.println(toPrint);
 
 
@@ -94,21 +90,4 @@ import edu.gatech.oad.antlab.pkg2.*;
         new AntLabMain().printOutMessage();
 
      }
-
-
-
-
-<<<<<<< HEAD
  }
-=======
-
-     }
-
-
-
-
- }
->>>>>>> 5f4b2a9f01d3ff101c3aa91c89226ca25bae9d3c
-=======
- }
->>>>>>> 1ec71be9c4a00fb8f4c44323d2f5a21d5f7db2f7
