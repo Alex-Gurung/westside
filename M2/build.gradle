@@ -1,0 +1,26 @@
+//Set a default task, so if you don't provide any, these will be executed.
+
+defaultTasks 'jar'
+
+apply plugin: 'java'
+
+/* 
+ * Define where our main class is (package.mainClassName)
+ * Import resources.jar (which we get from our dependencies)
+ */
+
+jar  {
+  manifest {
+     attributes  'Main-Class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                 "Class-Path": "../../lib/resources.jar"
+    }
+}
+
+/*
+ * Need to include resources.jar as a dependency (contains AntLab31)
+ * (Scroll down)
+ * https://stackoverflow.com/questions/20700053/how-to-add-local-jar-file-dependency-to-build-gradle-file
+ */
+dependencies {
+	compile files ('lib/resources.jar')
+}
