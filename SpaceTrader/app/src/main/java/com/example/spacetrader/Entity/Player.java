@@ -2,12 +2,12 @@ package com.example.spacetrader.Entity;
 
 public class Player {
 
-    private int pilotSkillPoints;
-    private int fighterSkillPoints;
-    private int engineerSkillPoints;
-    private int traderSkillPoints;
+    private int pilotSkillPoints = 4;
+    private int fighterSkillPoints = 4;
+    private int engineerSkillPoints = 4;
+    private int traderSkillPoints = 4;
 
-    private String name;
+    private String name = "Bobert Waters";
 
     private Ship ship = new Ship(ShipType.GNAT);
 

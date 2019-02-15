@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 public class ConfigurationViewModel extends AndroidViewModel {
 
-    public ConfigurationViewModel (@NonNull Application application) {
+    public ConfigurationViewModel (@NonNull Application application)
         super(application);
     }
 }
