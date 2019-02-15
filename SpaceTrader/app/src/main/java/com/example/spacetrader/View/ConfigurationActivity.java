@@ -43,7 +43,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
-        difficultySpinner.setSelection(difficultySpinner.getSelectedItemPosition());
+
+
     }
 
     public void onBeginPressed(View view) {
