@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(this, "This is a test", Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_main);
 
         /* Button that moves from MainActivity to ConfigurationActivity*/
