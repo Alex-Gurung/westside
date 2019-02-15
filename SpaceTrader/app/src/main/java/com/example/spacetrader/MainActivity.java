@@ -11,10 +11,12 @@ import com.example.spacetrader.View.ConfigurationActivity;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button startButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(this, "This is a test", Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_main);
 
         /* Button that moves from MainActivity to ConfigurationActivity*/
@@ -28,5 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setContentView(R.layout.activity_configuration);
+
+        startButton = findViewById(R.id.start_button);
     }
 }
