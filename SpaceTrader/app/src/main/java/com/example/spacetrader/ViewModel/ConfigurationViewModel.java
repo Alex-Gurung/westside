@@ -7,7 +7,7 @@ import com.example.spacetrader.Entity.Player;
 
 public class ConfigurationViewModel extends AndroidViewModel {
 
-    public ConfigurationViewModel (@NonNull Application application) {
+    public ConfigurationViewModel (@NonNull Application application){
         super(application);
     }
     public boolean skillPointChecker(Player player) {
