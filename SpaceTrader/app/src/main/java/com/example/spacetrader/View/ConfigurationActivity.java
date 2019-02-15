@@ -1,5 +1,6 @@
 package com.example.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,10 +11,13 @@ import android.widget.Toast;
 
 import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 
 import java.util.Arrays;
 
 public class ConfigurationActivity extends AppCompatActivity {
+
+    private ConfigurationViewModel configurationViewModel;
 
     private EditText nameField;
     private Spinner difficultySpinner;
@@ -45,10 +49,27 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         difficultySpinner.setSelection(difficultySpinner.getSelectedItemPosition());
     }
-
+    configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     public void onBeginPressed(View view) {
+        EditText nameInput = findViewById(R.id.character_name_input);
+        EditText fighterInput = findViewById(R.id.fighter_skill_pts_input);
+        EditText engineerInput = findViewById(R.id.engineer_skill_pts_input);
+        EditText traderInput = findViewById(R.id.trader_skill_pts_input);
+        EditText pilotInput = findViewById(R.id.pilot_skill_pts_input);
+        Spinner difficultyInput = findViewById(R.id.gameDifficulty_spinner);
+
+        String name = nameInput.getText().toString();
+        int fighter = Integer.parseInt(fighterInput.getText().toString());
+        int engineer = Integer.parseInt(engineerInput.getText().toString());
+        int pilot = Integer.parseInt(pilotInput.getText().toString());
+        int trader = Integer.parseInt(traderInput.getText().toString());
+        GameDifficulty difficulty = (GameDifficulty)difficultyInput.getSelectedItem();
+
         if (getTotalSkillPoints() != 16) {
             Toast.makeText(this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Beginning your Space Journey!", Toast.LENGTH_SHORT).show();
+            ConfigurationViewModel.initializeGame(name, fighter, engineer, pilot, trader, difficulty);
         }
     }
 
