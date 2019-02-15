@@ -38,7 +38,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable difficulties in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Arrays.asList(GameDifficulty.values()) )
+        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Arrays.asList(GameDifficulty.values()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
     }
