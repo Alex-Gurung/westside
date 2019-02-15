@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.R;
@@ -44,6 +45,21 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void onBeginPressed(View view) {
-
+        if (getTotalSkillPoints() != 16) {
+            Toast.makeText(this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    public int getTotalSkillPoints() {
+        EditText engineer = findViewById(R.id.engineer_skill_pts_input);
+        EditText trader = findViewById(R.id.trader_skill_pts_input);
+        EditText fighter = findViewById(R.id.fighter_skill_pts_input);
+        EditText pilot = findViewById(R.id.pilot_skill_pts_input);
+        return  Integer.parseInt(engineer.getText().toString())
+                + Integer.parseInt(trader.getText().toString())
+                + Integer.parseInt(fighter.getText().toString())
+                + Integer.parseInt(pilot.getText().toString());
+    }
+
+
 }
