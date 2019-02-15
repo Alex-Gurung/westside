@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.View.ConfigurationActivity;
 
 public class ConfigurationViewModel extends AndroidViewModel {
 
