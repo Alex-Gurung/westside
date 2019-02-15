@@ -86,10 +86,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         Spinner difficultyInput = findViewById(R.id.gameDifficulty_spinner);
 
         String name = nameInput.getText().toString();
-        int fighter = Integer.parseInt(fighterInput.getText().toString());
-        int engineer = Integer.parseInt(engineerInput.getText().toString());
-        int pilot = Integer.parseInt(pilotInput.getText().toString());
-        int trader = Integer.parseInt(traderInput.getText().toString());
+
+        int fighter = Integer.parseInt("0" + fighterInput.getText().toString());
+        int engineer = Integer.parseInt("0" +engineerInput.getText().toString());
+        int pilot = Integer.parseInt("0" +pilotInput.getText().toString());
+        int trader = Integer.parseInt("0" +traderInput.getText().toString());
         GameDifficulty difficulty = (GameDifficulty) difficultyInput.getSelectedItem();
 
         if (getTotalSkillPoints() != 16) {
