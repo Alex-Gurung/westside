@@ -93,7 +93,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         int trader = Integer.parseInt("0" +traderInput.getText().toString());
         GameDifficulty difficulty = (GameDifficulty) difficultyInput.getSelectedItem();
 
-        if (getTotalSkillPoints() != 16) {
+        if (getTotalSkillPoints(fighter, engineer, pilot, trader) != 16) {
             Toast.makeText(ConfigurationActivity.this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(ConfigurationActivity.this, "Beginning your Space Journey!", Toast.LENGTH_SHORT).show();
@@ -101,15 +101,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
     }
 
-    public int getTotalSkillPoints() {
-        EditText engineer = findViewById(R.id.engineer_skill_pts_input);
-        EditText trader = findViewById(R.id.trader_skill_pts_input);
-        EditText fighter = findViewById(R.id.fighter_skill_pts_input);
-        EditText pilot = findViewById(R.id.pilot_skill_pts_input);
-        return Integer.parseInt(engineer.getText().toString())
-                + Integer.parseInt(trader.getText().toString())
-                + Integer.parseInt(fighter.getText().toString())
-                + Integer.parseInt(pilot.getText().toString());
+    public int getTotalSkillPoints(int fighter, int engineer, int pilot, int trader) {
+        return fighter + engineer + pilot + trader;
     }
 
 
