@@ -21,6 +21,8 @@ public class Player {
         this.name = name;
     }
 
-
+    public int getTotalSkillPoints() {
+        return pilotSkillPoints + fighterSkillPoints + engineerSkillPoints + traderSkillPoints;
+    }
 
 }
