@@ -15,5 +15,7 @@ public class Game {
     public Game(GameDifficulty gameDifficulty, Player player) {
         this.gameDifficulty = gameDifficulty;
         this.player = player;
+
+        Log.d("working", (gameDifficulty + " " + player.toString());
     }
 }
