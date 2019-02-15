@@ -11,6 +11,9 @@ import com.example.spacetrader.View.ConfigurationActivity;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button startButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setContentView(R.layout.activity_configuration);
+
+        startButton = findViewById(R.id.start_button);
     }
 }
