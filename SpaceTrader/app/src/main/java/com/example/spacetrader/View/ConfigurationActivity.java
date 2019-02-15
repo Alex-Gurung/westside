@@ -77,7 +77,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         int engineer = Integer.parseInt(engineerInput.getText().toString());
         int pilot = Integer.parseInt(pilotInput.getText().toString());
         int trader = Integer.parseInt(traderInput.getText().toString());
-        GameDifficulty difficulty = (GameDifficulty)difficultyInput.getSelectedItem();
+        GameDifficulty difficulty = (GameDifficulty) difficultyInput.getSelectedItem();
 
         if (getTotalSkillPoints() != 16) {
             Toast.makeText(ConfigurationActivity.this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
@@ -92,7 +92,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         EditText trader = findViewById(R.id.trader_skill_pts_input);
         EditText fighter = findViewById(R.id.fighter_skill_pts_input);
         EditText pilot = findViewById(R.id.pilot_skill_pts_input);
-        return  Integer.parseInt(engineer.getText().toString())
+        return Integer.parseInt(engineer.getText().toString())
                 + Integer.parseInt(trader.getText().toString())
                 + Integer.parseInt(fighter.getText().toString())
                 + Integer.parseInt(pilot.getText().toString());
