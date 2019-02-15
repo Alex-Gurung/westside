@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /* Button that moves from MainActivity to ConfigurationActivity*/
-        Button goToConfig = (Button) findViewById(R.id.goToConfigButton);
+        startButton = findViewById(R.id.start_button);
 
-        goToConfig.setOnClickListener(new View.OnClickListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ConfigurationActivity.class);
@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_configuration);
 
-        startButton = findViewById(R.id.start_button);
+
     }
 }
