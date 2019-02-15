@@ -1,6 +1,7 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +25,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText nameField;
     private Spinner difficultySpinner;
     private Button beginButton;
+    private Button cancelButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +45,27 @@ public class ConfigurationActivity extends AppCompatActivity {
         nameField = findViewById(R.id.character_name_input);
         difficultySpinner = findViewById(R.id.gameDifficulty_spinner);
         beginButton = (Button) findViewById(R.id.begin_button);
+        cancelButton = (Button) findViewById(R.id.cancel_button);
 
         /*
          * Link begin button to its corresponding method
          */
-        Toast.makeText(ConfigurationActivity.this, "Is this running what I think it's running", Toast.LENGTH_SHORT).show();
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ConfigurationActivity.this, "FJKDSLS:FJKDSL:FJSKDL:FJSDKL:FJ", Toast.LENGTH_SHORT).show();
                 onBeginPressed();
+            }
+        });
+
+        /*
+         * Link cancel button to returning to main activity
+         */
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
