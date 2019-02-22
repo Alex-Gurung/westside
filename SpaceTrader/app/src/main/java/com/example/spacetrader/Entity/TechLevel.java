@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import java.util.Random;
+
 public enum TechLevel {
     PREAGRICULTURAL("Pre-Agricultural"),
     AGRICULTURAL("Agricultural"),
@@ -14,5 +16,10 @@ public enum TechLevel {
 
     TechLevel(String name) {
         this.name = name;
+    }
+
+    public static TechLevel getRandomTechLevel() {
+        Random r = new Random();
+        return values()[r.nextInt(values().length)];
     }
 }

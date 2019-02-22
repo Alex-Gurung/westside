@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import java.util.Random;
+
 public enum PoliticalSystem {
     ANARCHY("Anarchy"),
     CAPITALISTSTATE("Capitalist State"),
@@ -23,5 +25,10 @@ public enum PoliticalSystem {
 
     PoliticalSystem(String name) {
         this.name = name;
+    }
+
+    public static PoliticalSystem getRandomPoliticalSystem() {
+        Random r = new Random();
+        return values()[r.nextInt(values().length)];
     }
 }
