@@ -6,15 +6,17 @@ public class Location {
 
     private int x;
     private int y;
+    private static int bound = 100;
+
 
     public Location(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Location getRandomLocation() {
+    public static Location getRandomLocation() {
         Random r = new Random();
-        return new Location(r.nextInt(100), r.nextInt(100));
+        return new Location(r.nextInt(bound), r.nextInt(bound));
     }
 
     @Override
