@@ -49,11 +49,7 @@ public enum ShipType {
     public int getMaxDistance() {
         return maxDistance;
     }
-    public int getFuel() {
-        return fuel;
-    }
     public int getCargoHolds() {
-    private int getCargoHolds() {
         return cargoHolds;
     }
     public int getWeaponSlots() {
