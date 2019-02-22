@@ -20,8 +20,8 @@ public class Universe {
     public Universe() {
         this(100);
     }
-    public String toSting() {
-        String str;
+    public String toString() {
+        String str = "";
         for (SolarSystem system: solarSystems) {
             str += system.toString();
         }

@@ -3,9 +3,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import com.example.spacetrader.Model.Game;
+import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.GameDifficulty;
-import com.example.spacetrader.Model.Player;
 
 public class ConfigurationViewModel extends AndroidViewModel {
 
@@ -16,5 +16,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
     public static void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
         Player player = new Player(pilot, fighter, engineer, trader, name);
         Game game = new Game(gd, player);
+
     }
 }

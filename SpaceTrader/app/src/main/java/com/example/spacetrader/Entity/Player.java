@@ -1,7 +1,4 @@
-package com.example.spacetrader.Model;
-
-import com.example.spacetrader.Entity.Ship;
-import com.example.spacetrader.Entity.ShipType;
+package com.example.spacetrader.Entity;
 
 public class Player {
 

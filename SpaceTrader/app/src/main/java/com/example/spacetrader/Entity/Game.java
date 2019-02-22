@@ -1,8 +1,6 @@
-package com.example.spacetrader.Model;
+package com.example.spacetrader.Entity;
 
 import android.util.Log;
-
-import com.example.spacetrader.Entity.GameDifficulty;
 
 public class Game {
     GameDifficulty gameDifficulty;
