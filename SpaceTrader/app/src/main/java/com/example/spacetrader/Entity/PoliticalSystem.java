@@ -1,4 +1,4 @@
 package com.example.spacetrader.Entity;
 
-public class PoliticalSystem {
+public enum PoliticalSystem {
 }
