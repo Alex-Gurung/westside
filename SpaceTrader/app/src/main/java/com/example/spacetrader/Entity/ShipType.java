@@ -14,15 +14,13 @@ public enum ShipType {
     WASP("Wasp", 14, 35, 3, 2, 2, 3, 3);
     private String name;
     private int maxDistance;
-    private int fuel; //a percent
-     int cargoHolds;
-    public int weaponSlots;
-    public int shieldSlots;
-    public int gadgetSlots;
-    public int numMercenaries;
-    public int hullStrength; //1 weak, 2 avg, 3 strong
-    public int price;
-    public boolean hasEscapePod;
+    private int cargoHolds;
+    private int weaponSlots;
+    private int shieldSlots;
+    private int gadgetSlots;
+    private int numMercenaries;
+    private int hullStrength; //1 weak, 2 avg, 3 strong
+    private int price;
 
     ShipType(String name, int maxDistance, int cargoHolds, int weaponSlots, int shieldSlots, int gadgetSlots, int numMercenaries, int hullStrength) {
         this.name = name;
@@ -33,9 +31,7 @@ public enum ShipType {
         this.gadgetSlots = gadgetSlots;
         this.numMercenaries = numMercenaries;
         this.hullStrength = hullStrength;
-        this.hasEscapePod = false;
         this.price = this.calculatePrice();
-        this.fuel = 100;
     }
 
     private int calculatePrice(){
@@ -52,9 +48,6 @@ public enum ShipType {
 
     private int getMaxDistance() {
         return maxDistance;
-    }
-    private int getFuel() {
-        return fuel;
     }
     private int getCargoHolds() {
         return cargoHolds;
@@ -81,8 +74,4 @@ public enum ShipType {
     public String toString() {
         return name;
     }
-
-
-
-
 }
