@@ -12,15 +12,16 @@ public enum ShipType {
     GRASSHOPPER("Grasshopper", 15, 30, 2, 2, 3, 3, 2),
     TERMITE("Termite", 13, 60, 1, 3, 2, 3, 3),
     WASP("Wasp", 14, 35, 3, 2, 2, 3, 3);
-    public String name;
+    private String name;
     private int maxDistance;
     private int fuel; //a percent
-    public int cargoHolds;
+     int cargoHolds;
     public int weaponSlots;
     public int shieldSlots;
     public int gadgetSlots;
     public int numMercenaries;
     public int hullStrength; //1 weak, 2 avg, 3 strong
+    public int price;
     public boolean hasEscapePod;
 
     ShipType(String name, int maxDistance, int cargoHolds, int weaponSlots, int shieldSlots, int gadgetSlots, int numMercenaries, int hullStrength) {
@@ -33,7 +34,20 @@ public enum ShipType {
         this.numMercenaries = numMercenaries;
         this.hullStrength = hullStrength;
         this.hasEscapePod = false;
+        this.price = this.calculatePrice();
         this.fuel = 100;
+    }
+
+    private int calculatePrice(){
+        int cost = 1000;
+        cost += 100 * maxDistance;
+        cost += 50 * cargoHolds;
+        cost += 500 * weaponSlots;
+        cost += 500 * gadgetSlots;
+        cost += 500 * shieldSlots;
+        cost += 1000 * numMercenaries;
+        cost += 1500 * (hullStrength - 1);
+        return cost;
     }
 
 
