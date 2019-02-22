@@ -13,6 +13,20 @@ public class Player {
 
     private int credits = 1000;
 
+    /**
+     * constructot that instantiates a Player object with the given attributes
+     *
+     * @param pilotSkillPoints an int that represents the number of skill points the player added
+     *                         towards the pilot skill set
+     * @param fighterSkillPoints an int that represents the number of skill points the player added
+     *                           towards the fighter skill set
+     * @param engineerSkillPoints an int that represents the number of skill points the player added
+     *                             towards the engineer skill set
+     * @param traderSkillPoints an int tht represents the number of skill points the player added
+     *                          towards the engineer skill set
+     * @param name a String that represents the name that the player passed in when creating their
+     *             player character
+     */
     public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints, int traderSkillPoints, String name) {
         this.engineerSkillPoints = engineerSkillPoints;
         this.fighterSkillPoints = fighterSkillPoints;
@@ -21,6 +35,12 @@ public class Player {
         this.name = name;
     }
 
+    /**
+     *  toString method that overrides the toString method in Object that returns the values of
+     *  the attributes of the player that they entered in for themselves
+     *
+     * @return the String representation of the attributes of the players
+     */
     @Override
     public String toString() {
         String s = "";
@@ -33,7 +53,4 @@ public class Player {
         s += "I have " + credits + " credits" + "\n";
         return s;
     }
-
-
-
 }
