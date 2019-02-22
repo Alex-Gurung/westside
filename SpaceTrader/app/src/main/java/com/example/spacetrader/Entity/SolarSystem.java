@@ -2,7 +2,7 @@ package com.example.spacetrader.Entity;
 
 public class SolarSystem {
 
-    Location location;
+    private Location location;
     PoliticalSystem politicalSystem;
     TechLevel techLevel;
 
@@ -29,6 +29,9 @@ public class SolarSystem {
         if (obj == null) return false;
         if (!(obj instanceof SolarSystem)) return false;
         SolarSystem o = (SolarSystem) obj;
-        return (this.location.equals(o.location);
+        return (this.location.equals(o.location));
+    }
+    public String toString() {
+        return location.toString();
     }
 }
