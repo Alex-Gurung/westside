@@ -74,7 +74,7 @@ public enum ShipType {
     public String toString() {
         return "Name: " + name
                 + "Distance: " + maxDistance + "\n"
-                + "Cargo Slots:  " + cargoHolds + "\n"
+                + "Cargo Slots: " + cargoHolds + "\n"
                 + "Weapon Slots: " + weaponSlots + "\n"
                 + "Shield Slots: " + shieldSlots + "\n"
                 + "Gadget Slots: " + gadgetSlots + "\n"
