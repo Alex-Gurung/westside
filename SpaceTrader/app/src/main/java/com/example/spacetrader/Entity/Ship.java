@@ -1,5 +1,6 @@
 package com.example.spacetrader.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
@@ -16,7 +17,10 @@ public class Ship {
     public Ship (ShipType shiptype) {
         this.shiptype = shiptype;
         maxDistance = (double) (shiptype.getMaxDistance());
-
+        gadgets = new ArrayList(shiptype.getGadgetSlots());
+        weapons = new ArrayList(shiptype.getWeaponSlots());
+        shields = new ArrayList(shiptype.getShieldSlots());
+        hasEscapePod = false;
         fuel = 100;
     }
 
