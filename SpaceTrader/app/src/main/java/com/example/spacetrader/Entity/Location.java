@@ -1,12 +1,20 @@
 package com.example.spacetrader.Entity;
 
+import java.util.Random;
+
 public class Location {
+
     private int x;
     private int y;
 
     public Location(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Location getRandomLocation() {
+        Random r = new Random();
+        return new Location(r.nextInt(100), r.nextInt(100));
     }
 
     @Override
