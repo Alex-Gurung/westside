@@ -9,17 +9,19 @@ public class Ship {
 
     private int fuel;
     private double maxDistance;
-    private List<Gadget> gadgets;
-    private List<Weapon> weapons;
-    private List<Shield> shields;
+    private Gadget[] gadgets;
+    private Weapon[] weapons;
+    private Shield[] shields;
+    private Mercenary[] mercs;
     private boolean hasEscapePod;
 
     public Ship (ShipType shiptype) {
         this.shiptype = shiptype;
         maxDistance = (double) (shiptype.getMaxDistance());
-        gadgets = new ArrayList(shiptype.getGadgetSlots());
-        weapons = new ArrayList(shiptype.getWeaponSlots());
-        shields = new ArrayList(shiptype.getShieldSlots());
+        gadgets = new Gadget[shiptype.getGadgetSlots()];
+        weapons = new Weapon[shiptype.getWeaponSlots()];
+        shields = new Shield[shiptype.getShieldSlots()];
+        mercs = new Mercenary[shiptype.getNumMercenaries()];
         hasEscapePod = false;
         fuel = 100;
     }
