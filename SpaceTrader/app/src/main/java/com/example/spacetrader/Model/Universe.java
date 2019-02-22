@@ -1,4 +1,7 @@
-package com.example.spacetrader.Entity;
+package com.example.spacetrader.Model;
+
+import com.example.spacetrader.Entity.Location;
+import com.example.spacetrader.Entity.SolarSystem;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,9 +11,11 @@ public class Universe {
 
     public Universe(int numSolarSystems) {
         Set<Location> locations = new HashSet<>();
-        for (int i = 0; i < numSolarSystems; i++) {
-            if(!locations.add(Location.getRandomLocation())) {
-                i--;
+        int i = 0;
+        while (i < numSolarSystems) {
+            boolean added = locations.add(Location.getRandomLocation());
+            if (added) {
+                i++;
             }
         }
         for (Location location: locations) {
@@ -20,8 +25,8 @@ public class Universe {
     public Universe() {
         this(100);
     }
-    public String toSting() {
-        String str;
+    public String toString() {
+        String str = "";
         for (SolarSystem system: solarSystems) {
             str += system.toString();
         }

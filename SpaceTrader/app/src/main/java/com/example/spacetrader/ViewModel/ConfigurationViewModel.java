@@ -3,9 +3,9 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Model.Game;
 import com.example.spacetrader.Entity.GameDifficulty;
-import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Model.Player;
 
 public class ConfigurationViewModel extends AndroidViewModel {
 

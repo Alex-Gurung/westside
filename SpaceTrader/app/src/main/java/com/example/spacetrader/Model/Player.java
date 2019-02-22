@@ -1,4 +1,7 @@
-package com.example.spacetrader.Entity;
+package com.example.spacetrader.Model;
+
+import com.example.spacetrader.Entity.Ship;
+import com.example.spacetrader.Entity.ShipType;
 
 public class Player {
 
@@ -14,7 +17,7 @@ public class Player {
     private int credits = 1000;
 
     /**
-     * constructot that instantiates a Player object with the given attributes
+     * constructor that instantiates a Player object with the given attributes
      *
      * @param pilotSkillPoints an int that represents the number of skill points the player added
      *                         towards the pilot skill set
