@@ -50,7 +50,33 @@ public enum ShipType {
         return cost;
     }
 
-
+    private int getMaxDistance() {
+        return maxDistance;
+    }
+    private int getFuel() {
+        return fuel;
+    }
+    private int getCargoHolds() {
+        return cargoHolds;
+    }
+    private int getWeaponSlots() {
+        return weaponSlots;
+    }
+    private int getShieldSlots() {
+        return shieldSlots;
+    }
+    private int getGadgetSlots() {
+        return gadgetSlots;
+    }
+    private int getNumMercenaries() {
+        return numMercenaries;
+    }
+    private int getHullStrength() {
+        return hullStrength;
+    }
+    private int getPrice() {
+        return price;
+    }
 
     public String toString() {
         return name;
