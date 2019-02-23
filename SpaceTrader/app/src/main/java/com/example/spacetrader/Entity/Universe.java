@@ -9,6 +9,15 @@ import java.util.Set;
  */
 public class Universe {
     private HashSet<SolarSystem> solarSystems;
+
+    public HashSet<SolarSystem> getSolarSystems() {
+        return solarSystems;
+    }
+
+    public void setSolarSystems(HashSet<SolarSystem> solarSystems) {
+        this.solarSystems = solarSystems;
+    }
+
     private String[] solarSystemNames = new String[] {
                 "Acamar",
                 "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
