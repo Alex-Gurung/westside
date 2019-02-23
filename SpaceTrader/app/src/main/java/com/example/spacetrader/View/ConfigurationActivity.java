@@ -75,6 +75,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Arrays.asList(GameDifficulty.values()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
+
+        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
     public void onBeginPressed() {
@@ -97,8 +99,9 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(ConfigurationActivity.this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(ConfigurationActivity.this, "Beginning your Space Journey!", Toast.LENGTH_SHORT).show();
-            ConfigurationViewModel model = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
-            model.initializeGame(name, fighter, engineer, pilot, trader, difficulty);
+            configurationViewModel.initializeGame(name, fighter, engineer, pilot, trader, difficulty);
+            Intent intent = new Intent( getApplicationContext(), GameActivity.class);
+            startActivity(intent);
         }
     }
 

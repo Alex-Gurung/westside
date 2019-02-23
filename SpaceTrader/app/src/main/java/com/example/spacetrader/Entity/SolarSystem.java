@@ -2,9 +2,11 @@ package com.example.spacetrader.Entity;
 
 public class SolarSystem {
 
+    private String name;
     private Location location;
     PoliticalSystem politicalSystem;
     TechLevel techLevel;
+    Planet planet;
 
     /**
      * public constructor to initialize a SolarSystem object that has a random location, tech level,
@@ -15,7 +17,8 @@ public class SolarSystem {
      *          political system
      * @param t ot type TechLevel that initializes a TechLevel instance field to the given tech level
      */
-    public SolarSystem(Location l, PoliticalSystem p, TechLevel t) {
+    public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
+        this.name = name;
         location = l;
         politicalSystem = p;
         techLevel = t;
@@ -27,7 +30,10 @@ public class SolarSystem {
      * @param l of type Location that is the SolarSystems random location.
      */
     public SolarSystem(Location l) {
-        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel());
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), "");
+    }
+    public SolarSystem(Location l, String name) {
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
     }
 
 
@@ -64,6 +70,6 @@ public class SolarSystem {
      */
     @Override
     public String toString() {
-        return location.toString();
+        return "Name: " + name + " Location: " + location.toString() + "\n";
     }
 }

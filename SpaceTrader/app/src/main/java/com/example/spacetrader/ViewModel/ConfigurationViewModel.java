@@ -20,7 +20,10 @@ public class ConfigurationViewModel extends AndroidViewModel {
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
         Player player = new Player(pilot, fighter, engineer, trader, name);
         Game game = new Game(gd, player);
-
         interactor.setGame(game);
+    }
+
+    public Game getGame() {
+        return interactor.getGame();
     }
 }
