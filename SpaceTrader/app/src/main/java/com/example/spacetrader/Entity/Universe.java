@@ -136,8 +136,10 @@ public class Universe {
                 i--;
             }
         }
+        int solarSystemCount = 0;
         for (Location location: locations) {
-            solarSystems.add(new SolarSystem(location, solarSystemNames[(int) Math.floor(Math.random() * solarSystemNames.length)]));
+            solarSystems.add(new SolarSystem(location, solarSystemNames[solarSystemCount]));
+            solarSystemCount++;
         }
     }
     public Universe() {
