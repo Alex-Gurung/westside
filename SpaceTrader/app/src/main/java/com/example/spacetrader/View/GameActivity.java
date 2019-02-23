@@ -13,6 +13,7 @@ import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.OnDataPointTapListener;
@@ -59,19 +60,22 @@ public class GameActivity extends AppCompatActivity {
         graph.getViewport().setMinY(0);
         graph.getViewport().setMaxY(100);
         // enable scaling and scrolling
-        graph.getViewport().setScalable(true);
-        graph.getViewport().setScalableY(true);
+//        graph.getViewport().setScalable(true);
+//        graph.getViewport().setScalableY(true);
         graph.getViewport().setBackgroundColor(Color.BLACK);
-        graph.getViewport().setDrawBorder(true);
-        graph.getGridLabelRenderer().setNumHorizontalLabels(0);
-        graph.getGridLabelRenderer().setNumVerticalLabels(0);
+        graph.getViewport().setDrawBorder(false);
+
+        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);// remove horizontal x labels and line
+        graph.getGridLabelRenderer().setVerticalLabelsVisible(false);
+
         graph.addSeries(series);
         series.setShape(PointsGraphSeries.Shape.POINT);
 
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
-                Toast.makeText(GameActivity.this, "Series1: On Data Point clicked: "+dataPoint, Toast.LENGTH_SHORT).show();
+                Toast.makeText(GameActivity.this, "Solar System: "+dataPoint, Toast.LENGTH_SHORT).show();
             }
         });
 
