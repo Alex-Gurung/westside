@@ -32,6 +32,6 @@ public class Location {
         return (this.x == o.x && this.y == o.y);
     }
     public String toString() {
-        return "X: " + x + "/n" + "Y: " + y;
+        return "X: " + x + "Y: " + y;
     }
 }
