@@ -128,6 +128,12 @@ public class Universe {
                 "Zuul"			// From the first Ghostbusters movie
     };
 
+    /**
+     * public constructor that initializes the Universe object with a set number of Solar Systems
+     *
+     * @param numSolarSystems of type int to represent the number of Solar System the Universe will
+     *                        hold
+     */
     public Universe(int numSolarSystems) {
         solarSystems = new HashSet<>();
         Set<Location> locations = new HashSet<>();
@@ -142,10 +148,20 @@ public class Universe {
             solarSystemCount++;
         }
     }
+
+    /**
+     * default constructor to initialize a Universe object with 100 Solar Systems
+     */
     public Universe() {
         this(100);
     }
 
+    /**
+     * toString method that overrides Object's toString method that returns a list of each Solar
+     * System's name and location
+     *
+     * @return a String representation of each Solar System's name and location in the Universe
+     */
     @Override
     public String toString() {
         String str = "";
