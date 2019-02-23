@@ -2,20 +2,25 @@ package com.example.spacetrader.Entity;
 
 public class SolarSystem {
 
+    private String name;
     private Location location;
     PoliticalSystem politicalSystem;
     TechLevel techLevel;
     Planet planet;
 
 
-    public SolarSystem(Location l, PoliticalSystem p, TechLevel t) {
+    public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
+        this.name = name;
         location = l;
         politicalSystem = p;
         techLevel = t;
     }
 
     public SolarSystem(Location l) {
-        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel());
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), "");
+    }
+    public SolarSystem(Location l, String name) {
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
     }
 
 
@@ -33,6 +38,6 @@ public class SolarSystem {
         return (this.location.equals(o.location));
     }
     public String toString() {
-        return location.toString();
+        return "Name: " + name + " Location: " + location.toString() + "\n";
     }
 }

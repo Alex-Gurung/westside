@@ -5,19 +5,7 @@ import java.util.Set;
 
 public class Universe {
     private HashSet<SolarSystem> solarSystems;
-    private String[] solarSystemNames;
-
-    public Universe(int numSolarSystems) {
-        Set<Location> locations = new HashSet<>();
-        for (int i = 0; i < numSolarSystems; i++) {
-            if(!locations.add(Location.getRandomLocation())) {
-                i--;
-            }
-        }
-        for (Location location: locations) {
-            solarSystems.add(new SolarSystem(location));
-        }
-        solarSystemNames = new String[] {
+    private String[] solarSystemNames = new String[] {
                 "Acamar",
                 "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
                 "Aldea",
@@ -138,7 +126,19 @@ public class Universe {
                 "Yojimbo",		// A film by Akira Kurosawa
                 "Zalkon",
                 "Zuul"			// From the first Ghostbusters movie
-        };
+    };;
+
+    public Universe(int numSolarSystems) {
+        solarSystems = new HashSet<>();
+        Set<Location> locations = new HashSet<>();
+        for (int i = 0; i < numSolarSystems; i++) {
+            if(!locations.add(Location.getRandomLocation())) {
+                i--;
+            }
+        }
+        for (Location location: locations) {
+            solarSystems.add(new SolarSystem(location, solarSystemNames[(int) Math.floor(Math.random() * solarSystemNames.length)]);
+        }
     }
     public Universe() {
         this(100);
