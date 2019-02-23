@@ -15,7 +15,8 @@ public class SolarSystem {
      * @param l of type Location that initializes the Location instance field to the given location
      * @param p of type PoliticalSystem that initializes the Political instance field to the given
      *          political system
-     * @param t ot type TechLevel that initializes a TechLevel instance field to the given tech level
+     * @param t of type TechLevel that initializes a TechLevel instance field to the given tech level
+     * @param name the name of the SolarSystem used to name the planet
      */
     public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
         this.name = name;
@@ -33,6 +34,13 @@ public class SolarSystem {
     public SolarSystem(Location l) {
         this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), "");
     }
+
+    /**
+     * constructor that takes in a randomized location and unique name
+     *
+     * @param l of type Location that is the SolarSystems random location
+     * @param name the name of the SolarSystem
+     */
     public SolarSystem(Location l, String name) {
         this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
     }
