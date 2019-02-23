@@ -5,6 +5,7 @@ public class SolarSystem {
     private Location location;
     PoliticalSystem politicalSystem;
     TechLevel techLevel;
+    Planet planet;
 
 
     public SolarSystem(Location l, PoliticalSystem p, TechLevel t) {
