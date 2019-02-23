@@ -15,5 +15,7 @@ public class GameInteractor extends Interactor {
         return getRepository().getGame();
     }
 
-    public void setGame(Game game) {getRepository().setGame(game);}
+    public void setGame(Game game) {
+        getRepository().setGame(game);
+    }
 }

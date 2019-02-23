@@ -3,6 +3,10 @@ package com.example.spacetrader.Entity;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
+ * begins and will contain all Solar Systems that are initialized.
+ */
 public class Universe {
     private HashSet<SolarSystem> solarSystems;
     private String[] solarSystemNames = new String[] {
