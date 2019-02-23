@@ -137,7 +137,7 @@ public class Universe {
             }
         }
         for (Location location: locations) {
-            solarSystems.add(new SolarSystem(location, solarSystemNames[(int) Math.floor(Math.random() * solarSystemNames.length)]);
+            solarSystems.add(new SolarSystem(location, solarSystemNames[(int) Math.floor(Math.random() * solarSystemNames.length)]));
         }
     }
     public Universe() {
