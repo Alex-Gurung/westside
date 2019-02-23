@@ -82,6 +82,8 @@ public class SolarSystem {
      */
     @Override
     public String toString() {
-        return "Name: " + name + " Location: " + location.toString() + "\n";
+        return "\nName: " + name + "\nLocation: " + location.toString() + "\nTech Level: " +
+                techLevel + "\nPolitical System: " + politicalSystem + "\n"
+                + "------------------------------------------------";
     }
 }
