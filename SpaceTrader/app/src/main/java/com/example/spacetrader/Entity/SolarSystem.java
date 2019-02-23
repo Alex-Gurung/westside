@@ -22,6 +22,7 @@ public class SolarSystem {
         location = l;
         politicalSystem = p;
         techLevel = t;
+        this.planet = new Planet(name);
     }
 
     /**
