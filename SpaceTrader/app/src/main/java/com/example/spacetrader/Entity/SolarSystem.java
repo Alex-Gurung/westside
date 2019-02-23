@@ -14,6 +14,7 @@ public class SolarSystem {
         location = l;
         politicalSystem = p;
         techLevel = t;
+        this.planet = new Planet(name);
     }
 
     public SolarSystem(Location l) {
@@ -22,7 +23,6 @@ public class SolarSystem {
     public SolarSystem(Location l, String name) {
         this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
     }
-
 
 
     @Override
