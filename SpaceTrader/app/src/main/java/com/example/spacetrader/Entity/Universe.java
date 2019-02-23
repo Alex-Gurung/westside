@@ -126,7 +126,7 @@ public class Universe {
                 "Yojimbo",		// A film by Akira Kurosawa
                 "Zalkon",
                 "Zuul"			// From the first Ghostbusters movie
-    };;
+    };
 
     public Universe(int numSolarSystems) {
         solarSystems = new HashSet<>();
