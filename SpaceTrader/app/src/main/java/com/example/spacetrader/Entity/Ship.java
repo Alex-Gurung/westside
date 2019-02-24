@@ -9,6 +9,7 @@ public class Ship {
 
     private int fuel;
     private double maxDistance;
+    private Good[] cargo;
     private Gadget[] gadgets;
     private Weapon[] weapons;
     private Shield[] shields;
@@ -27,6 +28,7 @@ public class Ship {
         weapons = new Weapon[shiptype.getWeaponSlots()];
         shields = new Shield[shiptype.getShieldSlots()];
         mercs = new Mercenary[shiptype.getNumMercenaries()];
+        cargo = new Good[shiptype.getCargoHolds()];
         hasEscapePod = false;
         fuel = 100;
     }
@@ -48,6 +50,10 @@ public class Ship {
      * @param fuelAdded int value that represents the fuel to be added to the ship's current fuel
      *                  level
      */
+    public Good[] getCargo(){
+        return cargo;
+    }
+
     public void refuel(int fuelAdded) {
         fuel = Math.min(fuel +  fuelAdded, 100);
         maxDistance = ((double)(fuel) / 100) * maxDistance;
