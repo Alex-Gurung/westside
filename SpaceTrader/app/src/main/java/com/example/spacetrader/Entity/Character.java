@@ -2,15 +2,15 @@ package com.example.spacetrader.Entity;
 
 public abstract class Character {
 
-    private String name;
-    private SolarSystem currentSolarSystem;
-    private Ship myShip;
+    protected String name;
+    protected SolarSystem currentSolarSystem;
+    protected Ship ship;
 
-    public Character (String name, SolarSystem solarSystem, Ship ship) {
+    public Character (String name, Ship ship) {
         this.name = name;
-        currentSolarSystem = solarSystem;
-        myShip = ship;
+        this.ship = ship;
     }
+
     public String getName() {
         return name;
     }
@@ -28,11 +28,11 @@ public abstract class Character {
     }
 
     public Ship getMyShip() {
-        return myShip;
+        return ship;
     }
 
     public void setMyShip(Ship myShip) {
-        this.myShip = myShip;
+        this.ship = myShip;
     }
 
 
