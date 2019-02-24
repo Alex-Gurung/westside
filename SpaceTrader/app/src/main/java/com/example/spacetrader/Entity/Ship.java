@@ -9,6 +9,7 @@ public class Ship {
 
     private int fuel;
     private double maxDistance;
+    private Good[] cargo;
     private Gadget[] gadgets;
     private Weapon[] weapons;
     private Shield[] shields;
@@ -27,6 +28,7 @@ public class Ship {
         weapons = new Weapon[shiptype.getWeaponSlots()];
         shields = new Shield[shiptype.getShieldSlots()];
         mercs = new Mercenary[shiptype.getNumMercenaries()];
+        cargo = new Good[shiptype.getCargoHolds()];
         hasEscapePod = false;
         fuel = 100;
     }
@@ -52,5 +54,14 @@ public class Ship {
         fuel = Math.min(fuel +  fuelAdded, 100);
         maxDistance = ((double)(fuel) / 100) * maxDistance;
     }
+
+    /**
+     * returns all of the cargo in this ship
+     * @return the cargo hold
+     */
+    public Good[] getCargo(){
+        return cargo;
+    }
+
 
 }
