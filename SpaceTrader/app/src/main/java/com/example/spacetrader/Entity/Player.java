@@ -1,15 +1,15 @@
 package com.example.spacetrader.Entity;
 
-public class Player {
+public class Player extends Character{
 
     private int pilotSkillPoints = 4;
     private int fighterSkillPoints = 4;
     private int engineerSkillPoints = 4;
     private int traderSkillPoints = 4;
 
-    private String name = "Bobert Waters";
-
-    private Ship ship = new Ship(ShipType.GNAT);
+//    private String name = "Bobert Waters";
+//
+//    private Ship ship = new Ship(ShipType.GNAT);
 
     private int credits = 1000;
 
@@ -28,11 +28,12 @@ public class Player {
      *             player character
      */
     public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints, int traderSkillPoints, String name) {
+        super(name, new Ship(ShipType.GNAT));
         this.engineerSkillPoints = engineerSkillPoints;
         this.fighterSkillPoints = fighterSkillPoints;
         this.pilotSkillPoints = pilotSkillPoints;
         this.traderSkillPoints = traderSkillPoints;
-        this.name = name;
+
     }
 
     /**
