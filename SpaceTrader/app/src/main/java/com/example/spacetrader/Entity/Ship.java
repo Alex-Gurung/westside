@@ -62,6 +62,4 @@ public class Ship {
     public Good[] getCargo(){
         return cargo;
     }
-
-
 }
