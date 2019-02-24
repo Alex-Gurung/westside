@@ -1,6 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class Player extends Character implements Trader{
+public class Player extends Character{
 
     private int pilotSkillPoints = 4;
     private int fighterSkillPoints = 4;
