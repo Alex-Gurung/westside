@@ -1,6 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class Player extends Character{
+public class Player extends Character implements TraderCapability{
 
     private int pilotSkillPoints = 4;
     private int fighterSkillPoints = 4;
@@ -55,7 +55,8 @@ public class Player extends Character{
         return s;
     }
 
+    @Override
     public double getPrice(Good good) {
-        return 40;
+
     }
 }
