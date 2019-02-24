@@ -42,4 +42,11 @@ public class Game {
     public void setUniverse(Universe universe) {
         this.universe = universe;
     }
+
+    public void facilitateTrade(Good good, Character buyer, Character seller) {
+        double price = good.getPrice();
+        boolean hasEnoughCredits = (buyer.getCredits() - price) > 0;
+
+    }
+
 }
