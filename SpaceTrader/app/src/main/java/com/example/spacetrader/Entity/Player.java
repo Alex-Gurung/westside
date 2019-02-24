@@ -57,6 +57,11 @@ public class Player extends Character implements TraderCapability{
 
     @Override
     public double getPrice(Good good) {
+        return good.getPrice();
+    }
+
+    @Override
+    public void setPrice(Good good) {
 
     }
 }
