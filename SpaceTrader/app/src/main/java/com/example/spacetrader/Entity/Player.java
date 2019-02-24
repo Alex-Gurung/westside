@@ -55,7 +55,6 @@ public class Player extends Character{
         return s;
     }
 
-    @Override
     public double getPrice(Good good) {
         return 40;
     }
