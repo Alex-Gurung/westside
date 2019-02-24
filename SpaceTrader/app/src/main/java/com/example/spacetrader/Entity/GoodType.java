@@ -12,10 +12,10 @@ public enum GoodType {
     NARCOTIC(2620, 3500, false, true),
     ROBOT(3950, 4400, false, false);
 
-    boolean isNaturalResource;
-    boolean isIllegal;
-    int minPrice;
-    int maxPrice;
+    private boolean isNaturalResource;
+    private boolean isIllegal;
+    private int minPrice;
+    private int maxPrice;
 
     /**
      * constructor that instantiates a GoodType for the player/NPCS to gather, trade, or steal
@@ -30,6 +30,19 @@ public enum GoodType {
         this.maxPrice = maxPrice;
         this.isNaturalResource = isNaturalResource;
         this.isIllegal = isIllegal;
+    }
+
+    public int getMinPrice() {
+        return minPrice;
+    }
+    public int getMaxPrice() {
+        return maxPrice;
+    }
+    public boolean getIsNaturalResource() {
+        return isNaturalResource;
+    }
+    public boolean getIsIllegal() {
+        return isIllegal;
     }
 
 }
