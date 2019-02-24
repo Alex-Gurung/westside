@@ -50,13 +50,18 @@ public class Ship {
      * @param fuelAdded int value that represents the fuel to be added to the ship's current fuel
      *                  level
      */
-    public Good[] getCargo(){
-        return cargo;
-    }
-
     public void refuel(int fuelAdded) {
         fuel = Math.min(fuel +  fuelAdded, 100);
         maxDistance = ((double)(fuel) / 100) * maxDistance;
     }
+
+    /**
+     * returns all of the cargo in this ship
+     * @return the cargo hold
+     */
+    public Good[] getCargo(){
+        return cargo;
+    }
+
 
 }
