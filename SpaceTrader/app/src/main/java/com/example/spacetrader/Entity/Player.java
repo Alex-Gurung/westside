@@ -11,8 +11,6 @@ public class Player extends Character implements TraderCapability{
 //
 //    private Ship ship = new Ship(ShipType.GNAT);
 
-    private int credits = 1000;
-
     /**
      * constructor that instantiates a Player object with the given attributes
      *
@@ -51,7 +49,7 @@ public class Player extends Character implements TraderCapability{
         s += "I have " + traderSkillPoints + " trader skill points" + "\n";
         s += "I have " + engineerSkillPoints + " engineer skill points" + "\n";
         s += "I have " + pilotSkillPoints + " pilot skill points" + "\n";
-        s += "I have " + credits + " credits" + "\n";
+        s += "I have " + getCredits() + " credits" + "\n";
         return s;
     }
 

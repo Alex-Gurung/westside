@@ -5,6 +5,7 @@ public abstract class Character {
     protected String name;
     protected SolarSystem currentSolarSystem;
     protected Ship ship;
+    private double credits = 1000;
 
     public Character (String name, Ship ship) {
         this.name = name;
@@ -36,4 +37,11 @@ public abstract class Character {
     }
 
 
+    public double getCredits() {
+        return credits;
+    }
+
+    public void setCredits(double credits) {
+        this.credits = credits;
+    }
 }
