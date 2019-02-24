@@ -87,4 +87,44 @@ public class SolarSystem {
                 techLevel + "\nPolitical System: " + politicalSystem + "\n"
                 + "------------------------------------------------";
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public PoliticalSystem getPoliticalSystem() {
+        return politicalSystem;
+    }
+
+    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
+        this.politicalSystem = politicalSystem;
+    }
+
+    public TechLevel getTechLevel() {
+        return techLevel;
+    }
+
+    public void setTechLevel(TechLevel techLevel) {
+        this.techLevel = techLevel;
+    }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
 }
