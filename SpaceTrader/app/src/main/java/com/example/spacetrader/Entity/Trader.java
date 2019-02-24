@@ -1,4 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class Trader {
+public interface Trader {
+
+    public double getPrice(Good good);
 }
