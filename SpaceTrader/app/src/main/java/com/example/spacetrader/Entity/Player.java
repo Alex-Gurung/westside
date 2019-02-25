@@ -6,6 +6,7 @@ public class Player extends Character implements TraderCapability{
     private int fighterSkillPoints = 4;
     private int engineerSkillPoints = 4;
     private int traderSkillPoints = 4;
+    private double credits;
 
 //    private String name = "Bobert Waters";
 //
@@ -31,6 +32,7 @@ public class Player extends Character implements TraderCapability{
         this.fighterSkillPoints = fighterSkillPoints;
         this.pilotSkillPoints = pilotSkillPoints;
         this.traderSkillPoints = traderSkillPoints;
+        credits = 1000.00;
 
     }
 
@@ -84,7 +86,7 @@ public class Player extends Character implements TraderCapability{
 
     @Override
     public boolean canBuy(Good good) {
-        return true;
+        return good.getPrice() <= credits;
     }
 
 
