@@ -2,6 +2,8 @@ package com.example.spacetrader.Entity;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class Game {
     GameDifficulty gameDifficulty;
     Player player;
@@ -43,10 +45,43 @@ public class Game {
         this.universe = universe;
     }
 
-    public void facilitateTrade(Good good, Character buyer, Character seller) {
+    public boolean facilitateTrade(Good good, Character buyer, Character seller) {
         double price = good.getPrice();
         boolean hasEnoughCredits = (buyer.getCredits() - price) > 0;
+        if (!hasEnoughCredits) {
+            return false;
+        }
+        Ship buyerShip = buyer.getMyShip();
+        Good[] buyerGoods = buyerShip.getCargo();
+        int counter = 0;
+        for (int i = 0; i < buyerGoods.length; i++) {
+            if (buyerGoods[i] != null) {
+                counter += 1;
+            }
+        }
+        if ((counter + 1) >= buyerGoods.length) {
+            return false;
+        }
 
+        /* buyer has enough credits and has space for the good */
+        buyerGoods[counter+1] = good;
+        buyer.setCredits(buyer.getCredits() - price);
+
+        Ship sellerShip = seller.getMyShip();
+        Good[] sellerGoods = sellerShip.getCargo();
+        ArrayList<Good> newGoods = new ArrayList<>();
+        int find_good = -1;
+        for (int i = 0; i < sellerGoods.length; i++) {
+            if (find_good != -1 && sellerGoods[i].getGoodType() == good.getGoodType()) {
+                find_good = i;
+                newGoods.add(sellerGoods[i]);
+            } else if (sellerGoods[i].getGoodType() != good.getGoodType()) {
+                newGoods.add(sellerGoods[i]);
+            }
+        }
+        sellerShip.setCargo((Good[]) newGoods.toArray());
+        seller.setCredits(seller.getCredits() + price);
+        return true;
     }
 
 }

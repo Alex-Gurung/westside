@@ -62,4 +62,8 @@ public class Ship {
     public Good[] getCargo(){
         return cargo;
     }
+
+    public void setCargo(Good[] newCargo){
+        cargo = newCargo;
+    }
 }
