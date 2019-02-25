@@ -3,9 +3,9 @@ package com.example.spacetrader.Entity;
 import android.util.Log;
 
 public class Game {
-    GameDifficulty gameDifficulty;
-    Player player;
-    Universe universe;
+    private GameDifficulty gameDifficulty;
+    private Player player;
+    private Universe universe;
 
     public Game(Player player) {
         this(GameDifficulty.BEGINNER, player);
@@ -43,10 +43,14 @@ public class Game {
         this.universe = universe;
     }
 
-    public void facilitateTrade(Good good, Character buyer, Character seller) {
-        double price = good.getPrice();
-        boolean hasEnoughCredits = (buyer.getCredits() - price) > 0;
-
+    public boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
+        if(!buyer.canBuy(good) || !seller.canSell(good)) {
+            return false;
+        } else {
+            buyer.buy(good);
+            seller.sell(good);
+            return true;
+        }
     }
 
 }

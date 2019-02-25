@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Player extends Character implements TraderCapability{
 
-    private int pilotSkillPoints = 4;
-    private int fighterSkillPoints = 4;
-    private int engineerSkillPoints = 4;
-    private int traderSkillPoints = 4;
+    private int pilotSkillPoints;
+    private int fighterSkillPoints;
+    private int engineerSkillPoints;
+    private int traderSkillPoints;
     private double credits;
 
 //    private String name = "Bobert Waters";
@@ -38,12 +38,6 @@ public class Player extends Character implements TraderCapability{
 
     }
 
-    /**
-     *  toString method that overrides the toString method in Object that returns the values of
-     *  the attributes of the player that they entered in for themselves
-     *
-     * @return the String representation of the attributes of the players
-     */
     @Override
     public String toString() {
         String s = "";
@@ -83,12 +77,24 @@ public class Player extends Character implements TraderCapability{
 
     @Override
     public boolean canSell(Good good) {
-        return Arrays.asList(ship.getCargo()).contains(good);
+        return ship.hasGood(good);
     }
 
     @Override
     public boolean canBuy(Good good) {
-        return good.getPrice() <= credits;
+        return good.getPrice() <= credits && ship.hasCargoSpace();
+    }
+
+    @Override
+    public void buy(Good g) {
+        credits -= g.getPrice();
+        ship.addCargo(g);
+    }
+
+    @Override
+    public void sell(Good g) {
+        credits += g.getPrice();
+        ship.removeCargo(g);
     }
 
 

@@ -8,7 +8,7 @@ public class SpacePort implements TraderCapability {
 
     private TechLevel techlevel;
     private List<Good> goods;
-    Random random = new Random();
+    private Random random = new Random();
 
     public SpacePort(TechLevel techlevel) {
         this.techlevel = techlevel;
@@ -54,12 +54,24 @@ public class SpacePort implements TraderCapability {
 
     @Override
     public boolean canSell(Good good) {
-        return good.getMinTechLevelProduce() <= techlevel.ordinal();
+        boolean tech = good.getMinTechLevelProduce() <= techlevel.ordinal();
+        boolean inGoods = goods.contains(good);
+        return tech && inGoods;
     }
 
     @Override
     public boolean canBuy(Good good) {
         return good.getMinTechLevelUse() <= techlevel.ordinal();
+    }
+
+    @Override
+    public void buy(Good good) {
+        goods.add(good);
+    }
+
+    @Override
+    public void sell(Good good) {
+        goods.remove(good);
     }
 
     public List<Good> getGoods() {
