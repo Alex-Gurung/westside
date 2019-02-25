@@ -45,4 +45,12 @@ public class Good {
         return goodtype.getMinTechLevelProduce();
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(!(o instanceof Good)) return false;
+        Good g = (Good) o;
+        return g.getGoodType() == this.goodtype;
+    }
+
 }

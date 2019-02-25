@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import java.util.Arrays;
+
 public class Player extends Character implements TraderCapability{
 
     private int pilotSkillPoints = 4;
@@ -81,7 +83,7 @@ public class Player extends Character implements TraderCapability{
 
     @Override
     public boolean canSell(Good good) {
-        return true;
+        return Arrays.asList(ship.getCargo()).contains(good);
     }
 
     @Override
