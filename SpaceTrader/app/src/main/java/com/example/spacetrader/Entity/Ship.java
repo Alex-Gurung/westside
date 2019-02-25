@@ -1,6 +1,7 @@
 package com.example.spacetrader.Entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Ship {
@@ -10,6 +11,7 @@ public class Ship {
     private int fuel;
     private double maxDistance;
     private Good[] cargo;
+    private int numGoods;
     private Gadget[] gadgets;
     private Weapon[] weapons;
     private Shield[] shields;
@@ -29,16 +31,11 @@ public class Ship {
         shields = new Shield[shiptype.getShieldSlots()];
         mercs = new Mercenary[shiptype.getNumMercenaries()];
         cargo = new Good[shiptype.getCargoHolds()];
+        numGoods = 0;
         hasEscapePod = false;
         fuel = 100;
     }
 
-    /**
-     * toString method that overrides the toString method in Object that returns the String
-     * representation of all the attributes of ship
-     *
-     * @return the String representation of teh attributes of the ship and the ship type
-     */
     @Override
     public String toString() {
         return shiptype.toString();
@@ -63,7 +60,31 @@ public class Ship {
         return cargo;
     }
 
-    public void setCargo(Good[] newCargo){
-        cargo = newCargo;
+    public boolean hasCargoSpace() {
+        return numGoods < cargo.length;
+    }
+
+    public void addCargo(Good good) {
+        cargo[numGoods] = good;
+        numGoods++;
+    }
+
+    public boolean hasGood(Good good) {
+        if(numGoods == 0) return false;
+        return Arrays.asList(cargo).contains(good);
+    }
+
+
+    public Good removeCargo(Good good) {
+        Good ret = null;
+        for(int i = 0; i < numGoods; i++) {
+            if(cargo[i].equals(good)){
+                ret = cargo[i];
+                numGoods--;
+                cargo[i] = cargo[numGoods];
+                cargo[numGoods] = null;
+            }
+        }
+        return ret;
     }
 }

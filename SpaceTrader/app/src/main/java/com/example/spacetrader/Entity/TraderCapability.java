@@ -1,6 +1,10 @@
 package com.example.spacetrader.Entity;
 
 public interface TraderCapability {
-    public double getPrice(Good good);
-    public void setPrice(Good good);
+    double getPrice(Good good);
+    void setPrice(Good good);
+    boolean canSell(Good good);
+    boolean canBuy(Good good);
+    void buy(Good good);
+    void sell(Good good);
 }

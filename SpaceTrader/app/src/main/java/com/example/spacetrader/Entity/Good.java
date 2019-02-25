@@ -37,4 +37,20 @@ public class Good {
         return goodtype;
     }
 
+    public int getMinTechLevelUse() {
+        return goodtype.getMinTechLevelUse();
+    }
+
+    public int getMinTechLevelProduce() {
+        return goodtype.getMinTechLevelProduce();
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(!(o instanceof Good)) return false;
+        Good g = (Good) o;
+        return g.getGoodType() == this.goodtype;
+    }
+
 }
