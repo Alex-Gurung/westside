@@ -19,15 +19,14 @@ public class SpacePort implements TraderCapability {
     }
 
     private void populateGoods(int numGoods) {
-        List<GoodType> producable = new ArrayList<>();
+        List<GoodType> producible = new ArrayList<>();
         for(GoodType gt : GoodType.values()) {
             if(canProduce(new Good(gt))){
-                producable.add(gt);
+                producible.add(gt);
             }
         }
-
         for (int i = 0; i < numGoods; i++) {
-            Good add = new Good(producable.get(random.nextInt(producable.size())));
+            Good add = new Good(producible.get(random.nextInt(producible.size())));
             goods.add(add);
         }
     }
@@ -61,5 +60,9 @@ public class SpacePort implements TraderCapability {
     @Override
     public boolean canUse(Good good) {
         return good.getMinTechLevelUse() <= techlevel.ordinal();
+    }
+
+    public List<Good> getGoods() {
+        return goods;
     }
 }
