@@ -78,12 +78,12 @@ public class Player extends Character implements TraderCapability{
     }
 
     @Override
-    public boolean canProduce(Good good) {
+    public boolean canSell(Good good) {
         return true;
     }
 
     @Override
-    public boolean canUse(Good good) {
+    public boolean canBuy(Good good) {
         return true;
     }
 

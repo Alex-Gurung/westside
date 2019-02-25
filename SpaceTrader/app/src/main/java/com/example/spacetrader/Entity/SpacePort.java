@@ -53,12 +53,12 @@ public class SpacePort implements TraderCapability {
     }
 
     @Override
-    public boolean canProduce(Good good) {
+    public boolean canSell(Good good) {
         return good.getMinTechLevelProduce() <= techlevel.ordinal();
     }
 
     @Override
-    public boolean canUse(Good good) {
+    public boolean canBuy(Good good) {
         return good.getMinTechLevelUse() <= techlevel.ordinal();
     }
 
