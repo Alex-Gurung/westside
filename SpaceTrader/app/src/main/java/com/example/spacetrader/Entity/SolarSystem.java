@@ -7,6 +7,7 @@ public class SolarSystem {
     private PoliticalSystem politicalSystem;
     private TechLevel techLevel;
     private Planet planet;
+    private SpacePort spacePort;
 
     /**
      * public constructor to initialize a SolarSystem object that has a random location, tech level,
@@ -24,6 +25,7 @@ public class SolarSystem {
         politicalSystem = p;
         techLevel = t;
         this.planet = new Planet(name);
+        this.spacePort = new SpacePort(techLevel);
     }
 
     /**

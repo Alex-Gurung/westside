@@ -37,4 +37,12 @@ public class Good {
         return goodtype;
     }
 
+    public int getMinTechLevelUse() {
+        return goodtype.getMinTechLevelUse();
+    }
+
+    public int getMinTechLevelProduce() {
+        return goodtype.getMinTechLevelProduce();
+    }
+
 }

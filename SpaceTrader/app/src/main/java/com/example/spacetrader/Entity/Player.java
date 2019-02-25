@@ -60,6 +60,32 @@ public class Player extends Character implements TraderCapability{
 
     @Override
     public void setPrice(Good good) {
+        GoodType gt = good.getGoodType();
+        int min = gt.getMinPrice();
+        int max = gt.getMaxPrice();
+        boolean isNaturalGood = gt.getIsNaturalResource();
+        SolarSystem ss = this.currentSolarSystem;
+        TechLevel tl = ss.getTechLevel();
 
+        int tlordinal = tl.ordinal();
+
+        if(!isNaturalGood) {
+            tlordinal = 8 - tlordinal;
+        }
+
+        double add = ((max - min) * (double)tlordinal)/8;
+        good.setPrice(min + add);
     }
+
+    @Override
+    public boolean canProduce(Good good) {
+        return true;
+    }
+
+    @Override
+    public boolean canUse(Good good) {
+        return true;
+    }
+
+
 }
