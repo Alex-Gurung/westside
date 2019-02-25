@@ -21,7 +21,7 @@ public class SpacePort implements TraderCapability {
     private void populateGoods(int numGoods) {
         List<GoodType> producible = new ArrayList<>();
         for(GoodType gt : GoodType.values()) {
-            if(canSell(new Good(gt))){
+            if(gt.getMinTechLevelProduce() <= techlevel.ordinal()){
                 producible.add(gt);
             }
         }
