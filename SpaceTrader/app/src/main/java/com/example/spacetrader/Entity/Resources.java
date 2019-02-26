@@ -15,4 +15,5 @@ public enum Resources {
     LOSTSOFHERBS,
     ARTISTIC,
     WARLIKE;
+
 }

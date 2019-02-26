@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import java.util.Random;
+
 public class SolarSystem {
 
     private String name;
@@ -7,8 +9,9 @@ public class SolarSystem {
     private PoliticalSystem politicalSystem;
     private TechLevel techLevel;
     private Planet planet;
+    private Resources resource;
     private SpacePort spacePort;
-
+    private Random random;
     /**
      * public constructor to initialize a SolarSystem object that has a random location, tech level,
      * and political system.
@@ -20,10 +23,12 @@ public class SolarSystem {
      * @param name of type String that initializes the name of the Solar System
      */
     public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
+        random  = new Random();
         this.name = name;
         location = l;
         politicalSystem = p;
         techLevel = t;
+        resource = Resources.values()[random.nextInt(Resources.values().length)];
         this.planet = new Planet(name);
         this.spacePort = new SpacePort(techLevel);
     }
@@ -76,7 +81,7 @@ public class SolarSystem {
     @Override
     public String toString() {
         return "\nName: " + name + "\nLocation: " + location.toString() + "\nTech Level: " +
-                techLevel + "\nPolitical System: " + politicalSystem + "\n"
+                techLevel + "\nPolitical System: " + politicalSystem + "\n" + "Resource: " + resource + "\n"
                 + "------------------------------------------------";
     }
 
