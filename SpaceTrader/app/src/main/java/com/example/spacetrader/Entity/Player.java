@@ -96,6 +96,4 @@ public class Player extends Character implements TraderCapability{
         credits += g.getPrice();
         ship.removeCargo(g);
     }
-
-
 }

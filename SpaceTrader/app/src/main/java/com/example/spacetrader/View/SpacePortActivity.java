@@ -1,0 +1,34 @@
+package com.example.spacetrader.View;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.spacetrader.R;
+
+public class SpacePortActivity extends AppCompatActivity {
+
+    private Button backButton;
+    private Button sellGoodsButton;
+    private Button buyGoodsButton;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_space_port);
+
+        backButton = findViewById(R.id.SpacePort_Back_Button);
+        sellGoodsButton = findViewById(R.id.SpacePort_Sell_Goods_Button);
+        buyGoodsButton = findViewById(R.id.SpacePort_Buy_Goods_Button);
+
+
+        //sends user back to solar system screen on pressing the back button
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent( getApplicationContext(), GameActivity.class);
+            startActivity(intent);
+        });
+    }
+}
