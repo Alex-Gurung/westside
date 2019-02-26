@@ -38,7 +38,7 @@ public class GameActivity extends AppCompatActivity {
 
         configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
 
-        Log.d("GameActivity", configurationViewModel.getGame().getUniverse().toString());
+        //Log.d("GameActivity", configurationViewModel.getGame().getUniverse().toString());
 
         graph = (GraphView) findViewById(R.id.graphView);
 

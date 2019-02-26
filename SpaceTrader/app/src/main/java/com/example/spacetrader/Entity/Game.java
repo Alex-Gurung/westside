@@ -15,8 +15,20 @@ public class Game {
         this.gameDifficulty = gameDifficulty;
         this.player = player;
         this.universe = new Universe(50);
-        Log.d("universe: ", this.universe.toString());
+        LogBig("\n" + this.universe.toString());
         Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n" + player.toString()));
+    }
+
+    private void LogBig(String s) {
+        if(s.length() < 3000) {
+            Log.d("universe: " , s);
+            return;
+        } else {
+            Log.d("universe: ", s.substring(0, 3000));
+            s = s.substring(3000);
+            LogBig(s);
+            return;
+        }
     }
 
     public GameDifficulty getGameDifficulty() {
