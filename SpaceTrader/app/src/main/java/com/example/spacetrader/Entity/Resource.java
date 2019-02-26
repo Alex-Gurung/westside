@@ -1,6 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public enum Resources {
+public enum Resource {
 
     NOSPECIALSOURCES,
     MINERALRICH,

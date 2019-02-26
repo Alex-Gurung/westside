@@ -9,7 +9,7 @@ public class SolarSystem {
     private PoliticalSystem politicalSystem;
     private TechLevel techLevel;
     private Planet planet;
-    private Resources resource;
+    private Resource resource;
     private SpacePort spacePort;
     private Random random;
     /**
@@ -28,7 +28,7 @@ public class SolarSystem {
         location = l;
         politicalSystem = p;
         techLevel = t;
-        resource = Resources.values()[random.nextInt(Resources.values().length)];
+        resource = Resource.values()[random.nextInt(Resource.values().length)];
         this.planet = new Planet(name);
         this.spacePort = new SpacePort(techLevel);
     }
