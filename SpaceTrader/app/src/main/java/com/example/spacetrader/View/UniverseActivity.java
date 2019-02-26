@@ -1,13 +1,14 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
@@ -21,24 +22,24 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.TreeSet;
 
-public class GameActivity extends AppCompatActivity {
+public class UniverseActivity extends AppCompatActivity {
 
     private ConfigurationViewModel configurationViewModel;
     private GraphView graph;
+    private Button tradeButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_universe);
 
         configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
 
-        //Log.d("GameActivity", configurationViewModel.getGame().getUniverse().toString());
+        //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
 
         graph = (GraphView) findViewById(R.id.graphView);
 
@@ -75,9 +76,19 @@ public class GameActivity extends AppCompatActivity {
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
-                Toast.makeText(GameActivity.this, "Solar System: "+dataPoint, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UniverseActivity.this, "Solar System: "+dataPoint, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        tradeButton = findViewById(R.id.game_tradeButton);
+        tradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                startActivity(intent);
             }
         });
 
     }
+
 }

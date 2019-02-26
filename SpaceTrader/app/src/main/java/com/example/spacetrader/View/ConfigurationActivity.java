@@ -1,11 +1,9 @@
 package com.example.spacetrader.View;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -100,7 +98,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(ConfigurationActivity.this, "Beginning your Space Journey!", Toast.LENGTH_SHORT).show();
             configurationViewModel.initializeGame(name, fighter, engineer, pilot, trader, difficulty);
-            Intent intent = new Intent( getApplicationContext(), GameActivity.class);
+            Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
             startActivity(intent);
         }
     }
