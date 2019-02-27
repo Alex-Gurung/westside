@@ -25,11 +25,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="45dp"
         android:layout_marginEnd="22dp"
-        android:layout_toStartOf="@+id/credit_input"
+        android:layout_toStartOf="@+id/cargo_credit_input"
         android:text="Credits:" />
 
     <TextView
-        android:id="@+id/credit_input"
+        android:id="@+id/cargo_credit_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
