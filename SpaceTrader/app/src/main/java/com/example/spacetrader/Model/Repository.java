@@ -24,6 +24,13 @@ public class Repository {
 
     public Good[] getCargo(TraderCapability trader) {return trader.getCargo();}
 
+    public double getPlayerCredits() {
+        return this.game.getPlayerCredits();
+    }
+
+    public void setPlayerCredits(double v) {
+        this.game.setPlayerCredits(v);
+    }
     public void setSolarSystem() {
         this.game.setPlayerSolarSystem();
     }

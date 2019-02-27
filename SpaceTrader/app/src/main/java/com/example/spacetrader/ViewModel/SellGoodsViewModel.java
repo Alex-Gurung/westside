@@ -26,4 +26,12 @@ public class SellGoodsViewModel extends AndroidViewModel {
     public Player getPlayer() {return interactor.getPlayer();}
 
     public Good[] getCargo(TraderCapability trader) {return interactor.getCargo(trader);}
+
+    public double getPlayerCredits() {
+        return interactor.getPlayerCredits();
+    }
+
+    public void setPlayerCredits(double v) {
+        interactor.setPlayerCredits(v);
+    }
 }

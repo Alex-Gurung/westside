@@ -1,5 +1,6 @@
 package com.example.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,20 +12,29 @@ import android.widget.TextView;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.GoodType;
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.SellGoodsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BuyMarketGoodsActivity extends AppCompatActivity {
     private Button backButton;
-    private double playerCredits = 10000;
+    private double playerCredits;
     private TextView credits;
     private final MarketAdapter adapter = new MarketAdapter();
     private List<Good> marketList;
+
+    private SellGoodsViewModel sellGoodsViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_market_goods);
+
+        sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
+
+        playerCredits = sellGoodsViewModel.getPlayerCredits();
+
         backButton = findViewById(R.id.Market_Back_Button);
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
@@ -45,6 +55,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         marketList = setDummyGoods();
+
         adapter.setMarketList(marketList);
         adapter.setOnMarketClickListener(new MarketAdapter.OnMarketItemClickListener() {
             @Override

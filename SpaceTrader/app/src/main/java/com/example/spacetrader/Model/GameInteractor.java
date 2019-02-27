@@ -28,4 +28,12 @@ public class GameInteractor extends Interactor {
     public Player getPlayer() {return getRepository().getPlayer();}
 
     public Good[] getCargo(TraderCapability trader) {return getRepository().getCargo(trader);}
+
+    public double getPlayerCredits() {
+        return getRepository().getPlayerCredits();
+    }
+
+    public void setPlayerCredits(double v) {
+        getRepository().setPlayerCredits(v);
+    }
 }
