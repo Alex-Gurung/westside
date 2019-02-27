@@ -21,7 +21,7 @@ public class Ship {
     /**
      * constructor that instantiates a Ship object based on the shipType passed in
      *
-     * @param shiptype enum value that containts all the info/attributes of the selected shipType
+     * @param shiptype enum value that contains all the info/attributes of the selected shipType
      */
     public Ship (ShipType shiptype) {
         this.shiptype = shiptype;
