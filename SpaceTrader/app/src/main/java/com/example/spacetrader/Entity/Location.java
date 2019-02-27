@@ -6,7 +6,8 @@ public class Location {
 
     private int x;
     private int y;
-    private static int bound = 100;
+    private static int bound = 90;
+    private static Random r = new Random();
 
 
     public Location(int x, int y) {
@@ -15,8 +16,7 @@ public class Location {
     }
 
     public static Location getRandomLocation() {
-        Random r = new Random();
-        return new Location(r.nextInt(bound), r.nextInt(bound));
+        return new Location((r.nextInt(bound) + 5), (r.nextInt(bound) + 5));
     }
 
     @Override
