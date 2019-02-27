@@ -70,6 +70,10 @@ public class SpacePort implements TraderCapability {
     }
 
     public Good[] getCargo() {
-        return (Good[]) goods.toArray();
+        Good[] ourCargo = new Good[goods.size()];
+        for (int i = 0; i < goods.size(); i++) {
+            ourCargo[i] = goods.get(i);
+        }
+        return ourCargo;
     }
 }

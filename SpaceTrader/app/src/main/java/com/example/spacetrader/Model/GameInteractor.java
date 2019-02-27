@@ -41,4 +41,8 @@ public class GameInteractor extends Interactor {
     public SpacePort getSpacePort() {
         return getRepository().getSpacePort();
     }
+
+    public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
+        return getRepository().facilitateTrade(toBuy, buyer, seller);
+    }
 }

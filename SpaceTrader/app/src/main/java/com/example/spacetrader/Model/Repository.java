@@ -39,4 +39,8 @@ public class Repository {
     public SpacePort getSpacePort() {
         return this.game.getSpacePort();
     }
+
+    public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
+        return this.game.facilitateTrade(toBuy, buyer, seller);
+    }
 }
