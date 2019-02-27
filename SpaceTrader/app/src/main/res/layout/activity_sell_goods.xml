@@ -7,12 +7,42 @@
     tools:context=".View.SellGoodsActivity">
 
 
-    <ScrollView
+    <TextView
+        android:id="@+id/MyCargo_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="39dp"
+        android:text="My Cargo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/credits_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="22dp"
+        android:layout_toStartOf="@+id/credit_input"
+        android:text="Credits:" />
+
+    <TextView
+        android:id="@+id/credit_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="25dp"
+        android:text="credits" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MyCargo_label"
+        android:layout_marginTop="33dp"
         android:layout_marginBottom="0dp">
 
         <include
@@ -22,6 +52,17 @@
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/Cargo_Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="24dp"
+        android:text="Back" />
 
 
 </RelativeLayout>
