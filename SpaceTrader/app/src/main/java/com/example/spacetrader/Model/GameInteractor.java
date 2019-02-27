@@ -21,6 +21,9 @@ public class GameInteractor extends Interactor {
     public void setGame(Game game) {
         getRepository().setGame(game);
     }
+    public void setPlayerSolarSystem() {
+        getRepository().setSolarSystem();
+    }
 
     public Player getPlayer() {return getRepository().getPlayer();}
 

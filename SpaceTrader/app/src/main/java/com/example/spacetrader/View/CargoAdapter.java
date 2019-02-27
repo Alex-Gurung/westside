@@ -86,7 +86,6 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
                     }
                 }
             });
-
         }
     }
 
