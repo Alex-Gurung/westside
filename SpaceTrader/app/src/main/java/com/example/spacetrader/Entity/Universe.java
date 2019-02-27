@@ -185,7 +185,6 @@ public class Universe {
         return str;
     }
     public SolarSystem getRandomSolarSystem() {
-        Random rand = new Random(
-        return solarSystems.(rand.nextInt(solarSystems.size()));
+        return (SolarSystem)solarSystems.toArray()[0];
     }
 }

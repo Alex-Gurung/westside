@@ -7,6 +7,7 @@ public class Player extends Character implements TraderCapability {
     private int engineerSkillPoints;
     private int traderSkillPoints;
     private double credits;
+    private SolarSystem solarSystem;
 
 //    private String name = "Bobert Waters";
 //
@@ -99,5 +100,13 @@ public class Player extends Character implements TraderCapability {
     @Override
     public Good[] getCargo() {
         return ship.getCargo();
+    }
+
+    public SolarSystem getSolarSystem() {
+        return solarSystem;
+    }
+
+    public void setSolarSystem(SolarSystem solarSystem) {
+        this.solarSystem = solarSystem;
     }
 }
