@@ -27,13 +27,14 @@ public class SpacePort implements TraderCapability {
         }
         for (int i = 0; i < numGoods; i++) {
             Good add = new Good(producible.get(random.nextInt(producible.size())));
+            setPrice(add);
             goods.add(add);
         }
     }
 
     @Override
     public double getPrice(Good good) {
-        return 0;
+        return good.getPrice();
     }
 
     @Override
