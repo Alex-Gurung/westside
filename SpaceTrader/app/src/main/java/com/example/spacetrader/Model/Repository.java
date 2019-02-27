@@ -31,4 +31,7 @@ public class Repository {
     public void setPlayerCredits(double v) {
         this.game.setPlayerCredits(v);
     }
+    public void setSolarSystem() {
+        this.game.setPlayerSolarSystem();
+    }
 }

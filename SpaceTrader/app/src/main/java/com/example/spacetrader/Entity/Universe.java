@@ -1,6 +1,7 @@
 package com.example.spacetrader.Entity;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -182,5 +183,9 @@ public class Universe {
             str += system.toString();
         }
         return str;
+    }
+    public SolarSystem getRandomSolarSystem() {
+        Random rand = new Random(
+        return solarSystems.(rand.nextInt(solarSystems.size()));
     }
 }
