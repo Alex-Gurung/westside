@@ -6,7 +6,6 @@ public class Player extends Character implements TraderCapability {
     private int fighterSkillPoints;
     private int engineerSkillPoints;
     private int traderSkillPoints;
-    private SolarSystem solarSystem;
 
 //    private String name = "Bobert Waters";
 //
@@ -98,11 +97,11 @@ public class Player extends Character implements TraderCapability {
         return ship.getCargo();
     }
 
-    public SolarSystem getSolarSystem() {
-        return solarSystem;
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
     }
 
-    public void setSolarSystem(SolarSystem solarSystem) {
-        this.solarSystem = solarSystem;
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
     }
 }

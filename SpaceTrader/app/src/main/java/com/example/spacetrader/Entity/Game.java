@@ -2,8 +2,6 @@ package com.example.spacetrader.Entity;
 
 import android.util.Log;
 
-import java.util.HashSet;
-
 public class Game {
     private GameDifficulty gameDifficulty;
     private Player player;
@@ -54,11 +52,11 @@ public class Game {
     }
 
     public void setPlayerSolarSystem() {
-        player.setSolarSystem(universe.getRandomSolarSystem());
+        player.setCurrentSolarSystem(universe.getRandomSolarSystem());
     }
 
     public void setPlayerSolarSystem(SolarSystem solarSystem) {
-        player.setSolarSystem(solarSystem);
+        player.setCurrentSolarSystem(solarSystem);
     }
 
     public void setUniverse(Universe universe) {
