@@ -37,8 +37,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.Market_Back_Button);
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-            startActivity(intent);
+            finish();
         });
 
 

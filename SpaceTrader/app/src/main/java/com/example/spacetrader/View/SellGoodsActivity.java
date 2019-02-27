@@ -41,8 +41,7 @@ public class SellGoodsActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-            startActivity(intent);
+            finish();
         });
         credits = findViewById(R.id.cargo_credit_input);
         credits.setText("" + playerCredits);
