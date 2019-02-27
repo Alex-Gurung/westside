@@ -10,21 +10,21 @@ import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
 public class ConfigurationViewModel extends AndroidViewModel {
-    private GameInteractor interactor;
+    private GameInteractor gameInteractor;
 
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getGameInteractor();
+        gameInteractor = Model.getInstance().getGameInteractor();
     }
 
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
         Player player = new Player(pilot, fighter, engineer, trader, name);
         Game game = new Game(gd, player);
-        interactor.setGame(game);
-        interactor.setPlayerSolarSystem();
+        gameInteractor.setGame(game);
+        gameInteractor.setPlayerSolarSystem();
     }
 
     public Game getGame() {
-        return interactor.getGame();
+        return gameInteractor.getGame();
     }
 }
