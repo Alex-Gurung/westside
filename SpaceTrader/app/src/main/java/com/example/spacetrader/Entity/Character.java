@@ -5,7 +5,7 @@ public abstract class Character {
     protected String name;
     protected SolarSystem currentSolarSystem;
     protected Ship ship;
-    private double credits = 1000;
+    protected double credits = 1000.00;
 
     public Character (String name, Ship ship) {
         this.name = name;

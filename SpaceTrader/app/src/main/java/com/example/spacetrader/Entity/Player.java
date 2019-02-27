@@ -6,7 +6,6 @@ public class Player extends Character implements TraderCapability {
     private int fighterSkillPoints;
     private int engineerSkillPoints;
     private int traderSkillPoints;
-    private double credits;
     private SolarSystem solarSystem;
 
 //    private String name = "Bobert Waters";
@@ -33,9 +32,6 @@ public class Player extends Character implements TraderCapability {
         this.fighterSkillPoints = fighterSkillPoints;
         this.pilotSkillPoints = pilotSkillPoints;
         this.traderSkillPoints = traderSkillPoints;
-        credits = 1000.00;
-
-
     }
 
     @Override
