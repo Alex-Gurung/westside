@@ -47,9 +47,6 @@ public class SolarSystem {
      *
      * @param l of type Location that is the SolarSystems random location.
      */
-    public SolarSystem(Location l) {
-        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), "");
-    }
 
     public SolarSystem(Location l, String name) {
         this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
