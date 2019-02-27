@@ -41,10 +41,11 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         Good cargoItem = cargo.get(position);
 
         Log.d("APP", "Binding: " + position + " " + cargo.get(position));
-
-        holder.name.setText((cargoItem.getGoodType().name()));
-        String price = "" + cargoItem.getPrice();
-        holder.price.setText(price);
+        if (cargoItem != null) {
+            holder.name.setText((cargoItem.getGoodType().name()));
+            String price = "" + cargoItem.getPrice();
+            holder.price.setText(price);
+        }
 
     }
 
