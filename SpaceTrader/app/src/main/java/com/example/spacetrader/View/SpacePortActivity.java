@@ -26,8 +26,7 @@ public class SpacePortActivity extends AppCompatActivity {
 
         //sends user back to solar system screen on pressing the back button
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
-            startActivity(intent);
+            finish();
         });
         sellGoodsButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SellGoodsActivity.class);

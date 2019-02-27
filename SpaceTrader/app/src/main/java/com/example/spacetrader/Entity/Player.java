@@ -2,7 +2,7 @@ package com.example.spacetrader.Entity;
 
 import java.util.Arrays;
 
-public class Player extends Character implements TraderCapability{
+public class Player extends Character implements TraderCapability {
 
     private int pilotSkillPoints;
     private int fighterSkillPoints;
