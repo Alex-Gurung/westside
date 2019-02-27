@@ -37,7 +37,7 @@ public class SolarSystem {
         location = l;
         politicalSystem = p;
         techLevel = t;
-        resource = Resource.values()[random.nextInt(Resource.values().length)];
+        resource = Resource.values()[random.nextInt(Resource.values().length - 1) + 1]; // will never be never
         this.planet = new Planet(name);
         this.spacePort = new SpacePort(techLevel, resource);
     }

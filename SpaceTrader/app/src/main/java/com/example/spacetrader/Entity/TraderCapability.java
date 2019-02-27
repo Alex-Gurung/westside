@@ -16,7 +16,14 @@ public interface TraderCapability {
         }
 
         double add = ((max - min) * (double)tlordinal)/8;
-        good.setPrice(min + add);
+        double pr = min + add;
+        if(resource.equals(gt.getHighCostResource())) {
+            pr *= 2;
+        }
+        if(resource.equals(gt.getLowCostResource())) {
+            pr *= 0.5;
+        }
+        good.setPrice(pr);
     }
 
     boolean canSell(Good good);

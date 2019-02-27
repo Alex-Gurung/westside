@@ -2,6 +2,7 @@ package com.example.spacetrader.Entity;
 
 public enum Resource {
 
+    NEVER,
     NOSPECIALSOURCES,
     MINERALRICH,
     MINERALPOOR,
