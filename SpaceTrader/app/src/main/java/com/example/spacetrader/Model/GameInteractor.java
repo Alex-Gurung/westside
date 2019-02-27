@@ -5,9 +5,11 @@ import android.util.Log;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GameInteractor extends Interactor {
@@ -41,6 +43,7 @@ public class GameInteractor extends Interactor {
     public SpacePort getSpacePort() {
         return getRepository().getSpacePort();
     }
+    public HashSet<SolarSystem> getSolarSystems() { return getRepository().getSolarSystems(); }
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return getRepository().facilitateTrade(toBuy, buyer, seller);

@@ -2,6 +2,8 @@ package com.example.spacetrader.Entity;
 
 import android.util.Log;
 
+import java.util.HashSet;
+
 public class Game {
     private GameDifficulty gameDifficulty;
     private Player player;
@@ -58,6 +60,9 @@ public class Game {
     public void setPlayerSolarSystem(SolarSystem solarSystem) {
         player.setCurrentSolarSystem(solarSystem);
     }
+    public SolarSystem getPlayerSolarSystem() {
+        return player.getCurrentSolarSystem();
+    }
 
     public void setUniverse(Universe universe) {
         this.universe = universe;
@@ -83,5 +88,9 @@ public class Game {
 
     public SpacePort getSpacePort() {
         return this.player.getSpacePort();
+    }
+
+    public HashSet<SolarSystem> getSolarSystems() {
+        return universe.getSolarSystems();
     }
 }

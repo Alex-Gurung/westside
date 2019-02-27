@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.UniverseActivity">
@@ -10,14 +13,14 @@
         android:id="@+id/universe_curent_solarSystem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/universe_currentSolarSystemLabel"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Current SolarSystem"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphView"
@@ -26,8 +29,8 @@
         android:layout_below="@+id/universe_curent_solarSystem"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp" />
 
@@ -37,9 +40,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/graphView"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="32dp"
         android:text="Trade" />
 
+    <TextView
+        android:id="@+id/universe_currentSolarSystemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="9dp"
+        android:text="Current Solar System" />
+
 </RelativeLayout>
+</ScrollView>

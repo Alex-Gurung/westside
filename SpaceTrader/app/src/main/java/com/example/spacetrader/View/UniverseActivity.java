@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.ConfigurationViewModel;
+import com.example.spacetrader.ViewModel.UniverseViewModel;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -28,22 +29,25 @@ import java.util.List;
 
 public class UniverseActivity extends AppCompatActivity {
 
-    private ConfigurationViewModel configurationViewModel;
+    private UniverseViewModel universeViewModel;
     private GraphView graph;
     private Button tradeButton;
+    private TextView currentSolarSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe);
 
-        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        universeViewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
+        currentSolarSystem = findViewById(R.id.universe_curent_solarSystem);
 
+        currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
         //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
 
         graph = (GraphView) findViewById(R.id.graphView);
 
-        HashSet<SolarSystem> solarSystems = configurationViewModel.getGame().getUniverse().getSolarSystems();
+        HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
         List<DataPoint> dps = new ArrayList<>();
         for (SolarSystem system : solarSystems) {
             Location loc = system.getLocation();
