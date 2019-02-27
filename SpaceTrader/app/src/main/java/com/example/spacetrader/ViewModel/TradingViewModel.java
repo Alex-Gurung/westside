@@ -8,14 +8,15 @@ import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.Entity.SpacePort;
+import com.example.spacetrader.Entity.Trader;
 import com.example.spacetrader.Entity.TraderCapability;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
-public class SellGoodsViewModel extends AndroidViewModel {
+public class TradingViewModel extends AndroidViewModel {
     private GameInteractor interactor;
 
-    public SellGoodsViewModel (@NonNull Application application) {
+    public TradingViewModel(@NonNull Application application) {
         super(application);
         interactor = Model.getInstance().getGameInteractor();
     }
@@ -38,5 +39,9 @@ public class SellGoodsViewModel extends AndroidViewModel {
 
     public SpacePort getSpacePort() {
         return interactor.getSpacePort();
+    }
+
+    public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
+        return interactor.facilitateTrade(toBuy, buyer, seller);
     }
 }

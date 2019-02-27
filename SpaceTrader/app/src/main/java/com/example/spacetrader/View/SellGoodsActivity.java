@@ -1,24 +1,21 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.AbsListView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.GoodType;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.SellGoodsViewModel;
+import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SellGoodsActivity extends AppCompatActivity {
@@ -28,16 +25,16 @@ public class SellGoodsActivity extends AppCompatActivity {
     private List<Good> cargo;
     private double playerCredits;
 
-    private SellGoodsViewModel sellGoodsViewModel;
+    private TradingViewModel tradingViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_goods);
 
-        sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
+        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
 
-        playerCredits = sellGoodsViewModel.getPlayerCredits();
+        playerCredits = tradingViewModel.getPlayerCredits();
 
         backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> {
@@ -55,18 +52,17 @@ public class SellGoodsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         cargo = setDummyGoods();
-        Good[] playerGoods = sellGoodsViewModel.getCargo(sellGoodsViewModel.getPlayer());
+        Good[] playerGoods = tradingViewModel.getCargo(tradingViewModel.getPlayer());
         if (playerGoods != null) {
-            List<Good> goods = new ArrayList<Good>();
-            for (int i = 0; i < playerGoods.length; i++){
+            cargo = new ArrayList<Good>();
+            for (int i = 0; i < playerGoods.length; i++) {
                 if (playerGoods[i] != null) {
-                    goods.add(playerGoods[i]);
+                    cargo.add(playerGoods[i]);
                 }
             }
-            adapter.setCargoList(goods);
-        } else {
-            adapter.setCargoList(cargo);
         }
+        adapter.setCargoList(cargo);
+
         adapter.setOnCargoClickListener(new CargoAdapter.OnCargoGoodClickListener() {
             @Override
             public void onCargoGoodSell(int position) {
@@ -84,12 +80,20 @@ public class SellGoodsActivity extends AppCompatActivity {
     }
     public void sellItem(int position) {
         //update credits - make sure the goods have a price!!!
-        double earnedCredits = cargo.get(position).getPrice();
-        playerCredits += earnedCredits;
-        credits.setText(""+ playerCredits);
+        Good toBuy = cargo.get(position);
 
-        cargo.remove(cargo.get(position));
+        boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getSpacePort(), tradingViewModel.getPlayer());
+        Log.d("PLAYER SOLD GOOD", ""+isSold);
+        if (!isSold) {
+            Toast.makeText(getApplicationContext(), "Could not buy item", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
+            playerCredits = tradingViewModel.getPlayerCredits();
+            credits.setText("" + playerCredits);
 
-        adapter.notifyItemRemoved(position);
+            cargo.remove(cargo.get(position));
+
+            adapter.notifyItemRemoved(position);
+        }
     }
 }

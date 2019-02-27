@@ -1,19 +1,20 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.GoodType;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.SellGoodsViewModel;
+import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
     private final MarketAdapter adapter = new MarketAdapter();
     private List<Good> marketList;
 
-    private SellGoodsViewModel sellGoodsViewModel;
+    private TradingViewModel tradingViewModel;
     private SpacePort spacePort;
 
     @Override
@@ -33,10 +34,10 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_market_goods);
 
-        sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
+        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
 
-        playerCredits = sellGoodsViewModel.getPlayerCredits();
-        spacePort = sellGoodsViewModel.getSpacePort();
+        playerCredits = tradingViewModel.getPlayerCredits();
+        spacePort = tradingViewModel.getSpacePort();
 
         backButton = findViewById(R.id.Market_Back_Button);
         backButton.setOnClickListener(v -> {
@@ -57,8 +58,20 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         marketList = setDummyGoods();
+        Good[] spacePortGoods = tradingViewModel.getCargo(spacePort);
+        if (spacePortGoods != null) {
+            List<Good> goods = new ArrayList<Good>();
+            for (int i = 0; i < spacePortGoods.length; i++){
+                if (spacePortGoods[i] != null) {
+                    goods.add(spacePortGoods[i]);
+                }
+            }
+            Log.d("SPACEPORTGOODS", goods.toString());
+            adapter.setMarketList(goods);
+        } else {
+            adapter.setMarketList(marketList);
+        }
 
-        adapter.setMarketList(marketList);
         adapter.setOnMarketClickListener(new MarketAdapter.OnMarketItemClickListener() {
             @Override
             public void onMarketItemBuy(int position) {
@@ -70,19 +83,26 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
     public List<Good> setDummyGoods() {
         List<Good> list = new ArrayList<>();
         list.add(new Good(GoodType.MACHINE));
-        list.add(new Good(GoodType.WATER));
+        list.add(new Good(GoodType.FUR));
         list.add(new Good(GoodType.ORE));
         return list;
     }
     public void buyItem(int position) {
         //update credits - make sure the goods have a price!!!
-        double usedCredits = marketList.get(position).getPrice();
-        playerCredits -= usedCredits;
-        credits.setText(""+ playerCredits);
+        Good toBuy = marketList.get(position);
+        boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
+        Log.d("PLAYER BOUGHT GOOD", ""+isSold);
+        if (!isSold) {
+            Toast.makeText(this, "Could not buy item", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
+            playerCredits = tradingViewModel.getPlayerCredits();
+            credits.setText("" + playerCredits);
 
-        marketList.remove(marketList.get(position));
+            marketList.remove(marketList.get(position));
 
-        adapter.notifyItemRemoved(position);
+            adapter.notifyItemRemoved(position);
+        }
     }
 }
 
