@@ -36,6 +36,7 @@ public class Player extends Character implements TraderCapability{
         this.traderSkillPoints = traderSkillPoints;
         credits = 1000.00;
 
+
     }
 
     @Override

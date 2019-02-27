@@ -33,5 +33,9 @@ public class SpacePortActivity extends AppCompatActivity {
             Intent intent = new Intent( getApplicationContext(), SellGoodsActivity.class);
             startActivity(intent);
         });
+        buyGoodsButton.setOnClickListener(v -> {
+            Intent intent = new Intent( getApplicationContext(), BuyMarketGoodsActivity.class);
+            startActivity(intent);
+        });
     }
 }
