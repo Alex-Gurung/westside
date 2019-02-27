@@ -7,6 +7,7 @@ import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.GameDifficulty;
+import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
@@ -33,5 +34,9 @@ public class SellGoodsViewModel extends AndroidViewModel {
 
     public void setPlayerCredits(double v) {
         interactor.setPlayerCredits(v);
+    }
+
+    public SpacePort getSpacePort() {
+        return interactor.getSpacePort();
     }
 }

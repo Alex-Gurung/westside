@@ -105,4 +105,8 @@ public class Player extends Character implements TraderCapability {
     public void setSolarSystem(SolarSystem solarSystem) {
         this.solarSystem = solarSystem;
     }
+
+    public SpacePort getSpacePort() {
+        return this.solarSystem.getSpacePort();
+    }
 }

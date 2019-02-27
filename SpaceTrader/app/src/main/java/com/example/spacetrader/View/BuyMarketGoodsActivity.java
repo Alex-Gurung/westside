@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.GoodType;
+import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.SellGoodsViewModel;
 
@@ -25,6 +26,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
     private List<Good> marketList;
 
     private SellGoodsViewModel sellGoodsViewModel;
+    private SpacePort spacePort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
 
         playerCredits = sellGoodsViewModel.getPlayerCredits();
+        spacePort = sellGoodsViewModel.getSpacePort();
 
         backButton = findViewById(R.id.Market_Back_Button);
         backButton.setOnClickListener(v -> {

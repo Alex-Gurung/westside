@@ -12,6 +12,15 @@ public class SolarSystem {
     private Resource resource;
     private SpacePort spacePort;
     private Random random;
+
+    public SpacePort getSpacePort() {
+        return spacePort;
+    }
+
+    public void setSpacePort(SpacePort spacePort) {
+        this.spacePort = spacePort;
+    }
+
     /**
      * public constructor to initialize a SolarSystem object that has a random location, tech level,
      * and political system.

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 
 import java.util.List;
@@ -35,5 +36,9 @@ public class GameInteractor extends Interactor {
 
     public void setPlayerCredits(double v) {
         getRepository().setPlayerCredits(v);
+    }
+
+    public SpacePort getSpacePort() {
+        return getRepository().getSpacePort();
     }
 }

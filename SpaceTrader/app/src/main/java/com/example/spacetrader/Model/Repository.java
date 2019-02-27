@@ -3,6 +3,7 @@ package com.example.spacetrader.Model;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 
 public class Repository {
@@ -32,6 +33,10 @@ public class Repository {
         this.game.setPlayerCredits(v);
     }
     public void setSolarSystem() {
-        this.game.setPlayerSolarSystem();
+        this.game.setRandomPlayerSolarSystem();
+    }
+
+    public SpacePort getSpacePort() {
+        return this.game.getSpacePort();
     }
 }
