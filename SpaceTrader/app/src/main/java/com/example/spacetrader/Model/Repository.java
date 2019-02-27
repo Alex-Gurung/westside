@@ -33,7 +33,7 @@ public class Repository {
         this.game.setPlayerCredits(v);
     }
     public void setSolarSystem() {
-        this.game.setRandomPlayerSolarSystem();
+        this.game.setPlayerSolarSystem();
     }
 
     public SpacePort getSpacePort() {

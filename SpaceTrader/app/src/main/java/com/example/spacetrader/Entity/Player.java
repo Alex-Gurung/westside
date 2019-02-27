@@ -106,6 +106,6 @@ public class Player extends Character implements TraderCapability {
     }
 
     public SpacePort getSpacePort() {
-        return this.solarSystem.getSpacePort();
+        return this.currentSolarSystem.getSpacePort();
     }
 }

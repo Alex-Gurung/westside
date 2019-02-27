@@ -80,4 +80,8 @@ public class Game {
     public void setPlayerCredits(double v) {
         this.player.setCredits(v);
     }
+
+    public SpacePort getSpacePort() {
+        return this.player.getSpacePort();
+    }
 }
