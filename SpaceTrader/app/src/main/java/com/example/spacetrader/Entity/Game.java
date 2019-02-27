@@ -53,10 +53,6 @@ public class Game {
         return universe;
     }
 
-    public void setPlayerSolarSystem() {
-        player.setSolarSystem(universe.getRandomSolarSystem());
-    }
-
     public void setPlayerSolarSystem(SolarSystem solarSystem) {
         player.setSolarSystem(solarSystem);
     }
@@ -82,5 +78,9 @@ public class Game {
 
     public void setPlayerCredits(double v) {
         this.player.setCredits(v);
+    }
+
+    public SpacePort getSpacePort() {
+        return this.player.getSpacePort();
     }
 }
