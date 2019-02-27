@@ -12,7 +12,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/cargo_name"
+            android:id="@+id/market__name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -23,7 +23,7 @@
             android:text="Name" />
 
         <TextView
-            android:id="@+id/cargo_price"
+            android:id="@+id/market_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

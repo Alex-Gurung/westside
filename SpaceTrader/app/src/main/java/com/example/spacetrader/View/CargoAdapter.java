@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHolder>{
-    /** a copy of the list of students in the model */
+    /** a copy of the list of cargo in the model */
     private List<Good> cargo = new ArrayList<>();
 
-    /** a listener for a touch event on the student */
+    /** a listener for a touch event on the cargoItem */
     private OnCargoGoodClickListener listener;
 
     @NonNull
@@ -37,7 +37,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     @Override
     public void onBindViewHolder(@NonNull CargoViewHolder holder, int position) {
 
-        //bind the student data for one student
+        //bind the cargo data for one cargoItem
         Good cargoItem = cargo.get(position);
 
         Log.d("APP", "Binding: " + position + " " + cargo.get(position));
@@ -45,7 +45,6 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         holder.name.setText((cargoItem.getGoodType().name()));
         String price = "" + cargoItem.getPrice();
         holder.price.setText(price);
-
 
     }
 
@@ -61,7 +60,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
 
 
     /**
-     * This is a holder for the widgets associated with a single entry in the list of students
+     * This is a holder for the widgets associated with a single entry in the list of cargo
      */
     class CargoViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
@@ -73,7 +72,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
             super(itemView);
             name = itemView.findViewById(R.id.cargo_name);
             price = itemView.findViewById(R.id.cargo_price);
-            sellButton = itemView.findViewById(R.id.cargo_sellButton);
+            sellButton = itemView.findViewById(R.id.market_sellButton);
 
             sellButton.setOnClickListener(new View.OnClickListener() {
 
