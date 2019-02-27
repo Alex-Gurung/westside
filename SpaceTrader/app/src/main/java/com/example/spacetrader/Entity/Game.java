@@ -65,4 +65,11 @@ public class Game {
         }
     }
 
+    public double getPlayerCredits() {
+        return this.player.getCredits();
+    }
+
+    public void setPlayerCredits(double v) {
+        this.player.setCredits(v);
+    }
 }

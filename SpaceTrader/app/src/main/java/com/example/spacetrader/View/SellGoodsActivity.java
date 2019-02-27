@@ -23,10 +23,10 @@ import java.util.List;
 
 public class SellGoodsActivity extends AppCompatActivity {
     private Button backButton;
-    private double playerCredits = 10000;
     private TextView credits;
     private final CargoAdapter adapter = new CargoAdapter();
     private List<Good> cargo;
+    private double playerCredits;
 
     private SellGoodsViewModel sellGoodsViewModel;
 
@@ -34,6 +34,12 @@ public class SellGoodsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_goods);
+
+        sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
+
+        playerCredits = sellGoodsViewModel.getPlayerCredits();
+        sellGoodsViewModel.setPlayerCredits(1.0);
+
         backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
@@ -41,8 +47,6 @@ public class SellGoodsActivity extends AppCompatActivity {
         });
         credits = findViewById(R.id.cargo_credit_input);
         credits.setText("" + playerCredits);
-
-        sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
 
         //first grab a reference to the widget
         RecyclerView recyclerView = findViewById(R.id.cargo_list);
@@ -55,9 +59,13 @@ public class SellGoodsActivity extends AppCompatActivity {
         cargo = setDummyGoods();
         Good[] playerGoods = sellGoodsViewModel.getCargo(sellGoodsViewModel.getPlayer());
         if (playerGoods != null) {
-            List<Good> goods = Arrays.asList(playerGoods);
-            Log.d("GOODS", goods.toString());
-//            adapter.setCargoList(goods);
+            List<Good> goods = new ArrayList<Good>();
+            for (int i = 0; i < playerGoods.length; i++){
+                if (playerGoods[i] != null) {
+                    goods.add(playerGoods[i]);
+                }
+            }
+            adapter.setCargoList(goods);
         } else {
             adapter.setCargoList(cargo);
         }
