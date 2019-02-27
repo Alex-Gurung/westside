@@ -54,7 +54,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/Cargo_Back"
+        android:id="@+id/Cargo_Back_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
