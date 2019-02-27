@@ -53,7 +53,13 @@ public class Game {
         return universe;
     }
 
-    public void setPlayerSolarSystem() { player.setSolarSystem(universe.getRandomSolarSystem());}
+    public void setPlayerSolarSystem() {
+        player.setSolarSystem(universe.getRandomSolarSystem());
+    }
+
+    public void setPlayerSolarSystem(SolarSystem solarSystem) {
+        player.setSolarSystem(solarSystem);
+    }
 
     public void setUniverse(Universe universe) {
         this.universe = universe;
