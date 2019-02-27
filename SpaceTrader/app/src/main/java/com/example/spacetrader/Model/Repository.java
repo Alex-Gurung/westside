@@ -1,6 +1,8 @@
 package com.example.spacetrader.Model;
 
 import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Entity.Good;
+import com.example.spacetrader.Entity.Player;
 
 public class Repository {
     private Game game;
@@ -16,5 +18,9 @@ public class Repository {
     }
 
     public void setGame(Game game) {this.game = game;}
+
+    public Player getPlayer() {return this.game.getPlayer();}
+
+    public Good[] getCargo() {return getPlayer().getCargo();}
 
 }

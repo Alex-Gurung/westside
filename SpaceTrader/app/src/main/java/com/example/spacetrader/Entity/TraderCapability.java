@@ -7,4 +7,5 @@ public interface TraderCapability {
     boolean canBuy(Good good);
     void buy(Good good);
     void sell(Good good);
+    Good[] getCargo();
 }

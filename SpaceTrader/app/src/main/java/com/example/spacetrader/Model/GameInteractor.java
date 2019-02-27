@@ -3,6 +3,9 @@ package com.example.spacetrader.Model;
 import android.util.Log;
 
 import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Entity.Good;
+import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.TraderCapability;
 
 import java.util.List;
 
@@ -18,4 +21,8 @@ public class GameInteractor extends Interactor {
     public void setGame(Game game) {
         getRepository().setGame(game);
     }
+
+    public Player getPlayer() {return getRepository().getPlayer();}
+
+    public Good[] getCargo(TraderCapability trader) {return trader.getCargo();}
 }

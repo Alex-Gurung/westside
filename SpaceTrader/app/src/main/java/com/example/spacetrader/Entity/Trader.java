@@ -51,4 +51,9 @@ public class Trader extends Character implements TraderCapability {
         credits += g.getPrice();
         ship.removeCargo(g);
     }
+
+    @Override
+    public Good[] getCargo() {
+        return ship.getCargo();
+    }
 }
