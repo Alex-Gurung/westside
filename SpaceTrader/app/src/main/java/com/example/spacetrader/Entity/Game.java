@@ -59,6 +59,9 @@ public class Game {
         this.universe = universe;
     }
 
+    public SolarSystem getRandomSolarSystem(){
+        return this.universe.getRandomSolarSystem();
+    }
     public boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
         if(!buyer.canBuy(good) || !seller.canSell(good)) {
             return false;
