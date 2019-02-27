@@ -72,7 +72,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             super(itemView);
             name = itemView.findViewById(R.id.market__name);
             price = itemView.findViewById(R.id.market_price);
-            sellButton = itemView.findViewById(R.id.market_sellButton);
+            sellButton = itemView.findViewById(R.id.market_buyButton);
 
             sellButton.setOnClickListener(new View.OnClickListener() {
 

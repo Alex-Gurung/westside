@@ -103,7 +103,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
             super(itemView);
             name = itemView.findViewById(R.id.cargo_name);
             price = itemView.findViewById(R.id.cargo_price);
-            sellButton = itemView.findViewById(R.id.market_sellButton);
+            sellButton = itemView.findViewById(R.id.market_buyButton);
 
             sellButton.setOnClickListener(new View.OnClickListener() {
 

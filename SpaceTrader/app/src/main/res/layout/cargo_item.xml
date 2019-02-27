@@ -29,11 +29,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:layout_toStartOf="@+id/market_sellButton"
+            android:layout_toStartOf="@+id/market_buyButton"
             android:text="Price" />
 
         <Button
-            android:id="@+id/market_sellButton"
+            android:id="@+id/market_buyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
