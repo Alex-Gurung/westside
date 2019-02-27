@@ -38,7 +38,6 @@ public class SellGoodsActivity extends AppCompatActivity {
         sellGoodsViewModel = ViewModelProviders.of(this).get(SellGoodsViewModel.class);
 
         playerCredits = sellGoodsViewModel.getPlayerCredits();
-        sellGoodsViewModel.setPlayerCredits(1.0);
 
         backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> {
