@@ -39,7 +39,7 @@ public class SolarSystem {
         techLevel = t;
         resource = Resource.values()[random.nextInt(Resource.values().length)];
         this.planet = new Planet(name);
-        this.spacePort = new SpacePort(techLevel);
+        this.spacePort = new SpacePort(techLevel, resource);
     }
 
     /**
@@ -132,5 +132,9 @@ public class SolarSystem {
 
     public void setPlanet(Planet planet) {
         this.planet = planet;
+    }
+
+    public Resource getResource() {
+        return resource;
     }
 }

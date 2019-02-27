@@ -10,9 +10,11 @@ public class SpacePort implements TraderCapability {
     private TechLevel techlevel;
     private List<Good> goods;
     private Random random = new Random();
+    private Resource resource;
 
-    public SpacePort(TechLevel techlevel) {
+    public SpacePort(TechLevel techlevel, Resource resource) {
         this.techlevel = techlevel;
+        this.resource = resource;
         goods = new ArrayList<>();
         int numGoods = 25 + random.nextInt(25);
         populateGoods(numGoods);
@@ -37,20 +39,8 @@ public class SpacePort implements TraderCapability {
         return good.getPrice();
     }
 
-    @Override
     public void setPrice(Good good) {
-        GoodType gt = good.getGoodType();
-        int min = gt.getMinPrice();
-        int max = gt.getMaxPrice();
-        boolean isNaturalGood = gt.getIsNaturalResource();
-        int tlordinal = techlevel.ordinal();
-
-        if(!isNaturalGood) {
-            tlordinal = 8 - tlordinal;
-        }
-
-        double add = ((max - min) * (double)tlordinal)/8;
-        good.setPrice(min + add);
+        setPrice(good, techlevel, resource);
     }
 
     @Override
