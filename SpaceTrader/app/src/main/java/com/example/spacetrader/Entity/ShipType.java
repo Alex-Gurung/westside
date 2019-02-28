@@ -1,5 +1,9 @@
 package com.example.spacetrader.Entity;
 
+/**
+ * an enum class that contains each ship type, as well as the attributes and methods for each ship
+ * type
+ */
 public enum ShipType {
     //name, max distance, cargo holds, weapons, shields, gadgets, mercs, hull strength
     FLEA("Flea", 20, 4, 0, 0, 0, 0, 1),
@@ -118,7 +122,7 @@ public enum ShipType {
     }
 
     /**
-     * a method that returns the hulll strength of the ship
+     * a method that returns the hull strength of the ship
      *
      * @return an int the represents the hull strength of the ship
      */
@@ -129,7 +133,7 @@ public enum ShipType {
     /**
      * a method that returns the total price of the ship based on its attributes
      *
-     * @return an int value that represnts the total price of the ship based on its attributes
+     * @return an int value that represents the total price of the ship based on its attributes
      */
     public int getPrice() {
         return price;
@@ -151,8 +155,4 @@ public enum ShipType {
                 + "Hull Strength: " + hullStrength + "\n"
                 + "Price: " + price;
     }
-
-
-
-
 }
