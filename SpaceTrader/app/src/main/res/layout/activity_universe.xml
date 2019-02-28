@@ -38,11 +38,10 @@
         android:id="@+id/game_tradeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/graphView"
+        android:layout_above="@+id/graphView"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="9dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="6dp"
         android:text="Trade" />
 
     <TextView

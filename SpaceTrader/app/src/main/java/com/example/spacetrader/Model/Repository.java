@@ -38,6 +38,9 @@ public class Repository {
     public void setSolarSystem() {
         this.game.setPlayerSolarSystem();
     }
+    public SolarSystem getPlayerSolarSystem() {
+        return this.game.getPlayerSolarSystem();
+    }
 
     public SpacePort getSpacePort() {
         return this.game.getSpacePort();
