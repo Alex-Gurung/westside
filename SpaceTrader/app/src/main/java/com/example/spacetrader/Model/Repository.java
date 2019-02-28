@@ -3,8 +3,11 @@ package com.example.spacetrader.Model;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
+
+import java.util.HashSet;
 
 public class Repository {
     private Game game;
@@ -35,6 +38,9 @@ public class Repository {
     public void setSolarSystem() {
         this.game.setPlayerSolarSystem();
     }
+    public SolarSystem getPlayerSolarSystem() {
+        return this.game.getPlayerSolarSystem();
+    }
 
     public SpacePort getSpacePort() {
         return this.game.getSpacePort();
@@ -42,5 +48,8 @@ public class Repository {
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return this.game.facilitateTrade(toBuy, buyer, seller);
+    }
+    public HashSet<SolarSystem> getSolarSystems() {
+        return this.game.getSolarSystems();
     }
 }
