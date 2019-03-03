@@ -2,6 +2,11 @@ package com.example.spacetrader.Entity;
 
 import java.util.Random;
 
+/**
+ * a class that represents a given solar system in the universe. The class includes the name,
+ * location, political system, tech level, resources of the current Solar System, as well as the
+ * Planets it has, and the Spaceport it has
+ */
 public class SolarSystem {
 
     private String name;
@@ -13,12 +18,23 @@ public class SolarSystem {
     private SpacePort spacePort;
     private Random random;
 
-    public SpacePort getSpacePort() {
-        return spacePort;
+    /**
+     * constructor that takes in a randomized location
+     *
+     * @param l of type Location that is the SolarSystems random location.
+     */
+    public SolarSystem(Location l) {
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), "");
     }
 
-    public void setSpacePort(SpacePort spacePort) {
-        this.spacePort = spacePort;
+    /**
+     * constructor that takes in a randomized location, and the name of the Solar System
+     *
+     * @param l f type Location that is the SolarSystems random location.
+     * @param name of type String that represents the name of the current Solar System
+     */
+    public SolarSystem(Location l, String name) {
+        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
     }
 
     /**
@@ -43,15 +59,124 @@ public class SolarSystem {
     }
 
     /**
-     * constructor that takes in a randomized location
+     * getter method that returns the space port of the current Solar System
      *
-     * @param l of type Location that is the SolarSystems random location.
+     * @return a SpacePort representation of the curent Solar System's space port
      */
-
-    public SolarSystem(Location l, String name) {
-        this(l, PoliticalSystem.getRandomPoliticalSystem(), TechLevel.getRandomTechLevel(), name);
+    public SpacePort getSpacePort() {
+        return spacePort;
     }
 
+    /**
+     * setter method that sets the curretn Solar System's space port
+     *
+     * @param spacePort of type SPacePort to become the current Solar System's space port
+     */
+    public void setSpacePort(SpacePort spacePort) {
+        this.spacePort = spacePort;
+    }
+
+    /**
+     * getter method to rerutn the name of the current Solar System
+     *
+     * @return a String representation of the name of the current Solar System
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * setter method to set the name of the Current Solar System
+     *
+     * @param name of type String that will become the current Solar System's name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * getter that returns the current Solar System's location
+     *
+     * @return the current Location of teh current Solar System
+     */
+    public Location getLocation() {
+        return location;
+    }
+
+    /**
+     * a setter method to set the current Solar System's name
+     *
+     * @param location of type Location that is to become the current Solar System's Location
+     */
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    /**
+     * a getter method that returns the current Solar System's political system
+     *
+     * @return the current Solar System's poitical system
+     */
+    public PoliticalSystem getPoliticalSystem() {
+        return politicalSystem;
+    }
+
+    /**
+     * a setter method to set the current Solar System's political system (mainly used in the
+     * instantiation of the Universe)
+     *
+     * @param politicalSystem of type PoliticalSystem that that is to become the current Solar
+     *                        System's political system
+     */
+    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
+        this.politicalSystem = politicalSystem;
+    }
+
+    /**
+     * getter method to return the current Solar System's tech level
+     *
+     * @return the current Solar System's tech level
+     */
+    public TechLevel getTechLevel() {
+        return techLevel;
+    }
+
+    /**
+     * setter method to set the current Solar Systems tech level (mainly used in the instantiation
+     * of the Universe)
+     *
+     * @param techLevel of type TechLevel that is to become the current Solar System's tech level
+     */
+    public void setTechLevel(TechLevel techLevel) {
+        this.techLevel = techLevel;
+    }
+
+    /**
+     * getter method that returns the planet(s) in the current Solar System
+     *
+     * @return (a) PLanet(s) in the current Solar System
+     */
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    /**
+     * setter method that sets the planet(s) in the current Solar System
+     *
+     * @param planet of type Planet to be put in the current Solar system
+     */
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
+
+    /**
+     * getter method to return the Resource type of the current Solar System
+     *
+     * @return the Resource that exists in the current Solar System
+     */
+    public Resource getResource() {
+        return resource;
+    }
 
     /**
      * hashCode methods that gets the hashCode of the location instance field
@@ -80,7 +205,8 @@ public class SolarSystem {
 
     /**
      * toString method that overrides Object's toString method that returns a String representation
-     * of the current Solar System's location
+     * of the current Solar System's location, name, tech level, political system, and resources
+     *  available
      *
      * @return a String representation of the current Solar System's location
      */
@@ -89,49 +215,5 @@ public class SolarSystem {
         return "\nName: " + name + "\nLocation: " + location.toString() + "\nTech Level: " +
                 techLevel + "\nPolitical System: " + politicalSystem + "\n" + "Resource: " + resource + "\n"
                 + "------------------------------------------------";
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public PoliticalSystem getPoliticalSystem() {
-        return politicalSystem;
-    }
-
-    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
-        this.politicalSystem = politicalSystem;
-    }
-
-    public TechLevel getTechLevel() {
-        return techLevel;
-    }
-
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
-
-    public Planet getPlanet() {
-        return planet;
-    }
-
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
-    }
-
-    public Resource getResource() {
-        return resource;
     }
 }

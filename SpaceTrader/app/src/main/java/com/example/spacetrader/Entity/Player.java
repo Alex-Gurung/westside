@@ -1,5 +1,9 @@
 package com.example.spacetrader.Entity;
 
+/**
+ * a class that represents the current player playing the game and is inclusive of all attributes of
+ * the player, including the ability to trade
+ */
 public class Player extends Character implements TraderCapability {
 
     private int pilotSkillPoints;
@@ -33,6 +37,122 @@ public class Player extends Character implements TraderCapability {
         this.traderSkillPoints = traderSkillPoints;
     }
 
+    /**
+     * Overridden getter method (from its Trader Capability interface) that gets the price of the
+     * good
+     *
+     * @param good of type Good that will return its price
+     * @return a double representation of the price of the good
+     */
+    @Override
+    public double getPrice(Good good) {
+        return good.getPrice();
+    }
+
+    /**
+     * setter method to set the price of the good based on the current Solar System's tech level
+     * amnd resource availability
+     *
+     * @param good of type good whose price will be determined based on the current solar system's
+     *             attributtes
+     */
+    public void setPrice(Good good) {
+        setPrice(good, this.currentSolarSystem.getTechLevel(), this.currentSolarSystem.getResource());
+    }
+
+    /**
+     * Overridden boolean method (from its Trader Capability interface) that returns a boolean value
+     * of whether or not the player can sell their goods
+     *
+     * @param good of type Good that could or could not be sold depending on if the player has that
+     *             good
+     * @return a boolean representation of whether or not the player can sell the current good
+     */
+    @Override
+    public boolean canSell(Good good) {
+        return ship.hasGood(good);
+    }
+
+    /**
+     * Overridden boolean method (from its Trader Capability interface) that returns a boolean value
+     * of whether or not the player can buy any goods
+     * @param good of type Good that could or could not be bought depending on if the player has
+     *             enough credits
+     * @return a boolean representation of whether or not the player can buy the current good
+     */
+    @Override
+    public boolean canBuy(Good good) {
+        return good.getPrice() <= credits && ship.hasCargoSpace();
+    }
+
+    /**
+     * Overridden method (from its Trader Capability interface) that allows the player to buy goods
+     *
+     * @param g of type Good that is the good to be bought
+     */
+    @Override
+    public void buy(Good g) {
+        credits -= g.getPrice();
+        ship.addCargo(g);
+    }
+
+    /**
+     * Overridden method (from its Trader Capability interface) that allows the player to sell goods
+     *
+     * @param g of type Good that is the good to be sold
+     */
+    @Override
+    public void sell(Good g) {
+        credits += g.getPrice();
+        ship.removeCargo(g);
+    }
+
+    /**
+     * Overridden method (from its Trader Capability interface) that gets the array representation
+     * of the player's cargo hold of Goods
+     *
+     * @return an array of Goods that the ship of the player contains
+     */
+    @Override
+    public Good[] getCargo() {
+        return ship.getCargo();
+    }
+
+    /**
+     * getter method to return the current Solar System of the player
+     *
+     * @return the current Solar System of the player
+     */
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    /**
+     * setter method for the player's current solar system. This is mainly used for traveling b/n
+     * solar systems
+     *
+     * @param currentSolarSystem the Solar System object to become the player's new current Solar
+     *                           System
+     */
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
+    }
+
+    /**
+     * getter method for the current Solar System's space port
+     *
+     * @return the current Solar System's space port
+     */
+    public SpacePort getSpacePort() {
+        return this.currentSolarSystem.getSpacePort();
+    }
+
+    /**
+     * Overridden toString method that returns the name, ship, skill point distribution, and credits
+     * of the current player
+     *
+     * @return a String represntation of all the above attributes of the current player
+     */
     @Override
     public String toString() {
         String s = "";
@@ -44,53 +164,5 @@ public class Player extends Character implements TraderCapability {
         s += "I have " + pilotSkillPoints + " pilot skill points" + "\n";
         s += "I have " + getCredits() + " credits" + "\n";
         return s;
-    }
-
-    @Override
-    public double getPrice(Good good) {
-        return good.getPrice();
-    }
-
-    public void setPrice(Good good) {
-        setPrice(good, this.currentSolarSystem.getTechLevel(), this.currentSolarSystem.getResource());
-    }
-
-    @Override
-    public boolean canSell(Good good) {
-        return ship.hasGood(good);
-    }
-
-    @Override
-    public boolean canBuy(Good good) {
-        return good.getPrice() <= credits && ship.hasCargoSpace();
-    }
-
-    @Override
-    public void buy(Good g) {
-        credits -= g.getPrice();
-        ship.addCargo(g);
-    }
-
-    @Override
-    public void sell(Good g) {
-        credits += g.getPrice();
-        ship.removeCargo(g);
-    }
-
-    @Override
-    public Good[] getCargo() {
-        return ship.getCargo();
-    }
-
-    public SolarSystem getCurrentSolarSystem() {
-        return currentSolarSystem;
-    }
-
-    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
-        this.currentSolarSystem = currentSolarSystem;
-    }
-
-    public SpacePort getSpacePort() {
-        return this.currentSolarSystem.getSpacePort();
     }
 }
