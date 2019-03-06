@@ -15,6 +15,5 @@ public enum Resource {
     WIERDMUSHROOMS,
     LOSTSOFHERBS,
     ARTISTIC,
-    WARLIKE;
-
+    WARLIKE
 }

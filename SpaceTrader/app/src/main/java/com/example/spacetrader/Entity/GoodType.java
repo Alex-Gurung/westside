@@ -2,6 +2,9 @@ package com.example.spacetrader.Entity;
 
 import com.example.spacetrader.R;
 
+/**
+ * an enum class that contains the attributes and methods necessary to make up each type of GoodType
+ */
 public enum GoodType {
     WATER(30, 54, true, false, 0, 0, Resource.LOTSOFWATER, Resource.DESERT),
     FUR(250, 320, true, false, 0, 0, Resource.RICHFAUNA, Resource.LIFELESS),
@@ -14,22 +17,32 @@ public enum GoodType {
     NARCOTIC(2620, 3500, false, true, 5, 0, Resource.WIERDMUSHROOMS, Resource.NEVER),
     ROBOT(3950, 4400, false, false, 6, 4, Resource.NEVER, Resource.NEVER);
 
-    private boolean isNaturalResource;
-    private boolean isIllegal;
     private int minPrice;
     private int maxPrice;
+    private boolean isNaturalResource;
+    private boolean isIllegal;
     private int minTechLevelProduce;
     private int minTechLevelUse;
     private Resource lowCostResource;
     private Resource highCostResource;
 
     /**
-     * constructor that instantiates a GoodType for the player/NPCS to gather, trade, or steal
+     * constructor that instantiates a GoodType with all its necessary attributes
      *
-     * @param minPrice the minimum price of said good at any given moment in the universe
-     * @param maxPrice the maximum price of said good at any given moment in the universe
-     * @param isNaturalResource boolean value to determine if said resource is a natural resource
-     * @param isIllegal boolean value to determine if said resource is an illegal resource
+     * @param minPrice of type int that represents the minimum price of said good at any given
+     *                 moment in the universe
+     * @param maxPrice of type int that represents the maximum price of said good at any given
+     *                 moment in the universe
+     * @param isNaturalResource of type boolean that represents whether said resource is a natural
+     *                          resource
+     * @param isIllegal of type boolean that represents whether said resource is an illegal
+     *                  resource
+     * @param lowCostResource of type Resource that represents the cost of said resource based on
+     *                        positively affecting environmental conditions of the solar
+     *                        systems/planet
+     * @param highCostResource of type Resource that represents the cost of said resource based on
+     *                         negatively affecting environmental conditions of the solar
+     *                         systems/planet
      */
     GoodType(int minPrice, int maxPrice, boolean isNaturalResource,
              boolean isIllegal, int minTechLevelProduce, int minTechLevelUse,
@@ -44,31 +57,75 @@ public enum GoodType {
         this.highCostResource = highCostResource;
     }
 
+    /**
+     * getter method to return the low cost resource
+     *
+     * @return the low cost resource
+     */
     public Resource getLowCostResource() {
         return lowCostResource;
     }
 
+    /**
+     * getter method to return the high cost resource
+     *
+     * @return the high cost resource
+     */
     public Resource getHighCostResource() {
         return highCostResource;
     }
 
+    /**
+     * getter method for the minimum price of the current good type at any given moment of the game
+     *
+     *
+     * @return an int representation of the minimum price of the current good
+     */
     public int getMinPrice() {
         return minPrice;
     }
+
+    /**
+     * getter method for the maximum price of the current goof type at any given moment of the game
+     *
+     * @return an int representation of the maximum price of the current good
+     */
     public int getMaxPrice() {
         return maxPrice;
     }
+
+    /**
+     * getter method for whether the current good type is a natural resource
+     *
+     * @return a boolean representation of whether the current good type is a natural resource
+     */
     public boolean getIsNaturalResource() {
         return isNaturalResource;
     }
+
+    /**
+     * getter method for whether the current good type is illegal
+     *
+     * @return a boolean representation of whether the current good type is illegal
+     */
     public boolean getIsIllegal() {
         return isIllegal;
     }
 
-    public int getMinTechLevelProduce(){
+    /**
+     * a getter method for the minimum tech level produce of the current good type
+     *
+     * @return an int representation of the current good's minimum tech level produce
+     */
+    public int getMinTechLevelProduce() {
         return minTechLevelProduce;
     }
 
+    /**
+     * a getter method for the minimum tech level use of the current good type
+     *
+     * @return an int representation of the current good's minimum tech level use
+     */
     public int getMinTechLevelUse() {
         return minTechLevelUse;
     }
