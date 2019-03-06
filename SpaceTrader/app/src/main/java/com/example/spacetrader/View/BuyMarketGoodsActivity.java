@@ -25,7 +25,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
     private double playerCredits;
     private TextView credits;
     private final MarketAdapter adapter = new MarketAdapter();
-    //private List<Good> marketList;
+    private List<Good> marketList;
 
     private TradingViewModel tradingViewModel;
     private SpacePort spacePort;
@@ -57,9 +57,9 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         //Setup the adapter for the view
         recyclerView.setAdapter(adapter);
 
-        //marketList = setDummyGoods();
+        marketList = setDummyGoods();
         Good[] spacePortGoods = tradingViewModel.getCargo(spacePort);
-        //if (spacePortGoods != null) {
+        if (spacePortGoods != null) {
             List<Good> goods = new ArrayList<Good>();
             for (int i = 0; i < spacePortGoods.length; i++){
                 if (spacePortGoods[i] != null) {
@@ -68,10 +68,10 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             }
             Log.d("SPACEPORTGOODS", goods.toString());
             adapter.setMarketList(goods);
-             //Arrays.asList(spacePortGoods);
-        //} else {
-        //    adapter.setMarketList(marketList);
-        //}
+            marketList = Arrays.asList(spacePortGoods);
+        } else {
+            adapter.setMarketList(marketList);
+        }
 
         adapter.setOnMarketClickListener(new MarketAdapter.OnMarketItemClickListener() {
             @Override
@@ -81,16 +81,16 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         });
 
     }
-    /*public List<Good> setDummyGoods() {
+    public List<Good> setDummyGoods() {
         List<Good> list = new ArrayList<>();
         list.add(new Good(GoodType.MACHINE));
         list.add(new Good(GoodType.FUR));
         list.add(new Good(GoodType.ORE));
         return list;
-    }*/
+    }
     public void buyItem(int position) {
         //update credits - make sure the goods have a price!!!
-        Good toBuy = adapter.getMarketList().get(position);
+        Good toBuy = marketList.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
         if (!isSold) {
             Toast.makeText(this, "Could not buy item", Toast.LENGTH_SHORT).show();
@@ -98,13 +98,12 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-            List<Good> temp = adapter.getMarketList();
-            temp.remove(position);
-            adapter.setMarketList(temp);
+
             //facilitateTrade already removes the item, the following line is not necessary
-            //marketList.remove(position);
-            //adapter.notifyItemRemoved(position);
-            //adapter.notifyItemChanged(position, adapter.getMarketList().size());
+            //marketList.remove(toBuy);
+            // Moved logic to adapter
+            adapter.remove(position);
+//            adapter.notifyItemRemoved(position);
         }
     }
 }

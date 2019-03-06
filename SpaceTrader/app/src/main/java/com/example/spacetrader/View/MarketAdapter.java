@@ -64,6 +64,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return marketList;
     }
 
+    public void remove(int position) {
+        this.marketList.remove(position);
+        notifyDataSetChanged();
+    }
+
 
     /**
      * This is a holder for the widgets associated with a single entry in the list of marketList
