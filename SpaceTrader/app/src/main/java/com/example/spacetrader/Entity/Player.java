@@ -37,6 +37,19 @@ public class Player extends Character implements TraderCapability {
         this.traderSkillPoints = traderSkillPoints;
     }
 
+    public void travel(SolarSystem solarSystem) {
+        double dist = this.currentSolarSystem.getDistance(solarSystem);
+        this.ship.travel(dist);
+        this.currentSolarSystem = solarSystem;
+    }
+
+    public boolean canTravel(SolarSystem solarSystem) {
+        return this.currentSolarSystem.getDistance(solarSystem) <= this.getShipDistance();
+    }
+
+    public double getShipDistance() {
+        return ship.distanceLeft();
+    }
     /**
      * Overridden getter method (from its Trader Capability interface) that gets the price of the
      * good
