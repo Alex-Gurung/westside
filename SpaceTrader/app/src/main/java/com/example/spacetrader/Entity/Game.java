@@ -151,6 +151,7 @@ public class Game {
      * @return a boolean representation of if the transaction between the buyer and seller is vaild
      */
     public boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
+        Log.d("FACILITATING: ", "GOOD - "  + good.getGoodType() + " - " + good.getPrice());
         if(!buyer.canBuy(good) || !seller.canSell(good)) {
             return false;
         } else {
