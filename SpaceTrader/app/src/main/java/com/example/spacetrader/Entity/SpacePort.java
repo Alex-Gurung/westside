@@ -107,7 +107,9 @@ public class SpacePort implements TraderCapability {
      */
     @Override
     public void buy(Good good) {
-        goods.add(good);
+        Good add = new Good(good.getGoodType());
+        setPrice(add);
+        goods.add(add);
     }
 
     /**
@@ -139,6 +141,7 @@ public class SpacePort implements TraderCapability {
         Good[] ourCargo = new Good[goods.size()];
         for (int i = 0; i < goods.size(); i++) {
             ourCargo[i] = goods.get(i);
+            setPrice(ourCargo[i]);
         }
         return ourCargo;
     }
