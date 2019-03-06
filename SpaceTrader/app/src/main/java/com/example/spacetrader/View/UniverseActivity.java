@@ -89,6 +89,7 @@ public class UniverseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
                 startActivity(intent);
             }
         });
