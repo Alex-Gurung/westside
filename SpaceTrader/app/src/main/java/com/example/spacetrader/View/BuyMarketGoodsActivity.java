@@ -17,6 +17,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BuyMarketGoodsActivity extends AppCompatActivity {
@@ -44,7 +45,6 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             finish();
         });
 
-
         credits = findViewById(R.id.market_credit_input);
         credits.setText("" + playerCredits);
 
@@ -68,6 +68,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             }
             Log.d("SPACEPORTGOODS", goods.toString());
             adapter.setMarketList(goods);
+            marketList = Arrays.asList(spacePortGoods);
         } else {
             adapter.setMarketList(marketList);
         }
@@ -98,8 +99,8 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-
-            marketList.remove(marketList.get(position));
+            //facilitateTrade already removes the item, the following line is not necessary
+            //marketList.remove(toBuy);
 
             adapter.notifyItemRemoved(position);
         }
