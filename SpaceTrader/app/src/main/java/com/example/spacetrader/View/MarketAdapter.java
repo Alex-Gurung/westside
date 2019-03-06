@@ -58,6 +58,10 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         notifyDataSetChanged();
     }
 
+    public List<Good> getMarketList() {
+        return marketList;
+    }
+
 
     /**
      * This is a holder for the widgets associated with a single entry in the list of marketList

@@ -51,7 +51,7 @@ public class SellGoodsActivity extends AppCompatActivity {
         //Setup the adapter for the view
         recyclerView.setAdapter(adapter);
 
-        cargo = setDummyGoods();
+        //cargo = setDummyGoods();
         Good[] playerGoods = tradingViewModel.getCargo(tradingViewModel.getPlayer());
         if (playerGoods != null) {
             cargo = new ArrayList<Good>();
@@ -88,9 +88,7 @@ public class SellGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-
             cargo.remove(cargo.get(position));
-
             adapter.notifyItemRemoved(position);
         }
     }

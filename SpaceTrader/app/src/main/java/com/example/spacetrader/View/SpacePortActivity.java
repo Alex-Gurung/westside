@@ -7,14 +7,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.TradingViewModel;
 
 public class SpacePortActivity extends AppCompatActivity {
 
     private Button backButton;
     private Button sellGoodsButton;
     private Button buyGoodsButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
