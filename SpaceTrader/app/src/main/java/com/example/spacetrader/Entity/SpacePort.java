@@ -107,9 +107,7 @@ public class SpacePort implements TraderCapability {
      */
     @Override
     public void buy(Good good) {
-        Good add = new Good(good.getGoodType());
-        setPrice(add);
-        goods.add(add);
+        goods.add(good);
     }
 
     /**
