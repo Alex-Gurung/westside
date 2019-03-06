@@ -12,8 +12,7 @@ public class Ship {
 
     private ShipType shiptype;
 
-    private int fuel;
-    private double maxDistance;
+    private double fuel;
     private Good[] cargo;
     private int numGoods;
     private Gadget[] gadgets;
@@ -29,7 +28,6 @@ public class Ship {
      */
     public Ship (ShipType shiptype) {
         this.shiptype = shiptype;
-        maxDistance = (double) (shiptype.getMaxDistance());
         gadgets = new Gadget[shiptype.getGadgetSlots()];
         weapons = new Weapon[shiptype.getWeaponSlots()];
         shields = new Shield[shiptype.getShieldSlots()];
@@ -37,9 +35,17 @@ public class Ship {
         cargo = new Good[shiptype.getCargoHolds()];
         numGoods = 0;
         hasEscapePod = false;
-        fuel = 100;
+        fuel = 1.0;
     }
 
+    public double distanceLeft() {
+        return fuel * (double)shiptype.getMaxDistance();
+    }
+
+    public void travel(double distance) {
+        double fuelUsed = distance/(double)shiptype.getMaxDistance();
+        fuel -= fuelUsed;
+    }
     /**
      * Overridden toString method that returns the ShipType's toString method
      *
@@ -56,9 +62,8 @@ public class Ship {
      * @param fuelAdded int value that represents the fuel to be added to the ship's current fuel
      *                  level
      */
-    public void refuel(int fuelAdded) {
-        fuel = Math.min(fuel +  fuelAdded, 100);
-        maxDistance = ((double)(fuel) / 100) * maxDistance;
+    public void refuel(double fuelAdded) {
+        fuel = Math.min(fuel +  fuelAdded, 1.0);
     }
 
     /**

@@ -24,6 +24,10 @@ public class Location {
         this.y = y;
     }
 
+    public double getDistance(Location l) {
+        return Math.hypot(x-l.x, y-l.y);
+    }
+
     /**
      * static getter method that returns a random x-y location for the current solar system
      * (upon) creation of the universe for the current game
