@@ -98,12 +98,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-
-            //facilitateTrade already removes the item, the following line is not necessary
-            //marketList.remove(toBuy);
-            // Moved logic to adapter
             adapter.remove(position);
-//            adapter.notifyItemRemoved(position);
         }
     }
 }
