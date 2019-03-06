@@ -92,7 +92,6 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         //update credits - make sure the goods have a price!!!
         Good toBuy = marketList.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
-        Log.d("PLAYER BOUGHT GOOD", ""+isSold);
         if (!isSold) {
             Toast.makeText(this, "Could not buy item", Toast.LENGTH_SHORT).show();
         } else {

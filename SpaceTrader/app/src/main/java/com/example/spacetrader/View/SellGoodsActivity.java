@@ -81,11 +81,9 @@ public class SellGoodsActivity extends AppCompatActivity {
     public void sellItem(int position) {
         //update credits - make sure the goods have a price!!!
         Good toBuy = cargo.get(position);
-
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getSpacePort(), tradingViewModel.getPlayer());
-        Log.d("PLAYER SOLD GOOD", ""+isSold);
         if (!isSold) {
-            Toast.makeText(getApplicationContext(), "Could not buy item", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Could not sell item", Toast.LENGTH_SHORT).show();
         } else {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
