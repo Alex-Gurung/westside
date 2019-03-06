@@ -107,16 +107,17 @@ public class Ship {
      * @param good of type Good to be removed. Returns null if it's not in the cargo hold
      * @return the Good that is to be removed from the cargo hold. Return null if it's not there
      */
-    public Good removeCargo(Good good) {
-        Good removed = null;
+    public void removeCargo(Good good) {
+        //Good removed = null;
         for(int i = 0; i < numGoods; i++) {
             if(cargo[i].equals(good)){
-                removed = cargo[i];
+                //removed = cargo[i];
                 numGoods--;
                 cargo[i] = cargo[numGoods];
                 cargo[numGoods] = null;
+                return;
             }
         }
-        return removed;
+        //return removed;
     }
 }
