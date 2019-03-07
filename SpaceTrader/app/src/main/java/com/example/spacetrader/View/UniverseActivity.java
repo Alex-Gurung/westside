@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -83,6 +84,10 @@ public class UniverseActivity extends AppCompatActivity {
 
         graph.addSeries(series);
         series.setShape(PointsGraphSeries.Shape.POINT);
+    //>>
+        showMyLocation(null);
+    //>>
+
 
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
@@ -95,12 +100,20 @@ public class UniverseActivity extends AppCompatActivity {
                 alertDialogBuilder.setPositiveButton("Travel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                //>>
+                        Location previousLocation = universeViewModel.getCurrentSolarSystem().getLocation();
+                        Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
+                //>>
                         boolean didTravel = universeViewModel.facilitateTravel(thisSS);
                         if (!didTravel) {
                             Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
                         } else {
                             Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
                             currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
+                //>>
+                            Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
+                            showMyLocation(previousLocation);
+                //>>
                         }
                     }
                 });
@@ -124,6 +137,34 @@ public class UniverseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    /* NOTE: if we want to actually use this, we have to adjust the universeViewModel
+            if not, ehh- just delete the stuff I put arrows by and the following method
+     */
+
+
+    /**
+     * Makes the current SolarSystem point on the Universe Graph Red and changes the previous
+     * SolarSystem point back to normal if needed
+     *
+     * @param prevLocation the previousLocation to change color from red to blue if not null
+     */
+    private void showMyLocation(Location prevLocation){
+        if (prevLocation != null) {
+            DataPoint[] prevDP = new DataPoint[1];
+            prevDP[0]= new DataPoint(prevLocation.getX(),prevLocation.getY());
+            PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
+            graph.addSeries(prevLocationS);
+            prevLocationS.setColor(Color.rgb(1,114,203));
+        }
+        DataPoint[] currentDP = new DataPoint[1];
+        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
+                                    universeViewModel.getCurrentSolarSystem().getLocation().getY());
+        PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<DataPoint>(currentDP);
+        graph.addSeries(myLocation);
+        myLocation.setColor(Color.RED);
 
     }
 
