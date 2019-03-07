@@ -107,7 +107,7 @@ public class UniverseActivity extends AppCompatActivity {
                 alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        dialog.dismiss();
                     }
                 });
                 AlertDialog alertDialog = alertDialogBuilder.create();
