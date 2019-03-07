@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
@@ -23,5 +24,8 @@ public class UniverseViewModel extends AndroidViewModel {
     }
     public HashSet<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
+    }
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        return interactor.facilitateTravel(solarSystem);
     }
 }

@@ -1,8 +1,10 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,6 +36,7 @@ public class UniverseActivity extends AppCompatActivity {
     private GraphView graph;
     private Button tradeButton;
     private TextView currentSolarSystem;
+    private HashMap<DataPoint, SolarSystem> dpToSS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +52,13 @@ public class UniverseActivity extends AppCompatActivity {
         graph = (GraphView) findViewById(R.id.graphView);
 
         HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
+        dpToSS = new HashMap<>();
         List<DataPoint> dps = new ArrayList<>();
         for (SolarSystem system : solarSystems) {
             Location loc = system.getLocation();
-            dps.add(new DataPoint(loc.getX(), loc.getY()));
+            DataPoint cur_dp = new DataPoint(loc.getX(), loc.getY());
+            dps.add(cur_dp);
+            dpToSS.put(cur_dp, system);
         }
         DataPoint[] dataPoints = new DataPoint[dps.size()];
         Collections.sort(dps, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
@@ -80,7 +87,31 @@ public class UniverseActivity extends AppCompatActivity {
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
+                SolarSystem thisSS = dpToSS.get(dataPoint);
                 Toast.makeText(UniverseActivity.this, "Solar System: "+dataPoint, Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UniverseActivity.this);
+                alertDialogBuilder.setTitle("Travel to Solar System?");
+                alertDialogBuilder.setMessage(thisSS.toString());
+                alertDialogBuilder.setPositiveButton("Travel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean didTravel = universeViewModel.facilitateTravel(thisSS);
+                        if (!didTravel) {
+                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
+                        } else {
+                            Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
+                            currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
+                        }
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 

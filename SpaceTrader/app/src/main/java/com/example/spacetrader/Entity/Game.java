@@ -161,7 +161,7 @@ public class Game {
         }
     }
 
-    public boolean facilitateTravel(Player player, SolarSystem solarSystem) {
+    public boolean facilitateTravel(SolarSystem solarSystem) {
         if(player.canTravel(solarSystem)) {
             player.travel(solarSystem);
             return true;
