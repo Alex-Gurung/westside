@@ -19,7 +19,7 @@ public class SpacePortActivity extends AppCompatActivity {
     private TextView solarSystemText;
     private TradingViewModel tradingViewModel;
 
-
+    private static final int BUY_OR_SELL = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +45,18 @@ public class SpacePortActivity extends AppCompatActivity {
         });
         sellGoodsButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SellGoodsActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, BUY_OR_SELL);
         });
         buyGoodsButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), BuyMarketGoodsActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, BUY_OR_SELL);
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == BUY_OR_SELL) {
+            credits.setText(""+tradingViewModel.getPlayerCredits());
+        }
     }
 }
