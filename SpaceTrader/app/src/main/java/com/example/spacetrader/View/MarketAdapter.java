@@ -53,6 +53,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return marketList.size();
     }
 
+
     public void setMarketList(List<Good> list) {
         this.marketList = list;
         notifyDataSetChanged();
@@ -60,6 +61,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
 
     public List<Good> getMarketList() {
         return marketList;
+    }
+
+    public void remove(int position) {
+        this.marketList.remove(position);
+        notifyDataSetChanged();
     }
 
 

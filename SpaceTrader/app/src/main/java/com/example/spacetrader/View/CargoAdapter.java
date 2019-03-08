@@ -74,6 +74,11 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         return cargo.size();
     }
 
+    public void remove(int position) {
+        this.cargo.remove(position);
+        notifyDataSetChanged();
+    }
+
     /**
      * set's the cargo of the player
      *

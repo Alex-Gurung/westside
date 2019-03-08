@@ -49,7 +49,16 @@ public class Repository {
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return this.game.facilitateTrade(toBuy, buyer, seller);
     }
+
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        return this.game.facilitateTravel(solarSystem);
+    }
+
     public HashSet<SolarSystem> getSolarSystems() {
         return this.game.getSolarSystems();
+    }
+
+    public double getFuel() {
+        return this.game.getFuel();
     }
 }

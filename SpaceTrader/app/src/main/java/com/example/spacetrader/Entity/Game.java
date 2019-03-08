@@ -161,6 +161,15 @@ public class Game {
         }
     }
 
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        if(player.canTravel(solarSystem)) {
+            player.travel(solarSystem);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * a getter method that returns the credits the payer currently has
      *
@@ -195,5 +204,9 @@ public class Game {
      */
     public HashSet<SolarSystem> getSolarSystems() {
         return universe.getSolarSystems();
+    }
+
+    public double getFuel() {
+        return player.getFuel();
     }
 }

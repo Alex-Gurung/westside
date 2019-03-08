@@ -27,7 +27,7 @@ public class SpacePort implements TraderCapability {
         this.techlevel = techlevel;
         this.resource = resource;
         goods = new ArrayList<>();
-        int numGoods = 25 + random.nextInt(25);
+        int numGoods = 100 + random.nextInt(100);
         populateGoods(numGoods);
     }
 

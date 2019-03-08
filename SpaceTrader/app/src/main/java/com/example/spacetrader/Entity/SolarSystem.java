@@ -67,6 +67,10 @@ public class SolarSystem {
         return spacePort;
     }
 
+
+    public double getDistance(SolarSystem solarSystem) {
+        return this.location.getDistance(solarSystem.getLocation());
+    }
     /**
      * setter method that sets the curretn Solar System's space port
      *

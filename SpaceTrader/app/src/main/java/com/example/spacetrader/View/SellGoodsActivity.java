@@ -88,8 +88,7 @@ public class SellGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-            cargo.remove(cargo.get(position));
-            adapter.notifyItemRemoved(position);
+            adapter.remove(position);
         }
     }
 }

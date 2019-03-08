@@ -51,4 +51,12 @@ public class GameInteractor extends Interactor {
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return getRepository().facilitateTrade(toBuy, buyer, seller);
     }
+
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        return getRepository().facilitateTravel(solarSystem);
+    }
+
+    public double getFuel() {
+        return getRepository().getFuel();
+    }
 }
