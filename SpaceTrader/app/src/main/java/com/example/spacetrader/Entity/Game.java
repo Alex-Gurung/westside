@@ -205,4 +205,8 @@ public class Game {
     public HashSet<SolarSystem> getSolarSystems() {
         return universe.getSolarSystems();
     }
+
+    public double getFuel() {
+        return player.getFuel();
+    }
 }

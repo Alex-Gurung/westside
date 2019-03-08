@@ -125,4 +125,8 @@ public class Ship {
         }
         //return removed;
     }
+
+    public double getFuel() {
+        return fuel;
+    }
 }

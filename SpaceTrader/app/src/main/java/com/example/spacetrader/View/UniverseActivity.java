@@ -37,6 +37,7 @@ public class UniverseActivity extends AppCompatActivity {
     private GraphView graph;
     private Button tradeButton;
     private TextView currentSolarSystem;
+    private TextView currentFuel;
     private HashMap<DataPoint, SolarSystem> dpToSS;
 
     @Override
@@ -46,8 +47,10 @@ public class UniverseActivity extends AppCompatActivity {
 
         universeViewModel = ViewModelProviders.of(this).get(UniverseViewModel.class);
         currentSolarSystem = findViewById(R.id.universe_curent_solarSystem);
+        currentFuel = findViewById(R.id.fuelTextView);
 
-        currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
+        updateFields();
+
         //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
 
         graph = (GraphView) findViewById(R.id.graphView);
@@ -72,6 +75,10 @@ public class UniverseActivity extends AppCompatActivity {
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
         graph.getViewport().setMaxY(100);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(100);
+
         // enable scaling and scrolling
 //        graph.getViewport().setScalable(true);
 //        graph.getViewport().setScalableY(true);
@@ -84,32 +91,27 @@ public class UniverseActivity extends AppCompatActivity {
 
         graph.addSeries(series);
         series.setShape(PointsGraphSeries.Shape.POINT);
-    //>>
         showMyLocation(null);
-    //>>
 
 
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
                 SolarSystem thisSS = dpToSS.get(dataPoint);
-                Toast.makeText(UniverseActivity.this, "Solar System: "+dataPoint, Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UniverseActivity.this);
                 alertDialogBuilder.setTitle("Travel to Solar System?");
                 alertDialogBuilder.setMessage(thisSS.toString());
                 alertDialogBuilder.setPositiveButton("Travel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                //>>
                         Location previousLocation = universeViewModel.getCurrentSolarSystem().getLocation();
                         Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
-                //>>
                         boolean didTravel = universeViewModel.facilitateTravel(thisSS);
                         if (!didTravel) {
                             Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
                         } else {
                             Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
-                            currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
+                            updateFields();
                 //>>
                             Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
                             showMyLocation(previousLocation);
@@ -138,6 +140,12 @@ public class UniverseActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    private void updateFields() {
+        currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
+        currentFuel.setText("Current fuel: " + String.format("%.1f", universeViewModel.getFuel() * 100) + "%");
     }
 
     /* NOTE: if we want to actually use this, we have to adjust the universeViewModel

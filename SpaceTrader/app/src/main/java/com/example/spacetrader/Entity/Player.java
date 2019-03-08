@@ -178,4 +178,8 @@ public class Player extends Character implements TraderCapability {
         s += "I have " + getCredits() + " credits" + "\n";
         return s;
     }
+
+    public double getFuel() {
+        return this.ship.getFuel();
+    }
 }

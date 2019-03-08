@@ -28,4 +28,8 @@ public class UniverseViewModel extends AndroidViewModel {
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return interactor.facilitateTravel(solarSystem);
     }
+
+    public double getFuel() {
+        return interactor.getFuel();
+    }
 }

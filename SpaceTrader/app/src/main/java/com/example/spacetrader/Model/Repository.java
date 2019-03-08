@@ -57,4 +57,8 @@ public class Repository {
     public HashSet<SolarSystem> getSolarSystems() {
         return this.game.getSolarSystems();
     }
+
+    public double getFuel() {
+        return this.game.getFuel();
+    }
 }

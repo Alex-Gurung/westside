@@ -55,4 +55,8 @@ public class GameInteractor extends Interactor {
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return getRepository().facilitateTravel(solarSystem);
     }
+
+    public double getFuel() {
+        return getRepository().getFuel();
+    }
 }
