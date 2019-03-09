@@ -24,6 +24,10 @@ public class Repository {
 
     public void setGame(Game game) {this.game = game;}
 
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return getPlayer().canTravel(solarSystem);
+    }
+
     public Player getPlayer() {return this.game.getPlayer();}
 
     public Good[] getCargo(TraderCapability trader) {return trader.getCargo();}
@@ -49,7 +53,16 @@ public class Repository {
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return this.game.facilitateTrade(toBuy, buyer, seller);
     }
+
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        return this.game.facilitateTravel(solarSystem);
+    }
+
     public HashSet<SolarSystem> getSolarSystems() {
         return this.game.getSolarSystems();
+    }
+
+    public double getFuel() {
+        return this.game.getFuel();
     }
 }

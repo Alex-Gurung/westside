@@ -9,7 +9,7 @@ public enum PoliticalSystem {
     ANARCHY("Anarchy"),
     CAPITALISTSTATE("Capitalist State"),
     COMMUNISTSTATE("Communist State"),
-    CONFEDERACY("COnfederacy"),
+    CONFEDERACY("Confederacy"),
     CORPORATESTATE("Corporate State"),
     CYBERNETICSTATE("Cybernetic State"),
     DEMOCRACY("Democracy"),
@@ -44,5 +44,10 @@ public enum PoliticalSystem {
     public static PoliticalSystem getRandomPoliticalSystem() {
         Random r = new Random();
         return values()[r.nextInt(values().length)];
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

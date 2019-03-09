@@ -75,6 +75,14 @@ public class Ship {
         return cargo;
     }
 
+    public int getNumGoods() {
+        return numGoods;
+    }
+
+    public void setNumGoods(int numGoods) {
+        this.numGoods = numGoods;
+    }
+
     /**
      * method that determines if the player's cargo ahs enough space for another good
      *
@@ -124,5 +132,9 @@ public class Ship {
             }
         }
         //return removed;
+    }
+
+    public double getFuel() {
+        return fuel;
     }
 }

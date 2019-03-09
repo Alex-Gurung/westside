@@ -34,7 +34,7 @@ public class Game {
     public Game(GameDifficulty gameDifficulty, Player player) {
         this.gameDifficulty = gameDifficulty;
         this.player = player;
-        this.universe = new Universe(50);
+        this.universe = new Universe(40);
         LogBig("\n" + this.universe.toString());
         Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n" + player.toString()));
     }
@@ -161,7 +161,7 @@ public class Game {
         }
     }
 
-    public boolean facilitateTravel(Player player, SolarSystem solarSystem) {
+    public boolean facilitateTravel(SolarSystem solarSystem) {
         if(player.canTravel(solarSystem)) {
             player.travel(solarSystem);
             return true;
@@ -204,5 +204,9 @@ public class Game {
      */
     public HashSet<SolarSystem> getSolarSystems() {
         return universe.getSolarSystems();
+    }
+
+    public double getFuel() {
+        return player.getFuel();
     }
 }

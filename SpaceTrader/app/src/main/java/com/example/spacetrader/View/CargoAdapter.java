@@ -74,6 +74,12 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         return cargo.size();
     }
 
+    public void removeItem(int position) {
+        this.cargo.remove(position);
+        Log.d("FACILITATING: ", "position: " +position);
+        this.notifyDataSetChanged();
+    }
+
     /**
      * set's the cargo of the player
      *
@@ -102,7 +108,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
             super(itemView);
             name = itemView.findViewById(R.id.cargo_name);
             price = itemView.findViewById(R.id.cargo_price);
-            sellButton = itemView.findViewById(R.id.market_buyButton);
+            sellButton = itemView.findViewById(R.id.cargo_sellButton);
 
             sellButton.setOnClickListener(new View.OnClickListener() {
 

@@ -63,8 +63,9 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return marketList;
     }
 
-    public void remove(int position) {
+    public void removeItem(int position) {
         this.marketList.remove(position);
+        Log.d("FACILITATING: ", "position: " +position);
         notifyDataSetChanged();
     }
 

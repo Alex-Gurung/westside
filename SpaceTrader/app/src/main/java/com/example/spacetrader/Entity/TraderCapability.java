@@ -9,6 +9,10 @@ public interface TraderCapability {
 
     double getPrice(Good good);
 
+    default void setPrice(Good good, SolarSystem solarSystem) {
+        setPrice(good, solarSystem.getTechLevel(), solarSystem.getResource());
+    }
+
     /**
      * method that calculates the price of the given good based on the tech level and resource in
      * the current Solar System

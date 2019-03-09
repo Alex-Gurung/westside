@@ -79,17 +79,15 @@ public class SellGoodsActivity extends AppCompatActivity {
         return list;
     }
     public void sellItem(int position) {
-        //update credits - make sure the goods have a price!!!
-        Good toBuy = cargo.get(position);
-        boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getSpacePort(), tradingViewModel.getPlayer());
+        Good toSell = cargo.get(position);
+        boolean isSold = tradingViewModel.facilitateTrade(toSell, tradingViewModel.getSpacePort(), tradingViewModel.getPlayer());
         if (!isSold) {
             Toast.makeText(getApplicationContext(), "Could not sell item", Toast.LENGTH_SHORT).show();
         } else {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-            cargo.remove(cargo.get(position));
-            adapter.notifyItemRemoved(position);
+            adapter.removeItem(position);
         }
     }
 }

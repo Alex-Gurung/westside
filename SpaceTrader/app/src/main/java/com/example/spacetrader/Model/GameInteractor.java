@@ -33,6 +33,10 @@ public class GameInteractor extends Interactor {
 
     public Player getPlayer() {return getRepository().getPlayer();}
 
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return getRepository().playerCanTravel(solarSystem);
+    }
+
     public Good[] getCargo(TraderCapability trader) {return getRepository().getCargo(trader);}
 
     public double getPlayerCredits() {
@@ -50,5 +54,13 @@ public class GameInteractor extends Interactor {
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return getRepository().facilitateTrade(toBuy, buyer, seller);
+    }
+
+    public boolean facilitateTravel(SolarSystem solarSystem) {
+        return getRepository().facilitateTravel(solarSystem);
+    }
+
+    public double getFuel() {
+        return getRepository().getFuel();
     }
 }

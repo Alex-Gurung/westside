@@ -1,8 +1,11 @@
 package com.example.spacetrader.Entity;
 
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
@@ -149,13 +152,21 @@ public class Universe {
      *                        hold
      */
     public Universe(int numSolarSystems) {
+        List<Location> allCombos = new ArrayList<>();
+        for(int i = 2; i <= 33; i++) {
+            for (int j = 2; j <= 33; j++) {
+                allCombos.add(new Location(i,j));
+            }
+        }
+        Collections.shuffle(allCombos);
+        List<Location> locations = allCombos.subList(0,numSolarSystems);
         solarSystems = new HashSet<>();
-        Set<Location> locations = new HashSet<>();
+        /*Set<Location> locations = new HashSet<>();
         for (int i = 0; i < numSolarSystems; i++) {
             if(!locations.add(Location.getRandomLocation())) {
                 i--;
             }
-        }
+        }*/
         int solarSystemCount = 0;
         for (Location location: locations) {
             solarSystems.add(new SolarSystem(location, solarSystemNames[solarSystemCount]));
