@@ -5,17 +5,17 @@ package com.example.spacetrader.Entity;
  * type
  */
 public enum ShipType {
-    //name, max distance, cargo holds, weapons, shields, gadgets, mercs, hull strength
-    FLEA("Flea", 20, 4, 0, 0, 0, 0, 1),
-    GNAT("Gnat", 14, 15, 1, 0, 1, 0, 2),
-    FIREFLY("Firefly",17, 20, 1, 1, 1, 0, 2),
-    MOSQUITO("Mosquito", 13, 15, 2, 1, 1, 0,3),
-    BUMBLEBEE("Bumblebee", 15, 20, 1, 2, 2, 1, 2),
-    BEETLE("Beetle", 14, 50, 0, 1, 1, 3, 1),
-    HORNET("Hornet", 16, 20, 3, 2, 1, 2, 3),
-    GRASSHOPPER("Grasshopper", 15, 30, 2, 2, 3, 3, 2),
-    TERMITE("Termite", 13, 60, 1, 3, 2, 3, 3),
-    WASP("Wasp", 14, 35, 3, 2, 2, 3, 3);
+    //name, max distance, cargo holds, weapons, shields, gadgets, mercs, hull strength, fuel price
+    FLEA("Flea", 20, 4, 0, 0, 0, 0, 1, 10),
+    GNAT("Gnat", 14, 15, 1, 0, 1, 0, 2, 11),
+    FIREFLY("Firefly",17, 20, 1, 1, 1, 0, 2, 11),
+    MOSQUITO("Mosquito", 13, 15, 2, 1, 1, 0,3, 12),
+    BUMBLEBEE("Bumblebee", 15, 20, 1, 2, 2, 1, 2, 12),
+    BEETLE("Beetle", 14, 50, 0, 1, 1, 3, 1, 13),
+    HORNET("Hornet", 16, 20, 3, 2, 1, 2, 3, 13),
+    GRASSHOPPER("Grasshopper", 15, 30, 2, 2, 3, 3, 2, 14),
+    TERMITE("Termite", 13, 60, 1, 3, 2, 3, 3, 15),
+    WASP("Wasp", 14, 35, 3, 2, 2, 3, 3, 15);
     private String name;
     private int maxDistance;
     private int cargoHolds;
@@ -25,6 +25,7 @@ public enum ShipType {
     private int numMercenaries;
     private int hullStrength; //1 weak, 2 avg, 3 strong
     private int price;
+    private double fuelPrice;
 
     /**
      *  constructor to generate a ship type and all the attributes that come with the specific ship
@@ -38,7 +39,7 @@ public enum ShipType {
      * @param numMercenaries the number of mercenaries that the ship can hold
      * @param hullStrength the number that represents how many hits your ship can take
      */
-    ShipType(String name, int maxDistance, int cargoHolds, int weaponSlots, int shieldSlots, int gadgetSlots, int numMercenaries, int hullStrength) {
+    ShipType(String name, int maxDistance, int cargoHolds, int weaponSlots, int shieldSlots, int gadgetSlots, int numMercenaries, int hullStrength, double fuelPrice) {
         this.name = name;
         this.maxDistance = maxDistance;
         this.cargoHolds = cargoHolds;
@@ -48,6 +49,7 @@ public enum ShipType {
         this.numMercenaries = numMercenaries;
         this.hullStrength = hullStrength;
         this.price = this.calculatePrice();
+        this.fuelPrice = fuelPrice;
     }
 
     /**

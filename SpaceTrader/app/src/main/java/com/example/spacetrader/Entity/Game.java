@@ -188,7 +188,7 @@ public class Game {
         this.player.setCredits(v);
     }
 
-    /**
+    /*  *
      * getter method for the space port of the current solar system
      *
      * @return the current solar system of the player
