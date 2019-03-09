@@ -17,6 +17,7 @@ public class SolarSystem {
     private Resource resource;
     private SpacePort spacePort;
     private Random random;
+    private static ShipYard shipYard = new ShipYard();
 
     /**
      * constructor that takes in a randomized location
@@ -65,6 +66,10 @@ public class SolarSystem {
      */
     public SpacePort getSpacePort() {
         return spacePort;
+    }
+
+    public ShipYard getShipYard() {
+        return shipYard;
     }
 
 

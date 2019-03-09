@@ -22,10 +22,32 @@ public abstract class Character {
         this.ship = ship;
     }
 
-    public double getPriceOfReFuel() {
-        return ship.getFuel() * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
+
+
+    public double getMaxPriceOfReFuel() {
+        return (1.0 - ship.getFuel()) * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
     }
 
+    public boolean canRefuelMax() {
+        return credits >= getMaxPriceOfReFuel();
+    }
+
+    public void refuelMax() {
+        ship.refuel(1 - ship.getFuel());
+        credits -= getMaxPriceOfReFuel();
+    }
+
+    public boolean refuelByCredits(double creditsAdded) {
+        if(creditsAdded > credits) return false;
+        double fuelPercent = creditsAdded / (ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance());
+        if(fuelPercent > 1 - ship.getFuel()) {
+            refuelMax();
+        } else {
+            ship.refuel(fuelPercent);
+            credits -= creditsAdded;
+        }
+        return true;
+    }
     /**
      * getter method that returns the name of the Character
      *

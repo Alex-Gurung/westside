@@ -63,4 +63,8 @@ public class GameInteractor extends Interactor {
     public double getFuel() {
         return getRepository().getFuel();
     }
+
+    public boolean refuelMax() {
+        return getRepository().getPlayerSolarSystem().getShipYard().refuelMax(getPlayer());
+    }
 }
