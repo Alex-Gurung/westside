@@ -76,10 +76,10 @@ public class UniverseActivity extends AppCompatActivity {
         graph.setTitle("Solar Systems");
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(45);
+        graph.getViewport().setMaxY(35);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(45);
+        graph.getViewport().setMaxX(35);
 
         // enable scaling and scrolling
 //        graph.getViewport().setScalable(true);

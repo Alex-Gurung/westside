@@ -9,7 +9,7 @@ public class Location {
 
     private int x;
     private int y;
-    private static int bound = 40;
+    private static int bound = 20;
     private static Random r = new Random();
 
 

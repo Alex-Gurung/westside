@@ -153,8 +153,8 @@ public class Universe {
      */
     public Universe(int numSolarSystems) {
         List<Location> allCombos = new ArrayList<>();
-        for(int i = 3; i < 40; i+= 3) {
-            for (int j = 3; j < 40; j+= 3) {
+        for(int i = 2; i <= 33; i++) {
+            for (int j = 2; j <= 33; j++) {
                 allCombos.add(new Location(i,j));
             }
         }
@@ -169,9 +169,6 @@ public class Universe {
         }*/
         int solarSystemCount = 0;
         for (Location location: locations) {
-            Random r = new Random();
-            location.setX(location.getX() - 2+ r.nextInt(5));
-            location.setY(location.getY() - 2 + r.nextInt(5));
             solarSystems.add(new SolarSystem(location, solarSystemNames[solarSystemCount]));
             solarSystemCount++;
         }
