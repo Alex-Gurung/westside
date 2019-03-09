@@ -1,6 +1,9 @@
 package com.example.spacetrader.Entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -149,15 +152,26 @@ public class Universe {
      *                        hold
      */
     public Universe(int numSolarSystems) {
+        List<Location> allCombos = new ArrayList<>();
+        for(int i = 3; i < 40; i+= 3) {
+            for (int j = 3; j < 40; j+= 3) {
+                allCombos.add(new Location(i,j));
+            }
+        }
+        Collections.shuffle(allCombos);
+        List<Location> locations = allCombos.subList(0,numSolarSystems);
         solarSystems = new HashSet<>();
-        Set<Location> locations = new HashSet<>();
+        /*Set<Location> locations = new HashSet<>();
         for (int i = 0; i < numSolarSystems; i++) {
             if(!locations.add(Location.getRandomLocation())) {
                 i--;
             }
-        }
+        }*/
         int solarSystemCount = 0;
         for (Location location: locations) {
+            Random r = new Random();
+            location.setX(location.getX() + r.nextInt(4));
+            location.setY(location.getY() + r.nextInt(4));
             solarSystems.add(new SolarSystem(location, solarSystemNames[solarSystemCount]));
             solarSystemCount++;
         }

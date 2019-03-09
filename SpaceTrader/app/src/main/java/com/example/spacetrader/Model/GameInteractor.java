@@ -33,6 +33,10 @@ public class GameInteractor extends Interactor {
 
     public Player getPlayer() {return getRepository().getPlayer();}
 
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return getRepository().playerCanTravel(solarSystem);
+    }
+
     public Good[] getCargo(TraderCapability trader) {return getRepository().getCargo(trader);}
 
     public double getPlayerCredits() {

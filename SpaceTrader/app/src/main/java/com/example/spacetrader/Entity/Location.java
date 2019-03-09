@@ -9,7 +9,7 @@ public class Location {
 
     private int x;
     private int y;
-    private static int bound = 90;
+    private static int bound = 40;
     private static Random r = new Random();
 
 
@@ -61,6 +61,7 @@ public class Location {
         if (!(obj instanceof Location)) return false;
         Location o = (Location) obj;
         return (this.x == o.x && this.y == o.y);
+
     }
 
     /**
