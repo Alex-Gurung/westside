@@ -41,6 +41,10 @@ public class Player extends Character implements TraderCapability {
         double dist = this.currentSolarSystem.getDistance(solarSystem);
         this.ship.travel(dist);
         this.currentSolarSystem = solarSystem;
+        Good[] goods = ship.getCargo();
+        for(int i = 0; i < ship.getNumGoods(); i++) {
+            this.setPrice(goods[i], this.currentSolarSystem);
+        }
     }
 
     public boolean canTravel(SolarSystem solarSystem) {
