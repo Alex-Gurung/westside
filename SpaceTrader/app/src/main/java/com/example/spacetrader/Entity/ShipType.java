@@ -52,6 +52,10 @@ public enum ShipType {
         this.fuelPrice = fuelPrice;
     }
 
+    public double getFuelPrice() {
+        return fuelPrice;
+    }
+
     /**
      * method to calculate the the total price of a ship based on its attributes
      *
