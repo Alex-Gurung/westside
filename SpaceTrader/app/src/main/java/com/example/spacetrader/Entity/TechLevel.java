@@ -35,4 +35,9 @@ public enum TechLevel {
         Random r = new Random();
         return values()[r.nextInt(values().length)];
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

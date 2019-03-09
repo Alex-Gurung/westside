@@ -25,6 +25,10 @@ public class UniverseViewModel extends AndroidViewModel {
     public HashSet<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
     }
+
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return interactor.playerCanTravel(solarSystem);
+    }
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return interactor.facilitateTravel(solarSystem);
     }

@@ -24,6 +24,10 @@ public class Repository {
 
     public void setGame(Game game) {this.game = game;}
 
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return getPlayer().canTravel(solarSystem);
+    }
+
     public Player getPlayer() {return this.game.getPlayer();}
 
     public Good[] getCargo(TraderCapability trader) {return trader.getCargo();}

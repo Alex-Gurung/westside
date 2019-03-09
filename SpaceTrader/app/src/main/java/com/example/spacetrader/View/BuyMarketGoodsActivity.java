@@ -66,21 +66,32 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         //Setup the adapter for the view
         recyclerView.setAdapter(adapter);
 
-        marketList = setDummyGoods();
+        //marketList = setDummyGoods();
         Good[] spacePortGoods = tradingViewModel.getCargo(spacePort);
+//        if (spacePortGoods != null) {
+//            List<Good> goods = new ArrayList<Good>();
+//            for (int i = 0; i < spacePortGoods.length; i++){
+//                if (spacePortGoods[i] != null) {
+//                    goods.add(spacePortGoods[i]);
+//                }
+//            }
+//            Log.d("SPACEPORTGOODS", goods.toString());
+//            adapter.setMarketList(goods);
+//            marketList = Arrays.asList(spacePortGoods);
+//        }
+//        else {
+//            adapter.setMarketList(marketList);
+//        }
         if (spacePortGoods != null) {
-            List<Good> goods = new ArrayList<Good>();
+            marketList = new ArrayList<Good>();
             for (int i = 0; i < spacePortGoods.length; i++){
                 if (spacePortGoods[i] != null) {
-                    goods.add(spacePortGoods[i]);
+                    marketList.add(spacePortGoods[i]);
                 }
             }
-            Log.d("SPACEPORTGOODS", goods.toString());
-            adapter.setMarketList(goods);
-            marketList = Arrays.asList(spacePortGoods);
-        } else {
-            adapter.setMarketList(marketList);
+            Log.d("SPACEPORTGOODS", marketList.toString());
         }
+        adapter.setMarketList(marketList);
 
         adapter.setOnMarketClickListener(new MarketAdapter.OnMarketItemClickListener() {
             @Override
@@ -104,7 +115,6 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
      * @param position the index at which the good should be removed from
      */
     public void buyItem(int position) {
-        //update credits - make sure the goods have a price!!!
         Good toBuy = marketList.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
         if (!isSold) {
@@ -113,13 +123,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
             credits.setText("" + playerCredits);
-            List<Good> temp = adapter.getMarketList();
-            temp.remove(position);
-            adapter.setMarketList(temp);
-            //facilitateTrade already removes the item, the following line is not necessary
-            //marketList.remove(position);
-            //adapter.notifyItemRemoved(position);
-            //adapter.notifyItemChanged(position, adapter.getMarketList().size());
+            adapter.removeItem(position);
         }
     }
 }

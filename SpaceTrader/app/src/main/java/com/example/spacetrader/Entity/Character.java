@@ -22,6 +22,10 @@ public abstract class Character {
         this.ship = ship;
     }
 
+    public double getPriceOfReFuel() {
+        return ship.getFuel() * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
+    }
+
     /**
      * getter method that returns the name of the Character
      *

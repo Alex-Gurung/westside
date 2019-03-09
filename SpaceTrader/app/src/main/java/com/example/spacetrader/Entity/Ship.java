@@ -42,6 +42,14 @@ public class Ship {
         return fuel * (double)shiptype.getMaxDistance();
     }
 
+    public ShipType getShiptype() {
+        return shiptype;
+    }
+
+    public void setShiptype(ShipType shiptype) {
+        this.shiptype = shiptype;
+    }
+
     public void travel(double distance) {
         double fuelUsed = distance/(double)shiptype.getMaxDistance();
         fuel -= fuelUsed;
@@ -73,6 +81,14 @@ public class Ship {
      */
     public Good[] getCargo(){
         return cargo;
+    }
+
+    public int getNumGoods() {
+        return numGoods;
+    }
+
+    public void setNumGoods(int numGoods) {
+        this.numGoods = numGoods;
     }
 
     /**

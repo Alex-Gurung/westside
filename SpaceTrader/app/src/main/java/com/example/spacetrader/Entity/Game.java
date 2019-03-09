@@ -34,7 +34,7 @@ public class Game {
     public Game(GameDifficulty gameDifficulty, Player player) {
         this.gameDifficulty = gameDifficulty;
         this.player = player;
-        this.universe = new Universe(50);
+        this.universe = new Universe(40);
         LogBig("\n" + this.universe.toString());
         Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n" + player.toString()));
     }
@@ -188,7 +188,7 @@ public class Game {
         this.player.setCredits(v);
     }
 
-    /**
+    /*  *
      * getter method for the space port of the current solar system
      *
      * @return the current solar system of the player

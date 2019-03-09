@@ -26,10 +26,12 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UniverseActivity extends AppCompatActivity {
 
@@ -74,15 +76,15 @@ public class UniverseActivity extends AppCompatActivity {
         graph.setTitle("Solar Systems");
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(100);
+        graph.getViewport().setMaxY(35);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(100);
+        graph.getViewport().setMaxX(35);
 
         // enable scaling and scrolling
 //        graph.getViewport().setScalable(true);
 //        graph.getViewport().setScalableY(true);
-        graph.getViewport().setBackgroundColor(Color.BLACK);
+        graph.getViewport().setBackgroundColor(Color.rgb(250,250,250));
         graph.getViewport().setDrawBorder(false);
 
         graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
@@ -160,12 +162,17 @@ public class UniverseActivity extends AppCompatActivity {
      * @param prevLocation the previousLocation to change color from red to blue if not null
      */
     private void showMyLocation(Location prevLocation){
+        this.showTravelable();
         if (prevLocation != null) {
             DataPoint[] prevDP = new DataPoint[1];
             prevDP[0]= new DataPoint(prevLocation.getX(),prevLocation.getY());
             PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
             graph.addSeries(prevLocationS);
-            prevLocationS.setColor(Color.rgb(1,114,203));
+            if (universeViewModel.playerCanTravel(new SolarSystem(prevLocation))) {
+                prevLocationS.setColor(Color.GREEN);
+            } else{
+                prevLocationS.setColor(Color.rgb(1, 114, 203));
+            }
         }
         DataPoint[] currentDP = new DataPoint[1];
         currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
@@ -174,6 +181,36 @@ public class UniverseActivity extends AppCompatActivity {
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);
 
+    }
+
+    private void showTravelable() {
+        Set<SolarSystem> solars = universeViewModel.getSolarSystems();
+        List<DataPoint> locsPlayerCanTravel = new ArrayList<>();
+        List<DataPoint> notLocsPlayerCanTravel = new ArrayList<>();
+        for(SolarSystem solarSystem : solars) {
+            if(universeViewModel.playerCanTravel(solarSystem)) {
+                Log.d("travel: " , solarSystem.getLocation().toString());
+                locsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() , solarSystem.getLocation().getY()));
+            } else {
+                notLocsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() , solarSystem.getLocation().getY()));
+            }
+        }
+        DataPoint[] l = new DataPoint[locsPlayerCanTravel.size()];
+        DataPoint[] n = new DataPoint[notLocsPlayerCanTravel.size()];
+        Collections.sort(locsPlayerCanTravel, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
+        Collections.sort(notLocsPlayerCanTravel, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
+        for (int i =0; i < locsPlayerCanTravel.size(); i++) {
+            l[i] = locsPlayerCanTravel.get(i);
+        }
+        for (int i =0; i < notLocsPlayerCanTravel.size(); i++) {
+            n[i] = notLocsPlayerCanTravel.get(i);
+        }
+        PointsGraphSeries<DataPoint> lPCT = new PointsGraphSeries<>(l);
+        PointsGraphSeries<DataPoint> nLPCT = new PointsGraphSeries<>(n);
+        graph.addSeries(lPCT);
+        graph.addSeries(nLPCT);
+        lPCT.setColor(Color.GREEN);
+        nLPCT.setColor(Color.rgb(1,114,203));
     }
 
 }
