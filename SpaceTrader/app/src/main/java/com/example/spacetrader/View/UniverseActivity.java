@@ -84,7 +84,7 @@ public class UniverseActivity extends AppCompatActivity {
         // enable scaling and scrolling
 //        graph.getViewport().setScalable(true);
 //        graph.getViewport().setScalableY(true);
-        graph.getViewport().setBackgroundColor(Color.BLACK);
+        graph.getViewport().setBackgroundColor(Color.rgb(250,250,250));
         graph.getViewport().setDrawBorder(false);
 
         graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
@@ -168,7 +168,11 @@ public class UniverseActivity extends AppCompatActivity {
             prevDP[0]= new DataPoint(prevLocation.getX(),prevLocation.getY());
             PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
             graph.addSeries(prevLocationS);
-            prevLocationS.setColor(Color.rgb(1,114,203));
+            if (universeViewModel.playerCanTravel(new SolarSystem(prevLocation))) {
+                prevLocationS.setColor(Color.GREEN);
+            } else{
+                prevLocationS.setColor(Color.rgb(1, 114, 203));
+            }
         }
         DataPoint[] currentDP = new DataPoint[1];
         currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
