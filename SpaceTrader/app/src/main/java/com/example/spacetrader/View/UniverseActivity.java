@@ -139,12 +139,20 @@ public class UniverseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+                updateFields();
             }
         });
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 1) {
+            updateFields();
+        }
+    }
 
     private void updateFields() {
         currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());

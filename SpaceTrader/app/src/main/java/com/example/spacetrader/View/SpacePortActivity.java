@@ -47,7 +47,7 @@ public class SpacePortActivity extends AppCompatActivity {
         });
         shipYardButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), ShipYardActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, BUY_OR_SELL);
         });
         sellGoodsButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SellGoodsActivity.class);
