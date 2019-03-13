@@ -72,7 +72,10 @@ public class Ship implements Serializable {
      *                  level
      */
     public void refuel(double fuelAdded) {
-        fuel = Math.min(fuel +  fuelAdded, 1.0);
+        fuel += fuelAdded;
+        if(fuel > 1.0) {
+            fuel = 1.0;
+        }
     }
 
     /**

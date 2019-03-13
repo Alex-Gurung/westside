@@ -20,15 +20,14 @@ public class TravelActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                // Actions to do after 5 seconds
-                Toast.makeText(TravelActivity.this, "Watied 5 Seconds", Toast.LENGTH_SHORT).show();
+                // Actions to do after 2 seconds
                 int scenario = 0;
                 if (scenario == 0) {
                     Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                     startActivityForResult(intent, 2);
                 }
             }
-        }, 5000);
+        }, 2000);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to

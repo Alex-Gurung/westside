@@ -16,6 +16,7 @@ import com.example.spacetrader.Entity.GoodType;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,20 +41,20 @@ public class ShipYardActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             finish();
         });
-        credits = findViewById(R.id.cargo_credit_input);
-        credits.setText("" + playerCredits);
+        credits = findViewById(R.id.shipyard_credit_input);
+        credits.setText(new Double(playerCredits).toString());
 
         refuelMaxButton = findViewById(R.id.ShipYard_Refuel_Max_Button);
         refuelMaxButton.setOnClickListener(v -> {
             refuelMax();
+            playerCredits = tradingViewModel.getPlayerCredits();
+            credits.setText(new Double(playerCredits).toString());
         });
     }
 
     public void refuelMax() {
         boolean refueledMax = tradingViewModel.refuelMax();
         if(refueledMax) {
-            playerCredits = tradingViewModel.getPlayerCredits();
-            credits.setText("" + playerCredits);
             Toast.makeText(getApplicationContext(), "Ship refueled fully", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Try something else lol", Toast.LENGTH_SHORT).show();
