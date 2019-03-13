@@ -7,9 +7,11 @@ import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 
+
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class Repository {
+public class Repository implements Serializable {
     private Game game;
 
     public Repository() {}
