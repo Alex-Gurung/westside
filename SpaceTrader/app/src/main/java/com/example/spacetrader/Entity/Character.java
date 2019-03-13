@@ -94,9 +94,9 @@ public abstract class Character {
     }
 
     /**
-     * setter method to set the surrent ship of the Character to the given ship
+     * setter method to set the current ship of the Character to the given ship
      *
-     * @param myShip of type Ship to be set to the Chracter's current ship
+     * @param myShip of type Ship to be set to the Character's current ship
      */
     public void setMyShip(Ship myShip) {
         this.ship = myShip;
@@ -114,7 +114,7 @@ public abstract class Character {
     /**
      * setter method to set the Character's current number of credits to the given credits
      *
-     * @param credits of type double to represent the Chracter's new number of credits
+     * @param credits of type double to represent the Character's new number of credits
      */
     public void setCredits(double credits) {
         this.credits = credits;

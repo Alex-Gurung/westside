@@ -31,7 +31,7 @@ public class GameInteractor extends Interactor {
         return getRepository().getPlayerSolarSystem();
     }
 
-    public Player getPlayer() {return getRepository().getPlayer();}
+    public Player getPlayer() { return getRepository().getPlayer();}
 
     public boolean playerCanTravel(SolarSystem solarSystem) {
         return getRepository().playerCanTravel(solarSystem);

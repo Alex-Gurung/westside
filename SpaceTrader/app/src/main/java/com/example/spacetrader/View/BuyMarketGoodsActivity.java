@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Activity that extends AppCompatActivity that facilitates the buying of market goods at
+ * the space port
+ */
 public class BuyMarketGoodsActivity extends AppCompatActivity {
     private Button backButton;
     private double playerCredits;
@@ -30,6 +34,11 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
     private TradingViewModel tradingViewModel;
     private SpacePort spacePort;
 
+    /**
+     * method that instantiates the viewable attributes that the user can see on the screen
+     *
+     * @param savedInstanceState of type Bundle that represents a saved instance of the class
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +108,12 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         list.add(new Good(GoodType.ORE));
         return list;
     }
+
+    /**
+     * method that facilitates the buying of an item
+     *
+     * @param position the index at which the good should be removed from
+     */
     public void buyItem(int position) {
         Good toBuy = marketList.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
