@@ -115,8 +115,6 @@ public class UniverseActivity extends AppCompatActivity {
                             Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
                             startActivity(intent);
-
-
                             Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
                             updateFields();
                             showMyLocation(previousLocation);
@@ -172,7 +170,7 @@ public class UniverseActivity extends AppCompatActivity {
             PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
             graph.addSeries(prevLocationS);
             if (universeViewModel.playerCanTravel(new SolarSystem(prevLocation))) {
-                prevLocationS.setColor(Color.GREEN);
+                prevLocationS.setColor(Color.YELLOW);
             } else{
                 prevLocationS.setColor(Color.rgb(1, 114, 203));
             }

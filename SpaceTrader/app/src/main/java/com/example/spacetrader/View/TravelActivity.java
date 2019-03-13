@@ -25,9 +25,15 @@ public class TravelActivity extends AppCompatActivity {
                 int scenario = 0;
                 if (scenario == 0) {
                     Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent, 2);
                 }
             }
         }, 5000);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 2) {
+            finish();
+        }
     }
 }
