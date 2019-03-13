@@ -1,8 +1,13 @@
 package com.example.spacetrader.View;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.R;
 
 public class TravelActivity extends AppCompatActivity {
@@ -11,5 +16,18 @@ public class TravelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                // Actions to do after 5 seconds
+                Toast.makeText(TravelActivity.this, "Watied 5 Seconds", Toast.LENGTH_SHORT).show();
+                int scenario = 0;
+                if (scenario == 0) {
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }, 5000);
     }
 }

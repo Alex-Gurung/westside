@@ -113,11 +113,14 @@ public class UniverseActivity extends AppCompatActivity {
                             Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
                         } else {
                             Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
-                            updateFields();
-                //>>
+                            Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
+                            startActivity(intent);
+
+
                             Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
+                            updateFields();
                             showMyLocation(previousLocation);
-                //>>
+
                         }
                     }
                 });
