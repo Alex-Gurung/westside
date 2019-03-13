@@ -12,7 +12,14 @@ import com.example.spacetrader.Entity.TraderCapability;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * The Interactor for Game that has access to the repository
+ */
 public class GameInteractor extends Interactor {
+    /**
+     * 
+     * @param repo
+     */
     public GameInteractor(Repository repo) {
         super(repo);
     }
