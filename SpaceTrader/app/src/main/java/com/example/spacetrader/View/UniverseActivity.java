@@ -212,7 +212,7 @@ public class UniverseActivity extends AppCompatActivity {
         PointsGraphSeries<DataPoint> nLPCT = new PointsGraphSeries<>(n);
         graph.addSeries(lPCT);
         graph.addSeries(nLPCT);
-        lPCT.setColor(Color.GREEN);
+        lPCT.setColor(Color.YELLOW);
         nLPCT.setColor(Color.rgb(1,114,203));
     }
 
