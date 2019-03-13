@@ -24,8 +24,6 @@ public abstract class Character implements Serializable {
         this.ship = ship;
     }
 
-
-
     public double getMaxPriceOfReFuel() {
         return (1.0 - ship.getFuel()) * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
     }
