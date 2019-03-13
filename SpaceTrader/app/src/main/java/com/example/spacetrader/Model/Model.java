@@ -3,8 +3,10 @@ package com.example.spacetrader.Model;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -50,7 +52,7 @@ public class Model implements Serializable {
         return (GameInteractor) interactorMap.get("Game");
     }
 
-    public boolean saveBinary(File file) {
+    public boolean save(File file) {
         boolean success = true;
         try {
             /*
@@ -73,6 +75,27 @@ public class Model implements Serializable {
 
         } catch (IOException e) {
             Log.e("UserManagerFacade", "Error writing an entry from binary file",e);
+            success = false;
+        }
+        return success;
+    }
+
+    public boolean load(File file) {
+        boolean success = true;
+        try {
+            /*
+              To read, we must use the ObjectInputStream since we want to read our model in with
+              a single read.
+             */
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            // assuming we saved our top level object, we read it back in with one line of code.
+            instance = (Model) in.readObject();
+            in.close();
+        } catch (IOException e) {
+            Log.e("UserManagementFacade", "Error reading an entry from binary file",e);
+            success = false;
+        } catch (ClassNotFoundException e) {
+            Log.e("UserManagementFacade", "Error casting a class from the binary file",e);
             success = false;
         }
         return success;
