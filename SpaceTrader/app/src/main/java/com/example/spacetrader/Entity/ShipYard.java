@@ -1,6 +1,8 @@
 package com.example.spacetrader.Entity;
 
-public class ShipYard {
+import java.io.Serializable;
+
+public class ShipYard implements Serializable {
 
     public static boolean refuelMax(Character character) {
         if(character.canRefuelMax()) {

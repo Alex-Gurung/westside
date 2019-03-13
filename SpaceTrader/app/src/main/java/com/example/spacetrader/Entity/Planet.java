@@ -1,9 +1,11 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * a class that represents a planet in a given solar system
  */
-public class Planet {
+public class Planet implements Serializable {
 
     public String name;
 

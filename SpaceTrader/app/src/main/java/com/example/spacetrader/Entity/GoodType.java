@@ -2,10 +2,12 @@ package com.example.spacetrader.Entity;
 
 import com.example.spacetrader.R;
 
+import java.io.Serializable;
+
 /**
  * an enum class that contains the attributes and methods necessary to make up each type of GoodType
  */
-public enum GoodType {
+public enum GoodType implements Serializable {
     WATER(30, 54, true, false, 0, 0, Resource.LOTSOFWATER, Resource.DESERT),
     FUR(250, 320, true, false, 0, 0, Resource.RICHFAUNA, Resource.LIFELESS),
     FOOD(105, 135, true, false, 1, 0, Resource.RICHSOIL, Resource.POORSOIL),

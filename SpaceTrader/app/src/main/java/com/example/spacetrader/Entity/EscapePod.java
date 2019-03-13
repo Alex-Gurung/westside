@@ -1,4 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class EscapePod {
+import java.io.Serializable;
+
+public class EscapePod implements Serializable {
 }

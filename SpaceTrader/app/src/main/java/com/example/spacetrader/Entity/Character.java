@@ -1,10 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * an abstract class that represents the basic attributes of any given character in the Space Trader
  * game
  */
-public abstract class Character {
+public abstract class Character implements Serializable {
 
     protected String name;
     protected SolarSystem currentSolarSystem;

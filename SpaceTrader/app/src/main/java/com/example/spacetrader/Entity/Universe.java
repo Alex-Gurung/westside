@@ -1,6 +1,7 @@
 package com.example.spacetrader.Entity;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.Random;
  * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
  * begins and will contain all Solar Systems that are initialized.
  */
-public class Universe {
+public class Universe implements Serializable {
     private HashSet<SolarSystem> solarSystems;
 
     public HashSet<SolarSystem> getSolarSystems() {

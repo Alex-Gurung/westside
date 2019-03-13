@@ -1,11 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * a class that represents the location of the current solar system
  */
-public class Location {
+public class Location implements Serializable {
 
     private int x;
     private int y;

@@ -1,6 +1,8 @@
 package com.example.spacetrader.Entity;
 
-public enum Resource {
+import java.io.Serializable;
+
+public enum Resource implements Serializable {
 
     NEVER("Never"),
     NOSPECIALSOURCES("No Special Resources"),

@@ -1,4 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class Shield {
+import java.io.Serializable;
+
+public class Shield implements Serializable {
 }

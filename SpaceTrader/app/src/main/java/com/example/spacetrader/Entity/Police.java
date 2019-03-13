@@ -1,4 +1,6 @@
 package com.example.spacetrader.Entity;
 
-public class Police {
+import java.io.Serializable;
+
+public class Police implements Serializable {
 }

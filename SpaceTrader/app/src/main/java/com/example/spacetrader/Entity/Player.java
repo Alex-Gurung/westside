@@ -1,10 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * a class that represents the current player playing the game and is inclusive of all attributes of
  * the player, including the ability to trade
  */
-public class Player extends Character implements TraderCapability {
+public class Player extends Character implements TraderCapability, Serializable {
 
     private int pilotSkillPoints;
     private int fighterSkillPoints;
