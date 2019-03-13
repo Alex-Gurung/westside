@@ -1,5 +1,6 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Random;
  * location, political system, tech level, resources of the current Solar System, as well as the
  * Planets it has, and the Spaceport it has
  */
-public class SolarSystem {
+public class SolarSystem implements Serializable {
 
     private String name;
     private Location location;
@@ -17,6 +18,7 @@ public class SolarSystem {
     private Resource resource;
     private SpacePort spacePort;
     private Random random;
+    private static ShipYard shipYard = new ShipYard();
 
     /**
      * constructor that takes in a randomized location
@@ -65,6 +67,10 @@ public class SolarSystem {
      */
     public SpacePort getSpacePort() {
         return spacePort;
+    }
+
+    public ShipYard getShipYard() {
+        return shipYard;
     }
 
 

@@ -2,6 +2,7 @@ package com.example.spacetrader.Entity;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 /**
@@ -9,7 +10,7 @@ import java.util.HashSet;
  * solar systems, the planet(s), wtc.
  *
  */
-public class Game {
+public class Game implements Serializable {
     private GameDifficulty gameDifficulty;
     private Player player;
     private Universe universe;

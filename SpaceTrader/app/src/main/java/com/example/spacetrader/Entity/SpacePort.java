@@ -1,5 +1,6 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Random;
 /**
  * class that represents a space port that exists in a Solar System
  */
-public class SpacePort implements TraderCapability {
+public class SpacePort implements TraderCapability, Serializable {
 
     private TechLevel techlevel;
     private List<Good> goods;

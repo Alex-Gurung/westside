@@ -44,4 +44,8 @@ public class TradingViewModel extends AndroidViewModel {
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return interactor.facilitateTrade(toBuy, buyer, seller);
     }
+
+    public boolean refuelMax() {
+        return interactor.refuelMax();
+    }
 }

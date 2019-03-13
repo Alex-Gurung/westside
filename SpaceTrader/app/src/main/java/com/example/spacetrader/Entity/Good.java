@@ -1,10 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * A class that represents the attributes of each GoodType including price and tech level. Goods
  * are a part of the player's cargo, spaceport, and trader's cargo
  */
-public class Good {
+public class Good implements Serializable {
     private GoodType goodtype;
     private double price;
 

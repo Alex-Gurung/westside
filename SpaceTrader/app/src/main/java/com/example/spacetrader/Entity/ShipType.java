@@ -1,10 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * an enum class that contains each ship type, as well as the attributes and methods for each ship
  * type
  */
-public enum ShipType {
+public enum ShipType implements Serializable {
     //name, max distance, cargo holds, weapons, shields, gadgets, mercs, hull strength, fuel price
     FLEA("Flea", 20, 4, 0, 0, 0, 0, 1, 10),
     GNAT("Gnat", 14, 15, 1, 0, 1, 0, 2, 11),

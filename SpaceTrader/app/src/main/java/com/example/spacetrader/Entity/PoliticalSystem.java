@@ -1,11 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * enum class that represents all possible political systems that a solar system can have
  */
-public enum PoliticalSystem {
+public enum PoliticalSystem implements Serializable {
     ANARCHY("Anarchy"),
     CAPITALISTSTATE("Capitalist State"),
     COMMUNISTSTATE("Communist State"),

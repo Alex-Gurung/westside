@@ -1,11 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * enum class that contains all possible tech levels and name attribute of each tech level
  */
-public enum TechLevel {
+public enum TechLevel implements Serializable {
     PREAGRICULTURAL("Pre-Agricultural"),
     AGRICULTURAL("Agricultural"),
     MEDIEVAL("Medieval"),

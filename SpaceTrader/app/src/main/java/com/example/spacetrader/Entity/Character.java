@@ -1,10 +1,12 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  * an abstract class that represents the basic attributes of any given character in the Space Trader
  * game
  */
-public abstract class Character {
+public abstract class Character implements Serializable {
 
     protected String name;
     protected SolarSystem currentSolarSystem;
@@ -22,10 +24,32 @@ public abstract class Character {
         this.ship = ship;
     }
 
-    public double getPriceOfReFuel() {
-        return ship.getFuel() * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
+
+
+    public double getMaxPriceOfReFuel() {
+        return (1.0 - ship.getFuel()) * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
     }
 
+    public boolean canRefuelMax() {
+        return credits >= getMaxPriceOfReFuel();
+    }
+
+    public void refuelMax() {
+        ship.refuel(1 - ship.getFuel());
+        credits -= getMaxPriceOfReFuel();
+    }
+
+    public boolean refuelByCredits(double creditsAdded) {
+        if(creditsAdded > credits) return false;
+        double fuelPercent = creditsAdded / (ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance());
+        if(fuelPercent > 1 - ship.getFuel()) {
+            refuelMax();
+        } else {
+            ship.refuel(fuelPercent);
+            credits -= creditsAdded;
+        }
+        return true;
+    }
     /**
      * getter method that returns the name of the Character
      *

@@ -1,11 +1,13 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
+
 /**
  *
  * interface that represents the capabilities of the player, trader NPCS, and space ports to be able
  * to trade goods
  */
-public interface TraderCapability {
+public interface TraderCapability extends Serializable {
 
     double getPrice(Good good);
 

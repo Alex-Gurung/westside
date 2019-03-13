@@ -1,5 +1,6 @@
 package com.example.spacetrader.Entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * a class tha represents the current player's current ship. Each ship object has a cargo hold, a
  * shield capacity, gadgets, weapons, and the possibility for mercenaries and an escape pods
  */
-public class Ship {
+public class Ship implements Serializable {
 
     private ShipType shiptype;
 
