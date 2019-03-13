@@ -24,10 +24,8 @@ public abstract class Character implements Serializable {
         this.ship = ship;
     }
 
-
-
     public double getMaxPriceOfReFuel() {
-        return (1.0 - ship.getFuel()) * ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance();
+        return ((1.0 - ship.getFuel()) * (ship.getShiptype().getFuelPrice()) * (double)(ship.getShiptype().getMaxDistance()));
     }
 
     public boolean canRefuelMax() {
@@ -35,8 +33,9 @@ public abstract class Character implements Serializable {
     }
 
     public void refuelMax() {
-        ship.refuel(1 - ship.getFuel());
         credits -= getMaxPriceOfReFuel();
+        credits = Math.round(credits * 100.0) / 100.0;
+        ship.refuel(1.00 - ship.getFuel());
     }
 
     public boolean refuelByCredits(double creditsAdded) {

@@ -112,11 +112,8 @@ public class UniverseActivity extends AppCompatActivity {
                         if (!didTravel) {
                             Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
                         } else {
-                            Toast.makeText(UniverseActivity.this, "Succesfully traveled!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
                             startActivity(intent);
-
-
                             Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
                             updateFields();
                             showMyLocation(previousLocation);
@@ -141,12 +138,20 @@ public class UniverseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+                updateFields();
             }
         });
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 1) {
+            updateFields();
+        }
+    }
 
     private void updateFields() {
         currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
@@ -172,7 +177,7 @@ public class UniverseActivity extends AppCompatActivity {
             PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
             graph.addSeries(prevLocationS);
             if (universeViewModel.playerCanTravel(new SolarSystem(prevLocation))) {
-                prevLocationS.setColor(Color.GREEN);
+                prevLocationS.setColor(Color.YELLOW);
             } else{
                 prevLocationS.setColor(Color.rgb(1, 114, 203));
             }
@@ -212,7 +217,7 @@ public class UniverseActivity extends AppCompatActivity {
         PointsGraphSeries<DataPoint> nLPCT = new PointsGraphSeries<>(n);
         graph.addSeries(lPCT);
         graph.addSeries(nLPCT);
-        lPCT.setColor(Color.GREEN);
+        lPCT.setColor(Color.YELLOW);
         nLPCT.setColor(Color.rgb(1,114,203));
     }
 

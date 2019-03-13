@@ -5,17 +5,16 @@ import java.io.Serializable;
 /**
  * a class that represents a trader that has trader capabilities and is an NPC
  */
-public class Trader extends Character implements TraderCapability, Serializable {
+public class Trader extends NonPlayerCharacter implements TraderCapability, Serializable {
 
     private double credits = Double.POSITIVE_INFINITY;
 
     /**
-     * constructor that instantiates a Trader with a ship and a name
+     * constructor that instantiates a Trader with a ship
      *
-     * @param name of type String that is the name of the Character
      */
-    public Trader(String name) {
-        super(name, new Ship(ShipType.GNAT));
+    public Trader() {
+        super(new Ship(ShipType.GNAT));
     }
 
     /**
@@ -94,5 +93,10 @@ public class Trader extends Character implements TraderCapability, Serializable 
     @Override
     public Good[] getCargo() {
         return ship.getCargo();
+    }
+
+    @Override
+    public void interactWithPlayer(Player player) {
+
     }
 }

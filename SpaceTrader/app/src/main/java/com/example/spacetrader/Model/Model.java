@@ -100,6 +100,4 @@ public class Model implements Serializable {
         }
         return success;
     }
-
-
 }
