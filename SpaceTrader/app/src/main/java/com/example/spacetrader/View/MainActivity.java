@@ -12,6 +12,7 @@ import com.example.spacetrader.R;
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
+    private Button loadGameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* Button that moves from MainActivity to ConfigurationActivity*/
         startButton = findViewById(R.id.start_button);
+        loadGameButton = findViewById(R.id.load_game_button);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,7 +15,8 @@ public interface TraderCapability {
 
     /**
      * method that calculates the price of the given good based on the tech level and resource in
-     * the current Solar System
+     * the current Solar
+     * System
      *
      * @param good of type Good whose price will be calculated
      * @param tl of type TechLevel that partially determines the price of the given good
