@@ -1,5 +1,8 @@
 package com.example.spacetrader.Model;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
@@ -8,10 +11,16 @@ import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashSet;
 
 public class Repository implements Serializable {
+
+
     private Game game;
 
     public Repository() {}
@@ -67,4 +76,5 @@ public class Repository implements Serializable {
     public double getFuel() {
         return this.game.getFuel();
     }
+
 }
