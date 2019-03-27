@@ -2,6 +2,9 @@ package com.example.spacetrader.Entity;
 
 import java.io.Serializable;
 
+/**
+ * resource type enum
+ */
 public enum Resource implements Serializable {
 
     NEVER("Never"),
@@ -21,6 +24,10 @@ public enum Resource implements Serializable {
 
     private final String name;
 
+    /**
+     * makes the enum
+     * @param name the string representation of the resource
+     */
     Resource(String name){
         this.name = name;
     }

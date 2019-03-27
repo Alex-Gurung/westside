@@ -73,6 +73,10 @@ public class GameInteractor extends Interactor implements Serializable {
     }
 
     public boolean refuelMax() {
-        return getRepository().getPlayerSolarSystem().getShipYard().refuelMax(getPlayer());
+        return getRepository().refuelMax();
+    }
+
+    public void firebaseSave() {
+        getRepository().firebaseSave();
     }
 }

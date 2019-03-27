@@ -11,6 +11,11 @@ public interface TraderCapability extends Serializable {
 
     double getPrice(Good good);
 
+    /**
+     * default way to set price given only a good and a solarsystem
+     * @param good the good whose price is being set
+     * @param solarSystem the solarsystem in which the proce is being set
+     */
     default void setPrice(Good good, SolarSystem solarSystem) {
         setPrice(good, solarSystem.getTechLevel(), solarSystem.getResource());
     }

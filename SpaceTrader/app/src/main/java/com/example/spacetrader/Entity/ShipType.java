@@ -54,6 +54,9 @@ public enum ShipType implements Serializable {
         this.fuelPrice = fuelPrice;
     }
 
+    /**
+     * @return the price of the fuel for this ship
+     */
     public double getFuelPrice() {
         return fuelPrice;
     }

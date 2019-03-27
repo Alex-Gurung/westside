@@ -39,6 +39,11 @@ public class Player extends Character implements TraderCapability, Serializable 
         this.traderSkillPoints = traderSkillPoints;
     }
 
+    /**
+     * moves the player to a new solarsystme and changes the fuel and
+     * price of goods on the ship accordingly
+     * @param solarSystem the new solarsystem the player is on
+     */
     public void travel(SolarSystem solarSystem) {
         double dist = this.currentSolarSystem.getDistance(solarSystem);
         this.ship.travel(dist);
@@ -49,6 +54,10 @@ public class Player extends Character implements TraderCapability, Serializable 
         }
     }
 
+    /**
+     * @param solarSystem the solar system the player wants to go to
+     * @return whether or not the player can go there
+     */
     public boolean canTravel(SolarSystem solarSystem) {
         return this.currentSolarSystem.getDistance(solarSystem) <= this.getShipDistance();
     }
@@ -147,6 +156,14 @@ public class Player extends Character implements TraderCapability, Serializable 
     }
 
     /**
+     *
+     * @return the player's current shipyard
+     */
+    public ShipYard getCurrentShipYard() {
+        return currentSolarSystem.getShipYard();
+    }
+
+    /**
      * setter method for the player's current solar system. This is mainly used for traveling b/n
      * solar systems
      *
@@ -185,6 +202,9 @@ public class Player extends Character implements TraderCapability, Serializable 
         return s;
     }
 
+    /**
+     * @return the fuel left in the ship
+     */
     public double getFuel() {
         return this.ship.getFuel();
     }

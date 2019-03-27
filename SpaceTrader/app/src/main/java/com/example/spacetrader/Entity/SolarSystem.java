@@ -69,11 +69,18 @@ public class SolarSystem implements Serializable {
         return spacePort;
     }
 
+    /**=
+     * @return the shipyard for this solar system
+     */
     public ShipYard getShipYard() {
         return shipYard;
     }
 
-
+    /**
+     * gets distance between this and another solarsystem
+     * @param solarSystem the second solar system whose distance you are measuring
+     * @return the distance between the two solarsystems
+     */
     public double getDistance(SolarSystem solarSystem) {
         return this.location.getDistance(solarSystem.getLocation());
     }
