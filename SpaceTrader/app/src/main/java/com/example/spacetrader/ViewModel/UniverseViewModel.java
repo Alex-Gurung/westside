@@ -15,13 +15,15 @@ import java.util.HashSet;
 public class UniverseViewModel extends AndroidViewModel {
     private GameInteractor interactor;
 
-    public UniverseViewModel (@NonNull Application application) {
+    public UniverseViewModel(@NonNull Application application) {
         super(application);
         interactor = Model.getInstance().getGameInteractor();
     }
+
     public SolarSystem getCurrentSolarSystem() {
         return interactor.getPlayerSolarSystem();
     }
+
     public HashSet<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
     }
@@ -29,11 +31,20 @@ public class UniverseViewModel extends AndroidViewModel {
     public boolean playerCanTravel(SolarSystem solarSystem) {
         return interactor.playerCanTravel(solarSystem);
     }
+
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return interactor.facilitateTravel(solarSystem);
     }
 
     public double getFuel() {
         return interactor.getFuel();
+    }
+
+    public void firebaseSave() {
+        interactor.firebaseSave();
+    }
+
+    public double getPlayerCredits() {
+        return interactor.getPlayerCredits();
     }
 }
