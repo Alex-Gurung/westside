@@ -7,7 +7,9 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +19,9 @@ import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -31,6 +36,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class UniverseActivity extends AppCompatActivity {
@@ -41,6 +47,7 @@ public class UniverseActivity extends AppCompatActivity {
     private TextView currentSolarSystem;
     private TextView currentFuel;
     private HashMap<DataPoint, SolarSystem> dpToSS;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,12 +143,12 @@ public class UniverseActivity extends AppCompatActivity {
         tradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                saveGame();
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
                 startActivity(intent);
             }
         });
-
     }
 
 
@@ -213,4 +220,13 @@ public class UniverseActivity extends AppCompatActivity {
         nLPCT.setColor(Color.rgb(1,114,203));
     }
 
+    private void saveGame() {
+//        universeViewModel.firebaseSave();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef =   database.getReference();
+        Toast.makeText(getApplicationContext(), "FIREBASE UPDATED", Toast.LENGTH_SHORT).show();
+        myRef.setValue(new HashMap<String, Object>(){{
+            put("e", universeViewModel.getPlayerCredits());
+        }});
+    }
 }

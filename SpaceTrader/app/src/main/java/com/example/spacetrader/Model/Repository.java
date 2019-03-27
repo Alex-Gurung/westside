@@ -65,4 +65,8 @@ public class Repository {
     public double getFuel() {
         return this.game.getFuel();
     }
+
+    public void firebaseSave() {
+        this.game.firebaseSave();
+    }
 }

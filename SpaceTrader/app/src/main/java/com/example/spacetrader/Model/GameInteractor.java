@@ -67,4 +67,8 @@ public class GameInteractor extends Interactor {
     public boolean refuelMax() {
         return getRepository().getPlayerSolarSystem().getShipYard().refuelMax(getPlayer());
     }
+
+    public void firebaseSave() {
+        getRepository().firebaseSave();
+    }
 }

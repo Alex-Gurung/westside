@@ -1,6 +1,11 @@
 package com.example.spacetrader.Entity;
 
 import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashSet;
 
@@ -208,5 +213,10 @@ public class Game {
 
     public double getFuel() {
         return player.getFuel();
+    }
+
+    public void firebaseSave() {
+        // Write a message to the database
+
     }
 }
