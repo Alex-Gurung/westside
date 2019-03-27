@@ -2,15 +2,15 @@ package com.example.spacetrader.Model;
 
 import java.io.Serializable;
 
-public abstract class Interactor implements Serializable {
+abstract class Interactor implements Serializable {
 
-    private Repository myRepository;
+    private final Repository myRepository;
 
-    protected Interactor(Repository repo) {
+    Interactor(Repository repo) {
         myRepository = repo;
     }
 
-    protected Repository getRepository() {
+    Repository getRepository() {
         return myRepository;
     }
 }

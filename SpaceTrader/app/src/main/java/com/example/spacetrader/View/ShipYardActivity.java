@@ -42,7 +42,7 @@ public class ShipYardActivity extends AppCompatActivity {
             finish();
         });
         credits = findViewById(R.id.shipyard_credit_input);
-        credits.setText(new Double(playerCredits).toString());
+        credits.setText(Double.valueOf(playerCredits).toString());
 
         refuelMaxButton = findViewById(R.id.ShipYard_Refuel_Max_Button);
         refuelMaxButton.setOnClickListener(v -> {
@@ -52,7 +52,7 @@ public class ShipYardActivity extends AppCompatActivity {
         });
     }
 
-    public void refuelMax() {
+    private void refuelMax() {
         boolean refueledMax = tradingViewModel.refuelMax();
         if(refueledMax) {
             Toast.makeText(getApplicationContext(), "Ship refueled fully", Toast.LENGTH_SHORT).show();

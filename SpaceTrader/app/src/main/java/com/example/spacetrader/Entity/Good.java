@@ -7,7 +7,7 @@ import java.io.Serializable;
  * are a part of the player's cargo, spaceport, and trader's cargo
  */
 public class Good implements Serializable {
-    private GoodType goodtype;
+    private final GoodType goodtype;
     private double price;
 
     /**

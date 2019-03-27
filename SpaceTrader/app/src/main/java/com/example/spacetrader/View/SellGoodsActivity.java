@@ -78,7 +78,7 @@ public class SellGoodsActivity extends AppCompatActivity {
         list.add(new Good(GoodType.ORE));
         return list;
     }
-    public void sellItem(int position) {
+    private void sellItem(int position) {
         Good toSell = cargo.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toSell, tradingViewModel.getSpacePort(), tradingViewModel.getPlayer());
         if (!isSold) {

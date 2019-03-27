@@ -14,7 +14,7 @@ import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
 public class TradingViewModel extends AndroidViewModel {
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     public TradingViewModel(@NonNull Application application) {
         super(application);

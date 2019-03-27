@@ -6,12 +6,12 @@ import java.io.Serializable;
  * an abstract class that represents the basic attributes of any given character in the Space Trader
  * game
  */
-public abstract class Character implements Serializable {
+abstract class Character implements Serializable {
 
-    protected String name;
-    protected SolarSystem currentSolarSystem;
-    protected Ship ship;
-    protected double credits = 1000.00;
+    String name;
+    SolarSystem currentSolarSystem;
+    Ship ship;
+    double credits = 1000.00;
 
     /**
      * constructor that instantiates a Character with a name and a ship
@@ -19,25 +19,37 @@ public abstract class Character implements Serializable {
      * @param name
      * @param ship
      */
-    public Character (String name, Ship ship) {
+    Character(String name, Ship ship) {
         this.name = name;
         this.ship = ship;
     }
 
-    public double getMaxPriceOfReFuel() {
+    private double getMaxPriceOfReFuel() {
         return ((1.0 - ship.getFuel()) * (ship.getShiptype().getFuelPrice()) * (double)(ship.getShiptype().getMaxDistance()));
     }
 
+    /**
+     * returns if the player has enough credits to fully refuel
+     * @return if the player can fully refuel
+     */
     public boolean canRefuelMax() {
         return credits >= getMaxPriceOfReFuel();
     }
 
+    /**
+     * refules the ship to the max
+     */
     public void refuelMax() {
         credits -= getMaxPriceOfReFuel();
         credits = Math.round(credits * 100.0) / 100.0;
         ship.refuel(1.00 - ship.getFuel());
     }
 
+    /**
+     * sees if the layer can refuel using x number credits
+     * @param creditsAdded the number of credits of fuel wanting to be added
+     * @return whether or not the fuel amount from above can be added
+     */
     public boolean refuelByCredits(double creditsAdded) {
         if(creditsAdded > credits) return false;
         double fuelPercent = creditsAdded / (ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance());
@@ -120,4 +132,5 @@ public abstract class Character implements Serializable {
     public void setCredits(double credits) {
         this.credits = credits;
     }
+
 }

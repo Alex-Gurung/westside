@@ -1,5 +1,7 @@
 package com.example.spacetrader.Model;
 
+import com.example.spacetrader.Entity.*;
+
 import android.util.Log;
 
 import com.example.spacetrader.Entity.Game;
@@ -109,6 +111,10 @@ public class Repository implements Serializable {
     }
     public SolarSystem getPlayerSolarSystem() {
         return this.game.getPlayerSolarSystem();
+    }
+
+    public boolean refuelMax(){
+        return this.game.refuelMax();
     }
 
     public SpacePort getSpacePort() {

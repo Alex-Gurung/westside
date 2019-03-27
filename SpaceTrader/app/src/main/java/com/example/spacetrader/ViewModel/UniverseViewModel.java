@@ -13,7 +13,7 @@ import java.util.HashSet;
 
 
 public class UniverseViewModel extends AndroidViewModel {
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     public UniverseViewModel(@NonNull Application application) {
         super(application);

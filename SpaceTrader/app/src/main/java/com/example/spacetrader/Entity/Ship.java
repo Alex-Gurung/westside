@@ -14,13 +14,13 @@ public class Ship implements Serializable {
     private ShipType shiptype;
 
     private double fuel;
-    private Good[] cargo;
+    private final Good[] cargo;
     private int numGoods;
-    private Gadget[] gadgets;
-    private Weapon[] weapons;
-    private Shield[] shields;
-    private Mercenary[] mercs;
-    private boolean hasEscapePod;
+    private final Gadget[] gadgets;
+    private final Weapon[] weapons;
+    private final Shield[] shields;
+    private final Mercenary[] mercs;
+    private final boolean hasEscapePod;
 
     /**
      * constructor that instantiates a Ship object based on the shipType passed in
@@ -39,18 +39,34 @@ public class Ship implements Serializable {
         fuel = 1.0;
     }
 
+    /**
+     *
+     * @return the distance this ship can travel with it's remaining fuel
+     */
     public double distanceLeft() {
         return fuel * (double)shiptype.getMaxDistance();
     }
 
+    /**
+     *
+     * @return the type of ship this instance of a ship is
+     */
     public ShipType getShiptype() {
         return shiptype;
     }
 
+    /**
+     *
+     * @param shiptype sets the ship type to the new shiptype
+     */
     public void setShiptype(ShipType shiptype) {
         this.shiptype = shiptype;
     }
 
+    /**
+     * changes the fuel left in the ship based on how much it travels
+     * @param distance the distance being travelled
+     */
     public void travel(double distance) {
         double fuelUsed = distance/(double)shiptype.getMaxDistance();
         fuel -= fuelUsed;
@@ -87,10 +103,18 @@ public class Ship implements Serializable {
         return cargo;
     }
 
+    /**
+     *
+     * @return the number of goods in this ship
+     */
     public int getNumGoods() {
         return numGoods;
     }
 
+    /**
+     * sets the number of goods in the ship to something different
+     * @param numGoods the new number of goods in the ship
+     */
     public void setNumGoods(int numGoods) {
         this.numGoods = numGoods;
     }
@@ -146,6 +170,10 @@ public class Ship implements Serializable {
         //return removed;
     }
 
+    /**
+     * getter for fuel in the ship
+     * @return amount of fuel in the ship
+     */
     public double getFuel() {
         return fuel;
     }

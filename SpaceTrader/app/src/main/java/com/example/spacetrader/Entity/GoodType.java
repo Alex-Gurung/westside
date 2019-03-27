@@ -19,14 +19,14 @@ public enum GoodType implements Serializable {
     NARCOTIC(2620, 3500, false, true, 5, 0, Resource.WIERDMUSHROOMS, Resource.NEVER),
     ROBOT(3950, 4400, false, false, 6, 4, Resource.NEVER, Resource.NEVER);
 
-    private int minPrice;
-    private int maxPrice;
-    private boolean isNaturalResource;
-    private boolean isIllegal;
-    private int minTechLevelProduce;
-    private int minTechLevelUse;
-    private Resource lowCostResource;
-    private Resource highCostResource;
+    private final int minPrice;
+    private final int maxPrice;
+    private final boolean isNaturalResource;
+    private final boolean isIllegal;
+    private final int minTechLevelProduce;
+    private final int minTechLevelUse;
+    private final Resource lowCostResource;
+    private final Resource highCostResource;
 
     /**
      * constructor that instantiates a GoodType with all its necessary attributes

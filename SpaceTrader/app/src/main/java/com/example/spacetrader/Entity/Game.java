@@ -144,6 +144,22 @@ public class Game implements Serializable {
     }
 
     /**
+     *
+     * @return player's current shipyard
+     */
+    public ShipYard getPlayerShipYard() {
+        return player.getCurrentShipYard();
+    }
+
+    /**
+     * refuels the player's ship fully
+     * @return whteher or not it was able to refuel fully
+     */
+    public boolean refuelMax() {
+        return getPlayerShipYard().refuelMax(player);
+    }
+
+    /**
      * method to facilitate the trading capabilities of the player and trader based on the
      *  availability of credits goods, and the dependency of the political system, resources, and
      *  tech level of the solar system
@@ -167,6 +183,11 @@ public class Game implements Serializable {
         }
     }
 
+    /**
+     * lets the player travel
+     * @param solarSystem the SS player wants to travel to
+     * @return whether or not the travelling was successful
+     */
     public boolean facilitateTravel(SolarSystem solarSystem) {
         if(player.canTravel(solarSystem)) {
             player.travel(solarSystem);
@@ -194,7 +215,7 @@ public class Game implements Serializable {
         this.player.setCredits(v);
     }
 
-    /*  *
+    /**
      * getter method for the space port of the current solar system
      *
      * @return the current solar system of the player
