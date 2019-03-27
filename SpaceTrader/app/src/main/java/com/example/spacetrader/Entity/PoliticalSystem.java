@@ -25,7 +25,7 @@ public enum PoliticalSystem implements Serializable {
     TECHNOCRACY("Technocracy"),
     THEOCRACY("Theocracy");
 
-    private String name;
+    private final String name;
 
     /**
      * constructor to instantiate the name of a single political system

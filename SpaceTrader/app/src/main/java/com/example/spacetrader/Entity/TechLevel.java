@@ -16,7 +16,7 @@ public enum TechLevel implements Serializable {
     POSTINDUSTRIAL("Post-Industrial"),
     HITECH("Hi-Tech");
 
-    private String name;
+    private final String name;
 
     /**
      * constructor that instantiates a tech level enum and gives the tech level a name

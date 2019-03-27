@@ -43,8 +43,8 @@ public class ConfigurationActivity extends AppCompatActivity {
          */
         nameField = findViewById(R.id.character_name_input);
         difficultySpinner = findViewById(R.id.gameDifficulty_spinner);
-        beginButton = (Button) findViewById(R.id.begin_button);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        beginButton = findViewById(R.id.begin_button);
+        cancelButton = findViewById(R.id.cancel_button);
 
         /*
          * Link begin button to its corresponding method
@@ -77,7 +77,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
-    public void onBeginPressed() {
+    private void onBeginPressed() {
         EditText nameInput = findViewById(R.id.character_name_input);
         EditText fighterInput = findViewById(R.id.fighter_skill_pts_input);
         EditText engineerInput = findViewById(R.id.engineer_skill_pts_input);
@@ -103,7 +103,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
     }
 
-    public int getTotalSkillPoints(int fighter, int engineer, int pilot, int trader) {
+    private int getTotalSkillPoints(int fighter, int engineer, int pilot, int trader) {
         return fighter + engineer + pilot + trader;
     }
 

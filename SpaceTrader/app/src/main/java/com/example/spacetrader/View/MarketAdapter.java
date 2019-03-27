@@ -74,12 +74,12 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
      * This is a holder for the widgets associated with a single entry in the list of marketList
      */
     class MarketViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
-        private TextView price;
-        private Button sellButton;
+        private final TextView name;
+        private final TextView price;
+        private final Button sellButton;
 
 
-        public MarketViewHolder(@NonNull View itemView) {
+        MarketViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.market__name);
             price = itemView.findViewById(R.id.market_price);

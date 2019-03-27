@@ -14,6 +14,9 @@ import com.example.spacetrader.ViewModel.TradingViewModel;
 import java.util.Random;
 
 
+/**
+ * Activity class that literally just shows a cool travel warping jpg post-travel
+ */
 public class TravelActivity extends AppCompatActivity {
 
     private TradingViewModel tradingViewModel;
@@ -57,6 +60,14 @@ public class TravelActivity extends AppCompatActivity {
             }
         }, 3000);
     }
+
+    /**
+     *
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == 2) {
