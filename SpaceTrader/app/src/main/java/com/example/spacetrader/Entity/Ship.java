@@ -16,11 +16,6 @@ public class Ship implements Serializable {
     private double fuel;
     private final Good[] cargo;
     private int numGoods;
-    private final Gadget[] gadgets;
-    private final Weapon[] weapons;
-    private final Shield[] shields;
-    private final Mercenary[] mercs;
-    private final boolean hasEscapePod;
 
     /**
      * constructor that instantiates a Ship object based on the shipType passed in
@@ -29,13 +24,8 @@ public class Ship implements Serializable {
      */
     public Ship (ShipType shiptype) {
         this.shiptype = shiptype;
-        gadgets = new Gadget[shiptype.getGadgetSlots()];
-        weapons = new Weapon[shiptype.getWeaponSlots()];
-        shields = new Shield[shiptype.getShieldSlots()];
-        mercs = new Mercenary[shiptype.getNumMercenaries()];
         cargo = new Good[shiptype.getCargoHolds()];
         numGoods = 0;
-        hasEscapePod = false;
         fuel = 1.0;
     }
 

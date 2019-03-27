@@ -22,7 +22,7 @@ import java.util.Map;
 public class Model implements Serializable {
 
     /** the data repository */
-    private final Repository myRepository;
+    private Repository myRepository;
 
     private final Map<String, Object> interactorMap;
 
@@ -70,7 +70,7 @@ public class Model implements Serializable {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             // We basically can save our entire data model with one write, since this will follow
             // all the links and pointers to save everything.  Just save the top level object.
-            out.writeObject(this);
+            out.writeObject(this.myRepository);
             out.close();
 
         } catch (IOException e) {
@@ -89,7 +89,7 @@ public class Model implements Serializable {
              */
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             // assuming we saved our top level object, we read it back in with one line of code.
-            instance = (Model) in.readObject();
+            myRepository = (Repository) in.readObject();
             in.close();
         } catch (IOException e) {
             Log.e("UserManagementFacade", "Error reading an entry from binary file",e);
