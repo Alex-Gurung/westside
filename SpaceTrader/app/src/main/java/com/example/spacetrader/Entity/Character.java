@@ -28,16 +28,28 @@ abstract class Character implements Serializable {
         return ((1.0 - ship.getFuel()) * (ship.getShiptype().getFuelPrice()) * (double)(ship.getShiptype().getMaxDistance()));
     }
 
+    /**
+     * returns if the player has enough credits to fully refuel
+     * @return if the player can fully refuel
+     */
     public boolean canRefuelMax() {
         return credits >= getMaxPriceOfReFuel();
     }
 
+    /**
+     * refules the ship to the max
+     */
     public void refuelMax() {
         credits -= getMaxPriceOfReFuel();
         credits = Math.round(credits * 100.0) / 100.0;
         ship.refuel(1.00 - ship.getFuel());
     }
 
+    /**
+     * sees if the layer can refuel using x number credits
+     * @param creditsAdded the number of credits of fuel wanting to be added
+     * @return whether or not the fuel amount from above can be added
+     */
     public boolean refuelByCredits(double creditsAdded) {
         if(creditsAdded > credits) return false;
         double fuelPercent = creditsAdded / (ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance());

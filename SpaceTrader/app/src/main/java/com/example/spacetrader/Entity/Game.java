@@ -162,6 +162,11 @@ public class Game implements Serializable {
         }
     }
 
+    /**
+     * lets the player travel
+     * @param solarSystem the SS player wants to travel to
+     * @return whether or not the travelling was successful
+     */
     public boolean facilitateTravel(SolarSystem solarSystem) {
         if(player.canTravel(solarSystem)) {
             player.travel(solarSystem);
@@ -189,7 +194,7 @@ public class Game implements Serializable {
         this.player.setCredits(v);
     }
 
-    /*  *
+    /**
      * getter method for the space port of the current solar system
      *
      * @return the current solar system of the player

@@ -15,10 +15,17 @@ import java.util.Random;
 public class Universe implements Serializable {
     private HashSet<SolarSystem> solarSystems;
 
+    /**
+     * @return a set of solar systems in this universe
+     */
     public HashSet<SolarSystem> getSolarSystems() {
         return solarSystems;
     }
 
+    /**
+     * sets the solarsystems in this universe
+     * @param solarSystems the set of solarsystems in this universe
+     */
     public void setSolarSystems(HashSet<SolarSystem> solarSystems) {
         this.solarSystems = solarSystems;
     }

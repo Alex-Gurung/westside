@@ -39,18 +39,34 @@ public class Ship implements Serializable {
         fuel = 1.0;
     }
 
+    /**
+     *
+     * @return the distance this ship can travel with it's remaining fuel
+     */
     public double distanceLeft() {
         return fuel * (double)shiptype.getMaxDistance();
     }
 
+    /**
+     *
+     * @return the type of ship this instance of a ship is
+     */
     public ShipType getShiptype() {
         return shiptype;
     }
 
+    /**
+     *
+     * @param shiptype sets the ship type to the new shiptype
+     */
     public void setShiptype(ShipType shiptype) {
         this.shiptype = shiptype;
     }
 
+    /**
+     * changes the fuel left in the ship based on how much it travels
+     * @param distance the distance being travelled
+     */
     public void travel(double distance) {
         double fuelUsed = distance/(double)shiptype.getMaxDistance();
         fuel -= fuelUsed;
@@ -87,10 +103,18 @@ public class Ship implements Serializable {
         return cargo;
     }
 
+    /**
+     *
+     * @return the number of goods in this ship
+     */
     public int getNumGoods() {
         return numGoods;
     }
 
+    /**
+     * sets the number of goods in the ship to something different
+     * @param numGoods the new number of goods in the ship
+     */
     public void setNumGoods(int numGoods) {
         this.numGoods = numGoods;
     }
@@ -146,6 +170,10 @@ public class Ship implements Serializable {
         //return removed;
     }
 
+    /**
+     * getter for fuel in the ship
+     * @return amount of fuel in the ship
+     */
     public double getFuel() {
         return fuel;
     }
