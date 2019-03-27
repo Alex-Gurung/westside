@@ -139,6 +139,22 @@ public class Game implements Serializable {
     }
 
     /**
+     *
+     * @return player's current shipyard
+     */
+    public ShipYard getPlayerShipYard() {
+        return player.getCurrentShipYard();
+    }
+
+    /**
+     * refuels the player's ship fully
+     * @return whteher or not it was able to refuel fully
+     */
+    public boolean refuelMax() {
+        return getPlayerShipYard().refuelMax(player);
+    }
+
+    /**
      * method to facilitate the trading capabilities of the player and trader based on the
      *  availability of credits goods, and the dependency of the political system, resources, and
      *  tech level of the solar system

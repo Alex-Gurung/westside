@@ -1,11 +1,6 @@
 package com.example.spacetrader.Model;
 
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
+import com.example.spacetrader.Entity.*;
 
 
 import java.io.Serializable;
@@ -46,6 +41,10 @@ public class Repository implements Serializable {
     }
     public SolarSystem getPlayerSolarSystem() {
         return this.game.getPlayerSolarSystem();
+    }
+
+    public boolean refuelMax(){
+        return this.game.refuelMax();
     }
 
     public SpacePort getSpacePort() {

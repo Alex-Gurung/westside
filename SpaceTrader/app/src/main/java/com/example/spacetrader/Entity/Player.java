@@ -156,6 +156,14 @@ public class Player extends Character implements TraderCapability, Serializable 
     }
 
     /**
+     *
+     * @return the player's current shipyard
+     */
+    public ShipYard getCurrentShipYard() {
+        return currentSolarSystem.getShipYard();
+    }
+
+    /**
      * setter method for the player's current solar system. This is mainly used for traveling b/n
      * solar systems
      *
