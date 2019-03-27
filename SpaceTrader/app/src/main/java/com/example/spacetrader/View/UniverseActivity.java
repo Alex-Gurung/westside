@@ -55,7 +55,7 @@ public class UniverseActivity extends AppCompatActivity {
 
         //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
 
-        graph = (GraphView) findViewById(R.id.graphView);
+        graph = findViewById(R.id.graphView);
 
         HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
         dpToSS = new HashMap<>();

@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Planet implements Serializable {
 
-    public String name;
+    private final String name;
 
     /**
      * constructor that instantiates a planet with a name for the planet

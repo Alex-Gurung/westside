@@ -11,7 +11,7 @@ import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
 public class ConfigurationViewModel extends AndroidViewModel {
-    private GameInteractor gameInteractor;
+    private final GameInteractor gameInteractor;
 
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);

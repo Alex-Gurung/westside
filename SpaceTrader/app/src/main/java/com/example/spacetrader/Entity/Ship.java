@@ -14,13 +14,13 @@ public class Ship implements Serializable {
     private ShipType shiptype;
 
     private double fuel;
-    private Good[] cargo;
+    private final Good[] cargo;
     private int numGoods;
-    private Gadget[] gadgets;
-    private Weapon[] weapons;
-    private Shield[] shields;
-    private Mercenary[] mercs;
-    private boolean hasEscapePod;
+    private final Gadget[] gadgets;
+    private final Weapon[] weapons;
+    private final Shield[] shields;
+    private final Mercenary[] mercs;
+    private final boolean hasEscapePod;
 
     /**
      * constructor that instantiates a Ship object based on the shipType passed in

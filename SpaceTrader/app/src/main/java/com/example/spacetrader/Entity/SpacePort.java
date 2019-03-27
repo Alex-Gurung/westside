@@ -11,10 +11,10 @@ import java.util.Random;
  */
 public class SpacePort implements TraderCapability, Serializable {
 
-    private TechLevel techlevel;
-    private List<Good> goods;
-    private Random random = new Random();
-    private Resource resource;
+    private final TechLevel techlevel;
+    private final List<Good> goods;
+    private final Random random = new Random();
+    private final Resource resource;
 
     /**
      * constructor that instantiates a space port with a tech level and a resource
@@ -70,7 +70,7 @@ public class SpacePort implements TraderCapability, Serializable {
      * @param good of type Good whose price will be set based on the conditions of the current Solar
      *             System
      */
-    public void setPrice(Good good) {
+    private void setPrice(Good good) {
         setPrice(good, techlevel, resource);
     }
 

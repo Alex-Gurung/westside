@@ -114,7 +114,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
      *
      * @param position the index at which the good should be removed from
      */
-    public void buyItem(int position) {
+    private void buyItem(int position) {
         Good toBuy = marketList.get(position);
         boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
         if (!isSold) {

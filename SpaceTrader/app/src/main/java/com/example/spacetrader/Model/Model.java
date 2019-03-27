@@ -22,9 +22,9 @@ import java.util.Map;
 public class Model implements Serializable {
 
     /** the data repository */
-    private Repository myRepository;
+    private final Repository myRepository;
 
-    private Map<String, Object> interactorMap;
+    private final Map<String, Object> interactorMap;
 
     /** Singleton Pattern Code
      *  this allows us to get access to this class
