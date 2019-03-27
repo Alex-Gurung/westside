@@ -10,6 +10,9 @@ import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.R;
 
+/**
+ * Activity class that literally just shows a cool travel warping jpg post-travel
+ */
 public class TravelActivity extends AppCompatActivity {
 
     @Override
@@ -29,6 +32,14 @@ public class TravelActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+    /**
+     *
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == 2) {

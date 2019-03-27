@@ -110,7 +110,7 @@ public class UniverseActivity extends AppCompatActivity {
                         Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
                         boolean didTravel = universeViewModel.facilitateTravel(thisSS);
                         if (!didTravel) {
-                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();
                         } else {
                             Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
                             startActivityForResult(intent, 1);
