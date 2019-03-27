@@ -102,7 +102,6 @@ public class UniverseActivity extends AppCompatActivity {
         series.setShape(PointsGraphSeries.Shape.POINT);
         showMyLocation();
 
-
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
