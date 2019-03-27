@@ -132,4 +132,5 @@ abstract class Character implements Serializable {
     public void setCredits(double credits) {
         this.credits = credits;
     }
+
 }
