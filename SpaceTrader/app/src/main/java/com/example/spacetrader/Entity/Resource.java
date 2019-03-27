@@ -19,7 +19,7 @@ public enum Resource implements Serializable {
     ARTISTIC("Artistic"),
     WARLIKE("Warlike");
 
-    private String name;
+    private final String name;
 
     Resource(String name){
         this.name = name;

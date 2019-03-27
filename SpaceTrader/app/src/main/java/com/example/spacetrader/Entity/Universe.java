@@ -23,7 +23,7 @@ public class Universe implements Serializable {
         this.solarSystems = solarSystems;
     }
 
-    private String[] solarSystemNames = new String[] {
+    private final String[] solarSystemNames = new String[] {
                 "Acamar",
                 "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
                 "Aldea",

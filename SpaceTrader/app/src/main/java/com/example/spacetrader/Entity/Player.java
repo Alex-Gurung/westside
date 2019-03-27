@@ -8,10 +8,10 @@ import java.io.Serializable;
  */
 public class Player extends Character implements TraderCapability, Serializable {
 
-    private int pilotSkillPoints;
-    private int fighterSkillPoints;
-    private int engineerSkillPoints;
-    private int traderSkillPoints;
+    private final int pilotSkillPoints;
+    private final int fighterSkillPoints;
+    private final int engineerSkillPoints;
+    private final int traderSkillPoints;
 
 //    private String name = "Bobert Waters";
 //
@@ -53,7 +53,7 @@ public class Player extends Character implements TraderCapability, Serializable 
         return this.currentSolarSystem.getDistance(solarSystem) <= this.getShipDistance();
     }
 
-    public double getShipDistance() {
+    private double getShipDistance() {
         return ship.distanceLeft();
     }
     /**

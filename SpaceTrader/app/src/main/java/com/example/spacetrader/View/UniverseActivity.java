@@ -55,7 +55,7 @@ public class UniverseActivity extends AppCompatActivity {
 
         //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
 
-        graph = (GraphView) findViewById(R.id.graphView);
+        graph = findViewById(R.id.graphView);
 
         HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
         dpToSS = new HashMap<>();
@@ -93,7 +93,7 @@ public class UniverseActivity extends AppCompatActivity {
 
         graph.addSeries(series);
         series.setShape(PointsGraphSeries.Shape.POINT);
-        showMyLocation(null);
+        showMyLocation();
 
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
@@ -109,13 +109,14 @@ public class UniverseActivity extends AppCompatActivity {
                         Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
                         boolean didTravel = universeViewModel.facilitateTravel(thisSS);
                         if (!didTravel) {
-                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();
                         } else {
                             Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
-                            startActivity(intent);
+                            startActivityForResult(intent, 1);
                             Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
                             updateFields();
-                            showMyLocation(previousLocation);
+                            showMyLocation();
+
 
                         }
                     }
@@ -139,6 +140,8 @@ public class UniverseActivity extends AppCompatActivity {
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
                 startActivityForResult(intent, 1);
                 updateFields();
+                showMyLocation();
+
             }
         });
 
@@ -149,38 +152,24 @@ public class UniverseActivity extends AppCompatActivity {
         // Check which request we're responding to
         if (requestCode == 1) {
             updateFields();
+            showMyLocation();
         }
     }
 
     private void updateFields() {
         currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
         currentFuel.setText("Current fuel: " + String.format("%.1f", universeViewModel.getFuel() * 100) + "%");
-    }
 
-    /* NOTE: if we want to actually use this, we have to adjust the universeViewModel
-            if not, ehh- just delete the stuff I put arrows by and the following method
-     */
+    }
 
 
     /**
      * Makes the current SolarSystem point on the Universe Graph Red and changes the previous
-     * SolarSystem point back to normal if needed
+     * SolarSystem point back to the correct color
      *
-     * @param prevLocation the previousLocation to change color from red to blue if not null
      */
-    private void showMyLocation(Location prevLocation){
+    private void showMyLocation(){
         this.showTravelable();
-        if (prevLocation != null) {
-            DataPoint[] prevDP = new DataPoint[1];
-            prevDP[0]= new DataPoint(prevLocation.getX(),prevLocation.getY());
-            PointsGraphSeries<DataPoint> prevLocationS = new PointsGraphSeries<DataPoint>(prevDP);
-            graph.addSeries(prevLocationS);
-            if (universeViewModel.playerCanTravel(new SolarSystem(prevLocation))) {
-                prevLocationS.setColor(Color.YELLOW);
-            } else{
-                prevLocationS.setColor(Color.rgb(1, 114, 203));
-            }
-        }
         DataPoint[] currentDP = new DataPoint[1];
         currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
                                     universeViewModel.getCurrentSolarSystem().getLocation().getY());

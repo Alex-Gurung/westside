@@ -6,12 +6,12 @@ import java.io.Serializable;
  * an abstract class that represents the basic attributes of any given character in the Space Trader
  * game
  */
-public abstract class Character implements Serializable {
+abstract class Character implements Serializable {
 
-    protected String name;
-    protected SolarSystem currentSolarSystem;
-    protected Ship ship;
-    protected double credits = 1000.00;
+    String name;
+    SolarSystem currentSolarSystem;
+    Ship ship;
+    double credits = 1000.00;
 
     /**
      * constructor that instantiates a Character with a name and a ship
@@ -19,12 +19,12 @@ public abstract class Character implements Serializable {
      * @param name
      * @param ship
      */
-    public Character (String name, Ship ship) {
+    Character(String name, Ship ship) {
         this.name = name;
         this.ship = ship;
     }
 
-    public double getMaxPriceOfReFuel() {
+    private double getMaxPriceOfReFuel() {
         return ((1.0 - ship.getFuel()) * (ship.getShiptype().getFuelPrice()) * (double)(ship.getShiptype().getMaxDistance()));
     }
 
@@ -120,4 +120,5 @@ public abstract class Character implements Serializable {
     public void setCredits(double credits) {
         this.credits = credits;
     }
+
 }

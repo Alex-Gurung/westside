@@ -95,16 +95,16 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      * This is a holder for the widgets associated with a single entry in the list of goods
      */
     class CargoViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
-        private TextView price;
-        private Button sellButton;
+        private final TextView name;
+        private final TextView price;
+        private final Button sellButton;
 
         /**
          * Method that creates the view layout of what each good will look like in the cargo hold
          *
          * @param itemView
          */
-        public CargoViewHolder(@NonNull View itemView) {
+        CargoViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.cargo_name);
             price = itemView.findViewById(R.id.cargo_price);

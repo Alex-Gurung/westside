@@ -4,5 +4,5 @@ import android.util.Log;
 
 import java.io.Serializable;
 
-public class Weapon implements Serializable {
+class Weapon implements Serializable {
 }

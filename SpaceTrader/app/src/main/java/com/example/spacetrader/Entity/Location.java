@@ -10,8 +10,8 @@ public class Location implements Serializable {
 
     private int x;
     private int y;
-    private static int bound = 20;
-    private static Random r = new Random();
+    private static final int bound = 20;
+    private static final Random r = new Random();
 
 
     /**

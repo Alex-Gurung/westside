@@ -18,16 +18,16 @@ public enum ShipType implements Serializable {
     GRASSHOPPER("Grasshopper", 15, 30, 2, 2, 3, 3, 2, 14),
     TERMITE("Termite", 13, 60, 1, 3, 2, 3, 3, 15),
     WASP("Wasp", 14, 35, 3, 2, 2, 3, 3, 15);
-    private String name;
-    private int maxDistance;
-    private int cargoHolds;
-    private int weaponSlots;
-    private int shieldSlots;
-    private int gadgetSlots;
-    private int numMercenaries;
-    private int hullStrength; //1 weak, 2 avg, 3 strong
-    private int price;
-    private double fuelPrice;
+    private final String name;
+    private final int maxDistance;
+    private final int cargoHolds;
+    private final int weaponSlots;
+    private final int shieldSlots;
+    private final int gadgetSlots;
+    private final int numMercenaries;
+    private final int hullStrength; //1 weak, 2 avg, 3 strong
+    private final int price;
+    private final double fuelPrice;
 
     /**
      *  constructor to generate a ship type and all the attributes that come with the specific ship

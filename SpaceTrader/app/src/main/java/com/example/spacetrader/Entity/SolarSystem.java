@@ -15,10 +15,10 @@ public class SolarSystem implements Serializable {
     private PoliticalSystem politicalSystem;
     private TechLevel techLevel;
     private Planet planet;
-    private Resource resource;
+    private final Resource resource;
     private SpacePort spacePort;
-    private Random random;
-    private static ShipYard shipYard = new ShipYard();
+    private final Random random;
+    private static final ShipYard shipYard = new ShipYard();
 
     /**
      * constructor that takes in a randomized location
@@ -49,7 +49,7 @@ public class SolarSystem implements Serializable {
      * @param t of type TechLevel that initializes a TechLevel instance field to the given tech level
      * @param name of type String that initializes the name of the Solar System
      */
-    public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
+    private SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
         random  = new Random();
         this.name = name;
         location = l;
