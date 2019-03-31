@@ -117,6 +117,14 @@ public class Repository implements Serializable {
         return this.game.refuelMax();
     }
 
+    public boolean canChangePlayerShip(ShipType upgrade) {
+        return game.canChangePlayerShip(upgrade);
+    }
+
+    public boolean changePlayerShipType(ShipType upgrade) {
+        return game.changePlayerShipType(upgrade);
+    }
+
     public SpacePort getSpacePort() {
         return this.game.getSpacePort();
     }

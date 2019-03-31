@@ -163,6 +163,31 @@ public class Player extends Character implements TraderCapability, Serializable 
         return currentSolarSystem.getShipYard();
     }
 
+    public boolean canChangeShip(ShipType upgrade) {
+        return ship.getNumGoods() <= upgrade.getCargoHolds();
+    }
+
+    public double getShipUpgradePrice(ShipType upgrade) {
+        double currentShipPrice = ship.getPrice();
+        double newShipPrice = upgrade.getPrice();
+        double shipPriceDifferences = newShipPrice - currentShipPrice;
+        return shipPriceDifferences;
+    }
+
+    public boolean changeShipType(ShipType upgrade) {
+        if(canChangeShip(upgrade)) {
+            Ship newShip = new Ship(upgrade);
+            for(Good cargo : ship.getCargo()) {
+                newShip.addCargo(cargo);
+            }
+            credits = credits - getShipUpgradePrice(upgrade);
+            this.ship = newShip;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * setter method for the player's current solar system. This is mainly used for traveling b/n
      * solar systems

@@ -2,12 +2,7 @@ package com.example.spacetrader.Model;
 
 import android.util.Log;
 
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
+import com.example.spacetrader.Entity.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -62,6 +57,14 @@ public class GameInteractor extends Interactor implements Serializable {
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return getRepository().facilitateTrade(toBuy, buyer, seller);
+    }
+
+    public boolean canChangePlayerShip(ShipType upgrade) {
+        return getGame().canChangePlayerShip(upgrade);
+    }
+
+    public boolean changePlayerShipType(ShipType upgrade) {
+        return getGame().changePlayerShipType(upgrade);
     }
 
     public boolean facilitateTravel(SolarSystem solarSystem) {

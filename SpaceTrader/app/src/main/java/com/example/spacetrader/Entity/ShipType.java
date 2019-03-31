@@ -7,21 +7,20 @@ import java.io.Serializable;
  * type
  */
 public enum ShipType implements Serializable {
-    //name, max distance, cargo holds, weapons, shields, gadgets, mercs, hull strength, fuel price
-    FLEA("Flea", 20, 4, 1, 10),
-    GNAT("Gnat", 14, 15,  2, 11),
-    FIREFLY("Firefly",17, 20,  2, 11),
-    MOSQUITO("Mosquito", 13, 15, 3, 12),
-    BUMBLEBEE("Bumblebee", 15, 20, 2, 12),
-    BEETLE("Beetle", 14, 50,  1, 13),
-    HORNET("Hornet", 16, 20, 3, 13),
-    GRASSHOPPER("Grasshopper", 15, 30,  2, 14),
-    TERMITE("Termite", 13, 60, 3, 15),
-    WASP("Wasp", 14, 35, 3, 15);
+    //name, max distance, cargo holds,  hull strength, fuel price
+    FLEA("Flea", 20, 4, 10),
+    GNAT("Gnat", 14, 15, 11),
+    FIREFLY("Firefly",17, 20, 11),
+    MOSQUITO("Mosquito", 13, 15, 12),
+    BUMBLEBEE("Bumblebee", 15, 20, 12),
+    BEETLE("Beetle", 14, 50, 13),
+    HORNET("Hornet", 16, 20, 13),
+    GRASSHOPPER("Grasshopper", 15, 30, 14),
+    TERMITE("Termite", 13, 60, 15),
+    WASP("Wasp", 14, 35, 15);
     private final String name;
     private final int maxDistance;
     private final int cargoHolds;
-    private final int hullStrength; //1 weak, 2 avg, 3 strong
     private final int price;
     private final double fuelPrice;
 
@@ -31,14 +30,11 @@ public enum ShipType implements Serializable {
      * @param name the name of the the ship
      * @param maxDistance the maximum distance the ship can go on a full tank
      * @param cargoHolds the number of cargo slots the ship can hold
-     * @param hullStrength the number that represents how many hits your ship can take
      */
-    ShipType(String name, int maxDistance, int cargoHolds, int hullStrength, double fuelPrice) {
+    ShipType(String name, int maxDistance, int cargoHolds, double fuelPrice) {
         this.name = name;
         this.maxDistance = maxDistance;
         this.cargoHolds = cargoHolds;
-
-        this.hullStrength = hullStrength;
         this.price = this.calculatePrice();
         this.fuelPrice = fuelPrice;
     }
@@ -55,10 +51,10 @@ public enum ShipType implements Serializable {
      * @return an int value that represents the total cost of a ship based on its attributes
      */
     private int calculatePrice(){
-        int cost = 1500;
+        int cost = 1000;
         cost += 100 * maxDistance;
         cost += 50 * cargoHolds;
-        cost += 1500 * (hullStrength - 1);
+        cost += fuelPrice * maxDistance;
         return cost;
     }
 
@@ -93,7 +89,6 @@ public enum ShipType implements Serializable {
         return "Name: " + name
                 + "Distance: " + maxDistance + "\n"
                 + "Cargo Slots: " + cargoHolds + "\n"
-                + "Hull Strength: " + hullStrength + "\n"
                 + "Price: " + price;
     }
 }

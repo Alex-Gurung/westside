@@ -140,6 +140,10 @@ public class Ship implements Serializable {
     }
 
 
+    public double getPrice() {
+        return this.shiptype.getPrice();
+    }
+
     /**
      * a method that removes the specific good in the ship's cargo hold.
      *
