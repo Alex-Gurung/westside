@@ -47,7 +47,7 @@ public class ShipYardActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
+        //mAdapter = new MyAdapter(myDataset);
         recyclerView.setAdapter(mAdapter);
 
 
