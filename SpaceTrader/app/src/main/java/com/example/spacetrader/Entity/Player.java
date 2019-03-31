@@ -47,7 +47,7 @@ public class Player extends Character implements TraderCapability, Serializable 
     public void travel(SolarSystem solarSystem) {
         double dist = this.currentSolarSystem.getDistance(solarSystem);
         this.ship.travel(dist);
-        this.currentSolarSystem = solarSystem;
+        this.setCurrentSolarSystem(solarSystem);
         Good[] goods = ship.getCargo();
         for(int i = 0; i < ship.getNumGoods(); i++) {
             this.setPrice(goods[i], this.currentSolarSystem);
