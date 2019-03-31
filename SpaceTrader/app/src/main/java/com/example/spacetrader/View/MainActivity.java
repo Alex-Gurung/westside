@@ -96,7 +96,9 @@ public class MainActivity extends AppCompatActivity {
             String[] scores_list = scoreString.split(", ");
             ArrayList<Double> scores_doubles = new ArrayList<>();
             for (String s : scores_list) {
-                scores_doubles.add(Double.parseDouble(s));
+                if (s.length() > 0) {
+                    scores_doubles.add(Double.parseDouble(s));
+                }
             }
             Collections.sort(scores_doubles);
             Collections.reverse(scores_doubles);
