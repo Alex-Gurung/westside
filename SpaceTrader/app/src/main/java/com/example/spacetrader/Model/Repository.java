@@ -67,10 +67,12 @@ public class Repository implements Serializable {
                 String new_scores = "";
                 boolean anyMatch = false;
                 for (String s : scores) {
-                    if (s.equals(my_score)) {
-                        anyMatch = true;
+                    if (s.length() > 0) {
+                        if (s.equals(my_score)) {
+                            anyMatch = true;
+                        }
+                        new_scores += s + ", ";
                     }
-                    new_scores += s + ", ";
                 }
                 if (!anyMatch) {
                     new_scores += my_score;
