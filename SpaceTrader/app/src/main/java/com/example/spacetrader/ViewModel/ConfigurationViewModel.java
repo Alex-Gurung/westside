@@ -21,8 +21,9 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
 
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
-        Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT), gameInteractor.getRandomSolarSystem(), 1000);
-        Game game = new Game(gd, player);
+        Game game = new Game(gd);
+        Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT), game.getRandomSolarSystem(), 1000);
+        game.setPlayer(player);
         gameInteractor.setGame(game);
     }
 

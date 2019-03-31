@@ -39,6 +39,20 @@ public class Game implements Serializable {
         LogBig("\n" + this.universe.toString());
         Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n" + player.toString()));
     }
+    /**
+     * Constructor that creates a Game object starting with initializing the Player and the
+     * Game Difficulty of the player
+     *
+     * @param gameDifficulty of enum type GameDifficulty that sets the game difficulty of the player
+     *                       for the entirety of the game
+
+     */
+    public Game(GameDifficulty gameDifficulty) {
+        this.gameDifficulty = gameDifficulty;
+        this.universe = new Universe(40);
+        LogBig("\n" + this.universe.toString());
+        Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n"));
+    }
 
     /**
      * simple method to log the universe in LOGCAT
