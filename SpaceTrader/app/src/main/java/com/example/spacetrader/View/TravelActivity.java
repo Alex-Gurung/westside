@@ -83,11 +83,11 @@ public class TravelActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == 2) {
-            saveGame();
             Toast toast=Toast.makeText(getApplicationContext(),"Game Saved",Toast.LENGTH_SHORT);
             toast.setMargin(50,50);
             toast.show();
             finish();
+
         }
     }
 
