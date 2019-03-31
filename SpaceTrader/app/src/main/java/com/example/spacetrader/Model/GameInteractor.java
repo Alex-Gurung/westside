@@ -27,6 +27,7 @@ public class GameInteractor extends Interactor implements Serializable {
     public void setGame(Game game) {
         getRepository().setGame(game);
     }
+    public SolarSystem getRandomSolarSystem(){ return getRepository().getRandomSolarSystem();}
     public void setPlayerSolarSystem() {
         getRepository().setSolarSystem();
     }

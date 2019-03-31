@@ -31,8 +31,8 @@ public class Player extends Character implements TraderCapability, Serializable 
      * @param name a String that represents the name that the player passed in when creating their
      *             player character
      */
-    public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints, int traderSkillPoints, String name) {
-        super(name, new Ship(ShipType.GNAT));
+    public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints, int traderSkillPoints, String name, Ship ship, SolarSystem solarSystem, double credits) {
+        super(name, ship, solarSystem, credits);
         this.engineerSkillPoints = engineerSkillPoints;
         this.fighterSkillPoints = fighterSkillPoints;
         this.pilotSkillPoints = pilotSkillPoints;

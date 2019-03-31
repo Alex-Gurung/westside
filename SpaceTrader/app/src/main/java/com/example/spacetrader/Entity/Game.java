@@ -121,6 +121,10 @@ public class Game implements Serializable {
         this.universe = universe;
     }
 
+    public SolarSystem getRandomSolarSystem(){
+        return universe.getRandomSolarSystem();
+    }
+
     /**
      *  setter method for the player's current solar system
      */

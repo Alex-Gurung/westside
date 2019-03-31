@@ -19,6 +19,14 @@ abstract class Character implements Serializable {
      * @param name
      * @param ship
      */
+    Character(String name, Ship ship, SolarSystem solarSystem, double credits) {
+        this.name = name;
+        this.ship = ship;
+        this.currentSolarSystem = solarSystem;
+        this.credits = credits;
+
+    }
+
     Character(String name, Ship ship) {
         this.name = name;
         this.ship = ship;

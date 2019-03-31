@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.GameDifficulty;
+import com.example.spacetrader.Entity.Ship;
+import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
@@ -19,10 +21,9 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
 
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
-        Player player = new Player(pilot, fighter, engineer, trader, name);
+        Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT), gameInteractor.getRandomSolarSystem(), 1000);
         Game game = new Game(gd, player);
         gameInteractor.setGame(game);
-        gameInteractor.setPlayerSolarSystem();
     }
 
     public void loadGame(Game game) {
