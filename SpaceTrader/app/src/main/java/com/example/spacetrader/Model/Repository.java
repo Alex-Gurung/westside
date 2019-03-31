@@ -111,6 +111,9 @@ public class Repository implements Serializable {
     public void setSolarSystem() {
         this.game.setPlayerSolarSystem();
     }
+    public void setSolarSystem(SolarSystem solarSystem) {
+        this.game.setPlayerSolarSystem(solarSystem);
+    }
     public SolarSystem getPlayerSolarSystem() {
         return this.game.getPlayerSolarSystem();
     }

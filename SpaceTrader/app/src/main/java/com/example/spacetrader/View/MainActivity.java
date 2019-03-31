@@ -1,5 +1,7 @@
 package com.example.spacetrader.View;
 
+
+import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -10,8 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Location;
+import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.Universe;
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -32,6 +41,20 @@ public class MainActivity extends AppCompatActivity {
     private Button highScoreButton;
     private String scoreString = "";
     private DatabaseReference myRef;
+
+
+    public void getFile() {
+        try {
+            File file = new File(this.getFilesDir(), "data.bin");
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            Game o = (Game) in.readObject();
+            ConfigurationViewModel c = new ConfigurationViewModel(getApplication());
+            c.loadGame(o);
+            Log.d("Load", o.getPlayer().toString());
+        } catch (Exception e){
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +89,14 @@ public class MainActivity extends AppCompatActivity {
                 });
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+            }
+        });
+        loadGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFile();
+                Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
+                startActivity(intent);
             }
         });
     }
