@@ -146,21 +146,12 @@ public class UniverseActivity extends AppCompatActivity {
                 saveGame();
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-                startActivityForResult(intent, 1);
+                startActivity(intent);
                 updateFields();
                 showMyLocation();
 
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
-        if (requestCode == 1) {
-            updateFields();
-            showMyLocation();
-        }
     }
 
     private void updateFields() {
