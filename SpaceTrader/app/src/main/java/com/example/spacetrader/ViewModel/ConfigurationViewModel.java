@@ -27,7 +27,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
     public void loadGame(Game game) {
          gameInteractor.setGame(game);
-         gameInteractor.setPlayerSolarSystem();
+         gameInteractor.setPlayerSolarSystem(game.getPlayerSolarSystem());
     }
 
     public Game getGame() {
