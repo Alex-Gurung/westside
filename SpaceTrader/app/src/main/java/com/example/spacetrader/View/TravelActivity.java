@@ -37,7 +37,6 @@ public class TravelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
         tradingViewModel= ViewModelProviders.of(this).get(TradingViewModel.class);
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -59,16 +58,12 @@ public class TravelActivity extends AppCompatActivity {
                 Toast.makeText(TravelActivity.this, "You gained 200 credits", Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + 200);
                 break;
-
-
         }
         handler.postDelayed(new Runnable() {
             public void run() {
                 // Actions to do after 2 seconds
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 startActivityForResult(intent, 2);
-
-
             }
         }, 3000);
     }
@@ -91,34 +86,5 @@ public class TravelActivity extends AppCompatActivity {
         }
     }
 
-    public void saveGame() {
-        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
-        Game g = configurationViewModel.getGame();
-        File file = new File(this.getFilesDir(), "data.bin");
-        boolean success = true;
-        try {
-            /*
-               For binary, we use Serialization, so everything we write has to implement
-               the Serializable interface.  Fortunately all the collection classes and APi classes
-               that we might use are already Serializable.  You just have to make sure your
-               classes implement Serializable.
 
-               We have to use an ObjectOutputStream to write objects.
-
-               One thing to be careful of:  You cannot serialize static data.
-             */
-
-
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            // We basically can save our entire data model with one write, since this will follow
-            // all the links and pointers to save everything.  Just save the top level object.
-            out.writeObject(g);
-            out.close();
-        }
-        catch (IOException e) {
-            Log.e("UserManagerFacade", "Error writing an entry from binary file", e);
-            success = false;
-        }
-
-    }
 }

@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,10 @@ import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,8 +48,10 @@ import java.util.Set;
 public class UniverseActivity extends AppCompatActivity {
 
     private UniverseViewModel universeViewModel;
+    private ConfigurationViewModel configurationViewModel;
     private GraphView graph;
     private Button tradeButton;
+    private Button saveButton;
     private TextView currentSolarSystem;
     private TextView currentFuel;
     private HashMap<DataPoint, SolarSystem> dpToSS;
@@ -143,7 +151,7 @@ public class UniverseActivity extends AppCompatActivity {
         tradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveGame();
+                saveGameFB();
                 Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
                 intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
                 startActivity(intent);
@@ -152,6 +160,46 @@ public class UniverseActivity extends AppCompatActivity {
 
             }
         });
+
+        saveButton = findViewById(R.id.game_saveButton);
+        saveButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveGame();
+                Toast.makeText(UniverseActivity.this, "Game Saved to Device", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void saveGame() {
+        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        Game g = configurationViewModel.getGame();
+        File file = new File(this.getFilesDir(), "data.bin");
+        boolean success = true;
+        try {
+            /*
+               For binary, we use Serialization, so everything we write has to implement
+               the Serializable interface.  Fortunately all the collection classes and APi classes
+               that we might use are already Serializable.  You just have to make sure your
+               classes implement Serializable.
+
+               We have to use an ObjectOutputStream to write objects.
+
+               One thing to be careful of:  You cannot serialize static data.
+             */
+
+
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            // We basically can save our entire data model with one write, since this will follow
+            // all the links and pointers to save everything.  Just save the top level object.
+            out.writeObject(g);
+            out.close();
+        }
+        catch (IOException e) {
+            Log.e("UserManagerFacade", "Error writing an entry from binary file", e);
+            success = false;
+        }
+
     }
 
     private void updateFields() {
@@ -207,7 +255,7 @@ public class UniverseActivity extends AppCompatActivity {
         nLPCT.setColor(Color.rgb(1,114,203));
     }
 
-    private void saveGame() {
+    private void saveGameFB() {
 //        universeViewModel.firebaseSave();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef =   database.getReference();
