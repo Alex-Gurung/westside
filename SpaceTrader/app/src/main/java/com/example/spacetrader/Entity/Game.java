@@ -62,10 +62,12 @@ public class Game implements Serializable {
     private void LogBig(String s) {
         if(s.length() < 3000) {
             Log.d("universe: " , s);
+            return;
         } else {
             Log.d("universe: ", s.substring(0, 3000));
             s = s.substring(3000);
             LogBig(s);
+            return;
         }
     }
 
@@ -172,7 +174,7 @@ public class Game implements Serializable {
 
     /**
      * refuels the player's ship fully
-     * @return whteher or not it was able to refuel fully
+     * @return whether or not it was able to refuel fully
      */
     public boolean refuelMax() {
         return getPlayerShipYard().refuelMax(player);
@@ -191,7 +193,7 @@ public class Game implements Serializable {
      *               sell any goods
      * @return a boolean representation of if the transaction between the buyer and seller is vaild
      */
-    public boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
+    public static boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
         Log.d("FACILITATING: ", "GOOD - "  + good.getGoodType() + " - " + good.getPrice());
         if(!buyer.canBuy(good) || !seller.canSell(good)) {
             return false;
@@ -254,13 +256,5 @@ public class Game implements Serializable {
 
     public double getFuel() {
         return player.getFuel();
-    }
-
-    public void firebaseSave() {
-        // Write a message to the database
-        for(int i = 0; i < 2; i++) {
-            i = i + 1;
-        }
-
     }
 }

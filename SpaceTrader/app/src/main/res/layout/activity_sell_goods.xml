@@ -43,15 +43,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/MyCargo_label"
         android:layout_marginTop="33dp"
-        android:layout_marginBottom="0dp">
+        android:layout_marginBottom="0dp"/>
 
-        <include
-            layout="@layout/content_cargo_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp" />
-    </ScrollView>
+
+    <include
+        layout="@layout/content_cargo_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
 
     <Button
         android:id="@+id/Cargo_Back_Button"

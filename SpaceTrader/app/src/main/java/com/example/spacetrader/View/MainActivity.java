@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import android.widget.Toast;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.ConfigurationViewModel;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private String scoreString = "";
 
 
-    private void getFile() {
+    private void getFile() throws Exception{
         try {
             File file = new File(this.getFilesDir(), "data.bin");
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             ConfigurationViewModel c = new ConfigurationViewModel(getApplication());
             c.loadGame(o);
             Log.d("Load", o.getPlayer().toString());
-        } catch (Exception ignored){
-
+        } catch (Exception i){
+            throw i;
         }
     }
 
@@ -70,9 +71,16 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         });
         loadGameButton.setOnClickListener(v -> {
-            getFile();
-            Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
-            startActivity(intent);
+            try {
+                getFile();
+                Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast toast = Toast.makeText(getApplicationContext(),"Could not load game. Did you remember to save?",Toast.LENGTH_SHORT);
+                toast.show();
+                Intent intent = new Intent( getApplicationContext(), ConfigurationActivity.class);
+                startActivity(intent);
+            }
         });
     }
     private void setUpFirebase() {

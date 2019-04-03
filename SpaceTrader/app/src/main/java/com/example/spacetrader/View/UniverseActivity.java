@@ -15,7 +15,6 @@ import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -138,8 +137,7 @@ public class UniverseActivity extends AppCompatActivity {
     }
 
     private void saveGame() {
-        ConfigurationViewModel configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
-        Game g = configurationViewModel.getGame();
+        Game g = universeViewModel.getGame();
         File file = new File(this.getFilesDir(), "data.bin");
         try {
             /*
@@ -181,8 +179,7 @@ public class UniverseActivity extends AppCompatActivity {
     private void showMyLocation(){
         this.showTravelable();
         DataPoint[] currentDP = new DataPoint[1];
-        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
-                                    universeViewModel.getCurrentSolarSystem().getLocation().getY());
+        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarX(), universeViewModel.getCurrentSolarY());
         PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<>(currentDP);
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);

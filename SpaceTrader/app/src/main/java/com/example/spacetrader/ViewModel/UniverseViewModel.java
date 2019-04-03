@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
+import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
@@ -23,6 +24,17 @@ public class UniverseViewModel extends AndroidViewModel {
         return interactor.getPlayerSolarSystem();
     }
 
+    public int getCurrentSolarX() {
+        return this.getCurrentSolarSystem().getLocation().getX();
+    }
+    public int getCurrentSolarY() {
+        return this.getCurrentSolarSystem().getLocation().getY();
+    }
+
+    public Game getGame() {
+        return interactor.getGame();
+    }
+
     public HashSet<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
     }
@@ -39,9 +51,6 @@ public class UniverseViewModel extends AndroidViewModel {
         return interactor.getFuel();
     }
 
-    public void firebaseSave() {
-        interactor.firebaseSave();
-    }
 
     public double getPlayerCredits() {
         return interactor.getPlayerCredits();

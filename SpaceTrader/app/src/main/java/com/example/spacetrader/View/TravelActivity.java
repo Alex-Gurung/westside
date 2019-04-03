@@ -18,9 +18,6 @@ import java.util.Random;
  * Activity class that literally just shows a cool travel warping jpg post-travel
  */
 public class TravelActivity extends AppCompatActivity {
-    private ConfigurationViewModel configurationViewModel;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +30,18 @@ public class TravelActivity extends AppCompatActivity {
         }, 1000);
         Random r = new Random();
         int scenario = r.nextInt(3);
+        int diff = tradingViewModel.getGame().getGameDifficulty().ordinal();
         switch (scenario) {
             case 0:
                 Toast.makeText(TravelActivity.this, "Traveled safely", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
                 Toast.makeText(TravelActivity.this, "You lost 200 credits", Toast.LENGTH_SHORT).show();
-                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 200);
+                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
                 break;
             case 2:
                 Toast.makeText(TravelActivity.this, "You gained 200 credits", Toast.LENGTH_SHORT).show();
-                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + 200);
+                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (600 - 100*diff));
                 break;
         }
         handler.postDelayed(() -> {
