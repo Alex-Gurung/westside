@@ -179,8 +179,7 @@ public class UniverseActivity extends AppCompatActivity {
     private void showMyLocation(){
         this.showTravelable();
         DataPoint[] currentDP = new DataPoint[1];
-        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
-                                    universeViewModel.getCurrentSolarSystem().getLocation().getY());
+        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarX(), universeViewModel.getCurrentSolarY());
         PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<>(currentDP);
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);

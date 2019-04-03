@@ -24,6 +24,13 @@ public class UniverseViewModel extends AndroidViewModel {
         return interactor.getPlayerSolarSystem();
     }
 
+    public int getCurrentSolarX() {
+        return this.getCurrentSolarSystem().getLocation().getX();
+    }
+    public int getCurrentSolarY() {
+        return this.getCurrentSolarSystem().getLocation().getY();
+    }
+
     public Game getGame() {
         return interactor.getGame();
     }

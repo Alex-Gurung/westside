@@ -24,18 +24,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
 
-        /*
-         * Disables actionbar back button
-         */
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            getSupportActionBar().setHomeButtonEnabled(false);
-        }
 
         /*
          * Grab the dialog widgets so we can get info for later
          */
-        EditText nameField = findViewById(R.id.character_name_input);
         Spinner difficultySpinner = findViewById(R.id.gameDifficulty_spinner);
         Button beginButton = findViewById(R.id.begin_button);
         Button cancelButton = findViewById(R.id.cancel_button);
