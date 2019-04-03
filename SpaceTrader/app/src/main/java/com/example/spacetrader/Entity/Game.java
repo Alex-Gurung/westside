@@ -257,12 +257,4 @@ public class Game implements Serializable {
     public double getFuel() {
         return player.getFuel();
     }
-
-    public void firebaseSave() {
-        // Write a message to the database
-        for(int i = 0; i < 2; i++) {
-            i = i + 1;
-        }
-
-    }
 }
