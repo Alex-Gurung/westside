@@ -1,20 +1,6 @@
 package com.example.spacetrader;
 
 import com.example.spacetrader.Entity.FirebaseActor;
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.GoodType;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.Resource;
-import com.example.spacetrader.Entity.Ship;
-import com.example.spacetrader.Entity.ShipType;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.TechLevel;
-import com.example.spacetrader.Entity.Trader;
-import com.example.spacetrader.Entity.TraderCapability;
-import com.example.spacetrader.Entity.Universe;
-import com.example.spacetrader.Model.Repository;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,11 +17,19 @@ import static org.junit.Assert.assertEquals;
 public class AlexUnitTest {
     private static FirebaseActor firebaseActor;
 
+    @Before
+    public void setUp(){
+        firebaseActor = new FirebaseActor();
+    }
+
     @Test
     public void checkValidScoreStringNotUniquePlayerScore() {
-        for (int i = 0; i < 1000; i++) {
+        /*
+        *
+        * */
+        for (int i = 0; i < 100; i++) {
             Random r  = new Random();
-            int number_values = r.nextInt();
+            int number_values = r.nextInt(100);
             String[] scores_list = new String[number_values];
             for (int j = 0; j < number_values; j++) {
                 scores_list[j] = "" + r.nextDouble();

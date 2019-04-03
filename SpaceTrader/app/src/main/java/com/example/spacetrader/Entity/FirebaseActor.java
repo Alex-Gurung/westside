@@ -49,13 +49,13 @@ public class FirebaseActor {
     /**
      * Gets the current value, and returns the string of the new value to put on firebase
      * e.g. ("1.2, 1000", 1.0) -> "1000, 1.2, 1.0"
-     * @param value
+     * @param database_value
      * @return string of value to send to myRef
      */
-    public String updateScore(String value, double my_credits) {
+    public String updateScore(String database_value, double my_credits) {
         String toReturn = "";
         String my_score = "" + my_credits;
-        scoreString = value;
+        scoreString = database_value;
         if (scoreString != null) {
             String[] scores = scoreString.split(", ");
             String new_scores = "";
@@ -77,7 +77,7 @@ public class FirebaseActor {
         } else {
             toReturn = my_score;
         }
-        Log.d(TAG, "New High Score: " + value);
+        Log.d(TAG, "New High Score: " + database_value);
         return toReturn;
     }
     public void updateFire() {

@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 String cur_value = dataSnapshot.getValue(String.class);
                 if (!scoreString.equals(cur_value)) {
                     updateScore(cur_value);
-                    scoreString = cur_value;
                 }
             }
 
