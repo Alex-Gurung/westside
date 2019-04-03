@@ -16,8 +16,8 @@ abstract class Character implements Serializable {
     /**
      * constructor that instantiates a Character with a name and a ship
      *
-     * @param name name of character
-     * @param ship ship of character
+     * @param name the name of the character
+     * @param ship the ship the character will have
      */
     Character(String name, Ship ship, SolarSystem solarSystem, double credits) {
         this.name = name;
@@ -54,7 +54,7 @@ abstract class Character implements Serializable {
     }
 
     /**
-     * sees if the layer can refuel using x number credits
+     * sees if the player can refuel using x number credits
      * @param creditsAdded the number of credits of fuel wanting to be added
      * @return whether or not the fuel amount from above can be added
      */

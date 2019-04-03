@@ -174,7 +174,7 @@ public class Game implements Serializable {
 
     /**
      * refuels the player's ship fully
-     * @return whteher or not it was able to refuel fully
+     * @return whether or not it was able to refuel fully
      */
     public boolean refuelMax() {
         return getPlayerShipYard().refuelMax(player);
