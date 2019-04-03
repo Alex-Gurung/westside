@@ -196,6 +196,9 @@ public class UniverseActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void showTravelable() {
         Set<SolarSystem> solars = universeViewModel.getSolarSystems();
         List<DataPoint> locsPlayerCanTravel = new ArrayList<>();

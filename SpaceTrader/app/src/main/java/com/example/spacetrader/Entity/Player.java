@@ -64,7 +64,7 @@ public class Player extends Character implements TraderCapability, Serializable 
         return this.currentSolarSystem.getDistance(solarSystem) <= this.getShipDistance();
     }
 
-    private double getShipDistance() {
+    public double getShipDistance() {
         return ship.distanceLeft();
     }
     /**

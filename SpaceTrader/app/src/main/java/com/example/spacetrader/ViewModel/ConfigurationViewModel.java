@@ -14,11 +14,24 @@ import com.example.spacetrader.Model.Model;
 public class ConfigurationViewModel extends AndroidViewModel {
     private final GameInteractor gameInteractor;
 
+    /**
+     *
+     * @param application
+     */
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
         gameInteractor = Model.getInstance().getGameInteractor();
     }
 
+    /**
+     *
+     * @param name
+     * @param fighter
+     * @param engineer
+     * @param pilot
+     * @param trader
+     * @param gd
+     */
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
         Game game = new Game(gd);
         Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT), game.getRandomSolarSystem(), 1000);
@@ -26,11 +39,19 @@ public class ConfigurationViewModel extends AndroidViewModel {
         gameInteractor.setGame(game);
     }
 
+    /**
+     *
+     * @param game
+     */
     public void loadGame(Game game) {
          gameInteractor.setGame(game);
          gameInteractor.setPlayerSolarSystem(game.getPlayerSolarSystem());
     }
 
+    /**
+     *
+     * @return
+     */
     public Game getGame() {
         return gameInteractor.getGame();
     }
