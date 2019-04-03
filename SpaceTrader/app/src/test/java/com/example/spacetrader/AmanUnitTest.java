@@ -1,69 +1,46 @@
 package com.example.spacetrader;
 
 import com.example.spacetrader.Entity.*;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
-
+import org.junit.Assert;
 /**
  * Example local unit test, which will execute on the development machine (host).
  * DO FACILITATE TRADE
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AmanUnitTest {
-    Game game;
-    Player player;
-    Ship ship;
-    private List<Player> players;
-    private List<SpacePort> spacePorts;
+    SolarSystem solarSystem;
+    Player pl;
+    Good testGood;
 
     @Before
     public void setupFacilitateTrade() {
-        players = new ArrayList<>();
-        for(ShipType s : ShipType.values()) {
-            ship = new Ship(s);
-            player = new Player(4,4,4,4, "player", ship, null, 1000);
-        }
-        game = new Game(player);
-        spacePorts = new ArrayList<>();
-        for(int i = 0; i < TechLevel.values().length; i++) {
-            for(int j = 0; j < Resource.values().length; j++) {
-                spacePorts.add(new SpacePort(TechLevel.values()[i], Resource.values()[j]));
-            }
-        }
+        solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
+        solarSystem.setResource(Resource.MINERALRICH);
+        pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 0);
+        testGood = new Good(GoodType.FOOD);
     }
 
     @Test
     public void testEmptyCargoNoCreditsCanBuy() {
-        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
-        solarSystem.setResource(Resource.MINERALRICH);
-        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 0);
-        Good testGood = new Good(GoodType.FOOD);
+        pl.setCredits(0);
         pl.setPrice(testGood);
         Assert.assertFalse(pl.canBuy(testGood));
     }
 
     @Test
     public void testEmptyCargoEnoughCreditsCanBuy() {
-        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
-        solarSystem.setResource(Resource.MINERALRICH);
-        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 1000);
-        Good testGood = new Good(GoodType.FOOD);
+        pl.setCredits(1000);
         testGood.setPrice(10);
         Assert.assertTrue(pl.canBuy(testGood));
     }
 
     @Test
     public void testFullCargoEnoughCreditsPlayerCanBuy() {
-        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
-        solarSystem.setResource(Resource.MINERALRICH);
-        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 1000);
-        Good testGood = new Good(GoodType.FOOD);
+        pl.setCredits(1000);
         testGood.setPrice(10);
         Ship ship = pl.getMyShip();
         while(ship.hasCargoSpace()) {
@@ -74,10 +51,7 @@ public class AmanUnitTest {
 
     @Test
     public void testFullCargoNoCreditsPlayerCanBuy() {
-        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
-        solarSystem.setResource(Resource.MINERALRICH);
-        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 0);
-        Good testGood = new Good(GoodType.FOOD);
+        pl.setCredits(0);
         testGood.setPrice(10);
         Ship ship = pl.getMyShip();
         while(ship.hasCargoSpace()) {
@@ -86,7 +60,33 @@ public class AmanUnitTest {
         Assert.assertFalse(pl.canBuy(testGood));
     }
 
+    @Test
+    public void testNoCargoCanSell() {
+        Assert.assertFalse(pl.canSell(testGood));
+    }
 
+    @Test
+    public void testHasCorrectCargoCanSell() {
+        Ship ship = pl.getMyShip();
+        ship.addCargo(testGood);
+        Assert.assertTrue(pl.canSell(testGood));
+    }
+
+    @Test
+    public void testHasWrongCargoCanSell() {
+        Ship ship = pl.getMyShip();
+        ship.addCargo(testGood);
+        Assert.assertFalse(pl.canSell(new Good(GoodType.MACHINE)));
+    }
+
+    @Test
+    public void testPlayerBuyHasMoneyAndSpace() {
+        pl.setCredits(1000);
+        testGood.setPrice(200);
+        pl.buy(testGood);
+        Assert.assertTrue(Math.abs(pl.getCredits() -800) < 0.00001);
+        Assert.assertTrue(pl.getCargo()[0].equals(testGood));
+    }
 }
 
 
