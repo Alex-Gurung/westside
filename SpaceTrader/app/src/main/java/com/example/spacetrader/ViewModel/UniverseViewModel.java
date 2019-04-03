@@ -51,9 +51,6 @@ public class UniverseViewModel extends AndroidViewModel {
         return interactor.getFuel();
     }
 
-    public void firebaseSave() {
-        interactor.firebaseSave();
-    }
 
     public double getPlayerCredits() {
         return interactor.getPlayerCredits();

@@ -52,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp" />
-</ScrollView>
 
     <Button
         android:id="@+id/Cargo_Back_Button"
