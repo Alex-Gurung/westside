@@ -5,6 +5,12 @@ import com.example.spacetrader.Entity.*;
 
 import android.util.Log;
 
+import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Entity.Good;
+import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.SpacePort;
+import com.example.spacetrader.Entity.TraderCapability;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,10 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 import static android.support.constraint.Constraints.TAG;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 
-class Repository implements Serializable {
+public class Repository implements Serializable {
     private Game game;
     private String scoreString = "";
     private DatabaseReference myRef;
@@ -40,7 +48,7 @@ class Repository implements Serializable {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                updateScore(dataSnapshot.getValue(String.class));
+                myRef.setValue(updateScore(dataSnapshot.getValue(String.class), game.getPlayerCredits()));
             }
 
             @Override
@@ -51,9 +59,17 @@ class Repository implements Serializable {
         });
     }
 
-    private void updateScore(String value) {
+
+    /**
+     * Gets the current value, and returns the string of the new value to put on firebase
+     * e.g. ("1.2, 1000", 1.0) -> "1000, 1.2, 1.0"
+     * @param value
+     * @return string of value to send to myRef
+     */
+    private String updateScore(String value, double my_credits) {
+        String toReturn = "";
         if (this.game != null) {
-            String my_score = "" + game.getPlayerCredits();
+            String my_score = "" + my_credits;
             scoreString = value;
             if (scoreString != null) {
                 String[] scores = scoreString.split(", ");
@@ -72,12 +88,13 @@ class Repository implements Serializable {
                 } else {
                     new_scores = new_scores.substring(0, new_scores.length() - 2);
                 }
-                myRef.setValue(new_scores);
+                toReturn = new_scores;
             } else {
-                myRef.setValue(my_score);
+                toReturn = my_score;
             }
             Log.d(TAG, "New High Score: " + value);
         }
+        return toReturn;
     }
 
     public Game getGame() {
@@ -130,7 +147,7 @@ class Repository implements Serializable {
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         boolean facilitateTrade = this.game.facilitateTrade(toBuy, buyer, seller);
-        updateScore(scoreString);
+        myRef.setValue(updateScore(scoreString, game.getPlayerCredits()));
         return facilitateTrade;
     }
 
