@@ -36,11 +36,12 @@ public class TravelActivity extends AppCompatActivity {
                 Toast.makeText(TravelActivity.this, "Traveled safely", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                Toast.makeText(TravelActivity.this, "You lost 200 credits", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TravelActivity.this, "You lost 100 credits", Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
                 break;
             case 2:
-                Toast.makeText(TravelActivity.this, "You gained 200 credits", Toast.LENGTH_SHORT).show();
+                double gainCredits = (600 - 100*diff);
+                Toast.makeText(TravelActivity.this, "You gained " + gainCredits + " credits", Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (600 - 100*diff));
                 break;
         }
@@ -59,14 +60,7 @@ public class TravelActivity extends AppCompatActivity {
      * @param data a last thing
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
-        if (requestCode == 2) {
-            Toast toast=Toast.makeText(getApplicationContext(),"Game Saved",Toast.LENGTH_SHORT);
-            toast.setMargin(50,50);
-            toast.show();
-            finish();
-
-        }
+        finish();
     }
 
 
