@@ -169,7 +169,7 @@ public class Ship implements Serializable {
      * getter for fuel in the ship
      * @return amount of fuel in the ship
      */
-    public double getFuel() {
+    public double getFuel()  {
         return fuel;
     }
 }
