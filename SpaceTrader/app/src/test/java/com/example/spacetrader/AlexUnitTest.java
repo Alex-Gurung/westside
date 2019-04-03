@@ -1,5 +1,6 @@
 package com.example.spacetrader;
 
+import com.example.spacetrader.Entity.FirebaseActor;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.GoodType;
@@ -28,12 +29,7 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AlexUnitTest {
-    private static Repository repository;
-
-    @Before
-    public void setupSetRepo() {
-        repository = new Repository();
-    }
+    private static FirebaseActor firebaseActor;
 
     @Test
     public void checkValidScoreStringNotUniquePlayerScore() {
@@ -46,7 +42,7 @@ public class AlexUnitTest {
             }
             Double my_score = Double.parseDouble(scores_list[0]);
             String scores = String.join(", ", scores_list);
-            assertEquals(scores, repository.updateScore(scores, my_score));
+            assertEquals(scores, firebaseActor.updateScore(scores, my_score));
         }
     }
 }

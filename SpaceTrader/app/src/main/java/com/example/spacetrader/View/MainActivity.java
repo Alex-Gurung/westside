@@ -93,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                updateScore(dataSnapshot.getValue(String.class));
+                String cur_value = dataSnapshot.getValue(String.class);
+                if (!scoreString.equals(cur_value)) {
+                    updateScore(cur_value);
+                    scoreString = cur_value;
+                }
             }
 
             @Override
@@ -121,6 +125,5 @@ public class MainActivity extends AppCompatActivity {
                 scoreString += String.format("%.2f\n", d);
             }
         }
-        Log.d(TAG, "New High Scores: " + value);
     }
 }

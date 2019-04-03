@@ -26,74 +26,15 @@ import java.util.HashSet;
 
 public class Repository implements Serializable {
     private Game game;
-    private String scoreString = "";
-    private DatabaseReference myRef;
+    private FirebaseActor firebaseActor;
 
     public Repository() {
-        setUpFirebase();
     }
 
     public Repository(Game game){
         this.game = game;
-        setUpFirebase();
     }
 
-    private void setUpFirebase() {
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("scores");
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                myRef.setValue(updateScore(dataSnapshot.getValue(String.class), game.getPlayerCredits()));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-    }
-
-
-    /**
-     * Gets the current value, and returns the string of the new value to put on firebase
-     * e.g. ("1.2, 1000", 1.0) -> "1000, 1.2, 1.0"
-     * @param value
-     * @return string of value to send to myRef
-     */
-    public String updateScore(String value, double my_credits) {
-        String toReturn = "";
-        String my_score = "" + my_credits;
-        scoreString = value;
-        if (scoreString != null) {
-            String[] scores = scoreString.split(", ");
-            String new_scores = "";
-            boolean anyMatch = false;
-            for (String s : scores) {
-                if (s.length() > 0) {
-                    if (s.equals(my_score)) {
-                        anyMatch = true;
-                    }
-                    new_scores += s + ", ";
-                }
-            }
-            if (!anyMatch) {
-                new_scores += my_score;
-            } else {
-                new_scores = new_scores.substring(0, new_scores.length() - 2);
-            }
-            toReturn = new_scores;
-        } else {
-            toReturn = my_score;
-        }
-        Log.d(TAG, "New High Score: " + value);
-        return toReturn;
-    }
 
     public Game getGame() {
         return this.game;
@@ -145,7 +86,7 @@ public class Repository implements Serializable {
 
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         boolean facilitateTrade = this.game.facilitateTrade(toBuy, buyer, seller);
-        myRef.setValue(updateScore(scoreString, game.getPlayerCredits()));
+        firebaseActor.updateFire();
         return facilitateTrade;
     }
 

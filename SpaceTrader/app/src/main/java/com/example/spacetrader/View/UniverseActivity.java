@@ -120,7 +120,7 @@ public class UniverseActivity extends AppCompatActivity {
 
         Button tradeButton = findViewById(R.id.game_tradeButton);
         tradeButton.setOnClickListener(v -> {
-            saveGameFB();
+
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
             intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
             startActivity(intent);
@@ -214,15 +214,5 @@ public class UniverseActivity extends AppCompatActivity {
         graph.addSeries(nLPCT);
         lPCT.setColor(Color.YELLOW);
         nLPCT.setColor(Color.rgb(1,114,203));
-    }
-
-    private void saveGameFB() {
-//        universeViewModel.firebaseSave();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef =   database.getReference();
-        Toast.makeText(getApplicationContext(), "FIREBASE UPDATED", Toast.LENGTH_SHORT).show();
-        myRef.setValue(new HashMap<String, Object>(){{
-            put("e", universeViewModel.getPlayerCredits());
-        }});
     }
 }
