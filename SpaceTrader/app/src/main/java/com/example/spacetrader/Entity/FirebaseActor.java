@@ -81,10 +81,12 @@ public class FirebaseActor {
         return toReturn;
     }
     public void updateFire() {
-        String new_string = updateScore(scoreString, game.getPlayerCredits());
-        if (!new_string.equals(scoreString)) {
-            myRef.setValue(new_string);
-            scoreString = new_string;
+        if (this.game != null) {
+            String new_string = updateScore(scoreString, game.getPlayerCredits());
+            if (!new_string.equals(scoreString)) {
+                myRef.setValue(new_string);
+                scoreString = new_string;
+            }
         }
     }
 }
