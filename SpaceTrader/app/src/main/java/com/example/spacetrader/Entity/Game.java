@@ -11,9 +11,9 @@ import java.util.HashSet;
  *
  */
 public class Game implements Serializable {
-    private GameDifficulty gameDifficulty;
+    private final GameDifficulty gameDifficulty;
     private Player player;
-    private Universe universe;
+    private final Universe universe;
 
     /**
      * Simple constructor that is passed in a Player object. Chains up to another constructor
@@ -80,16 +80,16 @@ public class Game implements Serializable {
         return gameDifficulty;
     }
 
-    /**
-     * sets the game difficulty of the player for the game (this is only used at the config screen
-     * right?)
-     *
-     * @param gameDifficulty of type GameDifficulty that will determine how hard the game will be
-     *                       for the player
-     */
-    public void setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
-    }
+//     /**
+//     * sets the game difficulty of the player for the game (this is only used at the config screen
+//     * right?)
+//     *
+//     * @param gameDifficulty of type GameDifficulty that will determine how hard the game will be
+//     *                       for the player
+//     */
+//    public void setGameDifficulty(GameDifficulty gameDifficulty) {
+//        this.gameDifficulty = gameDifficulty;
+//    }
 
     /**
      * getter method to return the current Player object
@@ -117,23 +117,23 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    /**
-     * getter method for the Universe object
-     *
-     * @return the current Universe object
-     */
-    public Universe getUniverse() {
-        return universe;
-    }
+//    /**
+//     * getter method for the Universe object
+//     *
+//     * @return the current Universe object
+//     */
+//    public Universe getUniverse() {
+//        return universe;
+//    }
 
-    /**
-     * setter method for the Universe of the game (for when the player is continuing the game)
-     *
-     * @param universe og type Universe to be set upon relaunching the game to be continued on
-     */
-    public void setUniverse(Universe universe) {
-        this.universe = universe;
-    }
+//    /**
+//     * setter method for the Universe of the game (for when the player is continuing the game)
+//     *
+//     * @param universe og type Universe to be set upon relaunching the game to be continued on
+//     */
+//    public void setUniverse(Universe universe) {
+//        this.universe = universe;
+//    }
 
     public SolarSystem getRandomSolarSystem(){
         return universe.getRandomSolarSystem();

@@ -121,14 +121,14 @@ public class SpacePort implements TraderCapability, Serializable {
         goods.remove(good);
     }
 
-    /**
-     * method that returns the list of goods at the current space port
-     *
-     * @return a List representation of the list of goods at the current space port
-     */
-    public List<Good> getGoods() {
-        return goods;
-    }
+//    /**
+//     * method that returns the list of goods at the current space port
+//     *
+//     * @return a List representation of the list of goods at the current space port
+//     */
+//    public List<Good> getGoods() {
+//        return goods;
+//    }
 
     /**
      * getter method that returns the player's cargo hold

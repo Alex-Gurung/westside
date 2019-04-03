@@ -13,10 +13,10 @@ import java.util.Random;
 public class SolarSystem implements Serializable {
 
     private String name;
-    private Location location;
-    private PoliticalSystem politicalSystem;
-    private TechLevel techLevel;
-    private Planet planet;
+    private final Location location;
+    private final PoliticalSystem politicalSystem;
+    private final TechLevel techLevel;
+    private final Planet planet;
     private Resource resource;
     private SpacePort spacePort;
     private static final ShipYard shipYard = new ShipYard();
@@ -125,34 +125,34 @@ public class SolarSystem implements Serializable {
         return location;
     }
 
-    /**
-     * a setter method to set the current Solar System's name
-     *
-     * @param location of type Location that is to become the current Solar System's Location
-     */
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+//    /**
+//     * a setter method to set the current Solar System's name
+//     *
+//     * @param location of type Location that is to become the current Solar System's Location
+//     */
+//    public void setLocation(Location location) {
+//        this.location = location;
+//    }
 
-    /**
-     * a getter method that returns the current Solar System's political system
-     *
-     * @return the current Solar System's poitical system
-     */
-    public PoliticalSystem getPoliticalSystem() {
-        return politicalSystem;
-    }
-
-    /**
-     * a setter method to set the current Solar System's political system (mainly used in the
-     * instantiation of the Universe)
-     *
-     * @param politicalSystem of type PoliticalSystem that that is to become the current Solar
-     *                        System's political system
-     */
-    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
-        this.politicalSystem = politicalSystem;
-    }
+//    /**
+//     * a getter method that returns the current Solar System's political system
+//     *
+//     * @return the current Solar System's poitical system
+//     */
+//    public PoliticalSystem getPoliticalSystem() {
+//        return politicalSystem;
+//    }
+//
+//    /**
+//     * a setter method to set the current Solar System's political system (mainly used in the
+//     * instantiation of the Universe)
+//     *
+//     * @param politicalSystem of type PoliticalSystem that that is to become the current Solar
+//     *                        System's political system
+//     */
+//    public void setPoliticalSystem(PoliticalSystem politicalSystem) {
+//        this.politicalSystem = politicalSystem;
+//    }
 
     /**
      * getter method to return the current Solar System's tech level
@@ -163,33 +163,33 @@ public class SolarSystem implements Serializable {
         return techLevel;
     }
 
-    /**
-     * setter method to set the current Solar Systems tech level (mainly used in the instantiation
-     * of the Universe)
-     *
-     * @param techLevel of type TechLevel that is to become the current Solar System's tech level
-     */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
-
-    /**
-     * getter method that returns the planet(s) in the current Solar System
-     *
-     * @return (a) PLanet(s) in the current Solar System
-     */
-    public Planet getPlanet() {
-        return planet;
-    }
-
-    /**
-     * setter method that sets the planet(s) in the current Solar System
-     *
-     * @param planet of type Planet to be put in the current Solar system
-     */
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
-    }
+//    /**
+//     * setter method to set the current Solar Systems tech level (mainly used in the instantiation
+//     * of the Universe)
+//     *
+//     * @param techLevel of type TechLevel that is to become the current Solar System's tech level
+//     */
+//    public void setTechLevel(TechLevel techLevel) {
+//        this.techLevel = techLevel;
+//    }
+//
+//    /**
+//     * getter method that returns the planet(s) in the current Solar System
+//     *
+//     * @return (a) PLanet(s) in the current Solar System
+//     */
+//    public Planet getPlanet() {
+//        return planet;
+//    }
+//
+//    /**
+//     * setter method that sets the planet(s) in the current Solar System
+//     *
+//     * @param planet of type Planet to be put in the current Solar system
+//     */
+//    public void setPlanet(Planet planet) {
+//        this.planet = planet;
+//    }
 
     /**
      * getter method to return the Resource type of the current Solar System

@@ -13,8 +13,8 @@ import java.util.List;
  * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
  * begins and will contain all Solar Systems that are initialized.
  */
-public class Universe implements Serializable {
-    private HashSet<SolarSystem> solarSystems;
+class Universe implements Serializable {
+    private final HashSet<SolarSystem> solarSystems;
 
     /**
      * @return a set of solar systems in this universe
@@ -23,13 +23,13 @@ public class Universe implements Serializable {
         return solarSystems;
     }
 
-    /**
-     * sets the solarsystems in this universe
-     * @param solarSystems the set of solarsystems in this universe
-     */
-    public void setSolarSystems(HashSet<SolarSystem> solarSystems) {
-        this.solarSystems = solarSystems;
-    }
+//    /**
+//     * sets the solarsystems in this universe
+//     * @param solarSystems the set of solarsystems in this universe
+//     */
+//    public void setSolarSystems(HashSet<SolarSystem> solarSystems) {
+//        this.solarSystems = solarSystems;
+//    }
 
     /**
      * public constructor that initializes the Universe object with a set number of Solar Systems
@@ -234,12 +234,12 @@ public class Universe implements Serializable {
         }
     }
 
-    /**
-     * default constructor to initialize a Universe object with 100 Solar Systems
-     */
-    public Universe() {
-        this(100);
-    }
+//    /**
+//     * default constructor to initialize a Universe object with 100 Solar Systems
+//     */
+//    public Universe() {
+//        this(100);
+//    }
 
     /**
      * toString method that overrides Object's toString method that returns a list of each Solar

@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class Ship implements Serializable {
 
-    private ShipType shiptype;
+    private final ShipType shiptype;
 
     private double fuel;
     private final Good[] cargo;
@@ -45,13 +45,13 @@ public class Ship implements Serializable {
         return shiptype;
     }
 
-    /**
-     *
-     * @param shiptype sets the ship type to the new shiptype
-     */
-    public void setShiptype(ShipType shiptype) {
-        this.shiptype = shiptype;
-    }
+//    /**
+//     *
+//     * @param shiptype sets the ship type to the new shiptype
+//     */
+//    public void setShiptype(ShipType shiptype) {
+//        this.shiptype = shiptype;
+//    }
 
     /**
      * changes the fuel left in the ship based on how much it travels
@@ -102,13 +102,13 @@ public class Ship implements Serializable {
         return numGoods;
     }
 
-    /**
-     * sets the number of goods in the ship to something different
-     * @param numGoods the new number of goods in the ship
-     */
-    public void setNumGoods(int numGoods) {
-        this.numGoods = numGoods;
-    }
+//    /**
+//     * sets the number of goods in the ship to something different
+//     * @param numGoods the new number of goods in the ship
+//     */
+//    public void setNumGoods(int numGoods) {
+//        this.numGoods = numGoods;
+//    }
 
     /**
      * method that determines if the player's cargo ahs enough space for another good

@@ -10,10 +10,10 @@ import java.util.Random;
  */
 public class Location implements Serializable {
 
-    private int x;
-    private int y;
-    private static final int bound = 20;
-    private static final Random r = new Random();
+    private final int x;
+    private final int y;
+//    private static final int bound = 20;
+//    private static final Random r = new Random();
 
 
     /**
@@ -31,15 +31,15 @@ public class Location implements Serializable {
         return Math.hypot(x-l.x, y-l.y);
     }
 
-    /**
-     * static getter method that returns a random x-y location for the current solar system
-     * (upon) creation of the universe for the current game
-     *
-     * @return a randomized location of the current solar system
-     */
-    public static Location getRandomLocation() {
-        return new Location((r.nextInt(bound) + 5), (r.nextInt(bound) + 5));
-    }
+//    /**
+//     * static getter method that returns a random x-y location for the current solar system
+//     * (upon) creation of the universe for the current game
+//     *
+//     * @return a randomized location of the current solar system
+//     */
+//    public static Location getRandomLocation() {
+//        return new Location((r.nextInt(bound) + 5), (r.nextInt(bound) + 5));
+//    }
 
     /**
      * Overriden hashCode method to give the current Location object a special hashCode
@@ -87,14 +87,14 @@ public class Location implements Serializable {
         return x;
     }
 
-    /**
-     * setter method to set the x coordinate of the current Solar Systems
-     *
-     * @param x of type int to become the current Solar System's new x coordinate
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
+//    /**
+//     * setter method to set the x coordinate of the current Solar Systems
+//     *
+//     * @param x of type int to become the current Solar System's new x coordinate
+//     */
+//    public void setX(int x) {
+//        this.x = x;
+//    }
 
     /**
      * getter method for the y coordinate of the current Solar System
@@ -105,12 +105,12 @@ public class Location implements Serializable {
         return y;
     }
 
-    /**
-     * setter method to set the y coordinate of the current Solar Systems
-     *
-     * @param y of type int to become the current Solar System's new y coordinate
-     */
-    public void setY(int y) {
-        this.y = y;
-    }
+//    /**
+//     * setter method to set the y coordinate of the current Solar Systems
+//     *
+//     * @param y of type int to become the current Solar System's new y coordinate
+//     */
+//    public void setY(int y) {
+//        this.y = y;
+//    }
 }
