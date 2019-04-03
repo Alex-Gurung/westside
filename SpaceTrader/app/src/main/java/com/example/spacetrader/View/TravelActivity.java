@@ -33,17 +33,18 @@ public class TravelActivity extends AppCompatActivity {
         }, 1000);
         Random r = new Random();
         int scenario = r.nextInt(3);
+        int diff = this.configurationViewModel.getGame().getGameDifficulty().ordinal();
         switch (scenario) {
             case 0:
                 Toast.makeText(TravelActivity.this, "Traveled safely", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
                 Toast.makeText(TravelActivity.this, "You lost 200 credits", Toast.LENGTH_SHORT).show();
-                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 200);
+                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
                 break;
             case 2:
                 Toast.makeText(TravelActivity.this, "You gained 200 credits", Toast.LENGTH_SHORT).show();
-                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + 200);
+                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (600 - 100*diff));
                 break;
         }
         handler.postDelayed(() -> {
