@@ -12,9 +12,9 @@ import org.junit.Assert;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AmanUnitTest {
-    SolarSystem solarSystem;
-    Player pl;
-    Good testGood;
+    private SolarSystem solarSystem;
+    private Player pl;
+    private Good testGood;
 
     @Before
     public void setupFacilitateTrade() {
