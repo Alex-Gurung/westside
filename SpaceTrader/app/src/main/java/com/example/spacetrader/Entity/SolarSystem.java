@@ -17,7 +17,7 @@ public class SolarSystem implements Serializable {
     private PoliticalSystem politicalSystem;
     private TechLevel techLevel;
     private Planet planet;
-    private final Resource resource;
+    private Resource resource;
     private SpacePort spacePort;
     private static final ShipYard shipYard = new ShipYard();
 
@@ -50,7 +50,7 @@ public class SolarSystem implements Serializable {
      * @param t of type TechLevel that initializes a TechLevel instance field to the given tech level
      * @param name of type String that initializes the name of the Solar System
      */
-    private SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
+    public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
         Random random = new Random();
         this.name = name;
         location = l;
@@ -61,6 +61,10 @@ public class SolarSystem implements Serializable {
         this.spacePort = new SpacePort(techLevel, resource);
     }
 
+
+    public void setResource(Resource r) {
+        this.resource = r;
+    }
     /**
      * getter method that returns the space port of the current Solar System
      *

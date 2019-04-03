@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import android.widget.Toast;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.ConfigurationViewModel;
@@ -70,7 +71,13 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.show();
         });
         loadGameButton.setOnClickListener(v -> {
-            getFile();
+            try {
+                getFile();
+            } catch (Exception e) {
+                Toast toast = Toast.makeText(getApplicationContext(),"Could not load game. Did you remember to save?",Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
             Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
             startActivity(intent);
         });

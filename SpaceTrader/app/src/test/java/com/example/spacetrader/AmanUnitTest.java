@@ -4,75 +4,89 @@ import com.example.spacetrader.Entity.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
- *
+ * DO FACILITATE TRADE
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AmanUnitTest {
-    private GoodType[] goodTypes;
-    private TechLevel[] techLevels;
-    private Resource[] resources;
-    private TraderCapability traderCapability;
-    private double[] prices;
-    private static final double delta = 0.00001;
+    Game game;
+    Player player;
+    Ship ship;
+    private List<Player> players;
+    private List<SpacePort> spacePorts;
 
     @Before
-    public void setupSetPrice() {
-        goodTypes = GoodType.values();
-        techLevels = TechLevel.values();
-        resources = Resource.values();
-        traderCapability = new Trader();
-        prices = new double[1120];
-        int i = 0;
-        for(GoodType gt : goodTypes) {
-            for(TechLevel tl : techLevels) {
-                for(Resource r : resources) {
-                    int min = gt.getMinPrice();
-                    int max = gt.getMaxPrice();
-                    boolean isNaturalGood = gt.getIsNaturalResource();
-                    int tlordinal = tl.ordinal();
-                    if(!isNaturalGood) {
-                        tlordinal = 8 - tlordinal;
-                    }
-                    double add = ((max - min) * (double)tlordinal)/8;
-                    double pr = min + add;
-                    if(r.equals(gt.getHighCostResource())) {
-                        pr *= 2;
-                    }
-                    if(r.equals(gt.getLowCostResource())) {
-                        pr *= 0.5;
-                    }
-                    prices[i++] = pr;
-                }
+    public void setupFacilitateTrade() {
+        players = new ArrayList<>();
+        for(ShipType s : ShipType.values()) {
+            ship = new Ship(s);
+            player = new Player(4,4,4,4, "player", ship, null, 1000);
+        }
+        game = new Game(player);
+        spacePorts = new ArrayList<>();
+        for(int i = 0; i < TechLevel.values().length; i++) {
+            for(int j = 0; j < Resource.values().length; j++) {
+                spacePorts.add(new SpacePort(TechLevel.values()[i], Resource.values()[j]));
             }
         }
     }
 
     @Test
-    public void checkAllPrices() {
-        double[] calculatedPrices = new double[1120];
-        int i = 0;
-        for(GoodType gt : goodTypes) {
-            for(TechLevel tl : techLevels) {
-                for(Resource r : resources) {
-                    Good test = new Good(gt);
-                    traderCapability.setPrice(test, tl, r);
-                    calculatedPrices[i++] = test.getPrice();
-                }
-            }
-        }
-        Assert.assertArrayEquals(calculatedPrices, prices, delta);
+    public void testEmptyCargoNoCreditsCanBuy() {
+        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
+        solarSystem.setResource(Resource.MINERALRICH);
+        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 0);
+        Good testGood = new Good(GoodType.FOOD);
+        pl.setPrice(testGood);
+        Assert.assertFalse(pl.canBuy(testGood));
     }
-
-
 
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testEmptyCargoEnoughCreditsCanBuy() {
+        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
+        solarSystem.setResource(Resource.MINERALRICH);
+        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 1000);
+        Good testGood = new Good(GoodType.FOOD);
+        testGood.setPrice(10);
+        Assert.assertTrue(pl.canBuy(testGood));
     }
+
+    @Test
+    public void testFullCargoEnoughCreditsPlayerCanBuy() {
+        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
+        solarSystem.setResource(Resource.MINERALRICH);
+        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 1000);
+        Good testGood = new Good(GoodType.FOOD);
+        testGood.setPrice(10);
+        Ship ship = pl.getMyShip();
+        while(ship.hasCargoSpace()) {
+            ship.addCargo(new Good(GoodType.WATER));
+        }
+        Assert.assertFalse(pl.canBuy(testGood));
+    }
+
+    @Test
+    public void testFullCargoNoCreditsPlayerCanBuy() {
+        SolarSystem solarSystem = new SolarSystem(new Location(0,0), PoliticalSystem.CAPITALISTSTATE, TechLevel.AGRICULTURAL, "name");
+        solarSystem.setResource(Resource.MINERALRICH);
+        Player pl = new Player(4,4,4,4, "player", new Ship(ShipType.GNAT), solarSystem, 0);
+        Good testGood = new Good(GoodType.FOOD);
+        testGood.setPrice(10);
+        Ship ship = pl.getMyShip();
+        while(ship.hasCargoSpace()) {
+            ship.addCargo(new Good(GoodType.WATER));
+        }
+        Assert.assertFalse(pl.canBuy(testGood));
+    }
+
+
 }
 
 
