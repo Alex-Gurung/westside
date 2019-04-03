@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * a class that represents a planet in a given solar system
  */
-public class Planet implements Serializable {
+class Planet implements Serializable {
 
     /**
      * constructor that instantiates a planet with a name for the planet

@@ -103,14 +103,14 @@ public enum GoodType implements Serializable {
         return isNaturalResource;
     }
 
-    /**
-     * getter method for whether the current good type is illegal
-     *
-     * @return a boolean representation of whether the current good type is illegal
-     */
-    public boolean getIsIllegal() {
-        return isIllegal;
-    }
+//    /**
+//     * getter method for whether the current good type is illegal
+//     *
+//     * @return a boolean representation of whether the current good type is illegal
+//     */
+//    public boolean getIsIllegal() {
+//        return isIllegal;
+//    }
 
     /**
      * a getter method for the minimum tech level produce of the current good type

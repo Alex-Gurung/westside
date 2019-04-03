@@ -106,9 +106,9 @@ public class UniverseActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
                     startActivityForResult(intent, 1);
-                    Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
-                    updateFields();
-                    showMyLocation();
+//                    Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
+//                    updateFields();
+//                    showMyLocation();
 
 
                 }
@@ -123,9 +123,9 @@ public class UniverseActivity extends AppCompatActivity {
 
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
             intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-            startActivity(intent);
-            updateFields();
-            showMyLocation();
+            //startActivity(intent);
+            startActivityForResult(intent, 1);
+
 
         });
 
@@ -134,6 +134,16 @@ public class UniverseActivity extends AppCompatActivity {
             saveGame();
             Toast.makeText(UniverseActivity.this, "Game Saved to Device", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 1) {
+            Toast.makeText(UniverseActivity.this, "UpdateFuel", Toast.LENGTH_SHORT).show();
+            updateFields();
+            showMyLocation();
+
+        }
     }
 
     private void saveGame() {

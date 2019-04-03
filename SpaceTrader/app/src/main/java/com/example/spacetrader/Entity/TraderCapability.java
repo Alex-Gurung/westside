@@ -27,7 +27,7 @@ public interface TraderCapability extends Serializable {
      *
      * @param good of type Good whose price will be calculated
      * @param tl of type TechLevel that partially determines the price of the given good
-     * @param resource of type Resouece that partially determines the price of the given good
+     * @param resource of type Resource that partially determines the price of the given good
      */
     default void setPrice(Good good, TechLevel tl, Resource resource) {
         GoodType gt = good.getGoodType();

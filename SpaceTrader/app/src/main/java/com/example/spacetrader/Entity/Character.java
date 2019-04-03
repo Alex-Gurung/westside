@@ -114,14 +114,14 @@ abstract class Character implements Serializable {
         return ship;
     }
 
-    /**
-     * setter method to set the current ship of the Character to the given ship
-     *
-     * @param myShip of type Ship to be set to the Character's current ship
-     */
-    public void setMyShip(Ship myShip) {
-        this.ship = myShip;
-    }
+//   /**
+//     * setter method to set the current ship of the Character to the given ship
+//     *
+//     * @param myShip of type Ship to be set to the Character's current ship
+//      */
+//    public void setMyShip(Ship myShip) {
+//        this.ship = myShip;
+//    }
 
     /**
      * getter method to return the current number of credits the Character has
