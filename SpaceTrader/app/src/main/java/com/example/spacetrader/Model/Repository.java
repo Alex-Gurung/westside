@@ -66,34 +66,32 @@ public class Repository implements Serializable {
      * @param value
      * @return string of value to send to myRef
      */
-    private String updateScore(String value, double my_credits) {
+    public String updateScore(String value, double my_credits) {
         String toReturn = "";
-        if (this.game != null) {
-            String my_score = "" + my_credits;
-            scoreString = value;
-            if (scoreString != null) {
-                String[] scores = scoreString.split(", ");
-                String new_scores = "";
-                boolean anyMatch = false;
-                for (String s : scores) {
-                    if (s.length() > 0) {
-                        if (s.equals(my_score)) {
-                            anyMatch = true;
-                        }
-                        new_scores += s + ", ";
+        String my_score = "" + my_credits;
+        scoreString = value;
+        if (scoreString != null) {
+            String[] scores = scoreString.split(", ");
+            String new_scores = "";
+            boolean anyMatch = false;
+            for (String s : scores) {
+                if (s.length() > 0) {
+                    if (s.equals(my_score)) {
+                        anyMatch = true;
                     }
+                    new_scores += s + ", ";
                 }
-                if (!anyMatch) {
-                    new_scores += my_score;
-                } else {
-                    new_scores = new_scores.substring(0, new_scores.length() - 2);
-                }
-                toReturn = new_scores;
-            } else {
-                toReturn = my_score;
             }
-            Log.d(TAG, "New High Score: " + value);
+            if (!anyMatch) {
+                new_scores += my_score;
+            } else {
+                new_scores = new_scores.substring(0, new_scores.length() - 2);
+            }
+            toReturn = new_scores;
+        } else {
+            toReturn = my_score;
         }
+        Log.d(TAG, "New High Score: " + value);
         return toReturn;
     }
 

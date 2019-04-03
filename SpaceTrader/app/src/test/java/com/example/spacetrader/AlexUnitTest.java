@@ -18,6 +18,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -34,8 +36,18 @@ public class AlexUnitTest {
     }
 
     @Test
-    public void checkUpdateScore() {
-
+    public void checkValidScoreStringNotUniquePlayerScore() {
+        for (int i = 0; i < 1000; i++) {
+            Random r  = new Random();
+            int number_values = r.nextInt();
+            String[] scores_list = new String[number_values];
+            for (int j = 0; j < number_values; j++) {
+                scores_list[j] = "" + r.nextDouble();
+            }
+            Double my_score = Double.parseDouble(scores_list[0]);
+            String scores = String.join(", ", scores_list);
+            assertEquals(scores, repository.updateScore(scores, my_score));
+        }
     }
 }
 
