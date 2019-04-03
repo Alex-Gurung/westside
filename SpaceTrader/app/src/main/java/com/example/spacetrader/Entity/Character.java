@@ -16,8 +16,8 @@ abstract class Character implements Serializable {
     /**
      * constructor that instantiates a Character with a name and a ship
      *
-     * @param name
-     * @param ship
+     * @param name name of character
+     * @param ship ship of character
      */
     Character(String name, Ship ship, SolarSystem solarSystem, double credits) {
         this.name = name;
@@ -27,8 +27,8 @@ abstract class Character implements Serializable {
 
     }
 
-    Character(String name, Ship ship) {
-        this.name = name;
+    Character(Ship ship) {
+        this.name = "NPC";
         this.ship = ship;
     }
 

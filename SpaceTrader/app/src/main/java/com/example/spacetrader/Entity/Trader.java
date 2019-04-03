@@ -97,6 +97,6 @@ public class Trader extends NonPlayerCharacter implements TraderCapability, Seri
 
     @Override
     public void interactWithPlayer(Player player) {
-
+        player.canChangeShip(ShipType.BEETLE);
     }
 }

@@ -85,15 +85,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             price = itemView.findViewById(R.id.market_price);
             sellButton = itemView.findViewById(R.id.market_buyButton);
 
-            sellButton.setOnClickListener(new View.OnClickListener() {
+            sellButton.setOnClickListener(view -> {
+                int position = getAdapterPosition();
 
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
-                        listener.onMarketItemBuy(position);
-                    }
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener.onMarketItemBuy(position);
                 }
             });
 

@@ -1,16 +1,12 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,37 +17,24 @@ import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
-import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+@SuppressWarnings("SuspiciousMethodCalls")
 public class UniverseActivity extends AppCompatActivity {
 
     private UniverseViewModel universeViewModel;
-    private ConfigurationViewModel configurationViewModel;
     private GraphView graph;
-    private Button tradeButton;
-    private Button saveButton;
     private TextView currentSolarSystem;
     private TextView currentFuel;
     private HashMap<DataPoint, SolarSystem> dpToSS;
@@ -73,7 +56,7 @@ public class UniverseActivity extends AppCompatActivity {
         graph = findViewById(R.id.graphView);
 
         HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
-        dpToSS = new HashMap<>();
+        dpToSS = new HashMap<DataPoint, SolarSystem>();
         List<DataPoint> dps = new ArrayList<>();
         for (SolarSystem system : solarSystems) {
             Location loc = system.getLocation();
@@ -110,72 +93,54 @@ public class UniverseActivity extends AppCompatActivity {
         series.setShape(PointsGraphSeries.Shape.POINT);
         showMyLocation();
 
-        series.setOnDataPointTapListener(new OnDataPointTapListener() {
-            @Override
-            public void onTap(Series series, DataPointInterface dataPoint) {
-                SolarSystem thisSS = dpToSS.get(dataPoint);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UniverseActivity.this);
-                alertDialogBuilder.setTitle("Travel to Solar System?");
-                alertDialogBuilder.setMessage(thisSS.toString());
-                alertDialogBuilder.setPositiveButton("Travel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Location previousLocation = universeViewModel.getCurrentSolarSystem().getLocation();
-                        Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
-                        boolean didTravel = universeViewModel.facilitateTravel(thisSS);
-                        if (!didTravel) {
-                            Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Intent intent = new Intent( getApplicationContext(), TravelActivity.class);
-                            startActivityForResult(intent, 1);
-                            Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
-                            updateFields();
-                            showMyLocation();
+        series.setOnDataPointTapListener((series1, dataPoint) -> {
+            SolarSystem thisSS = dpToSS.get(dataPoint);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UniverseActivity.this);
+            alertDialogBuilder.setTitle("Travel to Solar System?");
+            alertDialogBuilder.setMessage(Objects.requireNonNull(thisSS).toString());
+            alertDialogBuilder.setPositiveButton("Travel", (dialog, which) -> {
+                Location previousLocation = universeViewModel.getCurrentSolarSystem().getLocation();
+                Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
+                boolean didTravel = universeViewModel.facilitateTravel(thisSS);
+                if (!didTravel) {
+                    Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
+                    startActivityForResult(intent, 1);
+                    Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
+                    updateFields();
+                    showMyLocation();
 
 
-                        }
-                    }
-                });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-            }
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         });
 
-        tradeButton = findViewById(R.id.game_tradeButton);
-        tradeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveGameFB();
-                Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-                intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-                startActivity(intent);
-                updateFields();
-                showMyLocation();
+        Button tradeButton = findViewById(R.id.game_tradeButton);
+        tradeButton.setOnClickListener(v -> {
+            saveGameFB();
+            Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+            intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
+            startActivity(intent);
+            updateFields();
+            showMyLocation();
 
-            }
         });
 
-        saveButton = findViewById(R.id.game_saveButton);
-        saveButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveGame();
-                Toast.makeText(UniverseActivity.this, "Game Saved to Device", Toast.LENGTH_SHORT).show();
-            }
+        Button saveButton = findViewById(R.id.game_saveButton);
+        saveButton.setOnClickListener(v -> {
+            saveGame();
+            Toast.makeText(UniverseActivity.this, "Game Saved to Device", Toast.LENGTH_SHORT).show();
         });
     }
 
-    public void saveGame() {
-        configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+    private void saveGame() {
+        ConfigurationViewModel configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
         Game g = configurationViewModel.getGame();
         File file = new File(this.getFilesDir(), "data.bin");
-        boolean success = true;
         try {
             /*
                For binary, we use Serialization, so everything we write has to implement
@@ -197,7 +162,6 @@ public class UniverseActivity extends AppCompatActivity {
         }
         catch (IOException e) {
             Log.e("UserManagerFacade", "Error writing an entry from binary file", e);
-            success = false;
         }
 
     }
@@ -219,7 +183,7 @@ public class UniverseActivity extends AppCompatActivity {
         DataPoint[] currentDP = new DataPoint[1];
         currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarSystem().getLocation().getX(),
                                     universeViewModel.getCurrentSolarSystem().getLocation().getY());
-        PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<DataPoint>(currentDP);
+        PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<>(currentDP);
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);
 

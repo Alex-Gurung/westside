@@ -32,7 +32,7 @@ public class Game implements Serializable {
      *                       for the entirety of the game
      * @param player of type Player that will be the player of the whole game so Space Trader
      */
-    public Game(GameDifficulty gameDifficulty, Player player) {
+    private Game(GameDifficulty gameDifficulty, Player player) {
         this.gameDifficulty = gameDifficulty;
         this.player = player;
         this.universe = new Universe(40);
@@ -62,12 +62,10 @@ public class Game implements Serializable {
     private void LogBig(String s) {
         if(s.length() < 3000) {
             Log.d("universe: " , s);
-            return;
         } else {
             Log.d("universe: ", s.substring(0, 3000));
             s = s.substring(3000);
             LogBig(s);
-            return;
         }
     }
 
@@ -168,7 +166,7 @@ public class Game implements Serializable {
      *
      * @return player's current shipyard
      */
-    public ShipYard getPlayerShipYard() {
+    private ShipYard getPlayerShipYard() {
         return player.getCurrentShipYard();
     }
 
@@ -260,6 +258,9 @@ public class Game implements Serializable {
 
     public void firebaseSave() {
         // Write a message to the database
+        for(int i = 0; i < 2; i++) {
+            i = i + 1;
+        }
 
     }
 }

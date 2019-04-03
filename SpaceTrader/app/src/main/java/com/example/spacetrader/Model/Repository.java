@@ -1,15 +1,10 @@
 package com.example.spacetrader.Model;
 
+import android.support.annotation.NonNull;
 import com.example.spacetrader.Entity.*;
 
 import android.util.Log;
 
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,12 +13,10 @@ import com.google.firebase.database.ValueEventListener;
 import static android.support.constraint.Constraints.TAG;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
 
-public class Repository implements Serializable {
+class Repository implements Serializable {
     private Game game;
     private String scoreString = "";
     private DatabaseReference myRef;
@@ -37,28 +30,28 @@ public class Repository implements Serializable {
         setUpFirebase();
     }
 
-    public void setUpFirebase() {
+    private void setUpFirebase() {
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("scores");
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 updateScore(dataSnapshot.getValue(String.class));
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
     }
 
-    public void updateScore(String value) {
+    private void updateScore(String value) {
         if (this.game != null) {
             String my_score = "" + game.getPlayerCredits();
             scoreString = value;

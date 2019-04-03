@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -37,6 +39,7 @@ public enum TechLevel implements Serializable {
         return values()[r.nextInt(values().length)];
     }
 
+    @NonNull
     @Override
     public String toString() {
         return name;

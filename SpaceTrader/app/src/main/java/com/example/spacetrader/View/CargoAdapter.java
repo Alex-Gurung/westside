@@ -102,7 +102,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         /**
          * Method that creates the view layout of what each good will look like in the cargo hold
          *
-         * @param itemView
+         * @param itemView a view
          */
         CargoViewHolder(@NonNull View itemView) {
             super(itemView);

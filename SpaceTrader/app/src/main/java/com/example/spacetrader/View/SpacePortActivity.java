@@ -12,12 +12,7 @@ import com.example.spacetrader.ViewModel.TradingViewModel;
 
 public class SpacePortActivity extends AppCompatActivity {
 
-    private Button backButton;
-    private Button sellGoodsButton;
-    private Button buyGoodsButton;
-    private Button shipYardButton;
     private TextView credits;
-    private TextView solarSystemText;
     private TradingViewModel tradingViewModel;
 
     private static final int BUY_OR_SELL = 1;
@@ -30,21 +25,19 @@ public class SpacePortActivity extends AppCompatActivity {
 
         tradingViewModel= ViewModelProviders.of(this).get(TradingViewModel.class);
 
-        backButton = findViewById(R.id.SpacePort_Back_Button);
-        sellGoodsButton = findViewById(R.id.SpacePort_Sell_Goods_Button);
-        buyGoodsButton = findViewById(R.id.SpacePort_Buy_Goods_Button);
-        shipYardButton = findViewById(R.id.SpacePort_ShipYard_Button);
+        Button backButton = findViewById(R.id.SpacePort_Back_Button);
+        Button sellGoodsButton = findViewById(R.id.SpacePort_Sell_Goods_Button);
+        Button buyGoodsButton = findViewById(R.id.SpacePort_Buy_Goods_Button);
+        Button shipYardButton = findViewById(R.id.SpacePort_ShipYard_Button);
         credits = findViewById(R.id.SpacePort_Credits_Text_Box);
-        solarSystemText = findViewById(R.id.SpacePort_SolarSystem_Stats);
+        TextView solarSystemText = findViewById(R.id.SpacePort_SolarSystem_Stats);
 
         credits.setText(""+tradingViewModel.getPlayerCredits());
         solarSystemText.setText(SolarSystemStats);
 
 
         //sends user back to solar system screen on pressing the back button
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
         shipYardButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), ShipYardActivity.class);
             startActivityForResult(intent, BUY_OR_SELL);

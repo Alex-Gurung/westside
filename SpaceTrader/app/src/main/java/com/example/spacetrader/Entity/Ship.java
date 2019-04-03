@@ -1,9 +1,9 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * a class tha represents the current player's current ship. Each ship object has a cargo hold, a
@@ -66,6 +66,7 @@ public class Ship implements Serializable {
      *
      * @return a String representation of the Ship's toString method
      */
+    @NonNull
     @Override
     public String toString() {
         return shiptype.toString();

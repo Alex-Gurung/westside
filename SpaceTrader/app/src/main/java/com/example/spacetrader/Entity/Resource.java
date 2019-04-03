@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
@@ -32,6 +34,7 @@ public enum Resource implements Serializable {
         this.name = name;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return name;

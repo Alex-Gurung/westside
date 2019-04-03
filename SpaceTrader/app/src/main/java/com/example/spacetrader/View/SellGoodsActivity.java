@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SellGoodsActivity extends AppCompatActivity {
-    private Button backButton;
     private TextView credits;
     private final CargoAdapter adapter = new CargoAdapter();
     private List<Good> cargo;
@@ -36,10 +35,8 @@ public class SellGoodsActivity extends AppCompatActivity {
 
         playerCredits = tradingViewModel.getPlayerCredits();
 
-        backButton = findViewById(R.id.Cargo_Back_Button);
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+        Button backButton = findViewById(R.id.Cargo_Back_Button);
+        backButton.setOnClickListener(v -> finish());
         credits = findViewById(R.id.cargo_credit_input);
         credits.setText("" + playerCredits);
 
@@ -54,21 +51,16 @@ public class SellGoodsActivity extends AppCompatActivity {
         //cargo = setDummyGoods();
         Good[] playerGoods = tradingViewModel.getCargo(tradingViewModel.getPlayer());
         if (playerGoods != null) {
-            cargo = new ArrayList<Good>();
-            for (int i = 0; i < playerGoods.length; i++) {
-                if (playerGoods[i] != null) {
-                    cargo.add(playerGoods[i]);
+            cargo = new ArrayList<>();
+            for (Good playerGood : playerGoods) {
+                if (playerGood != null) {
+                    cargo.add(playerGood);
                 }
             }
         }
         adapter.setCargoList(cargo);
 
-        adapter.setOnCargoClickListener(new CargoAdapter.OnCargoGoodClickListener() {
-            @Override
-            public void onCargoGoodSell(int position) {
-                sellItem(position);
-            }
-        });
+        adapter.setOnCargoClickListener(this::sellItem);
 
     }
     public List<Good> setDummyGoods() {

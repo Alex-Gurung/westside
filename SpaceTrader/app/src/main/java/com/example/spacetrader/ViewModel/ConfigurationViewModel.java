@@ -8,7 +8,6 @@ import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.Entity.Ship;
 import com.example.spacetrader.Entity.ShipType;
-import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 

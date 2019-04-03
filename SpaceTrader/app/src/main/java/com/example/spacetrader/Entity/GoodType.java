@@ -1,7 +1,5 @@
 package com.example.spacetrader.Entity;
 
-import com.example.spacetrader.R;
-
 import java.io.Serializable;
 
 /**

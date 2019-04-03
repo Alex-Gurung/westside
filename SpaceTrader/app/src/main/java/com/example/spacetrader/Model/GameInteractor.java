@@ -1,12 +1,9 @@
 package com.example.spacetrader.Model;
 
-import android.util.Log;
-
 import com.example.spacetrader.Entity.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * The Interactor for Game that has access to the repository
@@ -14,7 +11,7 @@ import java.util.List;
 public class GameInteractor extends Interactor implements Serializable {
     /**
      * 
-     * @param repo
+     * @param repo a repository
      */
     public GameInteractor(Repository repo) {
         super(repo);

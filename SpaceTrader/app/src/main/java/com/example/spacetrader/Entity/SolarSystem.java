@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -17,7 +19,6 @@ public class SolarSystem implements Serializable {
     private Planet planet;
     private final Resource resource;
     private SpacePort spacePort;
-    private final Random random;
     private static final ShipYard shipYard = new ShipYard();
 
     /**
@@ -50,7 +51,7 @@ public class SolarSystem implements Serializable {
      * @param name of type String that initializes the name of the Solar System
      */
     private SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
-        random  = new Random();
+        Random random = new Random();
         this.name = name;
         location = l;
         politicalSystem = p;
@@ -227,6 +228,7 @@ public class SolarSystem implements Serializable {
      *
      * @return a String representation of the current Solar System's location
      */
+    @NonNull
     @Override
     public String toString() {
         return "\nName: " + name + "\nLocation: " + location.toString() + "\nTech Level: " +

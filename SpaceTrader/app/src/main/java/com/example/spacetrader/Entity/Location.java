@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Random;
 
@@ -70,6 +72,7 @@ public class Location implements Serializable {
      *
      * @return a String representation of the current Solar System's x and y coordinates
      */
+    @NonNull
     @Override
     public String toString() {
         return "X: " + x + " Y: " + y;

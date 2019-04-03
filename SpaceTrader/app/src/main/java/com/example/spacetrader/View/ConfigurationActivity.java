@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +20,6 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private ConfigurationViewModel configurationViewModel;
 
-    private EditText nameField;
-    private Spinner difficultySpinner;
-    private Button beginButton;
-    private Button cancelButton;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
@@ -41,31 +35,21 @@ public class ConfigurationActivity extends AppCompatActivity {
         /*
          * Grab the dialog widgets so we can get info for later
          */
-        nameField = findViewById(R.id.character_name_input);
-        difficultySpinner = findViewById(R.id.gameDifficulty_spinner);
-        beginButton = findViewById(R.id.begin_button);
-        cancelButton = findViewById(R.id.cancel_button);
+        EditText nameField = findViewById(R.id.character_name_input);
+        Spinner difficultySpinner = findViewById(R.id.gameDifficulty_spinner);
+        Button beginButton = findViewById(R.id.begin_button);
+        Button cancelButton = findViewById(R.id.cancel_button);
 
         /*
          * Link begin button to its corresponding method
          */
-        beginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBeginPressed();
-            }
-        });
+        beginButton.setOnClickListener(v -> onBeginPressed());
 
         /*
          * Link cancel button to returning to main activity
          */
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        cancelButton.setOnClickListener(v -> finish());
 
         /*
           Set up the adapter to display the allowable difficulties in the spinner

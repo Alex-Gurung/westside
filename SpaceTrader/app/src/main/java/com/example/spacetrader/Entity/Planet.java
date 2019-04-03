@@ -7,15 +7,13 @@ import java.io.Serializable;
  */
 public class Planet implements Serializable {
 
-    private final String name;
-
     /**
      * constructor that instantiates a planet with a name for the planet
      *
      * @param name of type String to be set to the current Planet's name
      */
     public Planet(String name) {
-        this.name = name;
+        String name1 = name;
     }
 
 }

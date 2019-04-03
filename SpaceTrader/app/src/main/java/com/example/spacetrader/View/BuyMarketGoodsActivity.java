@@ -17,7 +17,6 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,7 +24,6 @@ import java.util.List;
  * the space port
  */
 public class BuyMarketGoodsActivity extends AppCompatActivity {
-    private Button backButton;
     private double playerCredits;
     private TextView credits;
     private final MarketAdapter adapter = new MarketAdapter();
@@ -49,10 +47,8 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         playerCredits = tradingViewModel.getPlayerCredits();
         spacePort = tradingViewModel.getSpacePort();
 
-        backButton = findViewById(R.id.Market_Back_Button);
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+        Button backButton = findViewById(R.id.Market_Back_Button);
+        backButton.setOnClickListener(v -> finish());
 
         credits = findViewById(R.id.market_credit_input);
         credits.setText("" + playerCredits);
@@ -83,22 +79,17 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
 //            adapter.setMarketList(marketList);
 //        }
         if (spacePortGoods != null) {
-            marketList = new ArrayList<Good>();
-            for (int i = 0; i < spacePortGoods.length; i++){
-                if (spacePortGoods[i] != null) {
-                    marketList.add(spacePortGoods[i]);
+            marketList = new ArrayList<>();
+            for (Good spacePortGood : spacePortGoods) {
+                if (spacePortGood != null) {
+                    marketList.add(spacePortGood);
                 }
             }
             Log.d("SPACEPORTGOODS", marketList.toString());
         }
         adapter.setMarketList(marketList);
 
-        adapter.setOnMarketClickListener(new MarketAdapter.OnMarketItemClickListener() {
-            @Override
-            public void onMarketItemBuy(int position) {
-                buyItem(position);
-            }
-        });
+        adapter.setOnMarketClickListener(this::buyItem);
 
     }
     public List<Good> setDummyGoods() {

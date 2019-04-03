@@ -1,5 +1,7 @@
 package com.example.spacetrader.Entity;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
@@ -167,11 +169,10 @@ public class Player extends Character implements TraderCapability, Serializable 
         return ship.getNumGoods() <= upgrade.getCargoHolds();
     }
 
-    public double getShipUpgradePrice(ShipType upgrade) {
+    private double getShipUpgradePrice(ShipType upgrade) {
         double currentShipPrice = ship.getPrice();
         double newShipPrice = upgrade.getPrice();
-        double shipPriceDifferences = newShipPrice - currentShipPrice;
-        return shipPriceDifferences;
+        return newShipPrice - currentShipPrice;
     }
 
     public boolean changeShipType(ShipType upgrade) {
@@ -214,6 +215,7 @@ public class Player extends Character implements TraderCapability, Serializable 
      *
      * @return a String represntation of all the above attributes of the current player
      */
+    @NonNull
     @Override
     public String toString() {
         String s = "";
