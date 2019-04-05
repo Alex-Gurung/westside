@@ -133,8 +133,10 @@ public class Player extends Character implements TraderCapability, Serializable 
      */
     @Override
     public void sell(Good g) {
-        credits += g.getPrice();
-        ship.removeCargo(g);
+        if (g != null) {
+            credits += g.getPrice();
+            ship.removeCargo(g);
+        }
     }
 
     /**
