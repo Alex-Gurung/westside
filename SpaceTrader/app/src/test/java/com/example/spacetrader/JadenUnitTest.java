@@ -18,7 +18,7 @@ import org.junit.Test;
  * their ship
  *
  */
-public class JadenChangeShipTypeUnitTest {
+public class JadenUnitTest {
     private Game game;
     private SolarSystem solarSystem;
     private Ship upgrade;
