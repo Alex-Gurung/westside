@@ -47,7 +47,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     /**
      * method to bind the view holder to certain attributes given to the view holder
      *
-     * @param holder of type CargoViewHoldert whose text value will be set to the name of the good
+     * @param holder of type CargoViewHolder whose text value will be set to the name of the good
      * @param position of type int to get the position of the cargo in the LOGCAT
      */
     @Override

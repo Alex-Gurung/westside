@@ -62,7 +62,7 @@ public class ShipYardActivity extends AppCompatActivity {
         if(refueledMax) {
             Toast.makeText(getApplicationContext(), "Ship refueled fully", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Lmao sorry but I don't speak poor", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Can not refuel", Toast.LENGTH_SHORT).show();
         }
     }
 }

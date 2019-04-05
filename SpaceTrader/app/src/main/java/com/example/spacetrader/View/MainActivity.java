@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * method that sets up the firebase database
+     * method that sets up the Firebase database
      */
     private void setUpFirebase() {
         // Write a message to the database

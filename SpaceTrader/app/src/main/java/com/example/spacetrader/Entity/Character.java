@@ -45,7 +45,7 @@ abstract class Character implements Serializable {
     }
 
     /**
-     * refules the ship to the max
+     * refuels the ship to the max
      */
     public void refuelMax() {
         credits -= getMaxPriceOfReFuel();

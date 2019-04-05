@@ -72,7 +72,7 @@ public class Good implements Serializable {
      * an equals method that determines if the current good is equal to the passed in Object
      *
      * @param o of type Object that is to be compared to the current Good
-     * @return a booelan representation of whether {@code this} is equal in value to the param o
+     * @return a boolean representation of whether {@code this} is equal in value to the param o
      */
     @Override
     public boolean equals(Object o){

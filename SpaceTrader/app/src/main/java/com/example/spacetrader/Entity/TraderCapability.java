@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  *
- * interface that represents the capabilities of the player, trader NPCS, and space ports to be able
+ * interface that represents the capabilities of the player, trader NPCs, and space ports to be able
  * to trade goods
  */
 public interface TraderCapability extends Serializable {
@@ -12,9 +12,9 @@ public interface TraderCapability extends Serializable {
     double getPrice(Good good);
 
     /**
-     * default way to set price given only a good and a solarsystem
+     * default way to set price given only a good and a solar system
      * @param good the good whose price is being set
-     * @param solarSystem the solarsystem in which the proce is being set
+     * @param solarSystem the solar system in which the price is being set
      */
     default void setPrice(Good good, SolarSystem solarSystem) {
         setPrice(good, solarSystem.getTechLevel(), solarSystem.getResource());

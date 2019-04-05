@@ -15,7 +15,7 @@ public class Player extends Character implements TraderCapability, Serializable 
     private final int engineerSkillPoints;
     private final int traderSkillPoints;
 
-//    private String name = "Bobert Waters";
+
 //
 //    private Ship ship = new Ship(ShipType.GNAT);
 
@@ -42,9 +42,9 @@ public class Player extends Character implements TraderCapability, Serializable 
     }
 
     /**
-     * moves the player to a new solarsystme and changes the fuel and
+     * moves the player to a new solar system and changes the fuel and
      * price of goods on the ship accordingly
-     * @param solarSystem the new solarsystem the player is on
+     * @param solarSystem the new solar system the player is on
      */
     public void travel(SolarSystem solarSystem) {
         double dist = this.currentSolarSystem.getDistance(solarSystem);
@@ -81,10 +81,10 @@ public class Player extends Character implements TraderCapability, Serializable 
 
     /**
      * setter method to set the price of the good based on the current Solar System's tech level
-     * amnd resource availability
+     * and resource availability
      *
      * @param good of type good whose price will be determined based on the current solar system's
-     *             attributtes
+     *             attributes
      */
     public void setPrice(Good good) {
         setPrice(good, this.currentSolarSystem.getTechLevel(), this.currentSolarSystem.getResource());
@@ -213,7 +213,7 @@ public class Player extends Character implements TraderCapability, Serializable 
      * Overridden toString method that returns the name, ship, skill point distribution, and credits
      * of the current player
      *
-     * @return a String represntation of all the above attributes of the current player
+     * @return a String representation of all the above attributes of the current player
      */
     @NonNull
     @Override
