@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.spacetrader.R;
 
+/**
+ * An activity for an interaction with an NPC
+ */
 public class NPCInteractionActivity extends AppCompatActivity {
 
     @Override

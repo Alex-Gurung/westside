@@ -64,20 +64,7 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
 
         //marketList = setDummyGoods();
         Good[] spacePortGoods = tradingViewModel.getCargo(spacePort);
-//        if (spacePortGoods != null) {
-//            List<Good> goods = new ArrayList<Good>();
-//            for (int i = 0; i < spacePortGoods.length; i++){
-//                if (spacePortGoods[i] != null) {
-//                    goods.add(spacePortGoods[i]);
-//                }
-//            }
-//            Log.d("SPACEPORTGOODS", goods.toString());
-//            adapter.setMarketList(goods);
-//            marketList = Arrays.asList(spacePortGoods);
-//        }
-//        else {
-//            adapter.setMarketList(marketList);
-//        }
+
         if (spacePortGoods != null) {
             marketList = new ArrayList<>();
             for (Good spacePortGood : spacePortGoods) {

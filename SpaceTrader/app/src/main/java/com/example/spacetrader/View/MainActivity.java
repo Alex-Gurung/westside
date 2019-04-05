@@ -27,12 +27,17 @@ import java.util.Collections;
 
 import static android.support.constraint.Constraints.TAG;
 
-
+/**
+ * The initial screen users see - allows you to load a game that was in progress or start a new one
+ */
 public class MainActivity extends AppCompatActivity {
 
     private String scoreString = "";
 
-
+    /**
+     * method for loading the game
+     * @throws Exception if the loading does not work correctly
+     */
     private void getFile() throws Exception{
         try {
             File file = new File(this.getFilesDir(), "data.bin");
@@ -83,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * method that sets up the firebase database
+     */
     private void setUpFirebase() {
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -107,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * method that updates the high scores
+     * @param value the new score value to update
+     */
     private void updateScore(String value) {
         scoreString = value;
         if (scoreString != null) {

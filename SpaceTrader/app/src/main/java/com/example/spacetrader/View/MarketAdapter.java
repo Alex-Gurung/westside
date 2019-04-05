@@ -14,7 +14,9 @@ import com.example.spacetrader.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * An adapter for the list of items available for purchase at the SpacePort
+ */
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketViewHolder>{
     /** a copy of the list of marketList in the model */
     private List<Good> marketList = new ArrayList<>();
@@ -53,22 +55,32 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         return marketList.size();
     }
 
-
+    /**
+     * Sets the market list to a list of goods
+     * @param list the list of market goods
+     */
     public void setMarketList(List<Good> list) {
         this.marketList = list;
         notifyDataSetChanged();
     }
 
+    /**
+     * getter for the market list
+     * @return the market list
+     */
     public List<Good> getMarketList() {
         return marketList;
     }
 
+    /**
+     * method for removing an item from the market list when it is bough
+     * @param position the position of the item to be bought
+     */
     public void removeItem(int position) {
         this.marketList.remove(position);
         Log.d("FACILITATING: ", "position: " +position);
         notifyDataSetChanged();
     }
-
 
     /**
      * This is a holder for the widgets associated with a single entry in the list of marketList
@@ -96,10 +108,22 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
         }
     }
 
+    /**
+     * interface with one method to be implemented in the onClick method
+     */
     public interface OnMarketItemClickListener {
+        /**
+         * the method that will be implemented in the onClick method
+         * @param position the position of the item that is to be bought
+         */
         void onMarketItemBuy(int position);
     }
-
+    /**
+     * sets a listener for each good item in the market list
+     *
+     * @param listener of type OnMarketItemClickListener that sets this instance's listener
+     *
+     */
     public void setOnMarketClickListener(OnMarketItemClickListener listener) {
         this.listener = listener;
     }

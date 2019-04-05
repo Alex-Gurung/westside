@@ -40,7 +40,7 @@ public class GameInteractor extends Interactor implements Serializable {
      * getter method to return a randomly selected Solar System
      *
      * @return a randomly generated Solar System
-     */
+     **/
 //    public SolarSystem getRandomSolarSystem(){ return getRepository().getRandomSolarSystem();}
 //    public void setPlayerSolarSystem() {
 //        getRepository().setSolarSystem();
