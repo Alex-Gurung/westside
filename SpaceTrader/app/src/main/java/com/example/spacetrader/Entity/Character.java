@@ -69,6 +69,7 @@ abstract class Character implements Serializable {
         }
         return true;
     }
+
     /**
      * getter method that returns the name of the Character
      *

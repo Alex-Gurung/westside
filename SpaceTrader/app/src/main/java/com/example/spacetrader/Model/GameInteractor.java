@@ -41,10 +41,10 @@ public class GameInteractor extends Interactor implements Serializable {
      *
      * @return a randomly generated Solar System
      */
-//    public SolarSystem getRandomSolarSystem(){ return getRepository().getRandomSolarSystem();}
-//    public void setPlayerSolarSystem() {
-//        getRepository().setSolarSystem();
-//    }
+    public SolarSystem getRandomSolarSystem() {
+        return getRepository().getRandomSolarSystem();
+    }
+
 
     /**
      * sets the Player's Solar System to the passed in Solar System
@@ -142,7 +142,7 @@ public class GameInteractor extends Interactor implements Serializable {
      * @return a boolean that represents whether the Player has the means of changing their ship
      */
     public boolean canChangePlayerShip(ShipType upgrade) {
-        return getGame().canChangePlayerShip(upgrade);
+        return getGame().changePlayerShipType(upgrade);
     }
 
     /**

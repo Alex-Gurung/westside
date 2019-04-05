@@ -7,7 +7,7 @@ import java.io.Serializable;
  * type
  */
 public enum ShipType implements Serializable {
-    //name, max distance, cargo holds,  hull strength, fuel price
+    //name, max distance, cargo holds, fuel price
     FLEA("Flea", 20, 4, 10),
     GNAT("Gnat", 14, 15, 11),
     FIREFLY("Firefly",17, 20, 11),
