@@ -47,7 +47,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
     /**
      * method to bind the view holder to certain attributes given to the view holder
      *
-     * @param holder of type CargoViewHoldert whose text value will be set to the name of the good
+     * @param holder of type CargoViewHolder whose text value will be set to the name of the good
      * @param position of type int to get the position of the cargo in the LOGCAT
      */
     @Override
@@ -74,6 +74,10 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
         return cargo.size();
     }
 
+    /**
+     * method that removes an item from the list of cargoItems and notifies that a data set changed
+     * @param position the position of the cargo item that was removed
+     */
     public void removeItem(int position) {
         this.cargo.remove(position);
         Log.d("FACILITATING: ", "position: " +position);
@@ -133,6 +137,10 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      * interface with one method to be implemented in the onClick method
      */
     public interface OnCargoGoodClickListener {
+        /**
+         * the method that will be implemented in the onClick method
+         * @param position the position of the item that is to be sold
+         */
         void onCargoGoodSell(int position);
     }
 

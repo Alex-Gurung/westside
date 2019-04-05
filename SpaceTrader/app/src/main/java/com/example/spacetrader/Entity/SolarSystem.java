@@ -68,7 +68,7 @@ public class SolarSystem implements Serializable {
     /**
      * getter method that returns the space port of the current Solar System
      *
-     * @return a SpacePort representation of the curent Solar System's space port
+     * @return a SpacePort representation of the current Solar System's space port
      */
     public SpacePort getSpacePort() {
         return spacePort;
@@ -82,15 +82,15 @@ public class SolarSystem implements Serializable {
     }
 
     /**
-     * gets distance between this and another solarsystem
+     * gets distance between this and another solar system
      * @param solarSystem the second solar system whose distance you are measuring
-     * @return the distance between the two solarsystems
+     * @return the distance between the two solar systems
      */
     public double getDistance(SolarSystem solarSystem) {
         return this.location.getDistance(solarSystem.getLocation());
     }
     /**
-     * setter method that sets the curretn Solar System's space port
+     * setter method that sets the current Solar System's space port
      *
      * @param spacePort of type SPacePort to become the current Solar System's space port
      */
@@ -99,7 +99,7 @@ public class SolarSystem implements Serializable {
     }
 
     /**
-     * getter method to rerutn the name of the current Solar System
+     * getter method to return the name of the current Solar System
      *
      * @return a String representation of the name of the current Solar System
      */
@@ -137,7 +137,7 @@ public class SolarSystem implements Serializable {
 //    /**
 //     * a getter method that returns the current Solar System's political system
 //     *
-//     * @return the current Solar System's poitical system
+//     * @return the current Solar System's political system
 //     */
 //    public PoliticalSystem getPoliticalSystem() {
 //        return politicalSystem;
@@ -176,7 +176,7 @@ public class SolarSystem implements Serializable {
 //    /**
 //     * getter method that returns the planet(s) in the current Solar System
 //     *
-//     * @return (a) PLanet(s) in the current Solar System
+//     * @return (a) Planet(s) in the current Solar System
 //     */
 //    public Planet getPlanet() {
 //        return planet;
@@ -215,7 +215,7 @@ public class SolarSystem implements Serializable {
      * equal in value
      *
      * @param obj the object to be compared to {@code this}
-     * @return a boolean value that represents wherter {@code this} and obj have the same locations
+     * @return a boolean value that represents whether {@code this} and obj have the same locations
      */
     @Override
     public boolean equals(Object obj) {

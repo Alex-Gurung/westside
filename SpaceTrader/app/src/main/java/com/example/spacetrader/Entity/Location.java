@@ -42,7 +42,7 @@ public class Location implements Serializable {
 //    }
 
     /**
-     * Overriden hashCode method to give the current Location object a special hashCode
+     * Overridden hashCode method to give the current Location object a special hashCode
      *
      * @return an int representation of the current Location's hashCode
      */
@@ -56,7 +56,7 @@ public class Location implements Serializable {
      * coordinates
      *
      * @param obj of type Object to be compared to the current Location object
-     * @return a boolean representation of whether the two Objects ahve the same coordinates
+     * @return a boolean representation of whether the two Objects have the same coordinates
      */
     @Override
     public boolean equals(Object obj) {
@@ -68,7 +68,7 @@ public class Location implements Serializable {
     }
 
     /**
-     * Overriden toString method to return the x and y coordinates of the current Solar System
+     * Overridden toString method to return the x and y coordinates of the current Solar System
      *
      * @return a String representation of the current Solar System's x and y coordinates
      */

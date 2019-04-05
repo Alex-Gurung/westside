@@ -11,7 +11,7 @@ abstract class Character implements Serializable {
     String name;
     SolarSystem currentSolarSystem;
     Ship ship;
-    double credits = 1000.00;
+    double credits;
 
     /**
      * constructor that instantiates a Character with a name and a ship
@@ -33,7 +33,7 @@ abstract class Character implements Serializable {
     }
 
     private double getMaxPriceOfReFuel() {
-        return ((1.0 - ship.getFuel()) * (ship.getShiptype().getFuelPrice()) * (double)(ship.getShiptype().getMaxDistance()));
+        return ((1.0 - ship.getFuel()) * (ship.getFuelPrice()) * (double)(ship.getMaxDistance()));
     }
 
     /**
@@ -45,7 +45,7 @@ abstract class Character implements Serializable {
     }
 
     /**
-     * refules the ship to the max
+     * refuels the ship to the max
      */
     public void refuelMax() {
         credits -= getMaxPriceOfReFuel();
@@ -59,8 +59,11 @@ abstract class Character implements Serializable {
      * @return whether or not the fuel amount from above can be added
      */
     public boolean refuelByCredits(double creditsAdded) {
+        if(creditsAdded < 0) {
+            throw new IllegalArgumentException("Cannot refuel with negative credits");
+        }
         if(creditsAdded > credits) return false;
-        double fuelPercent = creditsAdded / (ship.getShiptype().getFuelPrice() * ship.getShiptype().getMaxDistance());
+        double fuelPercent = creditsAdded / (ship.getFuelPrice() * ship.getMaxDistance());
         if(fuelPercent > 1 - ship.getFuel()) {
             refuelMax();
         } else {

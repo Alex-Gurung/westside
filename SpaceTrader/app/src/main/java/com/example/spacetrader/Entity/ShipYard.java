@@ -23,7 +23,7 @@ public class ShipYard implements Serializable {
     /**
      * Refuels the ship based on how many credits you pay
      * @param character the character whose ship is being refuelled
-     * @param credits the aount of credits of fuel the caharcter is buying
+     * @param credits the amount of credits of fuel the character is buying
      * @return whether or not the transaction was successful
      */
     public static boolean refuelByCredits(Character character, double credits) {

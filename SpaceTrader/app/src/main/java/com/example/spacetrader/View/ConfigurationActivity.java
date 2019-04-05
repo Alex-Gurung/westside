@@ -16,10 +16,14 @@ import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 
 import java.util.Arrays;
 
+/**
+ * The activity that handles configuring the game - setting the name, skill points & game difficulty
+ */
 public class ConfigurationActivity extends AppCompatActivity {
 
     private ConfigurationViewModel configurationViewModel;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
@@ -53,6 +57,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         configurationViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
+    /**
+     * the method that stipulates what happens when the user clicks the Begin button
+     * ensures the skill points add up to 16
+     */
     private void onBeginPressed() {
         EditText nameInput = findViewById(R.id.character_name_input);
         EditText fighterInput = findViewById(R.id.fighter_skill_pts_input);
@@ -79,6 +87,15 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * method that calculates  the sum of the skill points
+     *
+     * @param fighter player's fighter skill points
+     * @param engineer player's engineer skill points
+     * @param pilot player's pilot skill points
+     * @param trader player's trader skill points
+     * @return the sum of the player's skill points
+     */
     private int getTotalSkillPoints(int fighter, int engineer, int pilot, int trader) {
         return fighter + engineer + pilot + trader;
     }

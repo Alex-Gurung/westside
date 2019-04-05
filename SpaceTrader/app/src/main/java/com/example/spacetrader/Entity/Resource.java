@@ -19,7 +19,7 @@ public enum Resource implements Serializable {
     POORSOIL("Poor Soil"),
     RICHFAUNA("Rich Fauna"),
     LIFELESS("Lifeless"),
-    WIERDMUSHROOMS("Wierd Mushrooms"),
+    WIERDMUSHROOMS("Weird Mushrooms"),
     LOSTSOFHERBS("Lots Of Herbs"),
     ARTISTIC("Artistic"),
     WARLIKE("Warlike");

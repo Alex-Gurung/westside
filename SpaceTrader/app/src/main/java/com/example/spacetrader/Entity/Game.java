@@ -154,7 +154,7 @@ public class Game implements Serializable {
     /**
      * getter method for the current Solar System
      *
-     * @return the player's current soalr system
+     * @return the player's current solar system
      */
     public SolarSystem getPlayerSolarSystem() {
         return player.getCurrentSolarSystem();
@@ -187,7 +187,7 @@ public class Game implements Serializable {
      *              buy any goods
      * @param seller of type Trader capability that determines whether or not the seller is able to
      *               sell any goods
-     * @return a boolean representation of if the transaction between the buyer and seller is vaild
+     * @return a boolean representation of if the transaction between the buyer and seller is valid
      */
     public static boolean facilitateTrade(Good good, TraderCapability buyer, TraderCapability seller) {
         Log.d("FACILITATING: ", "GOOD - "  + good.getGoodType() + " - " + good.getPrice());
