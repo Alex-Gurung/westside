@@ -1,6 +1,7 @@
 package com.example.spacetrader;
 
 import com.example.spacetrader.Entity.*;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -166,6 +167,11 @@ public class AmanUnitTest {
             pl.sell(plCargo[0]);
         } //cargo empty
         Assert.assertFalse(Game.facilitateTrade(testGood, spacePort, pl)); //pl has no goods
+    }
+
+    @AfterClass
+    public static void goodBoiAlert() {
+        System.out.println("yOu PaSsEd AlL tHe TeStS");
     }
 }
 
