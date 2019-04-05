@@ -172,4 +172,18 @@ public class Ship implements Serializable {
     public double getFuel()  {
         return fuel;
     }
+
+    /**
+     * getter for the fuel price of the ship type
+     * @return the price of the fuel for the ship type
+     */
+    public double getFuelPrice(){ return shiptype.getFuelPrice();}
+
+    /**
+     * method to get the max distance the ship can travel at max fuel
+     * @return an int to represent the max distance the ship can travel at max fuel
+     */
+    public int getMaxDistance() {
+        return shiptype.getMaxDistance();
+    }
 }
