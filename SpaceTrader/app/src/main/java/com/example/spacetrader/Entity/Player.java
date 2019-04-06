@@ -133,8 +133,10 @@ public class Player extends Character implements TraderCapability, Serializable 
      */
     @Override
     public void sell(Good g) {
-        credits += g.getPrice();
-        ship.removeCargo(g);
+        if (g != null) {
+            credits += g.getPrice();
+            ship.removeCargo(g);
+        }
     }
 
     /**
@@ -166,7 +168,7 @@ public class Player extends Character implements TraderCapability, Serializable 
     }
 
     public boolean canChangeShip(ShipType upgrade) {
-        return ship.getNumGoods() <= upgrade.getCargoHolds();
+        return ship.getCargo().length <= upgrade.getCargoHolds();
     }
 
     private double getShipUpgradePrice(ShipType upgrade) {
@@ -176,7 +178,7 @@ public class Player extends Character implements TraderCapability, Serializable 
     }
 
     public boolean changeShipType(ShipType upgrade) {
-        if(canChangeShip(upgrade)) {
+        if(canChangeShip(upgrade) && upgrade.getPrice() <= credits) {
             Ship newShip = new Ship(upgrade);
             for(Good cargo : ship.getCargo()) {
                 newShip.addCargo(cargo);

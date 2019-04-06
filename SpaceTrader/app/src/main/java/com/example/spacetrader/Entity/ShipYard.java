@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Shipyard class, does some things to help the player out (mostly just refuel)
  */
 public class ShipYard implements Serializable {
+
     /**
      * Refuels the ship to the maximum amount allowed
      * @param character is the character whose ship is being refuelled fully
@@ -28,5 +29,4 @@ public class ShipYard implements Serializable {
     public static boolean refuelByCredits(Character character, double credits) {
         return character.refuelByCredits(credits);
     }
-
 }

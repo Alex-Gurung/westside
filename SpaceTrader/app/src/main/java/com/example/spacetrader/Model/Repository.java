@@ -76,7 +76,7 @@ public class Repository implements Serializable {
     }
 
     public boolean canChangePlayerShip(ShipType upgrade) {
-        return game.canChangePlayerShip(upgrade);
+        return game.changePlayerShipType(upgrade);
     }
 
     public boolean changePlayerShipType(ShipType upgrade) {

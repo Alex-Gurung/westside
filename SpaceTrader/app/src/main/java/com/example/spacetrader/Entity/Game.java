@@ -100,10 +100,6 @@ public class Game implements Serializable {
         return player;
     }
 
-    public boolean canChangePlayerShip(ShipType upgrade) {
-        return player.canChangeShip(upgrade);
-    }
-
     public boolean changePlayerShipType(ShipType upgrade) {
         return player.changeShipType(upgrade);
     }
