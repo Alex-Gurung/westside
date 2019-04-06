@@ -16,7 +16,6 @@ public class SolarSystem implements Serializable {
     private final Location location;
     private final PoliticalSystem politicalSystem;
     private final TechLevel techLevel;
-    private final Planet planet;
     private Resource resource;
     private SpacePort spacePort;
     private static final ShipYard shipYard = new ShipYard();
@@ -57,7 +56,6 @@ public class SolarSystem implements Serializable {
         politicalSystem = p;
         techLevel = t;
         resource = Resource.values()[random.nextInt(Resource.values().length - 1) + 1]; // will never be never
-        this.planet = new Planet(name);
         this.spacePort = new SpacePort(techLevel, resource);
     }
 
@@ -173,23 +171,7 @@ public class SolarSystem implements Serializable {
 //        this.techLevel = techLevel;
 //    }
 //
-//    /**
-//     * getter method that returns the planet(s) in the current Solar System
-//     *
-//     * @return (a) Planet(s) in the current Solar System
-//     */
-//    public Planet getPlanet() {
-//        return planet;
-//    }
-//
-//    /**
-//     * setter method that sets the planet(s) in the current Solar System
-//     *
-//     * @param planet of type Planet to be put in the current Solar system
-//     */
-//    public void setPlanet(Planet planet) {
-//        this.planet = planet;
-//    }
+
 
     /**
      * getter method to return the Resource type of the current Solar System
