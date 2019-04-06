@@ -62,12 +62,10 @@ public class Game implements Serializable {
     private void LogBig(String s) {
         if(s.length() < 3000) {
             Log.d("universe: " , s);
-            return;
         } else {
             Log.d("universe: ", s.substring(0, 3000));
             s = s.substring(3000);
             LogBig(s);
-            return;
         }
     }
 
