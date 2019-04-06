@@ -111,8 +111,8 @@ public class SpacePort implements TraderCapability, Serializable {
     }
 
     /**
-     * method (Overridden from the TraderCapabilities interface) where the player can sell goods from
-     * their cargo ship
+     * method (Overridden from the TraderCapabilities interface) where the player can sell goods
+     * from their cargo ship
      *
      * @param good of type Good that the player will be selling
      */
@@ -135,6 +135,7 @@ public class SpacePort implements TraderCapability, Serializable {
      *
      * @return an array representation of type Good that is the player's cargo hold
      */
+    @Override
     public Good[] getCargo() {
         Good[] ourCargo = new Good[goods.size()];
         for (int i = 0; i < goods.size(); i++) {

@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast toast = Toast.makeText(getApplicationContext(),"Could not load game. Did you remember to save?",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Could not load game. Did you remember to save?",Toast.LENGTH_SHORT);
                 toast.show();
                 Intent intent = new Intent( getApplicationContext(), ConfigurationActivity.class);
                 startActivity(intent);
@@ -134,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
             Collections.reverse(scores_doubles);
             scoreString = "";
             for (Double d : scores_doubles) {
+                /* Could use StringBuilder for more efficient concatenation, but String is more
+                *  effective for our specific usage
+                */
                 scoreString += String.format("%.2f\n", d);
             }
         }

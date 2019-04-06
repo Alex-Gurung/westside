@@ -24,7 +24,8 @@ public class Trader extends NonPlayerCharacter implements TraderCapability, Seri
      * @param good of type Good whose price is to be calculated
      */
     public void setPrice(Good good) {
-        setPrice(good, this.currentSolarSystem.getTechLevel(), this.currentSolarSystem.getResource());
+        setPrice(good, this.currentSolarSystem.getTechLevel(),
+                this.currentSolarSystem.getResource());
     }
 
     /**

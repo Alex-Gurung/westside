@@ -46,7 +46,7 @@ public class SolarSystem implements Serializable {
      * @param l of type Location that initializes the Location instance field to the given location
      * @param p of type PoliticalSystem that initializes the Political instance field to the given
      *          political system
-     * @param t of type TechLevel that initializes a TechLevel instance field to the given tech level
+     * @param t TechLevel that initializes a TechLevel instance field to the given tech level
      * @param name of type String that initializes the name of the Solar System
      */
     public SolarSystem(Location l, PoliticalSystem p, TechLevel t, String name) {
@@ -55,7 +55,8 @@ public class SolarSystem implements Serializable {
         location = l;
         politicalSystem = p;
         techLevel = t;
-        resource = Resource.values()[random.nextInt(Resource.values().length - 1) + 1]; // will never be never
+        // will never be "NEVER" resource
+        resource = Resource.values()[random.nextInt(Resource.values().length - 1) + 1];
         this.spacePort = new SpacePort(techLevel, resource);
     }
 
@@ -193,8 +194,8 @@ public class SolarSystem implements Serializable {
     }
 
     /**
-     * equals method that checks to see if the locations between {@code this} and the passed in object are
-     * equal in value
+     * equals method that checks to see if the locations between {@code this} and the passed in
+     * object are equal in value
      *
      * @param obj the object to be compared to {@code this}
      * @return a boolean value that represents whether {@code this} and obj have the same locations
@@ -218,7 +219,8 @@ public class SolarSystem implements Serializable {
     @Override
     public String toString() {
         return "\nName: " + name + "\nLocation: " + location.toString() + "\nTech Level: " +
-                techLevel + "\nPolitical System: " + politicalSystem + "\n" + "Resource: " + resource + "\n"
+                techLevel + "\nPolitical System: " + politicalSystem + "\n" + "Resource: " +
+                resource + "\n"
                 + "------------------------------------------------";
     }
 }

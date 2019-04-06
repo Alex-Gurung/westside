@@ -94,7 +94,8 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
      */
     private void buyItem(int position) {
         Good toBuy = marketList.get(position);
-        boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(), spacePort);
+        boolean isSold = tradingViewModel.facilitateTrade(toBuy, tradingViewModel.getPlayer(),
+                spacePort);
         if (!isSold) {
             Toast.makeText(this, "Could not buy item", Toast.LENGTH_SHORT).show();
         } else {

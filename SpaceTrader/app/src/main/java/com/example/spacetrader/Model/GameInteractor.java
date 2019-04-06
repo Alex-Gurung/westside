@@ -179,7 +179,7 @@ public class GameInteractor extends Interactor implements Serializable {
     /**
      * method that determines whether or not the player has enough credits to refuel their Ship
      *
-     * @return a boolean that represents whether or not the player has enough credits to refuel their Ship
+     * @return a boolean that represents if the player has enough credits to refuel their Ship
      */
     public boolean refuelMax() {
         return getRepository().refuelMax();

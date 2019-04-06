@@ -50,7 +50,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable difficulties in the spinner
          */
-        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Arrays.asList(GameDifficulty.values()));
+        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Arrays.asList(GameDifficulty.values()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
@@ -78,10 +79,13 @@ public class ConfigurationActivity extends AppCompatActivity {
         GameDifficulty difficulty = (GameDifficulty) difficultyInput.getSelectedItem();
 
         if (getTotalSkillPoints(fighter, engineer, pilot, trader) != 16) {
-            Toast.makeText(ConfigurationActivity.this, "Skill points are not 16", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConfigurationActivity.this, "Skill points are not 16",
+                    Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(ConfigurationActivity.this, "Beginning your Space Journey!", Toast.LENGTH_SHORT).show();
-            configurationViewModel.initializeGame(name, fighter, engineer, pilot, trader, difficulty);
+            Toast.makeText(ConfigurationActivity.this, "Beginning your Space Journey!",
+                    Toast.LENGTH_SHORT).show();
+            configurationViewModel.initializeGame(name, fighter, engineer, pilot, trader,
+                    difficulty);
             Intent intent = new Intent( getApplicationContext(), UniverseActivity.class);
             startActivity(intent);
         }

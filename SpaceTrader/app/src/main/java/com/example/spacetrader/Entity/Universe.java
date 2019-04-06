@@ -109,7 +109,7 @@ public class Universe implements Serializable {
             // From the first Ghostbusters movie
             String[] solarSystemNames = new String[]{
                     "Acamar",
-                    "Adahn",        // The alternate personality for The Nameless One in "Planescape: Torment"
+                    "Adahn",
                     "Aldea",
                     "Andevian",
                     "Antedi",
@@ -175,7 +175,7 @@ public class Universe implements Serializable {
                     "Mordan",
                     "Myrthe",        // The name of my daughter
                     "Nelvana",
-                    "Nix",            // An interesting spelling of a word meaning "nothing" in Dutch
+                    "Nix",
                     "Nyle",            // An interesting spelling of the great river
                     "Odet",
                     "Og",            // The last of the witches in Pratchett's Discworld
@@ -216,7 +216,7 @@ public class Universe implements Serializable {
                     "Triacus",
                     "Turkana",
                     "Tyrus",
-                    "Umberlee",        // A god from AD&D, which has a prominent role in Baldur's Gate
+                    "Umberlee",
                     "Utopia",        // The ultimate goal
                     "Vadera",
                     "Vagra",
@@ -250,11 +250,11 @@ public class Universe implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (SolarSystem system: solarSystems) {
-            str += system.toString();
+            str.append(system.toString());
         }
-        return str;
+        return str.toString();
     }
     public SolarSystem getRandomSolarSystem() {
         return (SolarSystem)solarSystems.toArray()[0];

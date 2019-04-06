@@ -32,9 +32,11 @@ public class ConfigurationViewModel extends AndroidViewModel {
      * @param trader
      * @param gd
      */
-    public void initializeGame(String name, int fighter, int engineer, int pilot, int trader, GameDifficulty gd) {
+    public void initializeGame(String name, int fighter, int engineer, int pilot, int trader,
+                               GameDifficulty gd) {
         Game game = new Game(gd);
-        Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT), game.getRandomSolarSystem(), 1000);
+        Player player = new Player(pilot, fighter, engineer, trader, name, new Ship(ShipType.GNAT),
+                game.getRandomSolarSystem(), 1000);
         game.setPlayer(player);
         gameInteractor.setGame(game);
     }

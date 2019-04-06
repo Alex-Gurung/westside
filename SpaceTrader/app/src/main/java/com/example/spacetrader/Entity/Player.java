@@ -33,7 +33,9 @@ public class Player extends Character implements TraderCapability, Serializable 
      * @param name a String that represents the name that the player passed in when creating their
      *             player character
      */
-    public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints, int traderSkillPoints, String name, Ship ship, SolarSystem solarSystem, double credits) {
+    public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints,
+                  int traderSkillPoints, String name, Ship ship, SolarSystem solarSystem,
+                  double credits) {
         super(name, ship, solarSystem, credits);
         this.engineerSkillPoints = engineerSkillPoints;
         this.fighterSkillPoints = fighterSkillPoints;
@@ -87,7 +89,8 @@ public class Player extends Character implements TraderCapability, Serializable 
      *             attributes
      */
     public void setPrice(Good good) {
-        setPrice(good, this.currentSolarSystem.getTechLevel(), this.currentSolarSystem.getResource());
+        setPrice(good, this.currentSolarSystem.getTechLevel(),
+                this.currentSolarSystem.getResource());
     }
 
     /**
@@ -155,6 +158,7 @@ public class Player extends Character implements TraderCapability, Serializable 
      *
      * @return the current Solar System of the player
      */
+    @Override
     public SolarSystem getCurrentSolarSystem() {
         return currentSolarSystem;
     }
@@ -198,6 +202,7 @@ public class Player extends Character implements TraderCapability, Serializable 
      * @param currentSolarSystem the Solar System object to become the player's new current Solar
      *                           System
      */
+    @Override
     public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
         this.currentSolarSystem = currentSolarSystem;
     }

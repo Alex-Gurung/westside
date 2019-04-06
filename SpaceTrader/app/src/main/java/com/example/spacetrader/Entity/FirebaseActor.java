@@ -54,22 +54,25 @@ public class FirebaseActor {
         scoreString = database_value;
         if (scoreString != null) {
             String[] scores = scoreString.split(", ");
-            String new_scores = "";
+            StringBuilder new_scores = new StringBuilder();
             boolean anyMatch = false;
             for (String s : scores) {
                 if (s.length() > 0) {
                     if (s.equals(my_score)) {
                         anyMatch = true;
                     }
-                    new_scores += s + ", ";
+                    /* Could use StringBuilder for more efficient concatenation, but String is more
+                     * effective for our specific usage
+                     */
+                    new_scores.append(s).append(", ");
                 }
             }
             if (!anyMatch) {
-                new_scores += my_score;
+                new_scores.append(my_score);
             } else {
-                new_scores = new_scores.substring(0, new_scores.length() - 2);
+                new_scores = new StringBuilder(new_scores.substring(0, new_scores.length() - 2));
             }
-            toReturn = new_scores;
+            toReturn = new_scores.toString();
         } else {
             toReturn = my_score;
         }

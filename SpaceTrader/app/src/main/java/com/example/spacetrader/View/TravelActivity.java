@@ -33,16 +33,21 @@ public class TravelActivity extends AppCompatActivity {
         int diff = tradingViewModel.getGame().getGameDifficulty().ordinal();
         switch (scenario) {
             case 0:
-                Toast.makeText(TravelActivity.this, "Traveled safely", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TravelActivity.this, "Traveled safely",
+                        Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                Toast.makeText(TravelActivity.this, "You lost 100 credits", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TravelActivity.this, "You lost 100 credits",
+                        Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
                 break;
             case 2:
                 double gainCredits = (600 - 100*diff);
-                Toast.makeText(TravelActivity.this, "You gained " + gainCredits + " credits", Toast.LENGTH_SHORT).show();
-                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (600 - 100*diff));
+                Toast.makeText(TravelActivity.this, "You gained " + gainCredits +
+                        " credits", Toast.LENGTH_SHORT).show();
+                tradingViewModel.setPlayerCredits(
+                        tradingViewModel.getPlayerCredits() + (600 - 100*diff)
+                );
                 break;
         }
         handler.postDelayed(() -> {
@@ -59,6 +64,7 @@ public class TravelActivity extends AppCompatActivity {
      * @param resultCode another thing
      * @param data a last thing
      */
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         finish();
     }

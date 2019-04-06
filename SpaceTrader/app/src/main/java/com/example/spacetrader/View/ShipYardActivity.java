@@ -60,9 +60,11 @@ public class ShipYardActivity extends AppCompatActivity {
     private void refuelMax() {
         boolean refueledMax = tradingViewModel.refuelMax();
         if(refueledMax) {
-            Toast.makeText(getApplicationContext(), "Ship refueled fully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Ship refueled fully",
+                    Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Can not refuel", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Can not refuel",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 }

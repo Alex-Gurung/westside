@@ -26,7 +26,8 @@ public class JonUnitTest {
     @Test
     public void getSolarSystemDistance() {
         Assert.assertTrue(solarSystem1.getDistance(solarSystem2) == 5);
-        Assert.assertTrue(solarSystem2.getDistance(solarSystem3) == Math.hypot(4-20, 3-0));
+        //4-20, 3-0
+        Assert.assertTrue(solarSystem2.getDistance(solarSystem3) == Math.hypot(-16, 3));
         Assert.assertTrue(solarSystem3.getDistance(solarSystem1) == 20);
     }
     @Test

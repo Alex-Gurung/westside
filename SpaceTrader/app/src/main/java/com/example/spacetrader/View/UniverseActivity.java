@@ -48,25 +48,10 @@ public class UniverseActivity extends AppCompatActivity {
 
         updateFields();
 
-        //Log.d("UniverseActivity", configurationViewModel.getGame().getUniverse().toString());
-
         graph = findViewById(R.id.graphView);
 
-        HashSet<SolarSystem> solarSystems = universeViewModel.getSolarSystems();
-        dpToSS = new HashMap<>();
-        List<DataPoint> dps = new ArrayList<>();
-        for (SolarSystem system : solarSystems) {
-            Location loc = system.getLocation();
-            DataPoint cur_dp = new DataPoint(loc.getX(), loc.getY());
-            dps.add(cur_dp);
-            dpToSS.put(cur_dp, system);
-        }
-        DataPoint[] dataPoints = new DataPoint[dps.size()];
-        Collections.sort(dps, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
-        for (int i =0; i < dps.size(); i++) {
-            dataPoints[i] = dps.get(i);
-        }
-        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(dataPoints);
+        DataPoint[] dp = ssToDP(universeViewModel.getSolarSystems());
+        PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(dp);
 
         graph.setTitle("Solar Systems");
         graph.getViewport().setYAxisBoundsManual(true);
@@ -80,7 +65,8 @@ public class UniverseActivity extends AppCompatActivity {
         graph.getViewport().setDrawBorder(false);
 
         graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
-        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);// remove horizontal x labels and line
+        // remove horizontal x labels and line
+        graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
         graph.getGridLabelRenderer().setVerticalLabelsVisible(false);
 
         graph.addSeries(series);
@@ -89,7 +75,9 @@ public class UniverseActivity extends AppCompatActivity {
 
         series.setOnDataPointTapListener((series1, dataPoint) -> {
             SolarSystem thisSS = dpToSS.get(dataPoint);
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UniverseActivity.this);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    UniverseActivity.this
+            );
             alertDialogBuilder.setTitle("Travel to Solar System?");
             alertDialogBuilder.setMessage(Objects.requireNonNull(thisSS).toString());
             alertDialogBuilder.setPositiveButton("Travel", (dialog, which) -> {
@@ -97,15 +85,11 @@ public class UniverseActivity extends AppCompatActivity {
                 Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
                 boolean didTravel = universeViewModel.facilitateTravel(thisSS);
                 if (!didTravel) {
-                    Toast.makeText(UniverseActivity.this, "Could not travel", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UniverseActivity.this, "Could not travel",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
                     startActivityForResult(intent, 1);
-//                    Log.d("UniverseActivity", " curr Location" + universeViewModel.getCurrentSolarSystem().getLocation().toString());
-//                    updateFields();
-//                    showMyLocation();
-
-
                 }
             });
             alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
@@ -115,22 +99,37 @@ public class UniverseActivity extends AppCompatActivity {
 
         Button tradeButton = findViewById(R.id.game_tradeButton);
         tradeButton.setOnClickListener(v -> {
-
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-            intent.putExtra("SOLARSTYSTEMSTATS",universeViewModel.getCurrentSolarSystem().toString() );
-            //startActivity(intent);
+            intent.putExtra("SOLARSTYSTEMSTATS",
+                    universeViewModel.getCurrentSolarSystem().toString());
             startActivityForResult(intent, 1);
-
-
         });
 
         Button saveButton = findViewById(R.id.game_saveButton);
         saveButton.setOnClickListener(v -> {
             saveGame();
-            Toast.makeText(UniverseActivity.this, "Game Saved to Device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UniverseActivity.this, "Game Saved to Device",
+                    Toast.LENGTH_SHORT).show();
         });
     }
+    private DataPoint[] ssToDP(Set<SolarSystem> solarSystems) {
+        dpToSS = new HashMap<>();
+        List<DataPoint> dps = new ArrayList<>();
+        for (SolarSystem system : solarSystems) {
+            Location loc = system.getLocation();
+            DataPoint cur_dp = new DataPoint(loc.getX(), loc.getY());
+            dps.add(cur_dp);
+            dpToSS.put(cur_dp, system);
+        }
+        DataPoint[] dataPoints = new DataPoint[dps.size()];
+        Collections.sort(dps, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
+        for (int i =0; i < dps.size(); i++) {
+            dataPoints[i] = dps.get(i);
+        }
+        return dataPoints;
+    }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == 1) {
@@ -171,7 +170,8 @@ public class UniverseActivity extends AppCompatActivity {
 
     private void updateFields() {
         currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
-        currentFuel.setText("Current fuel: " + String.format("%.1f", universeViewModel.getFuel() * 100) + "%");
+        currentFuel.setText("Current fuel: " +
+                String.format("%.1f", universeViewModel.getFuel() * 100) + "%");
 
     }
 
@@ -184,7 +184,8 @@ public class UniverseActivity extends AppCompatActivity {
     private void showMyLocation(){
         this.showTravelable();
         DataPoint[] currentDP = new DataPoint[1];
-        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarX(), universeViewModel.getCurrentSolarY());
+        currentDP[0]= new DataPoint(universeViewModel.getCurrentSolarX(),
+                universeViewModel.getCurrentSolarY());
         PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<>(currentDP);
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);
@@ -201,9 +202,11 @@ public class UniverseActivity extends AppCompatActivity {
         for(SolarSystem solarSystem : solars) {
             if(universeViewModel.playerCanTravel(solarSystem)) {
                 Log.d("travel: " , solarSystem.getLocation().toString());
-                locsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() , solarSystem.getLocation().getY()));
+                locsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() ,
+                        solarSystem.getLocation().getY()));
             } else {
-                notLocsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() , solarSystem.getLocation().getY()));
+                notLocsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() ,
+                        solarSystem.getLocation().getY()));
             }
         }
         DataPoint[] l = new DataPoint[locsPlayerCanTravel.size()];
