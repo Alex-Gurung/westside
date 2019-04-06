@@ -170,8 +170,10 @@ public class UniverseActivity extends AppCompatActivity {
 
     private void updateFields() {
         currentSolarSystem.setText(universeViewModel.getCurrentSolarSystem().toString());
-        currentFuel.setText("Current fuel: " +
-                String.format("%.1f", universeViewModel.getFuel() * 100) + "%");
+        String f = "Current fuel: " +
+                String.format(Locale.getDefault(), "%.1f",
+                        universeViewModel.getFuel() * 100) + "%";
+        currentFuel.setText(f);
 
     }
 

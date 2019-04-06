@@ -51,7 +51,8 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         backButton.setOnClickListener(v -> finish());
 
         credits = findViewById(R.id.market_credit_input);
-        credits.setText("" + playerCredits);
+        String f = "" + playerCredits;
+        credits.setText(f);
 
 
         //first grab a reference to the widget
@@ -101,7 +102,8 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         } else {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
-            credits.setText("" + playerCredits);
+            String f = "" + playerCredits;
+            credits.setText(f);
             adapter.removeItem(position);
         }
     }

@@ -38,7 +38,8 @@ public class SellGoodsActivity extends AppCompatActivity {
         Button backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> finish());
         credits = findViewById(R.id.cargo_credit_input);
-        credits.setText("" + playerCredits);
+        String f = "" + playerCredits;
+        credits.setText(f);
 
         //first grab a reference to the widget
         RecyclerView recyclerView = findViewById(R.id.cargo_list);
@@ -80,7 +81,8 @@ public class SellGoodsActivity extends AppCompatActivity {
         } else {
             Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
             playerCredits = tradingViewModel.getPlayerCredits();
-            credits.setText("" + playerCredits);
+            String f = "" + playerCredits;
+            credits.setText(f);
             adapter.removeItem(position);
         }
     }

@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 /* Could use StringBuilder for more efficient concatenation, but String is more
                 *  effective for our specific usage
                 */
-                scoreString += String.format("%.2f\n", d);
+                scoreString += String.format(Locale.getDefault(), "%.2f\n", d);
             }
         }
     }

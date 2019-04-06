@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
+import java.util.Locale;
+
 public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
     private double playerCredits;
@@ -47,13 +49,15 @@ public class ShipYardActivity extends AppCompatActivity {
         Button backButton = findViewById(R.id.ShipYard_Back_Button);
         backButton.setOnClickListener(v -> finish());
         credits = findViewById(R.id.shipyard_credit_input);
-        credits.setText(Double.valueOf(playerCredits).toString());
+        String f = String.format(Locale.getDefault(), "%.2f", playerCredits);
+        credits.setText(f);
 
         Button refuelMaxButton = findViewById(R.id.ShipYard_Refuel_Max_Button);
         refuelMaxButton.setOnClickListener(v -> {
             refuelMax();
             playerCredits = tradingViewModel.getPlayerCredits();
-            credits.setText(Double.valueOf(playerCredits).toString());
+            String e = String.format(Locale.getDefault(), "%.2f", playerCredits);
+            credits.setText(e);
         });
     }
 

@@ -31,8 +31,8 @@ public class SpacePortActivity extends AppCompatActivity {
         Button shipYardButton = findViewById(R.id.SpacePort_ShipYard_Button);
         credits = findViewById(R.id.SpacePort_Credits_Text_Box);
         TextView solarSystemText = findViewById(R.id.SpacePort_SolarSystem_Stats);
-
-        credits.setText(""+tradingViewModel.getPlayerCredits());
+        String f = ""+tradingViewModel.getPlayerCredits();
+        credits.setText(f);
         solarSystemText.setText(SolarSystemStats);
 
 
@@ -55,7 +55,8 @@ public class SpacePortActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == BUY_OR_SELL) {
-            credits.setText(""+tradingViewModel.getPlayerCredits());
+            String f = ""+tradingViewModel.getPlayerCredits();
+            credits.setText(f);
         }
     }
 }
