@@ -10,6 +10,7 @@ import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
 import java.util.HashSet;
+import java.util.Set;
 
 
 public class UniverseViewModel extends AndroidViewModel {
@@ -60,7 +61,7 @@ public class UniverseViewModel extends AndroidViewModel {
      *
      * @return
      */
-    public HashSet<SolarSystem> getSolarSystems() {
+    public Set<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
     }
 

@@ -25,10 +25,10 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-@SuppressWarnings("SuspiciousMethodCalls")
 public class UniverseActivity extends AppCompatActivity {
 
     private UniverseViewModel universeViewModel;
@@ -112,7 +112,7 @@ public class UniverseActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
     }
-    private DataPoint[] ssToDP(Set<SolarSystem> solarSystems) {
+    private DataPoint[] ssToDP(Iterable<SolarSystem> solarSystems) {
         dpToSS = new HashMap<>();
         List<DataPoint> dps = new ArrayList<>();
         for (SolarSystem system : solarSystems) {
@@ -156,7 +156,7 @@ public class UniverseActivity extends AppCompatActivity {
              */
 
 
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            ObjectOutput out = new ObjectOutputStream(new FileOutputStream(file));
             // We basically can save our entire data model with one write, since this will follow
             // all the links and pointers to save everything.  Just save the top level object.
             out.writeObject(g);

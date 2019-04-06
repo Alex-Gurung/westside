@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import static android.support.constraint.Constraints.TAG;
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         scoreString = value;
         if (scoreString != null) {
             String[] scores_list = scoreString.split(", ");
-            ArrayList<Double> scores_doubles = new ArrayList<>();
+            List<Double> scores_doubles = new ArrayList<>();
             for (String s : scores_list) {
                 if (s.length() > 0) {
                     scores_doubles.add(Double.parseDouble(s));

@@ -11,7 +11,7 @@ import java.util.Map;
  * As it is, we are making this class do everything.
  */
 
-public class Model implements Serializable {
+public final class Model implements Serializable {
 
     /** the data repository */
     private final Repository myRepository;

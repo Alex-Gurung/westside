@@ -111,7 +111,7 @@ public class AmanUnitTest {
     @Test
     public void testSpacePortCannotBuy() {
         Good highTech = new Good(GoodType.ROBOT);
-        SpacePort lowTech = new SpacePort(TechLevel.PREAGRICULTURAL, Resource.DESERT);
+        TraderCapability lowTech = new SpacePort(TechLevel.PREAGRICULTURAL, Resource.DESERT);
         Assert.assertFalse(lowTech.canBuy(highTech));
     }
 
@@ -124,7 +124,7 @@ public class AmanUnitTest {
     @Test
     public void testSpacePortCannotSellTechLevel() {
         Good highTech = new Good(GoodType.ROBOT);
-        SpacePort lowTech = new SpacePort(TechLevel.PREAGRICULTURAL, Resource.DESERT);
+        TraderCapability lowTech = new SpacePort(TechLevel.PREAGRICULTURAL, Resource.DESERT);
         Assert.assertFalse(lowTech.canSell(highTech));
     }
 

@@ -60,12 +60,13 @@ public class Game implements Serializable {
      * @param s of type string that will be displayed in the LOGCAT when the app is ran
      */
     private void LogBig(String s) {
-        if(s.length() < 3000) {
-            Log.d("universe: " , s);
+        String s1 = s;
+        if(s1.length() < 3000) {
+            Log.d("universe: " , s1);
         } else {
-            Log.d("universe: ", s.substring(0, 3000));
-            s = s.substring(3000);
-            LogBig(s);
+            Log.d("universe: ", s1.substring(0, 3000));
+            s1 = s1.substring(3000);
+            LogBig(s1);
         }
     }
 

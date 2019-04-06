@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -57,7 +58,7 @@ public class AlexUnitTest {
         int number_values = r.nextInt(LISTBOUND);
         String[] scores_list = new String[number_values];
         // To make sure our score is unique, keep a hash set of scores
-        Set<Double> existing_numbers = new HashSet<>();
+        Collection<Double> existing_numbers = new HashSet<>();
         for (int j = 0; j < number_values; j++) {
             Double toAdd = r.nextDouble();
             //convert double to a string and add to set and scores_list
