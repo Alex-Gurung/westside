@@ -30,11 +30,7 @@ public class FirebaseActor {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String cur_value = dataSnapshot.getValue(String.class);
-                if (!cur_value.equals(scoreString)) {
-                    myRef.setValue(updateScore(cur_value, game.getPlayerCredits()));
-                    scoreString = cur_value;
-                }
+                scoreString = dataSnapshot.getValue(String.class);
             }
 
             @Override
@@ -48,7 +44,7 @@ public class FirebaseActor {
 
     /**
      * Gets the current value, and returns the string of the new value to put on firebase
-     * e.g. ("1.2, 1000", 1.0) -> "1000, 1.2, 1.0"
+     * e.g. ("1.2, 1000", 1.0) -> "1.2, 1000, 1.0"
      * @param database_value
      * @return string of value to send to myRef
      */
@@ -82,10 +78,13 @@ public class FirebaseActor {
     }
     public void updateFire() {
         if (this.game != null) {
+            // try updating the list of scores with the current player credits
+            // if they're not the same, then firebase needs to be updated
             String new_string = updateScore(scoreString, game.getPlayerCredits());
             if (!new_string.equals(scoreString)) {
                 myRef.setValue(new_string);
                 scoreString = new_string;
+                Log.d("FIREBASE UPDATE: ", new_string);
             }
         }
     }
