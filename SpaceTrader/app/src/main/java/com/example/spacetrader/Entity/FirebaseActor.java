@@ -11,15 +11,32 @@ import com.google.firebase.database.ValueEventListener;
 
 import static android.support.constraint.Constraints.TAG;
 
+/**
+ * Class to handle firebase manipulation so we don't need to do it all directly in repository
+ */
 public class FirebaseActor {
     private String scoreString = "";
     private DatabaseReference myRef;
     private Game game;
+
+    /**
+     * Default constructor to create the FirebaseActor without instantiating a reference
+     */
     public FirebaseActor() {}
+
+    /**
+     * Constructor to create FirebaseActor with a game and a reference to firebase
+     * @param game to save
+     */
     public FirebaseActor(Game game) {
         this.game = game;
         setUpFirebase();
     }
+
+    /**
+     * Sets up firebase reference to high scores, also adds an event listenerso when data is
+     * changed we update the scoreString
+     */
     private void setUpFirebase() {
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -46,6 +63,7 @@ public class FirebaseActor {
      * Gets the current value, and returns the string of the new value to put on firebase
      * e.g. ("1.2, 1000", 1.0) -> "1.2, 1000, 1.0"
      * @param database_value
+     * @param my_credits
      * @return string of value to send to myRef
      */
     public String updateScore(String database_value, double my_credits) {
@@ -79,6 +97,10 @@ public class FirebaseActor {
         Log.d(TAG, "New High Score: " + database_value);
         return toReturn;
     }
+
+    /**
+     * Method to update the firebase high scores reference with the current player credits
+     */
     public void updateFire() {
         if (this.game != null) {
             // try updating the list of scores with the current player credits

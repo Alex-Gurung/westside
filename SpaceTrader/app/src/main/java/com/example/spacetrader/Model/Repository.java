@@ -136,8 +136,8 @@ public class Repository implements Serializable {
      *
      * @param toBuy the good that is to be bought by the buyer
      * @param buyer the trader who is buying the good
-     * @param seller
-     * @return
+     * @param seller the trader who is selling the good
+     * @return whether or not the trade happened
      */
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         boolean facilitateTrade = this.game.facilitateTrade(toBuy, buyer, seller);
@@ -145,14 +145,27 @@ public class Repository implements Serializable {
         return facilitateTrade;
     }
 
+    /**
+     * Method to get the player to travel between solar systems
+     * @param solarSystem the solar system the player will travel to
+     * @return whether or not travel happened (or could happen)
+     */
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return this.game.facilitateTravel(solarSystem);
     }
 
+    /**
+     * Getter for the set of solar systems
+     * @return the set of solar systems stored in universe
+     */
     public HashSet<SolarSystem> getSolarSystems() {
         return this.game.getSolarSystems();
     }
 
+    /**
+     * Getter for the current player fuel
+     * @return the current fuel the player has
+     */
     public double getFuel() {
         return this.game.getFuel();
     }
