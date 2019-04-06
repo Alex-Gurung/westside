@@ -49,7 +49,7 @@ public class FirebaseActor {
      * @return string of value to send to myRef
      */
     public String updateScore(String database_value, double my_credits) {
-        String toReturn = "";
+        String toReturn;
         String my_score = "" + my_credits;
         scoreString = database_value;
         if (scoreString != null) {
