@@ -60,7 +60,10 @@ public class SolarSystem implements Serializable {
         this.spacePort = new SpacePort(techLevel, resource);
     }
 
-
+    /**
+     * setter for resource
+     * @param r the resource that is to be set
+     */
     public void setResource(Resource r) {
         this.resource = r;
     }

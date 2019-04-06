@@ -256,6 +256,11 @@ public class Universe implements Serializable {
         }
         return str.toString();
     }
+
+    /**
+     * method that gets a random solar system
+     * @return the solar system that was randomly chosen
+     */
     public SolarSystem getRandomSolarSystem() {
         return (SolarSystem)solarSystems.toArray()[0];
     }

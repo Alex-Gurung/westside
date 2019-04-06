@@ -37,16 +37,6 @@ public class GameInteractor extends Interactor implements Serializable {
     }
 
     /**
-     * getter method to return a randomly selected Solar System
-     *
-     * @return a randomly generated Solar System
-     **/
-//    public SolarSystem getRandomSolarSystem(){ return getRepository().getRandomSolarSystem();}
-//    public void setPlayerSolarSystem() {
-//        getRepository().setSolarSystem();
-//    }
-
-    /**
      * sets the Player's Solar System to the passed in Solar System
      *
      * @param solarSystem of type SolarSystem to become the player's current Solar System
@@ -71,6 +61,12 @@ public class GameInteractor extends Interactor implements Serializable {
      */
     public Player getPlayer() { return getRepository().getPlayer();}
 
+    /**
+     * a method for determining if the player can travel to a given solar system
+     *
+     * @param solarSystem the solar system the player wants to travel to
+     * @return whether the player can travel to the solar system
+     */
     public boolean playerCanTravel(SolarSystem solarSystem) {
         return getRepository().playerCanTravel(solarSystem);
     }

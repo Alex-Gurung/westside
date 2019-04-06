@@ -80,13 +80,6 @@ public class BuyMarketGoodsActivity extends AppCompatActivity {
         adapter.setOnMarketClickListener(this::buyItem);
 
     }
-    public List<Good> setDummyGoods() {
-        List<Good> list = new ArrayList<>();
-        list.add(new Good(GoodType.MACHINE));
-        list.add(new Good(GoodType.FUR));
-        list.add(new Good(GoodType.ORE));
-        return list;
-    }
 
     /**
      * method that facilitates the buying of an item

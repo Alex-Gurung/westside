@@ -28,10 +28,13 @@ public class Player extends Character implements TraderCapability, Serializable 
      *                           towards the fighter skill set
      * @param engineerSkillPoints an int that represents the number of skill points the player added
      *                             towards the engineer skill set
-     * @param traderSkillPoints an int tht represents the number of skill points the player added
+     * @param traderSkillPoints an int that represents the number of skill points the player added
      *                          towards the engineer skill set
      * @param name a String that represents the name that the player passed in when creating their
      *             player character
+     * @param ship the ship the player starts with
+     * @param solarSystem the solarSystem the player starts with
+     * @param credits an int that represents the number of credits the player is initialized with
      */
     public Player(int pilotSkillPoints, int fighterSkillPoints, int engineerSkillPoints,
                   int traderSkillPoints, String name, Ship ship, SolarSystem solarSystem,
@@ -66,6 +69,10 @@ public class Player extends Character implements TraderCapability, Serializable 
         return this.currentSolarSystem.getDistance(solarSystem) <= this.getShipDistance();
     }
 
+    /**
+     * getter for the distance the ship can still travel
+     * @return the distance the ship can travel
+     */
     public double getShipDistance() {
         return ship.distanceLeft();
     }
@@ -171,6 +178,11 @@ public class Player extends Character implements TraderCapability, Serializable 
         return currentSolarSystem.getShipYard();
     }
 
+    /**
+     * method to check if a player can upgrade their ship
+     * @param upgrade the ship to check if you can upgrade to
+     * @return true if you can change your ship to the upgrade ship
+     */
     public boolean canChangeShip(ShipType upgrade) {
         return ship.getCargo().length <= upgrade.getCargoHolds();
     }
@@ -181,6 +193,11 @@ public class Player extends Character implements TraderCapability, Serializable 
         return newShipPrice - currentShipPrice;
     }
 
+    /**
+     * method that changes the player's ship to the upgrade type
+     * @param upgrade the ship type that the player is upgrading to
+     * @return whether or not the ship is successfully upgraded
+     */
     public boolean changeShipType(ShipType upgrade) {
         if(canChangeShip(upgrade) && upgrade.getPrice() <= credits) {
             Ship newShip = new Ship(upgrade);

@@ -140,7 +140,10 @@ public class Ship implements Serializable {
         return Arrays.asList(cargo).contains(good);
     }
 
-
+    /**
+     * getter for the price of the ship
+     * @return the price of the ship
+     */
     public double getPrice() {
         return this.shiptype.getPrice();
     }
@@ -149,7 +152,6 @@ public class Ship implements Serializable {
      * a method that removes the specific good in the ship's cargo hold.
      *
      * @param good of type Good to be removed. Returns null if it's not in the cargo hold
-     * @return the Good that is to be removed from the cargo hold. Return null if it's not there
      */
     public void removeCargo(Good good) {
         //Good removed = null;
@@ -162,7 +164,6 @@ public class Ship implements Serializable {
                 return;
             }
         }
-        //return removed;
     }
 
     /**

@@ -99,6 +99,11 @@ public class Game implements Serializable {
         return player;
     }
 
+    /**
+     * Changes the player's ship type
+     * @param upgrade the ship to upgrade to
+     * @return whether it worked
+     */
     public boolean changePlayerShipType(ShipType upgrade) {
         return player.changeShipType(upgrade);
     }
@@ -130,6 +135,11 @@ public class Game implements Serializable {
 //        this.universe = universe;
 //    }
 
+    /**
+     * gets a random solar system for the player
+     *
+     * @return the random solar system
+     */
     public SolarSystem getRandomSolarSystem(){
         return universe.getRandomSolarSystem();
     }
@@ -250,6 +260,10 @@ public class Game implements Serializable {
         return universe.getSolarSystems();
     }
 
+    /**
+     * gets the player's fuel
+     * @return the player's fuel
+     */
     public double getFuel() {
         return player.getFuel();
     }

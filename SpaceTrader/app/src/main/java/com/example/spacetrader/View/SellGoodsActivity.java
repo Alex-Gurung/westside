@@ -18,6 +18,9 @@ import com.example.spacetrader.ViewModel.TradingViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * the activity that allows the player to sell goods from their cargo
+ */
 public class SellGoodsActivity extends AppCompatActivity {
     private TextView credits;
     private final CargoAdapter adapter = new CargoAdapter();
@@ -63,13 +66,6 @@ public class SellGoodsActivity extends AppCompatActivity {
 
         adapter.setOnCargoClickListener(this::sellItem);
 
-    }
-    public List<Good> setDummyGoods() {
-        List<Good> list = new ArrayList<>();
-        list.add(new Good(GoodType.MACHINE));
-        list.add(new Good(GoodType.WATER));
-        list.add(new Good(GoodType.ORE));
-        return list;
     }
     private void sellItem(int position) {
         Good toSell = cargo.get(position);

@@ -29,6 +29,10 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
+/**
+ * activity that allows the user to choose to travel to a new solar system or visit their current
+ * one, also houses the save button for persistence and the save functionality for firebase
+ */
 public class UniverseActivity extends AppCompatActivity {
 
     private UniverseViewModel universeViewModel;

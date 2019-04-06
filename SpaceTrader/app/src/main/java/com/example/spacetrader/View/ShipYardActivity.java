@@ -13,6 +13,9 @@ import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.Locale;
 
+/**
+ * the activity that allows the user to refuel their ship
+ */
 public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
     private double playerCredits;

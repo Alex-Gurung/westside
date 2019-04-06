@@ -76,6 +76,10 @@ public enum ShipType implements Serializable {
         return cargoHolds;
     }
 
+    /**
+     * getter for the price of the ship type
+     * @return the price of the ship type
+     */
     public int getPrice() {
         return price;
     }

@@ -11,12 +11,15 @@ import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.Model.GameInteractor;
 import com.example.spacetrader.Model.Model;
 
+/**
+ * activity that allows the user to input their character's initial information and begin the game
+ */
 public class ConfigurationViewModel extends AndroidViewModel {
     private final GameInteractor gameInteractor;
 
     /**
-     *
-     * @param application
+     * constructor for the view model that gets an instance of the game interactor
+     * @param application the app
      */
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
@@ -24,13 +27,14 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
 
     /**
+     * method that sets up the game with the input from the player
      *
-     * @param name
-     * @param fighter
-     * @param engineer
-     * @param pilot
-     * @param trader
-     * @param gd
+     * @param name the name the player chose
+     * @param fighter an int representing the fighter skill points
+     * @param engineer an int representing the engineer skill points
+     * @param pilot an int representing the pilot skill points
+     * @param trader an int representing the trader skill points
+     * @param gd the game difficulty chosen by the player
      */
     public void initializeGame(String name, int fighter, int engineer, int pilot, int trader,
                                GameDifficulty gd) {
@@ -42,8 +46,9 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
 
     /**
+     * method that sets the game with the initialization data and sets the player's solar system
      *
-     * @param game
+     * @param game the game the player wil play
      */
     public void loadGame(Game game) {
          gameInteractor.setGame(game);
@@ -51,8 +56,8 @@ public class ConfigurationViewModel extends AndroidViewModel {
     }
 
     /**
-     *
-     * @return
+     * getter method for the game
+     * @return the game the player is playing
      */
     public Game getGame() {
         return gameInteractor.getGame();

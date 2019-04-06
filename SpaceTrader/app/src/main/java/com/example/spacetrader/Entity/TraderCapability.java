@@ -8,7 +8,11 @@ import java.io.Serializable;
  * to trade goods
  */
 public interface TraderCapability extends Serializable {
-
+    /**
+     * getter for the good's price
+     * @param good the good that you want the price of
+     * @return the price of the good
+     */
     double getPrice(Good good);
 
     /**

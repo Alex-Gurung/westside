@@ -25,6 +25,11 @@ public class Location implements Serializable {
         this.y = y;
     }
 
+    /**
+     * method that gets the distance using the pythagorean theorem
+     * @param l the location that you need to get the distance of
+     * @return the distance
+     */
     public double getDistance(Location l) {
         return Math.hypot(x-l.x, y-l.y);
     }

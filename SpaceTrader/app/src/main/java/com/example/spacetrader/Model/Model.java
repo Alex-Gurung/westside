@@ -25,6 +25,10 @@ public final class Model implements Serializable {
      */
     private static final Model instance = new Model();
 
+    /**
+     * getter for the model
+     * @return an instance of the model
+     */
     public static Model getInstance() { return instance; }
 
     private Model() {
@@ -40,6 +44,10 @@ public final class Model implements Serializable {
         interactorMap.put("Game", new GameInteractor(myRepository));
     }
 
+    /**
+     * getter for the gameInteractor
+     * @return the game interactor
+     */
     public GameInteractor getGameInteractor() {
         return (GameInteractor) interactorMap.get("Game");
     }

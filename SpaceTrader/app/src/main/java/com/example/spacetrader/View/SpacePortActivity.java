@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
+/**
+ * Activity in which the player can choose to buy/sell goods and refuel their ship
+ */
 public class SpacePortActivity extends AppCompatActivity {
 
     private TextView credits;
