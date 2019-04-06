@@ -2,7 +2,7 @@ package com.example.spacetrader.Model;
 
 import java.io.Serializable;
 
-abstract class Interactor implements Serializable {
+public abstract class Interactor implements Serializable {
 
     private final Repository myRepository;
 

@@ -1,9 +1,7 @@
 package com.example.spacetrader.Entity;
 
 import android.support.annotation.NonNull;
-
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  * a class that represents the location of the current solar system

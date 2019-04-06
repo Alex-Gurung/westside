@@ -36,7 +36,6 @@ public class UniverseActivity extends AppCompatActivity {
     private TextView currentSolarSystem;
     private TextView currentFuel;
     private HashMap<DataPoint, SolarSystem> dpToSS;
-    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +76,6 @@ public class UniverseActivity extends AppCompatActivity {
         graph.getViewport().setMinX(0);
         graph.getViewport().setMaxX(35);
 
-        // enable scaling and scrolling
-//        graph.getViewport().setScalable(true);
-//        graph.getViewport().setScalableY(true);
         graph.getViewport().setBackgroundColor(Color.rgb(250,250,250));
         graph.getViewport().setDrawBorder(false);
 
