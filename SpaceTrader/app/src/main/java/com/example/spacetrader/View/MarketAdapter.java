@@ -13,6 +13,7 @@ import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 /**
  * An adapter for the list of items available for purchase at the SpacePort
@@ -69,7 +70,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
      * @return the market list
      */
     public List<Good> getMarketList() {
-        return marketList;
+        return Collections.unmodifiableList(marketList);
     }
 
     /**

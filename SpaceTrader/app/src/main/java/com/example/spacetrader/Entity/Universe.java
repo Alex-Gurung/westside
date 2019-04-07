@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
@@ -19,8 +20,8 @@ public class Universe implements Serializable {
     /**
      * @return a set of solar systems in this universe
      */
-    public HashSet<SolarSystem> getSolarSystems() {
-        return solarSystems;
+    public Set<SolarSystem> getSolarSystems() {
+        return Collections.unmodifiableSet(solarSystems);
     }
 
 //    /**

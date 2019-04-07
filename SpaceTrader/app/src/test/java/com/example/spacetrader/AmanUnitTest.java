@@ -4,9 +4,6 @@ import com.example.spacetrader.Entity.*;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.Assert;
 /**
  * Example local unit test, which will execute on the development machine (host).

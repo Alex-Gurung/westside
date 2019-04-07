@@ -16,7 +16,6 @@ import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
-import com.google.firebase.database.DatabaseReference;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -27,7 +26,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * activity that allows the user to choose to travel to a new solar system or visit their current

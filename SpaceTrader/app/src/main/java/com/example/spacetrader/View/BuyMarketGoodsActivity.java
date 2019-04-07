@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.GoodType;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;

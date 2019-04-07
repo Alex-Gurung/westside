@@ -40,17 +40,15 @@ public class MainActivity extends AppCompatActivity {
      * method for loading the game
      * @throws Exception if the loading does not work correctly
      */
-    private void getFile() throws Exception{
-        try {
-            File file = new File(this.getFilesDir(), "data.bin");
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            Game o = (Game) in.readObject();
-            ConfigurationViewModel c = new ConfigurationViewModel(getApplication());
-            c.loadGame(o);
-            Log.d("Load", o.getPlayer().toString());
-        } catch (Exception i){
-            throw i;
-        }
+    private void getFile() throws Exception {
+
+        File file = new File(this.getFilesDir(), "data.bin");
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        Game o = (Game) in.readObject();
+        ConfigurationViewModel c = new ConfigurationViewModel(getApplication());
+        c.loadGame(o);
+        Log.d("Load", o.getPlayer().toString());
+
     }
 
     @Override

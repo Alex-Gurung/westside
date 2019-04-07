@@ -1,6 +1,5 @@
 package com.example.spacetrader;
 import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.Entity.PoliticalSystem;

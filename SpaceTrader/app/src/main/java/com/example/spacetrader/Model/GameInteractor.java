@@ -1,6 +1,13 @@
 package com.example.spacetrader.Model;
 
-import com.example.spacetrader.Entity.*;
+
+import com.example.spacetrader.Entity.Game;
+import com.example.spacetrader.Entity.Good;
+import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.ShipType;
+import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.SpacePort;
+import com.example.spacetrader.Entity.TraderCapability;
 
 import java.io.Serializable;
 import java.util.HashSet;

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.ConfigurationViewModel;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.Random;

@@ -91,7 +91,7 @@ public class Ship implements Serializable {
      * @return tan array of Goods that represent the cargo hold
      */
     public Good[] getCargo(){
-        return cargo;
+        return cargo.clone();
     }
 
     /**
