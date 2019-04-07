@@ -42,7 +42,7 @@ public class TradingViewModel extends AndroidViewModel {
 
     /**
      * Getter for the cargo a specific trader has
-     * @param trader
+     * @param trader the 3
      * @return the cargo that trader has
      */
     public Good[] getCargo(TraderCapability trader) {return interactor.getCargo(trader);}

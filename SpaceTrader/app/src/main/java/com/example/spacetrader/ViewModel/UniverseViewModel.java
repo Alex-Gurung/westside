@@ -12,13 +12,15 @@ import com.example.spacetrader.Model.Model;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/**
+ * Class to define interactions between the universe activity and the model
+ */
 public class UniverseViewModel extends AndroidViewModel {
     private final GameInteractor interactor;
 
     /**
-     *
-     * @param application
+     * Constructor to instantiate the trading view model with an instance of the gameInteractor
+     * @param application the application currently being used
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
@@ -26,74 +28,74 @@ public class UniverseViewModel extends AndroidViewModel {
     }
 
     /**
-     *
-     * @return
+     * Getter for current solar system
+     * @return the current solar system
      */
     public SolarSystem getCurrentSolarSystem() {
         return interactor.getPlayerSolarSystem();
     }
 
     /**
-     *
-     * @return
+     * Getter for the current solar system's x coordinate
+     * @return the current solar system's x coordinate
      */
     public int getCurrentSolarX() {
         return this.getCurrentSolarSystem().getLocation().getX();
     }
 
     /**
-     *
-     * @return
+     * Getter for the current solar system's y coordinate
+     * @return the current solar system's y coordinate
      */
     public int getCurrentSolarY() {
         return this.getCurrentSolarSystem().getLocation().getY();
     }
 
     /**
-     *
-     * @return
+     * Getter for the current game
+     * @return the current game
      */
     public Game getGame() {
         return interactor.getGame();
     }
 
     /**
-     *
-     * @return
+     * Getter for the set of solar systems
+     * @return the set of solar systems
      */
     public Set<SolarSystem> getSolarSystems() {
         return interactor.getSolarSystems();
     }
 
     /**
-     *
-     * @param solarSystem
-     * @return
+     * Method to dermine if the player can travel to a specific solar system
+     * @param solarSystem the solar system to travel to
+     * @return whether the player can travel to the solar system
      */
     public boolean playerCanTravel(SolarSystem solarSystem) {
         return interactor.playerCanTravel(solarSystem);
     }
 
     /**
-     *
-     * @param solarSystem
-     * @return
+     * Method to facilitate travel (if possible) to the given solar system
+     * @param solarSystem the solar system to travel to
+     * @return whether the player traveled to the solar system
      */
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return interactor.facilitateTravel(solarSystem);
     }
 
     /**
-     *
-     * @return
+     * Getter for the amount of fuel the player has
+     * @return the amount of fuel the player has
      */
     public double getFuel() {
         return interactor.getFuel();
     }
 
     /**
-     *
-     * @return
+     * Getter for the number of credits the player has
+     * @return number of credits the player has
      */
     public double getPlayerCredits() {
         return interactor.getPlayerCredits();

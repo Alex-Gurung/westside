@@ -62,8 +62,8 @@ public class FirebaseActor {
     /**
      * Gets the current value, and returns the string of the new value to put on firebase
      * e.g. ("1.2, 1000", 1.0) -> "1.2, 1000, 1.0"
-     * @param database_value
-     * @param my_credits
+     * @param database_value the string we get from the database
+     * @param my_credits double representing the player's credits
      * @return string of value to send to myRef
      */
     public String updateScore(String database_value, double my_credits) {
