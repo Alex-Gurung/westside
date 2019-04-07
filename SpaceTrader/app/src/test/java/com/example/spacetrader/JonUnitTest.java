@@ -58,13 +58,16 @@ public class JonUnitTest {
         player.getMyShip().addCargo(new Good(GoodType.FOOD));
         player.getMyShip().addCargo(new Good(GoodType.WATER));
         player.getMyShip().addCargo(new Good(GoodType.ROBOT));
+        Double[] prices = new Double[5];
+        int j = 0;
+        while (j < 5) {
+            prices[j] = player.getCargo()[j].getPrice();
+            j++;
+        }
         player.travel(solarSystem2);
-        Double[] prices = {795.0, 1118.75, 108.75, 33.0, 4343.75};
-        player.setPrice(new Good(GoodType.MACHINE));
-        player.setPrice(new Good(GoodType.FIREARM));
         int i = 0;
         while (i < 5) {
-            Assert.assertTrue(player.getCargo()[i].getPrice() == prices[i]);
+            Assert.assertFalse(player.getCargo()[i].getPrice() == prices[i]);
             i++;
         }
     }
