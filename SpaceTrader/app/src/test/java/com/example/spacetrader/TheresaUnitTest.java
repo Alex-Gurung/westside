@@ -1,6 +1,12 @@
 package com.example.spacetrader;
 
-import com.example.spacetrader.Entity.*;
+
+import com.example.spacetrader.Entity.Location;
+import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.Ship;
+import com.example.spacetrader.Entity.ShipType;
+import com.example.spacetrader.Entity.SolarSystem;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;

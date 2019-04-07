@@ -67,7 +67,7 @@ public class UniverseViewModel extends AndroidViewModel {
     }
 
     /**
-     * Method to dermine if the player can travel to a specific solar system
+     * Method to determine if the player can travel to a specific solar system
      * @param solarSystem the solar system to travel to
      * @return whether the player can travel to the solar system
      */
