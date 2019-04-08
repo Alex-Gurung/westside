@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AlexUnitTest {
-    private static FirebaseActor firebaseActor;
+    private FirebaseActor firebaseActor;
 
     @Before
     public void setUp(){
