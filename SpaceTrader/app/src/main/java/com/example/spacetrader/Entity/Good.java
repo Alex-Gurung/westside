@@ -76,8 +76,12 @@ public class Good implements Serializable {
      */
     @Override
     public boolean equals(Object o){
-        if (o == null) return false;
-        if (!(o instanceof Good)) return false;
+        if (o == null) {
+            return false;
+        }
+        if (!(o instanceof Good)) {
+            return false;
+        }
         Good g = (Good) o;
         return g.getGoodType() == this.goodtype;
     }
