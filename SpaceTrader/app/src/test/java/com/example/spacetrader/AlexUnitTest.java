@@ -40,8 +40,8 @@ public class AlexUnitTest {
     }
 
     /**
-     * test for valid score strings of length [0, LISTBOUND)
-     * when the players current score is not unique
+     * test for non-double (invalidish )score strings of length [0, LISTBOUND)
+     * when the players current score is unique
      */
     @Test
     public void checkNonDoubleScoreStringUniquePlayerScore() {
@@ -94,7 +94,7 @@ public class AlexUnitTest {
 
     /**
      * Tests for invalid score strings of length [0, 100)
-     * when the players current score is unique
+     * when the players current score is not unique
      */
     @Test
     public void checkValidScoreStringNotUniquePlayerScore() {
@@ -111,14 +111,23 @@ public class AlexUnitTest {
         }
         int my_score_index = r.nextInt(number_values);
         double my_score = existing_numbers[my_score_index];
-        String scores = String.join(" ", scores_list);
+        String scores = String.join(", ", scores_list);
         /*
-        * NOTE THIS IS THE SAME EXPECTED OUTPUT AS INVALID, BECAUSE WE DON'T CARE ABOUT
-        * PRE-MALFORMED DATA
+        * String is not unique, so lists should not change
         * */
-        String expected = scores + ", " + my_score; //scores, with added score on end
-        assertEquals(expected, firebaseActor.updateScore(scores, my_score));
-        // If there are no elements in the list, then we cannot test score that already exists
+        assertEquals(scores, firebaseActor.updateScore(scores, my_score));
+    }
+
+    /**
+     * Tests for null score string
+     */
+    @Test
+    public void checkNullScoreString() {
+        Random r  = new Random();
+        double my_score = r.nextDouble();
+        String expected = "" + my_score;
+        // expect just my score back, as scoresString was null
+        assertEquals(expected, firebaseActor.updateScore(null, my_score));
     }
 }
 
