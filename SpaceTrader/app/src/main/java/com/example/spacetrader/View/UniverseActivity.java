@@ -109,8 +109,6 @@ public class UniverseActivity extends AppCompatActivity {
         Button tradeButton = findViewById(R.id.game_tradeButton);
         tradeButton.setOnClickListener(v -> {
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-            intent.putExtra("SOLARSTYSTEMSTATS",
-                    universeViewModel.getCurrentSolarSystem().toString());
             startActivityForResult(intent, 1);
         });
 
