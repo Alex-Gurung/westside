@@ -136,7 +136,9 @@ public class Ship implements Serializable {
      * @return a boolean representation of if the ship's cargo hold has the particular good
      */
     public boolean hasGood(Good good) {
-        if(numGoods == 0) return false;
+        if(numGoods == 0) {
+            return false;
+        }
         return Arrays.asList(cargo).contains(good);
     }
 

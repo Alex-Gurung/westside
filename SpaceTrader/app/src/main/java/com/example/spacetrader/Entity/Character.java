@@ -62,7 +62,9 @@ public abstract class Character implements Serializable {
         if(creditsAdded < 0) {
             throw new IllegalArgumentException("Cannot refuel with negative credits");
         }
-        if(creditsAdded > credits) return false;
+        if(creditsAdded > credits) {
+            return false;
+        }
         double fuelPercent = creditsAdded / (ship.getFuelPrice() * ship.getMaxDistance());
         if(fuelPercent > 1 - ship.getFuel()) {
             refuelMax();

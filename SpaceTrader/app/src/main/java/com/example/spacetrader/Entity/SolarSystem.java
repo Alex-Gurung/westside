@@ -205,8 +205,12 @@ public class SolarSystem implements Serializable {
      */
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (!(obj instanceof SolarSystem)) return false;
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof SolarSystem)) {
+            return false;
+        }
         SolarSystem o = (SolarSystem) obj;
         return (this.location.equals(o.location));
     }
