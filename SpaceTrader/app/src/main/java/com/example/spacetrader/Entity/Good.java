@@ -85,4 +85,45 @@ public class Good implements Serializable {
         Good g = (Good) o;
         return g.getGoodType() == this.goodtype;
     }
+
+    /**
+     * method that returns the good's min price
+     * @return int representing the good's min price
+     */
+    public int getMinPrice() {
+        return this.goodtype.getMinPrice();
+    }
+
+    /**
+     * method that returns the good's max price
+     * @return int representing the good's max price
+     */
+    public int getMaxPrice() {
+        return this.goodtype.getMaxPrice();
+    }
+
+    /**
+     * method that returns if the good is a natural resource
+     * @return boolean representing if the good is a natural resource
+     */
+    public boolean getIsNaturalResource(){
+        return this.goodtype.getIsNaturalResource();
+    }
+    /**
+     * getter method to return the low cost resource
+     *
+     * @return the low cost resource
+     */
+    public Resource getLowCostResource() {
+        return this.goodtype.getLowCostResource();
+    }
+
+    /**
+     * getter method to return the high cost resource
+     *
+     * @return the high cost resource
+     */
+    public Resource getHighCostResource() {
+        return this.goodtype.getHighCostResource();
+    }
 }

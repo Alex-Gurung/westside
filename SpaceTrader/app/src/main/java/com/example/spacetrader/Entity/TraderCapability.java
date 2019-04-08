@@ -35,9 +35,10 @@ public interface TraderCapability extends Serializable {
      */
     default void setPrice(Good good, TechLevel tl, Resource resource) {
         GoodType gt = good.getGoodType();
-        int min = gt.getMinPrice();
-        int max = gt.getMaxPrice();
-        boolean isNaturalGood = gt.getIsNaturalResource();
+
+        int min = good.getMinPrice();
+        int max = good.getMaxPrice();
+        boolean isNaturalGood = good.getIsNaturalResource();
 
         int tlordinal = tl.ordinal();
 
@@ -47,10 +48,10 @@ public interface TraderCapability extends Serializable {
 
         double add = ((max - min) * (double)tlordinal)/8;
         double pr = min + add;
-        if(resource.equals(gt.getHighCostResource())) {
+        if(resource.equals(good.getHighCostResource())) {
             pr *= 2;
         }
-        if(resource.equals(gt.getLowCostResource())) {
+        if(resource.equals(good.getLowCostResource())) {
             pr *= 0.5;
         }
         good.setPrice(pr);
