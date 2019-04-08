@@ -4,7 +4,7 @@ package com.example.spacetrader.Entity;
  * NPC (Non Player Character) class
  * these characters simply interact with the player
  */
-public abstract class NonPlayerCharacter extends Character{
+abstract class NonPlayerCharacter extends Character{
     NonPlayerCharacter(Ship ship) {
         super(ship);
     }

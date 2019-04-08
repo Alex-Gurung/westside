@@ -16,7 +16,7 @@ import java.util.HashSet;
 /**
  * repository that acts as data storage
  */
-public class Repository implements Serializable {
+class Repository implements Serializable {
     private Game game;
     private FirebaseActor firebaseActor;
 

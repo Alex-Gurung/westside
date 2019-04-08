@@ -14,7 +14,7 @@ import java.util.Set;
  * A Universe class that contains a HashSet of SolarSystems. The Universe is generated when the game
  * begins and will contain all Solar Systems that are initialized.
  */
-public class Universe implements Serializable {
+class Universe implements Serializable {
     private final HashSet<SolarSystem> solarSystems;
 
     /**

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * The interactor abstract class - it has a repository
  *
  */
-public abstract class Interactor implements Serializable {
+abstract class Interactor implements Serializable {
 
     private final Repository myRepository;
 

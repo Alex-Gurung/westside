@@ -90,7 +90,11 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
      * @param cargo a list of Goods contained in the cargo
      */
     public void setCargoList(List<Good> cargo) {
-        this.cargo = cargo;
+        List<Good> our_cargo = new ArrayList<>();
+        for (Good g : cargo) {
+            our_cargo.add(g);
+        }
+        this.cargo = our_cargo;
         notifyDataSetChanged();
     }
 
