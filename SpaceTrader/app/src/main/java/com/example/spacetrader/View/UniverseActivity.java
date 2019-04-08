@@ -125,8 +125,7 @@ public class UniverseActivity extends AppCompatActivity {
         dpToSS = new HashMap<>();
         List<DataPoint> dps = new ArrayList<>();
         for (SolarSystem system : solarSystems) {
-            Location loc = system.getLocation();
-            DataPoint cur_dp = new DataPoint(loc.getX(), loc.getY());
+            DataPoint cur_dp = new DataPoint(system.getX(), system.getY());
             dps.add(cur_dp);
             dpToSS.put(cur_dp, system);
         }
@@ -213,11 +212,11 @@ public class UniverseActivity extends AppCompatActivity {
         for(SolarSystem solarSystem : solars) {
             if(universeViewModel.playerCanTravel(solarSystem)) {
                 Log.d("travel: " , solarSystem.getLocation().toString());
-                locsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() ,
-                        solarSystem.getLocation().getY()));
+                locsPlayerCanTravel.add(new DataPoint(solarSystem.getX() ,
+                        solarSystem.getY()));
             } else {
-                notLocsPlayerCanTravel.add(new DataPoint(solarSystem.getLocation().getX() ,
-                        solarSystem.getLocation().getY()));
+                notLocsPlayerCanTravel.add(new DataPoint(solarSystem.getX() ,
+                        solarSystem.getY()));
             }
         }
         DataPoint[] l = new DataPoint[locsPlayerCanTravel.size()];

@@ -212,6 +212,22 @@ public class SolarSystem implements Serializable {
     }
 
     /**
+     * Getter for this solar system's X coordinate
+     * @return this solar system's X coordinate
+     */
+    public int getX() {
+        return this.location.getX();
+    }
+
+    /**
+     * Getter for this solar system's Y coordinate
+     * @return this solar system's Y coordinate
+     */
+    public int getY() {
+        return this.location.getY();
+    }
+
+    /**
      * toString method that overrides Object's toString method that returns a String representation
      * of the current Solar System's location, name, tech level, political system, and resources
      *  available
