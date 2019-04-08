@@ -29,7 +29,7 @@ public class TravelActivity extends AppCompatActivity {
         }, 1000);
         Random r = new Random();
         int scenario = r.nextInt(3);
-        int diff = tradingViewModel.getGame().getGameDifficulty().ordinal();
+        int diff = tradingViewModel.getGameDifficulty();
         switch (scenario) {
             case 0:
                 Toast.makeText(TravelActivity.this, "Traveled safely",

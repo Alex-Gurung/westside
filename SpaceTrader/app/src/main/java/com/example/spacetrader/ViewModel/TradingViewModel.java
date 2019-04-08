@@ -89,4 +89,12 @@ public class TradingViewModel extends AndroidViewModel {
     public boolean refuelMax() {
         return interactor.refuelMax();
     }
+
+    /**
+     * getter for the game difficulty
+     * @return an int representing the game difficulty
+     */
+    public int getGameDifficulty(){
+        return interactor.getGameDifficulty();
+    }
 }

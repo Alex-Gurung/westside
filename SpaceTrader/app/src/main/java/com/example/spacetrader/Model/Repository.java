@@ -169,4 +169,14 @@ class Repository implements Serializable {
     public double getFuel() {
         return this.game.getFuel();
     }
+
+    /**
+     * getter for the game difficulty
+     * @return an int representing the game difficulty
+     */
+    public int getGameDifficulty(){
+        return this.game.getGameDifficulty().ordinal();
+    }
+
+
 }

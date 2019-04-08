@@ -144,7 +144,7 @@ public class GameInteractor extends Interactor {
      * @return a boolean that represents whether the Player has the means of changing their ship
      */
     public boolean canChangePlayerShip(ShipType upgrade) {
-        return getGame().changePlayerShipType(upgrade);
+        return getRepository().changePlayerShipType(upgrade);
     }
 
     /**
@@ -185,5 +185,13 @@ public class GameInteractor extends Interactor {
      */
     public boolean refuelMax() {
         return getRepository().refuelMax();
+    }
+
+    /**
+     * getter for the game difficulty
+     * @return an int representing the game difficulty
+     */
+    public int getGameDifficulty(){
+        return getRepository().getGameDifficulty();
     }
 }

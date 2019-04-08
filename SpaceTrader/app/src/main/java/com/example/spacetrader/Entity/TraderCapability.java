@@ -34,7 +34,7 @@ public interface TraderCapability extends Serializable {
      * @param resource of type Resource that partially determines the price of the given good
      */
     default void setPrice(Good good, TechLevel tl, Resource resource) {
-        GoodType gt = good.getGoodType();
+        //GoodType gt = good.getGoodType();
 
         int min = good.getMinPrice();
         int max = good.getMaxPrice();
