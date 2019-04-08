@@ -41,11 +41,11 @@ public class TravelActivity extends AppCompatActivity {
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
                 break;
             case 2:
-                double gainCredits = (600 - 100*diff);
+                double gainCredits = (600 - (100 * diff));
                 Toast.makeText(TravelActivity.this, "You gained " + gainCredits +
                         " credits", Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(
-                        tradingViewModel.getPlayerCredits() + (600 - 100*diff)
+                        tradingViewModel.getPlayerCredits() + (600 - (100 * diff))
                 );
                 break;
         }

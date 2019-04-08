@@ -105,7 +105,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
             sellButton.setOnClickListener(view -> {
                 int position = getAdapterPosition();
 
-                if (listener != null && position != RecyclerView.NO_POSITION) {
+                if ((listener != null) && (position != RecyclerView.NO_POSITION)) {
                     listener.onMarketItemBuy(position);
                 }
             });

@@ -64,7 +64,7 @@ public abstract class Character implements Serializable {
         }
         if(creditsAdded > credits) return false;
         double fuelPercent = creditsAdded / (ship.getFuelPrice() * ship.getMaxDistance());
-        if(fuelPercent > 1 - ship.getFuel()) {
+        if(fuelPercent > (1 - ship.getFuel())) {
             refuelMax();
         } else {
             ship.refuel(fuelPercent);

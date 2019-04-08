@@ -51,7 +51,7 @@ public class Location implements Serializable {
      */
     @Override
     public int hashCode() {
-        return (x * 100 + y);
+        return ((x * 100) + y);
     }
 
     /**
@@ -66,7 +66,7 @@ public class Location implements Serializable {
         if (obj == null) return false;
         if (!(obj instanceof Location)) return false;
         Location o = (Location) obj;
-        return (this.x == o.x && this.y == o.y);
+        return ((this.x == o.x) && (this.y == o.y));
 
     }
 

@@ -60,7 +60,7 @@ public class Trader extends NonPlayerCharacter implements TraderCapability {
      */
     @Override
     public boolean canBuy(Good good) {
-        return good.getPrice() <= credits && ship.hasCargoSpace();
+        return (good.getPrice() <= credits) && ship.hasCargoSpace();
     }
 
     /**

@@ -39,7 +39,7 @@ public class TheresaUnitTest {
     public void testEnoughCreditsRefuelMax() {
         player.setCredits(1000);
         ship.refuel(-0.1);
-        double expectedCredits = 1000.0 - (1.0 - ship.getFuel()) * (11 * 14);
+        double expectedCredits = 1000.0 - ((1.0 - ship.getFuel()) * (11 * 14));
         Assert.assertTrue(player.refuelByCredits(100.0));
         Assert.assertEquals(1.0, ship.getFuel(),0.001);
         Assert.assertEquals(expectedCredits, player.getCredits(),0.001);
@@ -49,7 +49,7 @@ public class TheresaUnitTest {
     public void testEnoughCreditsRefuel() {
         player.setCredits(100);
         ship.refuel(-0.9);
-        double expectedFuel = 0.1 + 100.0 / (14 * 11);
+        double expectedFuel = 0.1 + (100.0 / (14 * 11));
         Assert.assertTrue(player.refuelByCredits(100.0));
         Assert.assertEquals(expectedFuel, ship.getFuel(),0.001);
         Assert.assertEquals(0, player.getCredits(),0.001);

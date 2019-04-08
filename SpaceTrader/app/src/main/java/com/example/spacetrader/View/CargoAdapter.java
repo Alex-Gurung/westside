@@ -129,7 +129,7 @@ public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.CargoViewHol
                 public void onClick(View view) {
                     int position = getAdapterPosition();
 
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                    if ((listener != null) && (position != RecyclerView.NO_POSITION)) {
                         listener.onCargoGoodSell(position);
                     }
                 }

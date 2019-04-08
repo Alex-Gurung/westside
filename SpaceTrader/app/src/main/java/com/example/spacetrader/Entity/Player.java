@@ -122,7 +122,7 @@ public class Player extends Character implements TraderCapability {
      */
     @Override
     public boolean canBuy(Good good) {
-        return good.getPrice() <= credits && ship.hasCargoSpace();
+        return (good.getPrice() <= credits) && ship.hasCargoSpace();
     }
 
     /**
@@ -199,7 +199,7 @@ public class Player extends Character implements TraderCapability {
      * @return whether or not the ship is successfully upgraded
      */
     public boolean changeShipType(ShipType upgrade) {
-        if(canChangeShip(upgrade) && upgrade.getPrice() <= credits) {
+        if(canChangeShip(upgrade) && (upgrade.getPrice() <= credits)) {
             Ship newShip = new Ship(upgrade);
             for(Good cargo : ship.getCargo()) {
                 newShip.addCargo(cargo);
