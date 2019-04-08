@@ -19,17 +19,20 @@ import static org.junit.Assert.assertEquals;
 public class AlexUnitTest {
     private FirebaseActor firebaseActor;
 
+    /**
+     * Sets up the firebaseActor so we can test the method
+     */
     @Before
     public void setUp(){
         firebaseActor = new FirebaseActor();
     }
 
+    /**
+     * test for valid score strings of length [0, LISTBOUND)
+     * when the players current score is not unique
+     */
     @Test
     public void checkNonDoubleScoreStringUniquePlayerScore() {
-        /*
-        * test for valid score strings of length [0, LISTBOUND)
-        * when the players current score is not unique
-        */
         int LISTBOUND = 100;
         Random r  = new Random();
         // Want at least one element in the array
@@ -45,12 +48,12 @@ public class AlexUnitTest {
         assertEquals(expected, actual); //as our score isn't unique, want the same thing out
     }
 
+    /**
+     * test for valid score strings of length [0, 100)
+     * when the players current score is unique
+     */
     @Test
     public void checkValidScoreStringUniquePlayerScore() {
-        /*
-         * test for valid score strings of length [0, 100)
-         * when the players current score is unique
-         */
         int LISTBOUND = 100;
         Random r  = new Random();
         // Create array of random length
@@ -77,12 +80,12 @@ public class AlexUnitTest {
 
     }
 
+    /**
+     * Tests for invalid score strings of length [0, 100)
+     * when the players current score is unique
+     */
     @Test
     public void checkValidScoreStringNotUniquePlayerScore() {
-        /*
-         * for invalid score strings of length [0, 100)
-         * when the players current score is unique
-         */
         int LISTBOUND = 100;
         Random r  = new Random();
         // Create array of random size (of at least 1)
