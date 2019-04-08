@@ -49,7 +49,7 @@ class Repository implements Serializable {
      * @return boolean that represents if the player can travel to the solar system
      */
     public boolean playerCanTravel(SolarSystem solarSystem) {
-        return getPlayer().canTravel(solarSystem);
+        return this.game.playerCanTravel(solarSystem);
     }
 
     /**

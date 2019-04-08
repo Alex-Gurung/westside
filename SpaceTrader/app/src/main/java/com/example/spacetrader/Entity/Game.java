@@ -255,4 +255,13 @@ public class Game implements Serializable {
     public double getFuel() {
         return player.getFuel();
     }
+
+    /**
+     * method that sees if the player can travel to a given solar system
+     * @param solarSystem the solar system the player wants to see if they can travel to
+     * @return boolean that represents if the player can travel to the solar system
+     */
+    public boolean playerCanTravel(SolarSystem solarSystem) {
+        return this.player.canTravel(solarSystem);
+    }
 }
