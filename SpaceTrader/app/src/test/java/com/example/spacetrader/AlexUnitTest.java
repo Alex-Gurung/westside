@@ -65,7 +65,7 @@ public class AlexUnitTest {
             existing_numbers.add(toAdd);
         }
         // Get a random double that isn't in the list
-        Double my_score = r.nextDouble();
+        double my_score = r.nextDouble();
         while (existing_numbers.contains(my_score)) {
             my_score = r.nextDouble();
         }
