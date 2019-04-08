@@ -34,7 +34,7 @@ public class FirebaseActor {
     }
 
     /**
-     * Sets up firebase reference to high scores, also adds an event listenerso when data is
+     * Sets up firebase reference to high scores, also adds an event listener so when data is
      * changed we update the scoreString
      */
     private void setUpFirebase() {

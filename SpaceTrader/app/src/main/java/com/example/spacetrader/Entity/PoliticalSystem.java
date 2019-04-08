@@ -16,7 +16,7 @@ public enum PoliticalSystem {
     CYBERNETICSTATE("Cybernetic State"),
     DEMOCRACY("Democracy"),
     DICTATORSHIP("Dictatorship"),
-    FASCISTSTATE("Fascist State"),
+    FACISTSTATE("Facist State"),
     FEUDALSTATE("Feudal State"),
     MILITARYSTATE("Military State"),
     MONARCHY("Monarchy"),

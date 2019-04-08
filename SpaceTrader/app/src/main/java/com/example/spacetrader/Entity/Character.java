@@ -6,7 +6,7 @@ import java.io.Serializable;
  * an abstract class that represents the basic attributes of any given character in the Space Trader
  * game
  */
-public abstract class Character implements Serializable {
+abstract class Character implements Serializable {
 
     String name;
     SolarSystem currentSolarSystem;
