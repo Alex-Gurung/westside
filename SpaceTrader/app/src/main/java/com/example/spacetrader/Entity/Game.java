@@ -182,7 +182,7 @@ public class Game implements Serializable {
      * @return whether or not it was able to refuel fully
      */
     public boolean refuelMax() {
-        return getPlayerShipYard().refuelMax(player);
+        return ShipYard.refuelMax(player);
     }
 
     /**
@@ -257,7 +257,7 @@ public class Game implements Serializable {
      * @return a HashSet of all the solar systems in the current game
      */
     public HashSet<SolarSystem> getSolarSystems() {
-        return universe.getSolarSystems();
+        return (HashSet)universe.getSolarSystems();
     }
 
     /**

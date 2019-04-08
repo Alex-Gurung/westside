@@ -140,7 +140,7 @@ public class Repository implements Serializable {
      * @return whether or not the trade happened
      */
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
-        boolean facilitateTrade = this.game.facilitateTrade(toBuy, buyer, seller);
+        boolean facilitateTrade = Game.facilitateTrade(toBuy, buyer, seller);
         firebaseActor.updateFire();
         return facilitateTrade;
     }
