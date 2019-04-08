@@ -11,10 +11,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
+/**
+ *
+ * tests the refuel by credits method in Character
+ */
 public class TheresaUnitTest {
     private Player player;
     private Ship ship;
 
+    /**
+     * sets up the test for a player in an arbitrary solar system with a ship of type gnat
+     */
     @Before
     public void setUpRefuelByCredits(){
         ship = new Ship(ShipType.GNAT);
@@ -24,17 +31,26 @@ public class TheresaUnitTest {
                             "player", ship, new SolarSystem( new Location(10,15)), 0);
     }
 
+    /**
+     * tests to see if a negative amount of credits was passed in
+     */
     @Test (expected = IllegalArgumentException.class)
     public void testNegativeCreditsException() {
         player.refuelByCredits(-100);
     }
 
+    /**
+     * tests to see if the player has enough credits to refuel
+     */
     @Test
     public void testNotEnoughCreditsCannotRefuel() {
         player.setCredits(0);
         Assert.assertFalse(player.refuelByCredits(10));
     }
 
+    /**
+     * tests the case that the player can refuel their ship to the max amount
+     */
     @Test
     public void testEnoughCreditsRefuelMax() {
         player.setCredits(1000);
@@ -45,6 +61,9 @@ public class TheresaUnitTest {
         Assert.assertEquals(expectedCredits, player.getCredits(),0.001);
     }
 
+    /**
+     * tests the case where the player has enough credits to refuel to the requested amount
+     */
     @Test
     public void testEnoughCreditsRefuel() {
         player.setCredits(100);
