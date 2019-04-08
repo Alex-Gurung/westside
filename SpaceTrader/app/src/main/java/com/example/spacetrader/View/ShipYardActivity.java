@@ -19,9 +19,6 @@ import java.util.Locale;
 public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
     private double playerCredits;
-    private RecyclerView recyclerView;
-    //private RecyclerView.Adapter mAdapter;
-    //private RecyclerView.LayoutManager layoutManager;
 
     private TradingViewModel tradingViewModel;
 
