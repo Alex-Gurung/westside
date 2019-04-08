@@ -21,19 +21,7 @@ public class Game implements Serializable {
      * @param player of type Player that will be the player of the entire game of Space Trader
      */
     public Game(Player player) {
-        this(GameDifficulty.BEGINNER, player);
-    }
-
-    /**
-     * Constructor that creates a Game object starting with initializing the Player and the
-     * Game Difficulty of the player
-     *
-     * @param gameDifficulty of enum type GameDifficulty that sets the game difficulty of the player
-     *                       for the entirety of the game
-     * @param player of type Player that will be the player of the whole game so Space Trader
-     */
-    private Game(GameDifficulty gameDifficulty, Player player) {
-        this.gameDifficulty = gameDifficulty;
+        this.gameDifficulty = GameDifficulty.BEGINNER;
         this.player = player;
         this.universe = new Universe(40);
         LogBig("\n" + this.universe.toString());
