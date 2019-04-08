@@ -1,7 +1,5 @@
 package com.example.spacetrader.Entity;
 
-import java.io.Serializable;
-
 /**
  * an enum class that contains the attributes and methods necessary to make up each type of GoodType
  */

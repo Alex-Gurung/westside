@@ -2,8 +2,6 @@ package com.example.spacetrader.Entity;
 
 import android.support.annotation.NonNull;
 
-import java.io.Serializable;
-
 /**
  * resource type enum
  */

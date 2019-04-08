@@ -2,8 +2,6 @@ package com.example.spacetrader.Entity;
 
 import android.support.annotation.NonNull;
 
-import java.io.Serializable;
-
 /**
  * a class that represents the current player playing the game and is inclusive of all attributes of
  * the player, including the ability to trade

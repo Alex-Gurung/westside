@@ -1,7 +1,5 @@
 package com.example.spacetrader.Entity;
 
-import java.io.Serializable;
-
 /**
  * a class that represents a trader that has trader capabilities and is an NPC
  */

@@ -1,7 +1,5 @@
 package com.example.spacetrader.Entity;
 
-import java.io.Serializable;
-
 /**
  * an enum class that contains each ship type, as well as the attributes and methods for each ship
  * type
