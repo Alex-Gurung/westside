@@ -15,7 +15,7 @@ import java.util.HashSet;
 /**
  * The Interactor for Game that has access to the repository
  */
-public class GameInteractor extends Interactor implements Serializable {
+public class GameInteractor extends Interactor {
     /**
      * constructor for Interactor that takes in a Repository parameter
      *

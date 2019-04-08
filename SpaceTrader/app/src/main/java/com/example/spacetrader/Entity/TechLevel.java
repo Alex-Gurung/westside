@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * enum class that contains all possible tech levels and name attribute of each tech level
  */
-public enum TechLevel implements Serializable {
+public enum TechLevel {
     PREAGRICULTURAL("Pre-Agricultural"),
     AGRICULTURAL("Agricultural"),
     MEDIEVAL("Medieval"),

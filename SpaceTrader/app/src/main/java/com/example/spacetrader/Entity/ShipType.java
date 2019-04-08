@@ -6,7 +6,7 @@ import java.io.Serializable;
  * an enum class that contains each ship type, as well as the attributes and methods for each ship
  * type
  */
-public enum ShipType implements Serializable {
+public enum ShipType {
     //name, max distance, cargo holds, fuel price
     FLEA("Flea", 20, 4, 10),
     GNAT("Gnat", 14, 15, 11),

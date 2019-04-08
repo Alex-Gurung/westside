@@ -75,7 +75,7 @@ public class FirebaseActor {
             StringBuilder new_scores = new StringBuilder();
             boolean anyMatch = false;
             for (String s : scores) {
-                if (s.length() > 0) {
+                if (!s.isEmpty()) {
                     if (s.equals(my_score)) {
                         anyMatch = true;
                     }

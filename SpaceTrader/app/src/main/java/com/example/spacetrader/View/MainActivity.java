@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             String[] scores_list = scoreString.split(", ");
             List<Double> scores_doubles = new ArrayList<>();
             for (String s : scores_list) {
-                if (s.length() > 0) {
+                if (!s.isEmpty()) {
                     scores_doubles.add(Double.parseDouble(s));
                 }
             }
