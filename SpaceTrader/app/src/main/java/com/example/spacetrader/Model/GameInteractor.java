@@ -11,6 +11,7 @@ import com.example.spacetrader.Entity.TraderCapability;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The Interactor for Game that has access to the repository
@@ -122,7 +123,7 @@ public class GameInteractor extends Interactor {
      *
      * @return the current Universe's set of Solar Systems in the Game
      */
-    public HashSet<SolarSystem> getSolarSystems() {
+    public Set<SolarSystem> getSolarSystems() {
         return getRepository().getSolarSystems();
     }
 

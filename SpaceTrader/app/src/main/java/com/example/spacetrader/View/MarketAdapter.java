@@ -60,7 +60,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MarketView
      * Sets the market list to a list of goods
      * @param list the list of market goods
      */
-    public void setMarketList(List<Good> list) {
+    public void setMarketList(Iterable<Good> list) {
         List<Good> our_list = new ArrayList<>();
         for (Good g : list) {
             our_list.add(g);
