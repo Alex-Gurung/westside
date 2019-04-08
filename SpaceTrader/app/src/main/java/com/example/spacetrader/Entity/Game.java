@@ -244,7 +244,7 @@ public class Game implements Serializable {
      *
      * @return a HashSet of all the solar systems in the current game
      */
-    public HashSet<SolarSystem> getSolarSystems() {
+    public HashSet getSolarSystems() {
         return (HashSet)universe.getSolarSystems();
     }
 
