@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * an enum class that contains the attributes and methods necessary to make up each type of GoodType
  */
-public enum GoodType implements Serializable {
+public enum GoodType {
     WATER(30, 54, true, 0, 0, Resource.LOTSOFWATER, Resource.DESERT),
     FUR(250, 320, true, 0, 0, Resource.RICHFAUNA, Resource.LIFELESS),
     FOOD(105, 135, true, 1, 0, Resource.RICHSOIL, Resource.POORSOIL),

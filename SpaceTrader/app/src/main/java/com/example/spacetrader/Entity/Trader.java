@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * a class that represents a trader that has trader capabilities and is an NPC
  */
-public class Trader extends NonPlayerCharacter implements TraderCapability, Serializable {
+public class Trader extends NonPlayerCharacter implements TraderCapability {
 
     private double credits = Double.POSITIVE_INFINITY;
 

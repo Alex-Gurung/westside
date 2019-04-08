@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * enum class that represents all possible political systems that a solar system can have
  */
-public enum PoliticalSystem implements Serializable {
+public enum PoliticalSystem {
     ANARCHY("Anarchy"),
     CAPITALISTSTATE("Capitalist State"),
     COMMUNISTSTATE("Communist State"),

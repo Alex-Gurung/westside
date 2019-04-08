@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * class that represents a space port that exists in a Solar System
  */
-public class SpacePort implements TraderCapability, Serializable {
+public class SpacePort implements TraderCapability {
 
     private final TechLevel techlevel;
     private final List<Good> goods;

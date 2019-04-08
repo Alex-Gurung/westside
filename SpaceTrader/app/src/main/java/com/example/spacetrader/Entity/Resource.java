@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * resource type enum
  */
-public enum Resource implements Serializable {
+public enum Resource {
 
     NEVER("Never"),
     NOSPECIALSOURCES("No Special Resources"),
