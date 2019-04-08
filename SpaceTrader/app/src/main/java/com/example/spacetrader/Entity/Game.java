@@ -264,4 +264,12 @@ public class Game implements Serializable {
     public boolean playerCanTravel(SolarSystem solarSystem) {
         return this.player.canTravel(solarSystem);
     }
+
+    /**
+     * Gets the current players solar system stats
+     * @return the current players solar system stats
+     */
+    public String getSolarSystemStats() {
+        return this.player.getSolarSystemStats();
+    }
 }

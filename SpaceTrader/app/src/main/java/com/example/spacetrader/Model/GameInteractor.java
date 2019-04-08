@@ -194,4 +194,12 @@ public class GameInteractor extends Interactor {
     public int getGameDifficulty(){
         return getRepository().getGameDifficulty();
     }
+
+    /**
+     * Gets the current players solar system stats
+     * @return the current players solar system stats
+     */
+    public String getSolarSystemStats() {
+        return getRepository().getSolarSystemStats();
+    }
 }

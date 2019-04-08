@@ -97,4 +97,12 @@ public class TradingViewModel extends AndroidViewModel {
     public int getGameDifficulty(){
         return interactor.getGameDifficulty();
     }
+
+    /**
+     * Gets the current players solar system stats
+     * @return the current players solar system stats
+     */
+    public String getSolarSystemStats() {
+        return interactor.getSolarSystemStats();
+    }
 }

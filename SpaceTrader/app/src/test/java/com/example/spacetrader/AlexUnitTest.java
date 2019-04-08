@@ -28,6 +28,18 @@ public class AlexUnitTest {
     }
 
     /**
+     * test for empty score string
+     */
+    @Test
+    public void checkEmptyScoreString() {
+        double my_score = 1.0;
+        String scores = "";
+        String expected = "" + my_score;
+        String actual = firebaseActor.updateScore(scores, my_score);
+        assertEquals(expected, actual); //as our score isn't unique, want the same thing out
+    }
+
+    /**
      * test for valid score strings of length [0, LISTBOUND)
      * when the players current score is not unique
      */

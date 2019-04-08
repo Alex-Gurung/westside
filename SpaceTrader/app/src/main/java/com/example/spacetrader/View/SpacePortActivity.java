@@ -24,9 +24,9 @@ public class SpacePortActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_space_port);
-        String SolarSystemStats = getIntent().getStringExtra("SOLARSTYSTEMSTATS");
 
         tradingViewModel= ViewModelProviders.of(this).get(TradingViewModel.class);
+        String SolarSystemStats = tradingViewModel.getSolarSystemStats();
 
         Button backButton = findViewById(R.id.SpacePort_Back_Button);
         Button sellGoodsButton = findViewById(R.id.SpacePort_Sell_Goods_Button);

@@ -179,4 +179,11 @@ class Repository implements Serializable {
     }
 
 
+    /**
+     * Gets the current players solar system stats
+     * @return the current players solar system stats
+     */
+    public String getSolarSystemStats() {
+        return this.game.getSolarSystemStats();
+    }
 }

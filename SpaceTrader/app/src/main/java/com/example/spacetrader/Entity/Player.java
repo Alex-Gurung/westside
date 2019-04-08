@@ -257,4 +257,12 @@ public class Player extends Character implements TraderCapability {
     public double getFuel() {
         return this.ship.getFuel();
     }
+
+    /**
+     * Gets the current players solar system stats
+     * @return the current players solar system stats
+     */
+    public String getSolarSystemStats() {
+        return this.currentSolarSystem.toString();
+    }
 }
