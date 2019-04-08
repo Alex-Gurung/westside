@@ -3,7 +3,6 @@ package com.example.spacetrader.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
