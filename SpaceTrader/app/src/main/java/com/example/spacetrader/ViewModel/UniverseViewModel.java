@@ -39,7 +39,7 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return the current solar system's x coordinate
      */
     public int getCurrentSolarX() {
-        return this.getCurrentSolarSystem().getLocation().getX();
+        return this.getCurrentSolarSystem().getX();
     }
 
     /**
@@ -47,7 +47,7 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return the current solar system's y coordinate
      */
     public int getCurrentSolarY() {
-        return this.getCurrentSolarSystem().getLocation().getY();
+        return this.getCurrentSolarSystem().getY();
     }
 
     /**
