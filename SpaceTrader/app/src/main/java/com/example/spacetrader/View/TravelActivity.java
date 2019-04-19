@@ -3,13 +3,17 @@ package com.example.spacetrader.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -28,7 +32,7 @@ public class TravelActivity extends AppCompatActivity {
 
         }, 1000);
         Random r = new Random();
-        int scenario = r.nextInt(3);
+        int scenario = r.nextInt(4);
         int diff = tradingViewModel.getGameDifficulty();
         switch (scenario) {
             case 0:
@@ -47,6 +51,22 @@ public class TravelActivity extends AppCompatActivity {
                 tradingViewModel.setPlayerCredits(
                         tradingViewModel.getPlayerCredits() + (600 - (100 * diff))
                 );
+                break;
+            case 3:
+                Toast.makeText(TravelActivity.this, "A trader appears!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        TravelActivity.this
+                );
+                alertDialogBuilder.setTitle("Do you want to trade?");
+                alertDialogBuilder.setPositiveButton("Trade", (dialog, which) -> {
+                    
+                    Intent intent = new Intent(getApplicationContext(), TraderActivity.class);
+                    startActivity(intent);
+
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
                 break;
         }
         handler.postDelayed(() -> {
