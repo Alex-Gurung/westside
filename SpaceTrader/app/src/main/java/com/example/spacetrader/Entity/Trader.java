@@ -1,18 +1,31 @@
 package com.example.spacetrader.Entity;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * a class that represents a trader that has trader capabilities and is an NPC
  */
 public class Trader extends NonPlayerCharacter implements TraderCapability {
 
     private double credits = Double.POSITIVE_INFINITY;
+    private List<Good> goods;
+    private final Random random = new Random();
 
     /**
      * constructor that instantiates a Trader with a ship
      *
      */
-    public Trader() {
-        super(new Ship(ShipType.GNAT));
+    public Trader(SolarSystem currentSolarSystem) {
+        super(new Ship(ShipType.TERMITE));
+        this.goods = new ArrayList<>();
+        this.currentSolarSystem = currentSolarSystem;
+        populateGoods(ship.getShiptype().getCargoHolds());
+
+
     }
 
     /**
@@ -24,6 +37,7 @@ public class Trader extends NonPlayerCharacter implements TraderCapability {
     public void setPrice(Good good) {
         setPrice(good, this.currentSolarSystem.getTechLevel(),
                 this.currentSolarSystem.getResource());
+        good.setPrice(good.getPrice()*.9);
     }
 
     /**
@@ -98,4 +112,24 @@ public class Trader extends NonPlayerCharacter implements TraderCapability {
     public void interactWithPlayer(Player player) {
         player.canChangeShip(ShipType.BEETLE);
     }
+
+    public void populateGoods(int numGoods) {
+        Log.d("TRADERGOODS", "(2) populate goods");
+        List<GoodType> producible = new ArrayList<>();
+        for(GoodType gt : GoodType.values()) {
+            if(gt.getMinTechLevelProduce() <= this.currentSolarSystem.getTechLevel().ordinal()){
+                producible.add(gt);
+            }
+        }
+        for (int i = 0; i < numGoods; i++) {
+            Good add = new Good(producible.get(random.nextInt(producible.size())));
+            setPrice(add);
+            Log.d("TRADERGOODS", add.getGoodType().name());
+            goods.add(add);
+            this.ship.addCargo(add);
+        }
+
+
+    }
+
 }

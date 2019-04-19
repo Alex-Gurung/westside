@@ -42,7 +42,7 @@ public class TraderActivity extends AppCompatActivity {
         tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
 
         playerCredits = tradingViewModel.getPlayerCredits();
-        trader = new Trader();
+        trader = new Trader(tradingViewModel.getCurrentSolarSystem());
 
         Button backButton = findViewById(R.id.Market_Back_Button);
         backButton.setOnClickListener(v -> finish());
@@ -51,6 +51,8 @@ public class TraderActivity extends AppCompatActivity {
         String f = "" + playerCredits;
         credits.setText(f);
 
+        TextView title = findViewById(R.id.Market_label);
+        title.setText("Trader's Goods");
 
         //first grab a reference to the widget
         RecyclerView recyclerView = findViewById(R.id.market_list);
