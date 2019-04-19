@@ -1,15 +1,20 @@
 package com.example.spacetrader.View;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -28,17 +33,26 @@ public class TravelActivity extends AppCompatActivity {
 
         }, 1000);
         Random r = new Random();
-        int scenario = r.nextInt(3);
+        int scenario = r.nextInt(4);
         int diff = tradingViewModel.getGameDifficulty();
         switch (scenario) {
             case 0:
-                Toast.makeText(TravelActivity.this, "Traveled safely",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(TravelActivity.this, "Traveled safely", Toast.LENGTH_SHORT).show();
+                handler.postDelayed(() -> {
+                    // Actions to do after 2 seconds
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivityForResult(intent, 2);
+                }, 3000);
                 break;
             case 1:
                 Toast.makeText(TravelActivity.this, "You lost 100 credits",
                         Toast.LENGTH_SHORT).show();
                 tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 100);
+                handler.postDelayed(() -> {
+                    // Actions to do after 2 seconds
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivityForResult(intent, 2);
+                }, 3000);
                 break;
             case 2:
                 double gainCredits = (600 - (100 * diff));
@@ -47,13 +61,35 @@ public class TravelActivity extends AppCompatActivity {
                 tradingViewModel.setPlayerCredits(
                         tradingViewModel.getPlayerCredits() + (600 - (100 * diff))
                 );
+                handler.postDelayed(() -> {
+                    // Actions to do after 2 seconds
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivityForResult(intent, 2);
+                }, 3000);
+                break;
+            case 3:
+                Toast.makeText(TravelActivity.this, "A trader appears!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        TravelActivity.this
+                );
+                alertDialogBuilder.setTitle("Do you want to trade?");
+                alertDialogBuilder.setPositiveButton("Trade", (dialog, which) -> {
+                    Intent intent = new Intent(getApplicationContext(), TraderActivity.class);
+                    startActivityForResult(intent, 1);
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                        startActivityForResult(intent, 2);
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
                 break;
         }
-        handler.postDelayed(() -> {
-            // Actions to do after 2 seconds
-            Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
-            startActivityForResult(intent, 2);
-        }, 3000);
+
     }
 
     /**
@@ -65,7 +101,12 @@ public class TravelActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        finish();
+        if (requestCode == 2) {
+            finish();
+        } else if (requestCode == 1) {
+            Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+            startActivityForResult(intent, 2);
+        }
     }
 
 

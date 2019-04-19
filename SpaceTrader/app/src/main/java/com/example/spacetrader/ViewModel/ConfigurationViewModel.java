@@ -55,12 +55,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
          gameInteractor.setPlayerSolarSystem(game.getPlayerSolarSystem());
     }
 
-    /**
-     * getter method for the game
-     * @return the game the player is playing
-     */
-    public Game getGame() {
-        return gameInteractor.getGame();
-    }
+
 
 }

@@ -130,7 +130,7 @@ public class SpacePort implements TraderCapability {
 //    }
 
     /**
-     * getter method that returns the player's cargo hold
+     * getter method that returns the cargo hold
      *
      * @return an array representation of type Good that is the player's cargo hold
      */

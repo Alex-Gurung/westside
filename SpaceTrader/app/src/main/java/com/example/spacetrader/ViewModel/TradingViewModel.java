@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Player;
+import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.TraderCapability;
 import com.example.spacetrader.Model.GameInteractor;
@@ -105,4 +106,6 @@ public class TradingViewModel extends AndroidViewModel {
     public String getSolarSystemStats() {
         return interactor.getSolarSystemStats();
     }
+
+    public SolarSystem getCurrentSolarSystem() { return interactor.getPlayerSolarSystem();}
 }
