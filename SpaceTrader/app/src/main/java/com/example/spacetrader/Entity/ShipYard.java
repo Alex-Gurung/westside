@@ -18,7 +18,7 @@ public class ShipYard implements Serializable {
             return true;
         } else {
            refuelByCredits(character, character.credits);
-            return true;
+            return false;
         }
     }
 

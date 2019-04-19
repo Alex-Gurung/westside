@@ -21,7 +21,7 @@ import java.util.List;
  * Adapter Class that allows a list of goods in the player's cargo to be displayed on a screen,
  * as well as be modified (or not) based on the actions of the player
  */
-public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ShipViewHolderAdapter>{
+public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ShipViewHolder>{
     /** a copy of the list of Goods in the model */
     private List<ShipType> shiptypes = new ArrayList<>();
 

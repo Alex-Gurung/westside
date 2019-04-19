@@ -13,7 +13,7 @@ import com.example.spacetrader.ViewModel.TradingViewModel;
 import java.util.Locale;
 
 /**
- * the activity that allows the user to refuel their ship
+ * the activity that allows the user to refuel their ship and upgrade their shiptype
  */
 public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
@@ -53,56 +53,8 @@ public class ShipYardActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ship refueled fully",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Can not refuel",
+            Toast.makeText(getApplicationContext(), "Refueled using all credits",
                     Toast.LENGTH_SHORT).show();
         }
     }
 }
-/*
-class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private String[] shipTypes;
-
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView textView;
-        public MyViewHolder(TextView v) {
-            super(v);
-            textView = v;
-        }
-    }
-
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter() {
-        shipTypes = tradingViewModel;
-    }
-
-    // Create new views (invoked by the layout manager)
-    @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
-        // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
-        ...
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
-    }
-
-    // Replace the contents of a view (invoked by the layout manager)
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
-
-    }
-
-    // Return the size of your dataset (invoked by the layout manager)
-    @Override
-    public int getItemCount() {
-        return mDataset.length;
-    }
-}*/
