@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.spacetrader.Entity.Player;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
@@ -36,7 +37,7 @@ public class SpacePortActivity extends AppCompatActivity {
         TextView solarSystemText = findViewById(R.id.SpacePort_SolarSystem_Stats);
         String f = ""+tradingViewModel.getPlayerCredits();
         credits.setText(f);
-        solarSystemText.setText(SolarSystemStats);
+        solarSystemText.setText(SolarSystemStats + "Ship " + tradingViewModel.getPlayer().getMyShip().getShiptype().displayOnAdapter());
 
 
         //sends user back to solar system screen on pressing the back button

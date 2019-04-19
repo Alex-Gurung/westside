@@ -1,5 +1,6 @@
 package com.example.spacetrader.View;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.R;
+import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,14 +53,13 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ShipViewHolder
      * @param position of type int to get the position of the cargo in the LOGCAT
      */
     public void onBindViewHolder(@NonNull ShipViewHolder holder, int position) {
-
         //bind the cargo item data for the cargo
         ShipType shipType = shiptypes.get(position);
 
         Log.d("APP", "Binding: " + position + " " + shiptypes.get(position));
 
-        holder.name.setText(shipType.name());
-        String price = "" + shipType.getPrice();
+        holder.name.setText(shipType.displayOnAdapter());
+        String price = "" + TradingViewModel.getUpgradePrice(shipType);
         holder.price.setText(price);
 
     }

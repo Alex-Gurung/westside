@@ -185,7 +185,7 @@ public class Player extends Character implements TraderCapability {
         return ship.getCargo().length <= upgrade.getCargoHolds();
     }
 
-    private double getShipUpgradePrice(ShipType upgrade) {
+    public double getShipUpgradePrice(ShipType upgrade) {
         double currentShipPrice = ship.getPrice();
         double newShipPrice = upgrade.getPrice();
         return newShipPrice - currentShipPrice;

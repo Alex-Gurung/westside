@@ -96,6 +96,10 @@ public class Game implements Serializable {
         return player.changeShipType(upgrade);
     }
 
+    public double getUpgradePrice(ShipType shipType) {
+        return player.getShipUpgradePrice(shipType);
+    }
+
     /**
      * setter method for the current Player object
      *

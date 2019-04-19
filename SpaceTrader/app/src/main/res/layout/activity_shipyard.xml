@@ -9,7 +9,7 @@
             android:id="@+id/credit_box"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content">
         <TextView
                 android:id="@+id/credits_label"
@@ -33,17 +33,20 @@
             layout="@layout/content_ship_list"
             android:layout_width="match_parent"
             android:layout_below="@+id/credit_box"
+            android:layout_above="@id/button_box"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
 
     <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/button_box"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="34dp"
+            android:layout_marginBottom="20dp"
             android:layout_below="@layout/content_ship_list"
-            android:layout_marginTop="10dp">
+            android:layout_alignParentBottom="true">
         <Button
                 android:id="@+id/ShipYard_Refuel_Max_Button"
                 android:layout_width="wrap_content"

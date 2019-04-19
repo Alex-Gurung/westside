@@ -93,4 +93,10 @@ public enum ShipType {
                 + "Cargo Slots: " + cargoHolds + "\n"
                 + "Price: " + price;
     }
+
+    public String displayOnAdapter() {
+        return "Name: " + name + "\n"
+                + "Distance: " + maxDistance + "\n"
+                + "Cargo Slots: " + cargoHolds;
+    }
 }
