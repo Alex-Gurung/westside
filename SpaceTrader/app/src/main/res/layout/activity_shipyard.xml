@@ -12,16 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
-        android:layout_toStartOf="@+id/shipyard_credit_input"
         android:text="Credits:" />
 
-    <TextView
-        android:id="@+id/shipyard_credit_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:text="credits" />
 
     <!--<android.support.v7.widget.RecyclerView-->
             <!--android:id="@+id/ShipType_RecyclerView"-->
@@ -32,25 +24,37 @@
             <!--android:margin="20dp"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"/>-->
+    <include
+            layout="@layout/content_ship_list"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/credits_label"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
 
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="34dp"
+            android:layout_below="@layout/content_ship_list"
+            android:layout_marginTop="10dp">
+        <Button
+                android:id="@+id/ShipYard_Refuel_Max_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/ShipYard_Back_Button"
+                android:layout_marginLeft="34dp"
+                android:text="Refuel"/>
 
-    <Button
-        android:id="@+id/ShipYard_Refuel_Max_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_above="@+id/ShipYard_Back_Button"
-        android:text="Refuel Max" />
+        <Button
+                android:id="@+id/ShipYard_Back_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Back"/>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/ShipYard_Back_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="24dp"
-        android:text="Back" />
 
 </RelativeLayout>

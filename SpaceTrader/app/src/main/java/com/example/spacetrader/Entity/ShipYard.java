@@ -16,8 +16,10 @@ public class ShipYard implements Serializable {
         if(character.canRefuelMax()) {
             character.refuelMax();
             return true;
+        } else {
+           refuelByCredits(character, character.credits);
+            return true;
         }
-        return false;
     }
 
     /**
@@ -27,6 +29,10 @@ public class ShipYard implements Serializable {
      * @return whether or not the transaction was successful
      */
     public static boolean refuelByCredits(Character character, double credits) {
-        return character.refuelByCredits(credits);
+        try {
+            return character.refuelByCredits(credits);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 }

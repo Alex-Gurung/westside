@@ -18,26 +18,13 @@ import java.util.Locale;
 public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
     private double playerCredits;
+    private final ShipAdapter adapter = new ShipAdapter();
 
     private TradingViewModel tradingViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //recyclerView = (RecyclerView) findViewById(R.id.ShipType_RecyclerView);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        //recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        //layoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        //mAdapter = new MyAdapter(myDataset);
-        //recyclerView.setAdapter(mAdapter);
-
 
         setContentView(R.layout.activity_shipyard);
 
