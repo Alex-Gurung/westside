@@ -61,6 +61,9 @@ public class SpacePortActivity extends AppCompatActivity {
         if (requestCode == BUY_OR_SELL) {
             String f = ""+tradingViewModel.getPlayerCredits();
             credits.setText(f);
+            TextView solarSystemText = findViewById(R.id.SpacePort_SolarSystem_Stats);
+            String SolarSystemStats = tradingViewModel.getSolarSystemStats();
+            solarSystemText.setText(SolarSystemStats + "Ship " + tradingViewModel.getPlayer().getMyShip().getShiptype().displayOnAdapter());
         }
     }
 }

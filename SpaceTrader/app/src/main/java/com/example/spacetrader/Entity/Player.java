@@ -182,7 +182,7 @@ public class Player extends Character implements TraderCapability {
      * @return true if you can change your ship to the upgrade ship
      */
     public boolean canChangeShip(ShipType upgrade) {
-        return ship.getCargo().length <= upgrade.getCargoHolds();
+        return ship.getNumGoods() <= upgrade.getCargoHolds() && getShipUpgradePrice(upgrade) <= credits;
     }
 
     public double getShipUpgradePrice(ShipType upgrade) {
@@ -197,10 +197,12 @@ public class Player extends Character implements TraderCapability {
      * @return whether or not the ship is successfully upgraded
      */
     public boolean changeShipType(ShipType upgrade) {
-        if(canChangeShip(upgrade) && (upgrade.getPrice() <= credits)) {
+        if(canChangeShip(upgrade)) {
             Ship newShip = new Ship(upgrade);
             for(Good cargo : ship.getCargo()) {
-                newShip.addCargo(cargo);
+                if(cargo != null) {
+                    newShip.addCargo(cargo);
+                }
             }
             credits = credits - getShipUpgradePrice(upgrade);
             this.ship = newShip;

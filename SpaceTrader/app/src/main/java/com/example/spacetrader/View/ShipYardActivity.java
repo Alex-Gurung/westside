@@ -56,6 +56,8 @@ public class ShipYardActivity extends AppCompatActivity {
         boolean upgradeSuccessful = tradingViewModel.upgradeShip(shipType);
         if (upgradeSuccessful) {
             Toast.makeText(getApplicationContext(), "Ship upgraded", Toast.LENGTH_SHORT).show();
+            updateCredits();
+            adapter.setShipList();
         } else {
             Toast.makeText(getApplicationContext(), "Ship not upgraded", Toast.LENGTH_SHORT).show();
         }
