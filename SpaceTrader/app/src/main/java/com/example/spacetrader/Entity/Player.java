@@ -59,6 +59,14 @@ public class Player extends Character implements TraderCapability {
         }
     }
 
+    public void travelWormhole(SolarSystem solarSystem) {
+        this.setCurrentSolarSystem(solarSystem);
+        Good[] goods = ship.getCargo();
+        for(int i = 0; i < ship.getNumGoods(); i++) {
+            this.setPrice(goods[i], this.currentSolarSystem);
+        }
+    }
+
     /**
      * @param solarSystem the solar system the player wants to go to
      * @return whether or not the player can go there
@@ -184,6 +192,8 @@ public class Player extends Character implements TraderCapability {
     public boolean canChangeShip(ShipType upgrade) {
         return ship.getNumGoods() <= upgrade.getCargoHolds() && getShipUpgradePrice(upgrade) <= credits;
     }
+
+
 
     public double getShipUpgradePrice(ShipType upgrade) {
         double currentShipPrice = ship.getPrice();

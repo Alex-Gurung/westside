@@ -269,6 +269,48 @@ public class Game implements Serializable {
         return this.player.canTravel(solarSystem);
     }
 
+    public boolean canTravelWormhole(SolarSystem solarSystem) {
+        return (playerIsOnWormhole() && solarSystem.equals(getOtherWormholeEndpoint()));
+    }
+
+    public boolean playerIsOnWormhole() {
+        HashSet<Wormhole> wormholes = getWormholes();
+        for(Wormhole wh: wormholes) {
+            if(wh.checkEndPoint(this.getPlayerSolarSystem())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public SolarSystem getOtherWormholeEndpoint() {
+        if (playerIsOnWormhole()) {
+            HashSet<Wormhole> wormholes = getWormholes();
+            for(Wormhole wh: wormholes) {
+                if(wh.checkEndPoint(this.getPlayerSolarSystem())){
+                    return wh.getOtherEndpoint(this.getPlayerSolarSystem());
+                }
+            }
+            return null;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
+        if (this.canTravelWormhole(solarSystem)){
+            player.travelWormhole(solarSystem);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+    public HashSet<Wormhole> getWormholes() {
+        return this.universe.getWormholes();
+    }
     /**
      * Gets the current players solar system stats
      * @return the current players solar system stats
