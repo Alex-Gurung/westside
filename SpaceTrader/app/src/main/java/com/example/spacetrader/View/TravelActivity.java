@@ -33,7 +33,7 @@ public class TravelActivity extends AppCompatActivity {
 
         }, 1000);
         Random r = new Random();
-        int scenario = r.nextInt(4);
+        int scenario = r.nextInt(5);
         int diff = tradingViewModel.getGameDifficulty();
         switch (scenario) {
             case 0:
@@ -88,6 +88,27 @@ public class TravelActivity extends AppCompatActivity {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
                 break;
+            case 4:
+                Toast.makeText(TravelActivity.this, "Inter-Galactic Casino", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alert = new AlertDialog.Builder(
+                        TravelActivity.this
+                );
+                alert.setTitle("Do you want to Casino?");
+                alert.setPositiveButton("Casino", (dialog, which) -> {
+                    Intent intent = new Intent(getApplicationContext(), CasinoActivity.class);
+                    startActivityForResult(intent, 3);
+                });
+                alert.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                        startActivityForResult(intent, 2);
+                    }
+                });
+                AlertDialog alertD = alert.create();
+                alertD.show();
+                break;
         }
 
     }
@@ -106,6 +127,8 @@ public class TravelActivity extends AppCompatActivity {
         } else if (requestCode == 1) {
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
             startActivityForResult(intent, 2);
+        } else if (requestCode == 3) {
+            finish();
         }
     }
 
