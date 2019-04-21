@@ -1,18 +1,17 @@
 package com.example.spacetrader.View;
 
+import java.util.Random;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.Trader;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
@@ -26,6 +25,7 @@ public class CasinoActivity extends AppCompatActivity {
     private TextView credits;
     private final MarketAdapter adapter = new MarketAdapter();
     private List<Good> marketList;
+    private Random rand;
 
     private TradingViewModel tradingViewModel;
     private Trader trader;
