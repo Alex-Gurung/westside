@@ -38,6 +38,17 @@ public class CasinoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_casino);
+        credits = findViewById(R.id.player_credits);
+        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        Double d = tradingViewModel.getPlayerCredits();
+        credits.setText(d.toString());
+
+
+
+
+
+
+
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> finish());
     }
