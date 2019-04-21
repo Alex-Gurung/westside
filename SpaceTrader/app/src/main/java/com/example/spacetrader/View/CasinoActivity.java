@@ -18,6 +18,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
 import java.util.List;
+import java.util.Random;
 
 public class CasinoActivity extends AppCompatActivity {
 
@@ -42,12 +43,37 @@ public class CasinoActivity extends AppCompatActivity {
         tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
         Double d = tradingViewModel.getPlayerCredits();
         credits.setText(d.toString());
+        TextView slot1 = findViewById(R.id.slot_1);
+        TextView slot2 = findViewById(R.id.slot_2);
+        TextView slot3 = findViewById(R.id.slot_3);
+        slot1.setText("Roll");
+        slot2.setText("Roll");
+        slot3.setText("Roll");
 
 
-
-
-
-
+        Button roll = findViewById(R.id.roll_button);
+        roll.setOnClickListener(v -> {
+            if (tradingViewModel.getPlayerCredits() >= 50) {
+                Random r = new Random();
+                tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() - 50);
+                Double d2 = tradingViewModel.getPlayerCredits();
+                credits.setText(d2.toString());
+                slot1.setText("" + (r.nextInt(3) + 1));
+                slot2.setText("" + (r.nextInt(3) + 1));
+                slot3.setText("" + (r.nextInt(3) + 1));
+                if (slot1.getText().toString().equals(slot2.getText().toString())
+                        && slot2.getText().toString().equals(slot3.getText().toString())) {
+                    Toast.makeText(this, "Winner: " + (Double.parseDouble(slot1.getText().toString()) * 100) + " credits", Toast.LENGTH_SHORT).show();
+                    tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (Double.parseDouble(slot1.getText().toString()) * 100));
+                    Double d3 = tradingViewModel.getPlayerCredits();
+                    credits.setText(d3.toString());
+                } else {
+                    Toast.makeText(this, "You Lose Try Again?", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Not Enough Credits", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> finish());
@@ -59,5 +85,4 @@ public class CasinoActivity extends AppCompatActivity {
             Log.d("Hello", "Hello World");
         }
     }
-
 }
