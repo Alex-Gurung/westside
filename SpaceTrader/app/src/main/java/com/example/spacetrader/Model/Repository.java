@@ -1,17 +1,11 @@
 package com.example.spacetrader.Model;
 
-import com.example.spacetrader.Entity.FirebaseActor;
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.ShipType;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
+import com.example.spacetrader.Entity.*;
 
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * repository that acts as data storage
@@ -153,6 +147,15 @@ class Repository implements Serializable {
     public boolean facilitateTravel(SolarSystem solarSystem) {
         return this.game.facilitateTravel(solarSystem);
     }
+
+    public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
+        return this.game.facilitateTravelWormhole(solarSystem);
+    }
+
+    public Wormhole getWormhole() {
+        return this.game.getWormhole();
+    }
+
 
     /**
      * Getter for the set of solar systems

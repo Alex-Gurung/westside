@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.Wormhole;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.UniverseViewModel;
 import com.jjoe64.graphview.GraphView;
@@ -92,14 +93,25 @@ public class UniverseActivity extends AppCompatActivity {
             alertDialogBuilder.setPositiveButton("Travel", (dialog, which) -> {
                 Location previousLocation = universeViewModel.getCurrentSolarSystem().getLocation();
                 Log.d("UniverseActivity", " prev Location" + previousLocation.toString());
-                boolean didTravel = universeViewModel.facilitateTravel(thisSS);
-                if (!didTravel) {
-                    Toast.makeText(UniverseActivity.this, "Could not travel",
+                boolean didTravel = false;
+                try {
+                    didTravel = universeViewModel.facilitateTravel(thisSS);
+                    if (!didTravel) {
+                        Toast.makeText(UniverseActivity.this, "Could not travel",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
+                        startActivityForResult(intent, 1);
+                    }
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(UniverseActivity.this, "Travelled using wormhole",
                             Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), TravelActivity.class);
-                    startActivityForResult(intent, 1);
+                    showTravelable();
+                    showMyLocation();
+                    //Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    //startActivityForResult(intent, 2);
                 }
+
             });
             alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
             AlertDialog alertDialog = alertDialogBuilder.create();
@@ -197,7 +209,6 @@ public class UniverseActivity extends AppCompatActivity {
         PointsGraphSeries<DataPoint> myLocation = new PointsGraphSeries<>(currentDP);
         graph.addSeries(myLocation);
         myLocation.setColor(Color.RED);
-
     }
 
     /**
@@ -205,10 +216,15 @@ public class UniverseActivity extends AppCompatActivity {
      */
     private void showTravelable() {
         Set<SolarSystem> solars = universeViewModel.getSolarSystems();
+        Wormhole wormhole = universeViewModel.getWormhole();
         List<DataPoint> locsPlayerCanTravel = new ArrayList<>();
         List<DataPoint> notLocsPlayerCanTravel = new ArrayList<>();
+        List<DataPoint> wormholeLocs = new ArrayList<>();
         for(SolarSystem solarSystem : solars) {
-            if(universeViewModel.playerCanTravel(solarSystem)) {
+            if (wormhole.checkEndPoint(solarSystem)) {
+                wormholeLocs.add(new DataPoint(solarSystem.getX(),
+                        solarSystem.getY()));
+            } else if(universeViewModel.playerCanTravel(solarSystem)) {
                 Log.d("travel: " , solarSystem.getLocation().toString());
                 locsPlayerCanTravel.add(new DataPoint(solarSystem.getX() ,
                         solarSystem.getY()));
@@ -219,19 +235,29 @@ public class UniverseActivity extends AppCompatActivity {
         }
         DataPoint[] l = new DataPoint[locsPlayerCanTravel.size()];
         DataPoint[] n = new DataPoint[notLocsPlayerCanTravel.size()];
+        DataPoint[] w = new DataPoint[wormholeLocs.size()];
         Collections.sort(locsPlayerCanTravel, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
         Collections.sort(notLocsPlayerCanTravel, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
+        Collections.sort(wormholeLocs, (s1, s2) -> (int)s1.getX() - (int)s2.getX());
         for (int i =0; i < locsPlayerCanTravel.size(); i++) {
             l[i] = locsPlayerCanTravel.get(i);
         }
         for (int i =0; i < notLocsPlayerCanTravel.size(); i++) {
             n[i] = notLocsPlayerCanTravel.get(i);
         }
+        for (int i = 0; i < wormholeLocs.size(); i++) {
+            w[i] = wormholeLocs.get(i);
+            Log.d("worm", i + " " + wormholeLocs.get(i));
+        }
         PointsGraphSeries<DataPoint> lPCT = new PointsGraphSeries<>(l);
         PointsGraphSeries<DataPoint> nLPCT = new PointsGraphSeries<>(n);
+        PointsGraphSeries<DataPoint> wormholePGS = new PointsGraphSeries<>(w);
+        graph.addSeries(wormholePGS);
         graph.addSeries(lPCT);
         graph.addSeries(nLPCT);
+        wormholePGS.setColor(Color.BLACK);
         lPCT.setColor(Color.YELLOW);
         nLPCT.setColor(Color.rgb(1,114,203));
+
     }
 }

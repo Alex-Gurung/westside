@@ -1,13 +1,7 @@
 package com.example.spacetrader.Model;
 
 
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.ShipType;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
+import com.example.spacetrader.Entity.*;
 
 import java.util.Set;
 
@@ -169,6 +163,14 @@ public class GameInteractor extends Interactor {
         return getRepository().facilitateTravel(solarSystem);
     }
 
+
+    public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
+        return getRepository().facilitateTravelWormhole(solarSystem);
+    }
+
+    public Wormhole getWormhole() {
+        return getRepository().getWormhole();
+    }
     /**
      * getter method that retrieves the Player's current fuel level
      *

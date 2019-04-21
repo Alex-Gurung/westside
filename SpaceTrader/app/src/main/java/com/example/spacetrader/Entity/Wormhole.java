@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * wormhole class that has two different solar systems that a player can travel from/to
  */
-class Wormhole implements Serializable {
+public class Wormhole implements Serializable {
     private SolarSystem A;
     private SolarSystem B;
 

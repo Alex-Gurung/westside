@@ -12,7 +12,8 @@ import java.util.*;
  */
 class Universe implements Serializable {
     private final HashSet<SolarSystem> solarSystems;
-    private final HashSet<Wormhole> wormholes;
+    private int numSolarSystems;
+    Wormhole wormhole;
     /**
      * @return a set of solar systems in this universe
      */
@@ -20,9 +21,10 @@ class Universe implements Serializable {
         return solarSystems;
     }
 
-    public HashSet<Wormhole> getWormholes() {
-        return wormholes;
+    public Wormhole getWormhole() {
+        return wormhole;
     }
+
     //    /**
 //     * sets the solar systems in this universe
 //     * @param solarSystems the set of solar systems in this universe
@@ -38,6 +40,7 @@ class Universe implements Serializable {
      *                        hold
      */
     public Universe(int numSolarSystems) {
+        this.numSolarSystems = numSolarSystems;
         List<Location> allCombos = new ArrayList<>();
         for(int i = 2; i <= 33; i++) {
             for (int j = 2; j <= 33; j++) {
@@ -54,11 +57,18 @@ class Universe implements Serializable {
             solarSystemCount++;
         }
 
-        wormholes = new HashSet<>();
         Iterator<SolarSystem> solarSystemIterator = solarSystems.iterator();
-        for(int i = 0; i < numSolarSystems/20; i++) {
-            wormholes.add(new Wormhole(solarSystemIterator.next(), solarSystemIterator.next()));
+        SolarSystem whA = solarSystemIterator.next();
+        SolarSystem whB = solarSystemIterator.next();
+
+        for(int i = 0; i < numSolarSystems; i++) {
+            SolarSystem n = solarSystemIterator.next();
+            if(n.getDistance(whA) > 17) {
+                whB = n;
+                break;
+            }
         }
+        wormhole = new Wormhole(whA, whB);
     }
 
 //    /**
@@ -89,6 +99,6 @@ class Universe implements Serializable {
      * @return the solar system that was randomly chosen
      */
     public SolarSystem getRandomSolarSystem() {
-        return (SolarSystem)solarSystems.toArray()[0];
+        return (SolarSystem)(solarSystems.toArray())[(int) (Math.random() * (double)numSolarSystems)];
     }
 }
