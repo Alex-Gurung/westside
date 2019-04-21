@@ -63,8 +63,8 @@ public class CasinoActivity extends AppCompatActivity {
                 slot3.setText("" + (r.nextInt(3) + 1));
                 if (slot1.getText().toString().equals(slot2.getText().toString())
                         && slot2.getText().toString().equals(slot3.getText().toString())) {
-                    Toast.makeText(this, "Winner: " + (Double.parseDouble(slot1.getText().toString()) * 100) + " credits", Toast.LENGTH_SHORT).show();
-                    tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (Double.parseDouble(slot1.getText().toString()) * 100));
+                    Toast.makeText(this, "Winner: " + (Double.parseDouble(slot1.getText().toString()) * 500) + " credits", Toast.LENGTH_SHORT).show();
+                    tradingViewModel.setPlayerCredits(tradingViewModel.getPlayerCredits() + (Double.parseDouble(slot1.getText().toString()) * 500));
                     Double d3 = tradingViewModel.getPlayerCredits();
                     credits.setText(d3.toString());
                 } else {

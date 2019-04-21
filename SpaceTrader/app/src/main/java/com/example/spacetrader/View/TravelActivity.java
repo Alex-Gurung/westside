@@ -33,7 +33,7 @@ public class TravelActivity extends AppCompatActivity {
 
         }, 1000);
         Random r = new Random();
-        int scenario = 4;//r.nextInt(2);
+        int scenario = r.nextInt(5);
         int diff = tradingViewModel.getGameDifficulty();
         switch (scenario) {
             case 0:
