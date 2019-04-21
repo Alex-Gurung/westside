@@ -96,7 +96,7 @@ public class TravelActivity extends AppCompatActivity {
                 alert.setTitle("Do you want to Casino?");
                 alert.setPositiveButton("Casino", (dialog, which) -> {
                     Intent intent = new Intent(getApplicationContext(), CasinoActivity.class);
-                    startActivityForResult(intent, 1);
+                    startActivityForResult(intent, 3);
                 });
                 alert.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
                 alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -127,6 +127,8 @@ public class TravelActivity extends AppCompatActivity {
         } else if (requestCode == 1) {
             Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
             startActivityForResult(intent, 2);
+        } else if (requestCode == 3) {
+            finish();
         }
     }
 
