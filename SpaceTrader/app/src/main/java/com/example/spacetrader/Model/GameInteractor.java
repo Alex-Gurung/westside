@@ -9,6 +9,7 @@ import java.util.Set;
  * The Interactor for Game that has access to the repository
  */
 public class GameInteractor extends Interactor {
+
     /**
      * constructor for Interactor that takes in a Repository parameter
      *
@@ -163,11 +164,22 @@ public class GameInteractor extends Interactor {
         return getRepository().facilitateTravel(solarSystem);
     }
 
-
+    /**
+     * method that checks to see if the Player was able to successfully travel via wormhole
+     *
+     * @param solarSystem of type SolarSystem that is to be the SolarSystem the Player intends to
+     *                    travel to
+     * @return a boolean that represents whether the Player was able to successfully travel
+     */
     public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
         return getRepository().facilitateTravelWormhole(solarSystem);
     }
 
+    /**
+     * getter method that returns the current Wormhole of the Universe
+     *
+     * @return a Wormhole object that is the current Wormhole in the Universe
+     */
     public Wormhole getWormhole() {
         return getRepository().getWormhole();
     }

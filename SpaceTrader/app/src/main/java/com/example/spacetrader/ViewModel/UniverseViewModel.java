@@ -89,11 +89,22 @@ public class UniverseViewModel extends AndroidViewModel {
         }
     }
 
-
+    /**
+     * method that checks to see if the Player was able to successfully travel via wormhole
+     *
+     * @param solarSystem of type SolarSystem that is to be the SolarSystem the Player intends to
+     *                    travel to
+     * @return a boolean that represents whether the Player was able to successfully travel
+     */
     public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
         return interactor.facilitateTravelWormhole(solarSystem);
     }
 
+    /**
+     * getter method that returns the current Wormhole of the Universe
+     *
+     * @return a Wormhole object that is the current Wormhole in the Universe
+     */
     public Wormhole getWormhole() {
         return interactor.getWormhole();
     }

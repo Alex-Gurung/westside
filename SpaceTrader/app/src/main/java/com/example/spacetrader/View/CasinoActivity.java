@@ -10,23 +10,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Trader;
 import com.example.spacetrader.R;
 import com.example.spacetrader.ViewModel.TradingViewModel;
 
-import java.util.List;
 import java.util.Random;
 
 public class CasinoActivity extends AppCompatActivity {
 
-    private double playerCredits;
     private TextView credits;
-    private final MarketAdapter adapter = new MarketAdapter();
-    private List<Good> marketList;
-
     private TradingViewModel tradingViewModel;
-    private Trader trader;
 
     /**
      * method that instantiates the viewable attributes that the user can see on the screen
