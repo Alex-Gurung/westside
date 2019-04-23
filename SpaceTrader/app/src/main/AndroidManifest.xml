@@ -17,6 +17,7 @@
         <activity android:name=".View.ShipYardActivity" />
         <activity android:name=".View.SpacePortActivity" />
         <activity android:name=".View.UniverseActivity" />
+        <activity android:name=".View.CasinoActivity" />
         <activity
             android:name=".View.ConfigurationActivity"
             android:label="@string/title_activity_configuration"

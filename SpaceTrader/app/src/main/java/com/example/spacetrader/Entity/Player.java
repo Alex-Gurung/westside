@@ -59,6 +59,14 @@ public class Player extends Character implements TraderCapability {
         }
     }
 
+    public void travelWormhole(SolarSystem solarSystem) {
+        this.setCurrentSolarSystem(solarSystem);
+        Good[] goods = ship.getCargo();
+        for(int i = 0; i < ship.getNumGoods(); i++) {
+            this.setPrice(goods[i], this.currentSolarSystem);
+        }
+    }
+
     /**
      * @param solarSystem the solar system the player wants to go to
      * @return whether or not the player can go there
@@ -183,10 +191,12 @@ public class Player extends Character implements TraderCapability {
      * @return true if you can change your ship to the upgrade ship
      */
     public boolean canChangeShip(ShipType upgrade) {
-        return ship.getCargo().length <= upgrade.getCargoHolds();
+        return ship.getNumGoods() <= upgrade.getCargoHolds() && getShipUpgradePrice(upgrade) <= credits;
     }
 
-    private double getShipUpgradePrice(ShipType upgrade) {
+
+
+    public double getShipUpgradePrice(ShipType upgrade) {
         double currentShipPrice = ship.getPrice();
         double newShipPrice = upgrade.getPrice();
         return newShipPrice - currentShipPrice;
@@ -198,10 +208,12 @@ public class Player extends Character implements TraderCapability {
      * @return whether or not the ship is successfully upgraded
      */
     public boolean changeShipType(ShipType upgrade) {
-        if(canChangeShip(upgrade) && (upgrade.getPrice() <= credits)) {
+        if(canChangeShip(upgrade)) {
             Ship newShip = new Ship(upgrade);
             for(Good cargo : ship.getCargo()) {
-                newShip.addCargo(cargo);
+                if(cargo != null) {
+                    newShip.addCargo(cargo);
+                }
             }
             credits = credits - getShipUpgradePrice(upgrade);
             this.ship = newShip;

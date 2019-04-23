@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 
 import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.SolarSystem;
+import com.example.spacetrader.Entity.Wormhole;
 import com.example.spacetrader.Model.GameInteractor;
-import com.example.spacetrader.Model.Model;
 
 import java.util.Set;
 
@@ -23,7 +23,7 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getGameInteractor();
+        interactor = GameInteractor.getInstance();
     }
 
     /**
@@ -81,9 +81,32 @@ public class UniverseViewModel extends AndroidViewModel {
      * @return whether the player traveled to the solar system
      */
     public boolean facilitateTravel(SolarSystem solarSystem) {
-        return interactor.facilitateTravel(solarSystem);
+        if(facilitateTravelWormhole(solarSystem)) {
+            throw new IllegalArgumentException("wormhole");
+        } else {
+            return interactor.facilitateTravel(solarSystem);
+        }
     }
 
+    /**
+     * method that checks to see if the Player was able to successfully travel via wormhole
+     *
+     * @param solarSystem of type SolarSystem that is to be the SolarSystem the Player intends to
+     *                    travel to
+     * @return a boolean that represents whether the Player was able to successfully travel
+     */
+    public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
+        return interactor.facilitateTravelWormhole(solarSystem);
+    }
+
+    /**
+     * getter method that returns the current Wormhole of the Universe
+     *
+     * @return a Wormhole object that is the current Wormhole in the Universe
+     */
+    public Wormhole getWormhole() {
+        return interactor.getWormhole();
+    }
     /**
      * Getter for the amount of fuel the player has
      * @return the amount of fuel the player has

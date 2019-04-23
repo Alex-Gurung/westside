@@ -2,36 +2,28 @@ package com.example.spacetrader.ViewModel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
-
-import com.example.spacetrader.Entity.Game;
-import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.Player;
-import com.example.spacetrader.Entity.SolarSystem;
-import com.example.spacetrader.Entity.SpacePort;
-import com.example.spacetrader.Entity.TraderCapability;
+import com.example.spacetrader.Entity.*;
 import com.example.spacetrader.Model.GameInteractor;
-import com.example.spacetrader.Model.Model;
 
 /**
  * Class to facilitate interactions from the Trading View to the model
  */
-public class TradingViewModel extends AndroidViewModel {
-    private final GameInteractor interactor;
+public class SpacePortViewModel extends AndroidViewModel {
+    private static final GameInteractor interactor = GameInteractor.getInstance();
 
     /**
      * Constructor to instantiate the trading view model with an instance of the gameInteractor
      * @param application the application currently being used
      */
-    public TradingViewModel(@NonNull Application application) {
+    public SpacePortViewModel(@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getGameInteractor();
     }
 
     /**
      * Getter for the game
      * @return the current game state
      */
-    public Game getGame() {
+    public static Game getGame() {
         return interactor.getGame();
     }
 
@@ -81,6 +73,14 @@ public class TradingViewModel extends AndroidViewModel {
      */
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
         return interactor.facilitateTrade(toBuy, buyer, seller);
+    }
+
+    public boolean upgradeShip(ShipType shipType) {
+        return getGame().changePlayerShipType(shipType);
+    }
+
+    public static double getUpgradePrice(ShipType shipType) {
+        return getGame().getUpgradePrice(shipType);
     }
 
     /**
