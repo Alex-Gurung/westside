@@ -77,7 +77,11 @@ public class TravelActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), TraderActivity.class);
                     startActivityForResult(intent, 1);
                 });
-                alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                alertDialogBuilder.setNegativeButton("Cancel", (dialog, which) -> {
+                    dialog.dismiss();
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivityForResult(intent, 2);
+                });
                 alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
@@ -98,7 +102,11 @@ public class TravelActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), CasinoActivity.class);
                     startActivityForResult(intent, 3);
                 });
-                alert.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                alert.setNegativeButton("Cancel", (dialog, which) -> {
+                    dialog.dismiss();
+                    Intent intent = new Intent( getApplicationContext(), SpacePortActivity.class);
+                    startActivityForResult(intent, 2);
+                });
                 alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
