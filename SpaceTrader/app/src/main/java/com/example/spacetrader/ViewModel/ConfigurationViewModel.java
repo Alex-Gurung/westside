@@ -9,7 +9,6 @@ import com.example.spacetrader.Entity.GameDifficulty;
 import com.example.spacetrader.Entity.Ship;
 import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.Model.GameInteractor;
-import com.example.spacetrader.Model.Model;
 
 /**
  * activity that allows the user to input their character's initial information and begin the game
@@ -23,7 +22,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
      */
     public ConfigurationViewModel (@NonNull Application application) {
         super(application);
-        gameInteractor = Model.getInstance().getGameInteractor();
+        gameInteractor = GameInteractor.getInstance();
     }
 
     /**

@@ -49,7 +49,6 @@
         android:id="@+id/Cargo_Back_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="17dp"
         android:layout_marginTop="10dp"

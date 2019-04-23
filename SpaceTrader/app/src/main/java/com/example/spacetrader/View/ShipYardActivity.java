@@ -9,10 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.spacetrader.Entity.Ship;
 import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -24,13 +23,13 @@ public class ShipYardActivity extends AppCompatActivity {
     private TextView credits;
     private double playerCredits;
     private final ShipAdapter adapter = new ShipAdapter();
-    private TradingViewModel tradingViewModel;
+    private SpacePortViewModel tradingViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipyard);
-        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        tradingViewModel = ViewModelProviders.of(this).get(SpacePortViewModel.class);
 
         Button backButton = findViewById(R.id.ShipYard_Back_Button);
         Button refuelMaxButton = findViewById(R.id.ShipYard_Refuel_Max_Button);

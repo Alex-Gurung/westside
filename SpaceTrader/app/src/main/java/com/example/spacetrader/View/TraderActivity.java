@@ -11,10 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
-import com.example.spacetrader.Entity.SpacePort;
 import com.example.spacetrader.Entity.Trader;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class TraderActivity extends AppCompatActivity {
     private final MarketAdapter adapter = new MarketAdapter();
     private List<Good> marketList;
 
-    private TradingViewModel tradingViewModel;
+    private SpacePortViewModel tradingViewModel;
     private Trader trader;
 
     /**
@@ -39,7 +38,7 @@ public class TraderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_market_goods);
 
-        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        tradingViewModel = ViewModelProviders.of(this).get(SpacePortViewModel.class);
 
         playerCredits = tradingViewModel.getPlayerCredits();
         trader = new Trader(tradingViewModel.getCurrentSolarSystem());

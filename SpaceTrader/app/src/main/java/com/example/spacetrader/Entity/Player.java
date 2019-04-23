@@ -104,6 +104,7 @@ public class Player extends Character implements TraderCapability {
     public void setPrice(Good good) {
         setPrice(good, this.currentSolarSystem.getTechLevel(),
                 this.currentSolarSystem.getResource());
+        good.setPrice(good.getPrice() * ((traderSkillPoints + 16) / 16));
     }
 
     /**
@@ -128,7 +129,7 @@ public class Player extends Character implements TraderCapability {
      */
     @Override
     public boolean canBuy(Good good) {
-        return (good.getPrice() <= credits) && ship.hasCargoSpace();
+        return (good.getPrice()*(16/(16 + this.traderSkillPoints)) <= credits) && ship.hasCargoSpace();
     }
 
     /**
@@ -138,7 +139,7 @@ public class Player extends Character implements TraderCapability {
      */
     @Override
     public void buy(Good g) {
-        credits -= g.getPrice();
+        credits -= g.getPrice()*(16/(16 + this.traderSkillPoints));
         ship.addCargo(g);
     }
 
@@ -150,7 +151,7 @@ public class Player extends Character implements TraderCapability {
     @Override
     public void sell(Good g) {
         if (g != null) {
-            credits += g.getPrice();
+            credits += (g.getPrice() * ((traderSkillPoints + 16) / 16));
             ship.removeCargo(g);
         }
     }
