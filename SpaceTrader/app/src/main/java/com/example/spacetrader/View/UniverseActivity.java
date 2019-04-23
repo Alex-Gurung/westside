@@ -3,6 +3,7 @@ package com.example.spacetrader.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -130,6 +131,18 @@ public class UniverseActivity extends AppCompatActivity {
             Toast.makeText(UniverseActivity.this, "Game Saved to Device",
                     Toast.LENGTH_SHORT).show();
         });
+
+        final MediaPlayer song = MediaPlayer.create(this, R.raw.mixtape);
+        song.setLooping(true);
+        Button songButton = findViewById(R.id.game_songButton);
+        songButton.setOnClickListener(v -> {
+            if (song.isPlaying()) {
+                song.pause();
+            } else {
+                song.start();
+            }
+        });
+
     }
     private DataPoint[] ssToDP(Iterable<SolarSystem> solarSystems) {
         dpToSS = new HashMap<>();
