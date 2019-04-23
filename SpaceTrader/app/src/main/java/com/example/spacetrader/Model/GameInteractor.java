@@ -35,6 +35,7 @@ public class GameInteractor implements Serializable{
      */
     public void setGame(Game game){
         this.game = game;
+        this.firebaseActor = new FirebaseActor(game);
     }
 
     /**
