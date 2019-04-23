@@ -1,6 +1,5 @@
 package com.example.spacetrader.View;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.ShipType;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,7 +57,7 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ShipViewHolder
         Log.d("APP", "Binding: " + position + " " + shiptypes.get(position));
 
         holder.name.setText(shipType.displayOnAdapter());
-        String price = "" + TradingViewModel.getUpgradePrice(shipType);
+        String price = "" + SpacePortViewModel.getUpgradePrice(shipType);
         holder.price.setText(price);
 
     }

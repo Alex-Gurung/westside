@@ -7,14 +7,11 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.example.spacetrader.Entity.Location;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
-import java.util.Objects;
 import java.util.Random;
 
 
@@ -26,7 +23,7 @@ public class TravelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
-        TradingViewModel tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        SpacePortViewModel tradingViewModel = ViewModelProviders.of(this).get(SpacePortViewModel.class);
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             // Actions to do after 1 second

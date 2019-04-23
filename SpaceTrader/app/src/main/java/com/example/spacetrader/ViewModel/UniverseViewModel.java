@@ -8,7 +8,6 @@ import com.example.spacetrader.Entity.Game;
 import com.example.spacetrader.Entity.SolarSystem;
 import com.example.spacetrader.Entity.Wormhole;
 import com.example.spacetrader.Model.GameInteractor;
-import com.example.spacetrader.Model.Model;
 
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class UniverseViewModel extends AndroidViewModel {
      */
     public UniverseViewModel(@NonNull Application application) {
         super(application);
-        interactor = Model.getInstance().getGameInteractor();
+        interactor = GameInteractor.getInstance();
     }
 
     /**

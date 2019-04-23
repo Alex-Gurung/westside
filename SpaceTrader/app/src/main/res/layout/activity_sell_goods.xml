@@ -39,17 +39,17 @@
 
 
     <include
-        layout="@layout/content_cargo_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp" />
+            layout="@layout/content_cargo_list"
+            android:id="@+id/goods_list"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"/>
 
     <Button
         android:id="@+id/Cargo_Back_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="17dp"
         android:layout_marginTop="10dp"

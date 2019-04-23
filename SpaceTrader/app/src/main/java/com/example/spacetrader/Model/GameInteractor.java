@@ -1,49 +1,48 @@
 package com.example.spacetrader.Model;
 
-
 import com.example.spacetrader.Entity.*;
 
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashSet;
 
 /**
- * The Interactor for Game that has access to the repository
+ * The GameInteractor for Game that has access to the repository
  */
-public class GameInteractor extends Interactor {
+public class GameInteractor implements Serializable{
+    private Game game;
+    private FirebaseActor firebaseActor;
+    private static final GameInteractor instance = new GameInteractor();
 
-    /**
-     * constructor for Interactor that takes in a Repository parameter
-     *
-     * @param repo of type Repository that will instantiate the repository for the Game
-     */
-    public GameInteractor(Repository repo) {
-        super(repo);
+    public static GameInteractor getInstance() {
+        return instance;
     }
+    /**
+     * constructor for GameInteractor that takes in a Repository parameter
+     */
+    private GameInteractor() {}
 
     /**
      * getter method for the current player's game
-     *
      * @return the Repository's current Game object
      */
     public Game getGame() {
-        return getRepository().getGame();
+        return this.game;
     }
 
     /**
      * sets the current Player's Game to the game loaded from the Repository
-     *
      * @param game of type Game to be retrieved for the player
      */
-    public void setGame(Game game) {
-        getRepository().setGame(game);
+    public void setGame(Game game){
+        this.game = game;
     }
 
     /**
      * sets the Player's Solar System to the passed in Solar System
-     *
      * @param solarSystem of type SolarSystem to become the player's current Solar System
      */
     public void setPlayerSolarSystem(SolarSystem solarSystem) {
-        getRepository().setSolarSystem(solarSystem);
+        this.game.setPlayerSolarSystem(solarSystem);
     }
 
     /**
@@ -52,7 +51,7 @@ public class GameInteractor extends Interactor {
      * @return the player's current Solar System
      */
     public SolarSystem getPlayerSolarSystem() {
-        return getRepository().getPlayerSolarSystem();
+        return this.game.getPlayerSolarSystem();
     }
 
     /**
@@ -60,16 +59,17 @@ public class GameInteractor extends Interactor {
      *
      * @return the Player of the current Game
      */
-    public Player getPlayer() { return getRepository().getPlayer();}
+    public Player getPlayer() {
+        return this.game.getPlayer();
+    }
 
     /**
      * a method for determining if the player can travel to a given solar system
-     *
      * @param solarSystem the solar system the player wants to travel to
      * @return whether the player can travel to the solar system
      */
     public boolean playerCanTravel(SolarSystem solarSystem) {
-        return getRepository().playerCanTravel(solarSystem);
+        return this.game.playerCanTravel(solarSystem);
     }
 
     /**
@@ -81,7 +81,7 @@ public class GameInteractor extends Interactor {
      * space port trader
      */
     public Good[] getCargo(TraderCapability trader) {
-        return getRepository().getCargo(trader);
+        return trader.getCargo();
     }
 
     /**
@@ -90,7 +90,7 @@ public class GameInteractor extends Interactor {
      * @return the player's current credit number
      */
     public double getPlayerCredits() {
-        return getRepository().getPlayerCredits();
+        return this.game.getPlayerCredits();
     }
 
     /**
@@ -98,8 +98,8 @@ public class GameInteractor extends Interactor {
      *
      * @param v of type double to represent the current Player's new number of credits
      */
-    public void setPlayerCredits(double v) {
-        getRepository().setPlayerCredits(v);
+    public void setPlayerCredits(double v){
+        game.setPlayerCredits(v);
     }
 
     /**
@@ -108,16 +108,15 @@ public class GameInteractor extends Interactor {
      * @return the current Solar System's Space Port
      */
     public SpacePort getSpacePort() {
-        return getRepository().getSpacePort();
+        return this.game.getSpacePort();
     }
 
     /**
-     * getter method to retrieve the current Universe's set of Solar Systems in the Game
-     *
-     * @return the current Universe's set of Solar Systems in the Game
+     * Getter for the set of solar systems
+     * @return the set of solar systems stored in universe
      */
-    public Set<SolarSystem> getSolarSystems() {
-        return getRepository().getSolarSystems();
+    public HashSet<SolarSystem> getSolarSystems() {
+        return this.game.getSolarSystems();
     }
 
     /**
@@ -129,39 +128,18 @@ public class GameInteractor extends Interactor {
      * @return a boolean that represents whether the trade was facilitated
      */
     public boolean facilitateTrade(Good toBuy, TraderCapability buyer, TraderCapability seller) {
-        return getRepository().facilitateTrade(toBuy, buyer, seller);
+        boolean facilitateTrade = Game.facilitateTrade(toBuy, buyer, seller);
+        firebaseActor.updateFire();
+        return facilitateTrade;
     }
 
     /**
-     * method that determines if the Player is capable of trading ships
-     *
-     * @param upgrade of type ShipType that is to be the new Ship of the Player
-     * @return a boolean that represents whether the Player has the means of changing their ship
-     */
-    public boolean canChangePlayerShip(ShipType upgrade) {
-        return getRepository().changePlayerShipType(upgrade);
-    }
-
-    /**
-     * method that determines whether the player can change the type of their ship
-     *
-     * @param upgrade of type ShipType to be the Ship the Player upgrades to
-     * @return a boolean that represents whether the Player can change their Ship Type
-     */
-    public boolean changePlayerShipType(ShipType upgrade) {
-        return getGame().changePlayerShipType(upgrade);
-    }
-
-    /**
-     * method that determines whether or not the Player has the means to travel to a different Solar
-     * System
-     *
-     * @param solarSystem of type SolarSystem that is to possibly become the Player's new current
-     *                    solar system
-     * @return a boolean that represents whether or not the Player can travel
+     * Method to get the player to travel between solar systems
+     * @param solarSystem the solar system the player will travel to
+     * @return whether or not travel happened (or could happen)
      */
     public boolean facilitateTravel(SolarSystem solarSystem) {
-        return getRepository().facilitateTravel(solarSystem);
+        return this.game.facilitateTravel(solarSystem);
     }
 
     /**
@@ -172,7 +150,7 @@ public class GameInteractor extends Interactor {
      * @return a boolean that represents whether the Player was able to successfully travel
      */
     public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
-        return getRepository().facilitateTravelWormhole(solarSystem);
+        return this.game.facilitateTravelWormhole(solarSystem);
     }
 
     /**
@@ -181,24 +159,24 @@ public class GameInteractor extends Interactor {
      * @return a Wormhole object that is the current Wormhole in the Universe
      */
     public Wormhole getWormhole() {
-        return getRepository().getWormhole();
+        return this.game.getWormhole();
     }
+
     /**
      * getter method that retrieves the Player's current fuel level
      *
      * @return a double that represents the Player's current fuel level
      */
     public double getFuel() {
-        return getRepository().getFuel();
+        return game.getFuel();
     }
 
     /**
-     * method that determines whether or not the player has enough credits to refuel their Ship
-     *
-     * @return a boolean that represents if the player has enough credits to refuel their Ship
+     * method for refueling the player's ship to a full tank
+     * @return a boolean that represents whether the player could completely refuel their ship
      */
-    public boolean refuelMax() {
-        return getRepository().refuelMax();
+    public boolean refuelMax(){
+        return this.game.refuelMax();
     }
 
     /**
@@ -206,7 +184,7 @@ public class GameInteractor extends Interactor {
      * @return an int representing the game difficulty
      */
     public int getGameDifficulty(){
-        return getRepository().getGameDifficulty();
+        return this.game.getGameDifficulty().ordinal();
     }
 
     /**
@@ -214,6 +192,15 @@ public class GameInteractor extends Interactor {
      * @return the current players solar system stats
      */
     public String getSolarSystemStats() {
-        return getRepository().getSolarSystemStats();
+        return this.game.getSolarSystemStats();
+    }
+
+    /**
+     * method that checks if the player can change their ship
+     * @param upgrade the ship that the player wants to upgrade to
+     * @return a boolean representing if the player can change their ship
+     */
+    public boolean canChangePlayerShip(ShipType upgrade) {
+        return this.game.changePlayerShipType(upgrade);
     }
 }
