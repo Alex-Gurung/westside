@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +26,16 @@ public class SellGoodsActivity extends AppCompatActivity {
     private List<Good> cargo;
     private double playerCredits;
 
-    private TradingViewModel tradingViewModel;
+    private SpacePortViewModel spacePortViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_goods);
 
-        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        spacePortViewModel = ViewModelProviders.of(this).get(SpacePortViewModel.class);
 
-        playerCredits = tradingViewModel.getPlayerCredits();
+        playerCredits = spacePortViewModel.getPlayerCredits();
 
         Button backButton = findViewById(R.id.Cargo_Back_Button);
         backButton.setOnClickListener(v -> finish());
@@ -52,7 +52,7 @@ public class SellGoodsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //cargo = setDummyGoods();
-        Good[] playerGoods = tradingViewModel.getCargo(tradingViewModel.getPlayer());
+        Good[] playerGoods = spacePortViewModel.getCargo(spacePortViewModel.getPlayer());
         if (playerGoods != null) {
             cargo = new ArrayList<>();
             for (Good playerGood : playerGoods) {
@@ -68,14 +68,14 @@ public class SellGoodsActivity extends AppCompatActivity {
     }
     private void sellItem(int position) {
         Good toSell = cargo.get(position);
-        boolean isSold = tradingViewModel.facilitateTrade(toSell, tradingViewModel.getSpacePort(),
-                tradingViewModel.getPlayer());
+        boolean isSold = spacePortViewModel.facilitateTrade(toSell, spacePortViewModel.getSpacePort(),
+                spacePortViewModel.getPlayer());
         if (!isSold) {
             Toast.makeText(getApplicationContext(), "Could not sell item",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("NEW PLAYER CREDITS", "" + tradingViewModel.getPlayerCredits());
-            playerCredits = tradingViewModel.getPlayerCredits();
+            Log.d("NEW PLAYER CREDITS", "" + spacePortViewModel.getPlayerCredits());
+            playerCredits = spacePortViewModel.getPlayerCredits();
             String f = "" + playerCredits;
             credits.setText(f);
             adapter.removeItem(position);

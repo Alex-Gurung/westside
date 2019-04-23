@@ -21,6 +21,11 @@ class Universe implements Serializable {
         return solarSystems;
     }
 
+    /**
+     * getter method to retrieve the current wormhole of the Universe
+     *
+     * @return the current wormhole of the Universe
+     */
     public Wormhole getWormhole() {
         return wormhole;
     }

@@ -258,6 +258,5 @@ public class UniverseActivity extends AppCompatActivity {
         wormholePGS.setColor(Color.BLACK);
         lPCT.setColor(Color.YELLOW);
         nLPCT.setColor(Color.rgb(1,114,203));
-
     }
 }

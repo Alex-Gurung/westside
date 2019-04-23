@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 /**
  * A class that will control the main aspects of Space Trader, such as the player, the universe, the
- * solar systems, the planet(s), wtc.
+ * solar systems, the planet(s), etc.
  *
  */
 public class Game implements Serializable {
@@ -27,6 +27,7 @@ public class Game implements Serializable {
         LogBig("\n" + this.universe.toString());
         Log.d("working", ("\nGame difficulty is " + gameDifficulty + "\n" + player.toString()));
     }
+
     /**
      * Constructor that creates a Game object starting with initializing the Player and the
      * Game Difficulty of the player
@@ -96,6 +97,12 @@ public class Game implements Serializable {
         return player.changeShipType(upgrade);
     }
 
+    /**
+     * getter method that returns the price of the ship that the Player wishes to upgrade to
+     *
+     * @param shipType of type ShipType that is to be the ShipType the Player wants to upgrade to
+     * @return a double that represents the cost of the ship the pPlayer wishes to buy
+     */
     public double getUpgradePrice(ShipType shipType) {
         return player.getShipUpgradePrice(shipType);
     }
@@ -269,14 +276,31 @@ public class Game implements Serializable {
         return this.player.canTravel(solarSystem);
     }
 
+    /**
+     * boolean method that determines if the current Player is able to travel through a wormhole
+     *
+     * @param solarSystem of type SolarSystem that is to be the Player's destination
+     * @return a boolean that represents whether the Player is able to travel through the wormhole
+     */
     public boolean canTravelWormhole(SolarSystem solarSystem) {
         return (playerIsOnWormhole() && solarSystem.equals(getOtherWormholeEndpoint()));
     }
 
+    /**
+     * method that checks if a player is at a Solar System that has a wormhole
+     *
+     * @return a boolean representation that determines if a player is on a wormhole
+     */
     public boolean playerIsOnWormhole() {
         return getWormhole().checkEndPoint(this.getPlayerSolarSystem());
     }
 
+    /**
+     * method that retrieves the wormhole coordinates on the other Solar System the Player wants to
+     * go to
+     *
+     * @return a SolarSystem object that represents the Player's destination via wormhole
+     */
     public SolarSystem getOtherWormholeEndpoint() {
         if (playerIsOnWormhole()) {
             return getWormhole().getOtherEndpoint(this.getPlayerSolarSystem());
@@ -285,6 +309,13 @@ public class Game implements Serializable {
         }
     }
 
+    /**
+     * method that facilitates traveling via wormhole
+     *
+     * @param solarSystem of type SolarSystem that is to be the Player's destination
+     * @return a boolean that represents whether the Player traveled to the desired SolarSystem via
+     * wormhole
+     */
     public boolean facilitateTravelWormhole(SolarSystem solarSystem) {
         if (this.canTravelWormhole(solarSystem)){
             player.travelWormhole(solarSystem);
@@ -295,10 +326,15 @@ public class Game implements Serializable {
 
     }
 
-
+    /**
+     * getter method to retrieve a wormhole from the current Universe
+     *
+     * @return a Wormhole if a player is in a SolarSystem that has a wormhole
+     */
     public Wormhole getWormhole() {
         return this.universe.getWormhole();
     }
+
     /**
      * Gets the current players solar system stats
      * @return the current players solar system stats

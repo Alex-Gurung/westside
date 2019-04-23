@@ -2,24 +2,21 @@ package com.example.spacetrader.ViewModel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
-
 import com.example.spacetrader.Entity.*;
 import com.example.spacetrader.Model.GameInteractor;
-import com.example.spacetrader.Model.Model;
 
 /**
  * Class to facilitate interactions from the Trading View to the model
  */
-public class TradingViewModel extends AndroidViewModel {
-    private static final GameInteractor interactor = Model.getInstance().getGameInteractor();
+public class SpacePortViewModel extends AndroidViewModel {
+    private static final GameInteractor interactor = GameInteractor.getInstance();
 
     /**
      * Constructor to instantiate the trading view model with an instance of the gameInteractor
      * @param application the application currently being used
      */
-    public TradingViewModel(@NonNull Application application) {
+    public SpacePortViewModel(@NonNull Application application) {
         super(application);
-        //interactor = Model.getInstance().getGameInteractor();
     }
 
     /**

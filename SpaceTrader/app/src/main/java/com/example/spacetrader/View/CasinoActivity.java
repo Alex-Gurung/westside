@@ -13,19 +13,18 @@ import android.widget.Toast;
 import com.example.spacetrader.Entity.Good;
 import com.example.spacetrader.Entity.Trader;
 import com.example.spacetrader.R;
-import com.example.spacetrader.ViewModel.TradingViewModel;
+import com.example.spacetrader.ViewModel.SpacePortViewModel;
 
 import java.util.List;
 import java.util.Random;
 
 public class CasinoActivity extends AppCompatActivity {
 
-    private double playerCredits;
     private TextView credits;
     private final MarketAdapter adapter = new MarketAdapter();
     private List<Good> marketList;
 
-    private TradingViewModel tradingViewModel;
+    private SpacePortViewModel tradingViewModel;
     private Trader trader;
 
     /**
@@ -38,7 +37,7 @@ public class CasinoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_casino);
         credits = findViewById(R.id.player_credits);
-        tradingViewModel = ViewModelProviders.of(this).get(TradingViewModel.class);
+        tradingViewModel = ViewModelProviders.of(this).get(SpacePortViewModel.class);
         Double d = tradingViewModel.getPlayerCredits();
         credits.setText(d.toString());
         TextView slot1 = findViewById(R.id.slot_1);
